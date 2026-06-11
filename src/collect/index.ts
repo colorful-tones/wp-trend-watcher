@@ -1,5 +1,6 @@
 import Parser from "rss-parser";
 import { sources, type Source } from "../sources.js";
+import { writeArticlesJson, type CollectedArticle } from "./storage.js";
 
 type FeedItem = {
   title?: string;
@@ -13,10 +14,11 @@ const parser = new Parser<Record<string, unknown>, FeedItem>({
   timeout: 15_000,
 });
 
-async function collectSource(source: Source): Promise<void> {
+async function collectSource(source: Source): Promise<CollectedArticle[]> {
   try {
     const feed = await parser.parseURL(source.feedUrl);
     const latestItem = feed.items[0];
+    const articles = feed.items.flatMap((item) => toCollectedArticle(source, item));
 
     console.log(`\n${source.name}`);
     console.log(`Feed: ${source.feedUrl}`);
@@ -24,18 +26,41 @@ async function collectSource(source: Source): Promise<void> {
 
     if (!latestItem) {
       console.log("Latest: No items found");
-      return;
+      return articles;
     }
 
     console.log(`Latest title: ${latestItem.title ?? "Untitled"}`);
     console.log(`Latest URL: ${latestItem.link ?? latestItem.guid ?? "No URL found"}`);
+
+    return articles;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
 
     console.error(`\n${source.name}`);
     console.error(`Feed: ${source.feedUrl}`);
     console.error(`Error: ${message}`);
+
+    return [];
   }
+}
+
+function toCollectedArticle(source: Source, item: FeedItem): CollectedArticle[] {
+  const url = item.link ?? item.guid;
+
+  if (!url) {
+    return [];
+  }
+
+  return [
+    {
+      id: `${source.id}:${url}`,
+      sourceId: source.id,
+      sourceName: source.name,
+      title: item.title ?? "Untitled",
+      url,
+      publishedAt: item.isoDate ?? item.pubDate,
+    },
+  ];
 }
 
 async function main(): Promise<void> {
@@ -43,7 +68,11 @@ async function main(): Promise<void> {
 
   console.log(`Collecting ${tierOneSources.length} Tier 1 sources...`);
 
-  await Promise.all(tierOneSources.map((source) => collectSource(source)));
+  const articleGroups = await Promise.all(tierOneSources.map((source) => collectSource(source)));
+  const articles = articleGroups.flat();
+  const result = await writeArticlesJson({ articles });
+
+  console.log(`\nSaved ${result.articleCount} articles to ${result.filePath}`);
 }
 
 await main();
