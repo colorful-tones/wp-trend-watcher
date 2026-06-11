@@ -1,0 +1,407 @@
+{
+  "date": "2026-06-11",
+  "collectedAt": "2026-06-11T17:41:42.327Z",
+  "articleCount": 50,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/06/whats-new-for-developers-june-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (June 2026)",
+      "url": "https://developer.wordpress.org/news/2026/06/whats-new-for-developers-june-2026/",
+      "publishedAt": "2026-06-10T16:08:10.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/05/how-to-build-an-image-generation-plugin-with-the-wordpress-ai-client/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "How to build an image generation plugin with the WordPress AI Client",
+      "url": "https://developer.wordpress.org/news/2026/05/how-to-build-an-image-generation-plugin-with-the-wordpress-ai-client/",
+      "publishedAt": "2026-05-14T14:54:00.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/05/whats-new-for-developers-may-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (May 2026)",
+      "url": "https://developer.wordpress.org/news/2026/05/whats-new-for-developers-may-2026/",
+      "publishedAt": "2026-05-12T17:44:24.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/05/getting-started-writing-wordpress-e2e-tests-with-playwright/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "Getting started writing WordPress E2E Tests with Playwright",
+      "url": "https://developer.wordpress.org/news/2026/05/getting-started-writing-wordpress-e2e-tests-with-playwright/",
+      "publishedAt": "2026-05-04T07:57:36.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/04/whats-new-for-developers-april-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (April 2026)",
+      "url": "https://developer.wordpress.org/news/2026/04/whats-new-for-developers-april-2026/",
+      "publishedAt": "2026-04-10T16:39:02.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/04/wordpress-build-the-next-generation-of-wordpress-plugin-build-tooling/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "@wordpress/build, the next generation of WordPress plugin build tooling",
+      "url": "https://developer.wordpress.org/news/2026/04/wordpress-build-the-next-generation-of-wordpress-plugin-build-tooling/",
+      "publishedAt": "2026-04-02T17:26:38.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/03/whats-new-for-developers-march-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (March 2026)",
+      "url": "https://developer.wordpress.org/news/2026/03/whats-new-for-developers-march-2026/",
+      "publishedAt": "2026-03-10T15:03:54.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/02/a-better-way-to-test-html-in-wordpress-with-assertequalhtml/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "A better way to test HTML in WordPress with assertEqualHTML()",
+      "url": "https://developer.wordpress.org/news/2026/02/a-better-way-to-test-html-in-wordpress-with-assertequalhtml/",
+      "publishedAt": "2026-02-26T16:49:38.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/02/how-to-add-custom-entries-to-the-editor-preview-dropdown/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "How to add custom entries to the editor Preview dropdown",
+      "url": "https://developer.wordpress.org/news/2026/02/how-to-add-custom-entries-to-the-editor-preview-dropdown/",
+      "publishedAt": "2026-02-19T14:30:31.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/02/whats-new-for-developers-february-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (February 2026)",
+      "url": "https://developer.wordpress.org/news/2026/02/whats-new-for-developers-february-2026/",
+      "publishedAt": "2026-02-10T18:18:12.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/10/call-for-testing-unicode-email-addresses/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for Testing: Unicode email addresses.",
+      "url": "https://make.wordpress.org/core/2026/06/10/call-for-testing-unicode-email-addresses/",
+      "publishedAt": "2026-06-10T17:17:22.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/10/dev-chat-agenda-june-10-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – June 10, 2026",
+      "url": "https://make.wordpress.org/core/2026/06/10/dev-chat-agenda-june-10-2026/",
+      "publishedAt": "2026-06-10T03:56:40.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/08/call-for-wordpress-7-0-x-release-managers/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for WordPress 7.0.x Release Managers",
+      "url": "https://make.wordpress.org/core/2026/06/08/call-for-wordpress-7-0-x-release-managers/",
+      "publishedAt": "2026-06-08T15:35:30.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/05/react-19-upgrade-temporarily-reverted-in-gutenberg/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "React 19 upgrade temporarily reverted in Gutenberg",
+      "url": "https://make.wordpress.org/core/2026/06/05/react-19-upgrade-temporarily-reverted-in-gutenberg/",
+      "publishedAt": "2026-06-05T12:04:57.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/04/call-for-testing-client-side-media-processing/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for Testing: client-side media processing",
+      "url": "https://make.wordpress.org/core/2026/06/04/call-for-testing-client-side-media-processing/",
+      "publishedAt": "2026-06-04T08:16:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/03/announcing-a-collaborative-editing-outreach-effort-for-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Announcing a collaborative editing outreach effort for 7.1",
+      "url": "https://make.wordpress.org/core/2026/06/03/announcing-a-collaborative-editing-outreach-effort-for-7-1/",
+      "publishedAt": "2026-06-03T19:29:30.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/03/dev-chat-agenda-june-03-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – June 3, 2026",
+      "url": "https://make.wordpress.org/core/2026/06/03/dev-chat-agenda-june-03-2026/",
+      "publishedAt": "2026-06-03T04:59:26.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/03/whats-new-in-gutenberg-23-3-03-jun/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.3? (03 Jun)",
+      "url": "https://make.wordpress.org/core/2026/06/03/whats-new-in-gutenberg-23-3-03-jun/",
+      "publishedAt": "2026-06-03T03:54:10.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/02/performance-chat-summary-2-june-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 2 June 2026",
+      "url": "https://make.wordpress.org/core/2026/06/02/performance-chat-summary-2-june-2026/",
+      "publishedAt": "2026-06-02T17:18:04.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/01/xpost-important-changes-to-the-documentation-articles/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Important changes to the documentation articles",
+      "url": "https://make.wordpress.org/core/2026/06/01/xpost-important-changes-to-the-documentation-articles/",
+      "publishedAt": "2026-06-01T20:49:57.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/28/wordcamp-asia-2026-core-committers-meeting/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordCamp Asia 2026 Core Committers Meeting",
+      "url": "https://make.wordpress.org/core/2026/05/28/wordcamp-asia-2026-core-committers-meeting/",
+      "publishedAt": "2026-05-28T17:47:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/28/hotfix-available-for-65286/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Hotfix available for #65286",
+      "url": "https://make.wordpress.org/core/2026/05/28/hotfix-available-for-65286/",
+      "publishedAt": "2026-05-28T02:47:21.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/27/summary-dev-chat-may-27-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: May 27, 2026",
+      "url": "https://make.wordpress.org/core/2026/05/27/summary-dev-chat-may-27-2026/",
+      "publishedAt": "2026-05-27T20:38:51.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/27/react-19-upgrade-in-wordpress/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "React 19 Upgrade in WordPress",
+      "url": "https://make.wordpress.org/core/2026/05/27/react-19-upgrade-in-wordpress/",
+      "publishedAt": "2026-05-27T10:37:28.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/27/dev-chat-agenda-may-27-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – May 27, 2026",
+      "url": "https://make.wordpress.org/core/2026/05/27/dev-chat-agenda-may-27-2026/",
+      "publishedAt": "2026-05-27T01:11:34.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/23/accessibility-improvements-in-wordpress-7-0/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Accessibility Improvements in WordPress 7.0",
+      "url": "https://make.wordpress.org/core/2026/05/23/accessibility-improvements-in-wordpress-7-0/",
+      "publishedAt": "2026-05-23T14:18:21.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/22/extending-unicode-support-in-email-addresses-usernames-and-slugs/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Extending Unicode support in email addresses.",
+      "url": "https://make.wordpress.org/core/2026/05/22/extending-unicode-support-in-email-addresses-usernames-and-slugs/",
+      "publishedAt": "2026-05-22T19:46:43.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/22/php-support-clarification-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "PHP support clarification, spring 2026 edition",
+      "url": "https://make.wordpress.org/core/2026/05/22/php-support-clarification-2026/",
+      "publishedAt": "2026-05-22T18:39:15.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/21/media-editor-modal-call-for-testing/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Media Editor Modal: call for testing",
+      "url": "https://make.wordpress.org/core/2026/05/21/media-editor-modal-call-for-testing/",
+      "publishedAt": "2026-05-21T23:57:46.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/05/21/whats-new-in-gutenberg-23-2-21-may/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.2? (21 May)",
+      "url": "https://make.wordpress.org/core/2026/05/21/whats-new-in-gutenberg-23-2-21-may/",
+      "publishedAt": "2026-05-21T17:31:30.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/wceu-2026-recap/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "What Happened at WordCamp Europe 2026",
+      "url": "https://wordpress.org/news/2026/06/wceu-2026-recap/",
+      "publishedAt": "2026-06-06T17:44:14.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/pts/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Protect The Shire",
+      "url": "https://wordpress.org/news/2026/06/pts/",
+      "publishedAt": "2026-06-05T18:51:15.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wp23/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WP23",
+      "url": "https://wordpress.org/news/2026/05/wp23/",
+      "publishedAt": "2026-05-27T17:40:10.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wceu-2026-sessions/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Looking Ahead to WordCamp Europe 2026",
+      "url": "https://wordpress.org/news/2026/05/wceu-2026-sessions/",
+      "publishedAt": "2026-05-26T12:52:13.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/armstrong/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0 “Armstrong”",
+      "url": "https://wordpress.org/news/2026/05/armstrong/",
+      "publishedAt": "2026-05-20T18:41:06.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wordpress-7-0-release-candidate-4/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0 Release Candidate 4",
+      "url": "https://wordpress.org/news/2026/05/wordpress-7-0-release-candidate-4/",
+      "publishedAt": "2026-05-14T16:47:15.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wcus-2026-get-tickets/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Get Your WordCamp US 2026 Tickets",
+      "url": "https://wordpress.org/news/2026/05/wcus-2026-get-tickets/",
+      "publishedAt": "2026-05-14T13:56:36.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wordpress-7-0-release-candidate-3/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0 Release Candidate 3",
+      "url": "https://wordpress.org/news/2026/05/wordpress-7-0-release-candidate-3/",
+      "publishedAt": "2026-05-08T18:18:48.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/05/wcus-2026-get-involved/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Get Involved With WordCamp US 2026 in Phoenix",
+      "url": "https://wordpress.org/news/2026/05/wcus-2026-get-involved/",
+      "publishedAt": "2026-05-04T18:10:10.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/04/student-clubs-build-momentum/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress Student Clubs Build Momentum",
+      "url": "https://wordpress.org/news/2026/04/student-clubs-build-momentum/",
+      "publishedAt": "2026-04-29T13:14:55.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-4/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.4",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-4/",
+      "publishedAt": "2026-06-10T14:51:50.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-directory-website/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "How to Build a WordPress Directory Website From Scratch",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-directory-website/",
+      "publishedAt": "2026-06-03T09:03:29.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/best-wordpress-directory-plugin/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Best WordPress Directory Plugins and When They Fall Short",
+      "url": "https://www.advancedcustomfields.com/blog/best-wordpress-directory-plugin/",
+      "publishedAt": "2026-06-03T08:46:02.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-3-security-release/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.3 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-3-security-release/",
+      "publishedAt": "2026-06-02T16:45:58.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-2-security-release/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.2 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-2-security-release/",
+      "publishedAt": "2026-05-26T18:19:15.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-7-0-acf-pro/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "What’s New in WordPress 7.0: Impact on Your ACF Workflows",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-7-0-acf-pro/",
+      "publishedAt": "2026-05-22T09:40:48.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-1-released/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.1 – Block Editor Datastore & Enhanced Block Bindings",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-1-released/",
+      "publishedAt": "2026-05-13T17:34:18.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-as-headless-cms/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "How to Set Up WordPress as a Headless CMS",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-as-headless-cms/",
+      "publishedAt": "2026-05-13T12:00:00.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-may-2026/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF Chat Fridays: Open Q&A, Field Cleanup, and Field Group Workflows",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-may-2026/",
+      "publishedAt": "2026-05-12T09:34:06.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/headless-wordpress/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "What Is Headless WordPress and Is It Worth It?",
+      "url": "https://www.advancedcustomfields.com/blog/headless-wordpress/",
+      "publishedAt": "2026-05-12T07:43:06.000Z"
+    }
+  ]
+}
