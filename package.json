@@ -6,6 +6,7 @@
   "private": false,
   "scripts": {
     "collect": "tsx src/collect/index.ts",
+    "test": "tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
