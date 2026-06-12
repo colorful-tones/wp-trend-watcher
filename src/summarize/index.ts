@@ -126,7 +126,39 @@ async function summarizeArticle(
   };
 }
 
-// --- Cross-article report synthesis ---
+// --- Concurrency ---
+
+const DEFAULT_CONCURRENCY = 3;
+
+async function summarizeArticleBatch(
+  articles: CollectedArticle[],
+  provider: ReturnType<typeof createProvider>,
+  concurrency = DEFAULT_CONCURRENCY,
+): Promise<ArticleSummary[]> {
+  const results: ArticleSummary[] = new Array(articles.length);
+  const queue = articles.map((article, index) => ({ article, index }));
+
+  let completed = 0;
+  const total = articles.length;
+
+  async function worker() {
+    while (queue.length > 0) {
+      const item = queue.shift()!;
+      results[item.index] = await summarizeArticle(item.article, provider);
+      completed++;
+      if (completed < total) {
+        process.stdout.write(`  [${completed}/${total}] `);
+      }
+    }
+  }
+
+  const workerCount = Math.min(concurrency, articles.length);
+  const workers = Array.from({ length: workerCount }, () => worker());
+  await Promise.all(workers);
+
+  process.stdout.write(`  [${completed}/${total}]\n`);
+  return results;
+}
 
 const REPORT_SYSTEM_PROMPT = `You write weekly WordPress trend reports for freelance and agency developers.
 Rules:
@@ -154,7 +186,7 @@ ${summariesText}
 Generate these three sections. Use Markdown headings.
 
 ## Weekly Summary
-2-4 key developments from this week. Cover every article. Each point should reference at least one source article. Skip articles only if they contain no developer-relevant content.`;
+2-4 key developments from this week. Cover every article. Each point should reference at least one source article. Skip articles only if they contain no developer-relevant content.
 
 ## Emerging Trends
 Topics or themes that appear across multiple sources — or note if there are none this week.
@@ -280,13 +312,12 @@ async function main(): Promise<void> {
   const articlesData = JSON.parse(raw) as ArticlesJson;
   console.log(`  ${articlesData.articleCount} articles from ${new Set(articlesData.articles.map((a) => a.sourceName)).size} sources\n`);
 
-  // 2. Per-article summarization
+  // 2. Per-article summarization (parallel, max 3 concurrent)
   console.log("Summarizing articles:\n");
-  const summaries: ArticleSummary[] = [];
-  for (const article of articlesData.articles) {
-    const summary = await summarizeArticle(article, provider);
-    summaries.push(summary);
-  }
+  const summaries = await summarizeArticleBatch(
+    articlesData.articles,
+    provider,
+  );
 
   const successfulSummaries = summaries.filter((s) => s.promptTokens > 0);
   const totalPromptTokens = summaries.reduce(
