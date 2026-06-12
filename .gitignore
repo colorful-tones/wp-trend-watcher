@@ -6,3 +6,5 @@ dist/
 # Article collection snapshots are generated local output by default.
 # Commit only the snapshots that directly support a reviewed/published report.
 data/articles/**
+
+AGENTS.md
