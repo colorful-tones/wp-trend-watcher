@@ -172,24 +172,29 @@ function buildReportPrompt(
   summaries: ArticleSummary[],
   date: string,
 ): string {
-  const summariesText = summaries
-    .map(
-      (s) =>
-        `### [${s.title}](${s.url})\nSource: ${s.sourceName}\n${s.summary}`,
-    )
+  // Distill each summary to its first key sentence for the inventory
+  const inventory = summaries
+    .map((s, i) => {
+      const firstSentence = s.summary.split(". ")[0] + ".";
+      return `${i + 1}. **${s.title}** (${s.sourceName})\n   ${firstSentence}`;
+    })
     .join("\n\n");
 
-  return `Here are summaries of ${summaries.length} articles from WordPress developer sources for the week ending ${date}.
+  return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
 
-${summariesText}
+## Article Inventory
+
+Every item below must appear in the Weekly Summary. If an item has no developer relevance, note that explicitly — do not silently skip it.
+
+${inventory}
 
 Generate these three sections. Use Markdown headings.
 
 ## Weekly Summary
-2-4 key developments from this week. Cover every article. Each point should reference at least one source article. Skip articles only if they contain no developer-relevant content.
+Cover every article from the inventory above. Group related items. Reference articles by their inventory number.
 
 ## Emerging Trends
-Topics or themes that appear across multiple sources — or note if there are none this week.
+Topics appearing across multiple sources — or note if there are none.
 
 ## Developer Implications
 What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects.`;
