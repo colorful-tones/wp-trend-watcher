@@ -71,7 +71,8 @@ Rules:
 - Include the key technical takeaway if there is one.
 - Be specific, not generic.
 - Do not use marketing phrases like "dive deep into" or "in this article we explore."
-- Do not evaluate or review the article — just summarize what it says.`;
+- Do not evaluate or review the article — just summarize what it says.
+- Respond with the summary only. No prefixes like "Here is the summary" or "Summary:".`;
 
 function buildArticlePrompt(article: CollectedArticle, content: string): string {
   return `Title: ${article.title}
@@ -153,7 +154,7 @@ ${summariesText}
 Generate these three sections. Use Markdown headings.
 
 ## Weekly Summary
-2-4 key developments from this week. Each should reference at least one article.
+2-4 key developments from this week. Cover every article. Each point should reference at least one source article. Skip articles only if they contain no developer-relevant content.`;
 
 ## Emerging Trends
 Topics or themes that appear across multiple sources — or note if there are none this week.
