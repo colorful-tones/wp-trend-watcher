@@ -77,6 +77,10 @@ Phase 1 scaffold is in progress.
 
 ## Changelog
 
+### 0.1.1
+
+AI summarization pipeline. Per-article content fetching, LLM summarization, cross-article synthesis with article inventory strategy, parallel processing, summary caching, and provider abstraction. Defaults to Ollama local (llama3.2:3b, $0/run). Provider configurable via `WP_TREND_PROVIDER`, `WP_TREND_OLLAMA_MODEL`, and `WP_TREND_OLLAMA_URL`.
+
 ### 0.1.0
 
 Initial project scaffold. Phase 1 source definitions, RSS collection pipeline, atomic file storage with merge-on-write, and project documentation.
