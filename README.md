@@ -53,6 +53,12 @@ Each weekly report should include:
 
 Build Notes should include article count, sources reviewed, model/provider, estimated cost, and human review time.
 
+## Data Snapshot Policy
+
+Article collection snapshots under `data/articles/YYYY-MM-DD/articles.json` are generated local output by default.
+
+Commit a snapshot only when it directly supports a reviewed or published report. Ad hoc collection runs should stay local, even when they help test the workflow.
+
 ## Project Principles
 
 - Human reviewed.

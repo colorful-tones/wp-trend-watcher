@@ -61,3 +61,9 @@ A transparency section that may include:
 Do not publish automatically in Phase 1.
 
 The output of the tool is a draft. The public report is a reviewed artifact.
+
+## Data Snapshot Rule
+
+Treat `data/articles/YYYY-MM-DD/articles.json` files as generated local output unless a snapshot directly supports a reviewed or published report.
+
+If a report cites a specific collection run, commit that snapshot with the report so readers can inspect the source set. Do not commit one-off local test runs.
