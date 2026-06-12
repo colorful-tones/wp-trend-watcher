@@ -50,6 +50,4 @@ Each report run should try to record:
 
 ## Open Questions
 
-- Which provider/model should be the Phase 1 default?
-- What token/cost estimator should be used?
-- Should local model runs still record estimated token counts?
+- What token/cost estimator should be used when providers other than Ollama are implemented?

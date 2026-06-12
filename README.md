@@ -18,18 +18,14 @@ Freelance and agency WordPress developers who want to stay current without readi
 
 ## What This Does
 
-Planned Phase 1 workflow:
-
-```text
-collect sources → summarize articles → draft weekly report → human review → publish manually
-```
-
-Planned commands:
+Phase 1 workflow (working):
 
 ```bash
-pnpm collect
-pnpm summarize
+pnpm collect    # Fetch RSS feeds from Tier 1 sources, store articles as JSON
+pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report
 ```
+
+See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
 ## What This Does Not Do Yet
 
@@ -71,6 +67,7 @@ See:
 
 - [Project Philosophy](docs/philosophy.md)
 - [Sources](docs/sources.md)
+- [Summarization](docs/summarization.md)
 - [Human Review](docs/human-review.md)
 - [Cost Notes](docs/cost-notes.md)
 
