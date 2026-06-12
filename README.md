@@ -77,3 +77,9 @@ See:
 ## Status
 
 Phase 1 scaffold is in progress.
+
+## Changelog
+
+### 0.1.0
+
+Initial project scaffold. Phase 1 source definitions, RSS collection pipeline, atomic file storage with merge-on-write, and project documentation.
