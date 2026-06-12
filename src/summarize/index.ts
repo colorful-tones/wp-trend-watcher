@@ -297,6 +297,28 @@ async function writeSummariesJson(
   return filePath;
 }
 
+// --- Summary caching ---
+
+async function loadExistingSummaries(
+  date: string,
+): Promise<{ summaries: ArticleSummary[]; existingIds: Set<string> }> {
+  const filePath = join(
+    process.cwd(),
+    "data/articles",
+    date,
+    "summaries.json",
+  );
+  try {
+    const raw = await readFile(filePath, "utf8");
+    const data = JSON.parse(raw) as SummariesJson;
+    const summaries = data.summaries;
+    const existingIds = new Set(summaries.map((s) => s.articleId));
+    return { summaries, existingIds };
+  } catch {
+    return { summaries: [], existingIds: new Set() };
+  }
+}
+
 // --- Main ---
 
 async function main(): Promise<void> {
@@ -312,12 +334,30 @@ async function main(): Promise<void> {
   const articlesData = JSON.parse(raw) as ArticlesJson;
   console.log(`  ${articlesData.articleCount} articles from ${new Set(articlesData.articles.map((a) => a.sourceName)).size} sources\n`);
 
-  // 2. Per-article summarization (parallel, max 3 concurrent)
-  console.log("Summarizing articles:\n");
-  const summaries = await summarizeArticleBatch(
-    articlesData.articles,
-    provider,
+  // 2. Load cached summaries, determine what's new
+  const { summaries: cachedSummaries, existingIds } =
+    await loadExistingSummaries(articlesData.date);
+  const newArticles = articlesData.articles.filter(
+    (a) => !existingIds.has(a.id),
   );
+  const skippedCount = articlesData.articleCount - newArticles.length;
+
+  if (skippedCount > 0) {
+    console.log(
+      `  ${skippedCount} article${skippedCount > 1 ? "s" : ""} already summarized (cached)\n`,
+    );
+  }
+
+  // 3. Per-article summarization (parallel, max 3 concurrent)
+  let newSummaries: ArticleSummary[] = [];
+  if (newArticles.length > 0) {
+    console.log(
+      `Summarizing ${newArticles.length} new article${newArticles.length > 1 ? "s" : ""}:\n`,
+    );
+    newSummaries = await summarizeArticleBatch(newArticles, provider);
+  }
+
+  const summaries = [...cachedSummaries, ...newSummaries];
 
   const successfulSummaries = summaries.filter((s) => s.promptTokens > 0);
   const totalPromptTokens = summaries.reduce(
