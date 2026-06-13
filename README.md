@@ -16,6 +16,19 @@ Phase 1 should prove the workflow before adding automation, dashboards, historic
 
 Freelance and agency WordPress developers who want to stay current without reading every Make post, Developer Blog update, and ecosystem article.
 
+## Quick Start
+
+```bash
+git clone https://github.com/colorful-tones/wp-trend-watcher.git
+cd wp-trend-watcher
+pnpm install
+cp .env.example .env   # edit if using a different model or provider
+pnpm collect           # -- --days 7 for recent articles
+pnpm summarize         # requires Ollama (local, $0) by default
+```
+
+Prerequisites: Node.js 18+, pnpm 9+. Ollama is optional for collection but required for summarization.
+
 ## What This Does
 
 Phase 1 workflow (working):
@@ -70,6 +83,7 @@ See:
 - [Summarization](docs/summarization.md)
 - [Human Review](docs/human-review.md)
 - [Cost Notes](docs/cost-notes.md)
+- [Contributing](CONTRIBUTING.md)
 
 ## Status
 
