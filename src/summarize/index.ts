@@ -267,8 +267,7 @@ ${sourceList}
 - Model: ${provider.name}/${provider.model}
 - Tokens: ${totalPromptTokens} prompt + ${totalCompletionTokens} completion
 - Estimated cost: ${costStr}
-
-Review time: (add after human review)
+- Review time: (add after human review)
 `;
 }
 
