@@ -1,10 +1,18 @@
 # WP Trend Watcher
 
+![WP Trend Watcher social card](assets/WP-Trend-Watcher_1200x630.png)
+
 WP Trend Watcher is a lightweight, open-source workflow for helping WordPress developers stay informed about changes in the WordPress ecosystem through AI-assisted, human-reviewed analysis.
 
 The goal is not to automate opinions, replace expertise, or publish without review.
 
 The goal is to collect useful WordPress ecosystem updates, summarize them efficiently, review them with human judgment, and produce a weekly report that developers can actually use.
+
+## Launch Status
+
+- Repo is public.
+- First human-reviewed weekly report is committed.
+- Ready to share.
 
 ## Phase 1 Goal
 
@@ -23,7 +31,7 @@ git clone https://github.com/colorful-tones/wp-trend-watcher.git
 cd wp-trend-watcher
 pnpm install
 cp .env.example .env   # edit if using a different model or provider
-pnpm collect           # -- --days 7 for recent articles
+pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires Ollama (local, $0) by default
 ```
 
@@ -87,9 +95,13 @@ See:
 
 ## Status
 
-Phase 1 scaffold is in progress.
+Public launch prep is complete. The repo is ready to share, and the first human-reviewed report is committed.
 
 ## Changelog
+
+### 0.1.2
+
+Launch readiness pass. Added the README hero image, updated the launch status, and documented the public share point with the first human-reviewed report.
 
 ### 0.1.1
 
