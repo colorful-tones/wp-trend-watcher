@@ -39,14 +39,18 @@ Prerequisites: Node.js 18+, pnpm 9+. Ollama is optional for collection but requi
 
 ## What This Does
 
-Phase 1 workflow (working):
+Phase 1+ workflow (working):
 
 ```bash
-pnpm collect    # Fetch RSS feeds from Tier 1 sources, store articles as JSON
+pnpm collect    # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
 pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report
 ```
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
+
+### 0.1.3
+Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.
+
 
 ## What This Does Not Do Yet
 
@@ -98,6 +102,9 @@ See:
 Public launch prep is complete. The repo is ready to share, and the first human-reviewed report is committed.
 
 ## Changelog
+
+### 0.1.3
+Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.
 
 ### 0.1.2
 

@@ -22,7 +22,7 @@ A source should be excluded if it is mostly:
 
 ## Tier 1 Sources
 
-Start here. Tier 1 should be enough to test the core workflow.
+Phase 1 started with Tier 1 only. As of v0.1.3, Tier 2 sources are included in the default collection.
 
 ### WordPress Developer Blog
 
@@ -58,7 +58,7 @@ ACF-specific developer workflow updates and modern WordPress implementation patt
 
 ## Tier 2 Sources
 
-Add these only if Tier 1 feels too thin for the first report.
+Included in the default collection since v0.1.3. The collector fetches all sources (Tier 1 + Tier 2) by default.
 
 ### Gutenberg Times
 
@@ -78,4 +78,4 @@ Community discussion and emerging ACF-related topics that may not appear in offi
 
 ## Phase 1 Decision
 
-Start with Tier 1 only unless the collection is too thin to produce a useful weekly report.
+Phase 1 started with Tier 1 only. Tier 2 sources (Gutenberg Times, ACF Chat Fridays) were added once the core workflow was proven.

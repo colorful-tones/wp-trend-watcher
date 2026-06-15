@@ -10,37 +10,28 @@ type FeedItem = {
   isoDate?: string;
 };
 
+type SourceResult = {
+  source: Source;
+  articles: CollectedArticle[];
+  error: string | null;
+};
+
 const parser = new Parser<Record<string, unknown>, FeedItem>({
   timeout: 15_000,
 });
 
-async function collectSource(source: Source): Promise<CollectedArticle[]> {
+async function collectSource(source: Source): Promise<SourceResult> {
   try {
     const feed = await parser.parseURL(source.feedUrl);
-    const latestItem = feed.items[0];
     const articles = feed.items.flatMap((item) => toCollectedArticle(source, item));
 
-    console.log(`\n${source.name}`);
-    console.log(`Feed: ${source.feedUrl}`);
-    console.log(`Items: ${feed.items.length}`);
+    console.log(`  [ok] ${source.name} — ${articles.length} items`);
 
-    if (!latestItem) {
-      console.log("Latest: No items found");
-      return articles;
-    }
-
-    console.log(`Latest title: ${latestItem.title ?? "Untitled"}`);
-    console.log(`Latest URL: ${latestItem.link ?? latestItem.guid ?? "No URL found"}`);
-
-    return articles;
+    return { source, articles, error: null };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-
-    console.error(`\n${source.name}`);
-    console.error(`Feed: ${source.feedUrl}`);
-    console.error(`Error: ${message}`);
-
-    return [];
+    console.error(`  [err] ${source.name} — ${message}`);
+    return { source, articles: [], error: message };
   }
 }
 
@@ -93,26 +84,40 @@ function filterRecentArticles(articles: CollectedArticle[], days: number): Colle
 
 async function main(): Promise<void> {
   const recentDays = parseDaysArg();
-  const tierOneSources = sources.filter((source) => source.tier === 1);
+  const sourceCount = sources.length;
+  const tier1Count = sources.filter((s) => s.tier === 1).length;
+  const tier2Count = sources.filter((s) => s.tier === 2).length;
 
-  console.log(`Collecting ${tierOneSources.length} Tier 1 sources...`);
+  console.log(`Collecting from ${sourceCount} sources (${tier1Count} Tier 1, ${tier2Count} Tier 2)...`);
   if (recentDays > 0) {
-    console.log(`Filtering to articles from the last ${recentDays} days`);
+    console.log(`Filtering to articles from the last ${recentDays} days\n`);
   }
 
-  const articleGroups = await Promise.all(tierOneSources.map((source) => collectSource(source)));
-  let articles = articleGroups.flat();
+  const results = await Promise.all(sources.map((source) => collectSource(source)));
 
-  const totalCollected = articles.length;
-  articles = filterRecentArticles(articles, recentDays);
-  const filteredOut = totalCollected - articles.length;
+  const totalCollected = results.reduce((sum, r) => sum + r.articles.length, 0);
+  const errors = results.filter((r) => r.error !== null);
+  const errorCount = errors.length;
+
+  let allArticles = results.flatMap((r) => r.articles);
+  allArticles = filterRecentArticles(allArticles, recentDays);
+  const filteredOut = totalCollected - allArticles.length;
+
+  const result = await writeArticlesJson({ articles: allArticles });
+
+  // Summary
+  console.log("");
+  console.log(`Collection complete`);
+  console.log(`  Saved:      ${result.articleCount} articles to ${result.filePath}`);
   if (filteredOut > 0) {
-    console.log(`\nFiltered out ${filteredOut} articles older than ${recentDays} days`);
+    console.log(`  Filtered:   ${filteredOut} older than ${recentDays} days`);
   }
-
-  const result = await writeArticlesJson({ articles });
-
-  console.log(`\nSaved ${result.articleCount} articles to ${result.filePath}`);
+  if (errorCount > 0) {
+    console.log(`  Errors:     ${errorCount} source(s) failed`);
+    for (const e of errors) {
+      console.log(`    - ${e.source.name}: ${e.error}`);
+    }
+  }
 }
 
 await main();
