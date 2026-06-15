@@ -4,7 +4,7 @@ This file defines the Phase 1 source list and source-selection rules.
 
 ## Phase 1 Source Rules
 
-A source belongs in Phase 1 if it:
+A source belongs in this project if it:
 
 - publishes WordPress developer-relevant updates
 - has an RSS feed or predictable public URL
@@ -79,3 +79,20 @@ Community discussion and emerging ACF-related topics that may not appear in offi
 ## Phase 1 Decision
 
 Phase 1 started with Tier 1 only. Tier 2 sources (Gutenberg Times, ACF Chat Fridays) were added once the core workflow was proven.
+
+## Custom Sources
+
+To customize the source list, copy `sources.example.yaml` to `sources.yaml` and edit. The collector reads from `sources.yaml` if it exists, otherwise uses the built-in defaults.
+
+```bash
+cp sources.example.yaml sources.yaml
+```
+
+Each source needs:
+- `id` — unique identifier
+- `name` — display name
+- `feedUrl` — RSS feed URL
+
+Optional:
+- `url` — homepage URL
+- `tier` — 1 or 2 (default 2)

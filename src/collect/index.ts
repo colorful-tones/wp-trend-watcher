@@ -1,5 +1,6 @@
 import Parser from "rss-parser";
-import { sources, type Source } from "../sources.js";
+import { type Source } from "../sources.js";
+import { loadSources } from "../load-sources.js";
 import { writeArticlesJson, type CollectedArticle } from "./storage.js";
 
 type FeedItem = {
@@ -84,6 +85,7 @@ function filterRecentArticles(articles: CollectedArticle[], days: number): Colle
 
 async function main(): Promise<void> {
   const recentDays = parseDaysArg();
+  const sources = await loadSources();
   const sourceCount = sources.length;
   const tier1Count = sources.filter((s) => s.tier === 1).length;
   const tier2Count = sources.filter((s) => s.tier === 2).length;

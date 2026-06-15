@@ -31,6 +31,7 @@ git clone https://github.com/colorful-tones/wp-trend-watcher.git
 cd wp-trend-watcher
 pnpm install
 cp .env.example .env   # edit if using a different model or provider
+cp sources.example.yaml sources.yaml  # optional: customize sources
 pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires Ollama (local, $0) by default
 ```
@@ -60,7 +61,6 @@ Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collecti
 - No agent swarms.
 - No UI/dashboard.
 - No historical trend engine.
-- No custom source registry.
 
 ## Report Format
 
@@ -102,6 +102,9 @@ See:
 Public launch prep is complete. The repo is ready to share, and the first human-reviewed report is committed.
 
 ## Changelog
+
+### 0.1.4
+Source configuration via `sources.yaml`. Users can now customize the source list without editing TypeScript. Copy `sources.example.yaml` to `sources.yaml` and edit. If the file is missing, built-in defaults are used.
 
 ### 0.1.3
 Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.

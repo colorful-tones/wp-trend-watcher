@@ -8,10 +8,16 @@ importers:
 
   .:
     dependencies:
+      js-yaml:
+        specifier: ^4.2.0
+        version: 4.2.0
       rss-parser:
         specifier: ^3.13.0
         version: 3.13.0
     devDependencies:
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
       '@types/node':
         specifier: ^24.10.1
         version: 24.13.1
@@ -180,8 +186,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@types/js-yaml@4.0.9':
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
+
   '@types/node@24.13.1':
     resolution: {integrity: sha512-RSpUJGmvsJ1ZeBehQZFhIdpsz+bIpES0nIQXko4Ybq+N+kX6XvOq3Jo+iJ82FWLdblFq85AsMikd3m35jgezYg==}
+
+  argparse@2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
   entities@2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
@@ -195,6 +207,10 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  js-yaml@4.2.0:
+    resolution: {integrity: sha512-ePWsvanv0DWuDRsW8dnt+R4jQ31SCRCQ7hhNcPXZPsoBZiemuZNYGf7adZdqX2D86j6rvKp3RpCxVTSb8WQlOw==}
+    hasBin: true
 
   rss-parser@3.13.0:
     resolution: {integrity: sha512-7jWUBV5yGN3rqMMj7CZufl/291QAhvrrGpDNE4k/02ZchL0npisiYYqULF71jCEKoIiHvK/Q2e6IkDwPziT7+w==}
@@ -304,9 +320,13 @@ snapshots:
   '@esbuild/win32-x64@0.28.0':
     optional: true
 
+  '@types/js-yaml@4.0.9': {}
+
   '@types/node@24.13.1':
     dependencies:
       undici-types: 7.18.2
+
+  argparse@2.0.1: {}
 
   entities@2.2.0: {}
 
@@ -341,6 +361,10 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  js-yaml@4.2.0:
+    dependencies:
+      argparse: 2.0.1
 
   rss-parser@3.13.0:
     dependencies:
