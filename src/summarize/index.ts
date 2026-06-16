@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
+import { loadEnvFile, parsePositiveIntegerEnv } from "../env.js";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { fetchArticleContent } from "./content.js";
 import { generateHtmlReport, generateIndexPage } from "./html.js";
@@ -327,9 +328,15 @@ async function loadExistingSummaries(
 // --- Main ---
 
 async function main(): Promise<void> {
+  loadEnvFile();
+
   console.log("WP Trend Watcher — summarize\n");
 
   const provider = createProvider();
+  const concurrency = parsePositiveIntegerEnv(
+    "WP_TREND_CONCURRENCY",
+    DEFAULT_CONCURRENCY,
+  );
   console.log(`Provider: ${provider.name}/${provider.model}\n`);
 
   // 1. Load articles
@@ -359,7 +366,7 @@ async function main(): Promise<void> {
     console.log(
       `Summarizing ${newArticles.length} new article${newArticles.length > 1 ? "s" : ""}:\n`,
     );
-    newSummaries = await summarizeArticleBatch(newArticles, provider);
+    newSummaries = await summarizeArticleBatch(newArticles, provider, concurrency);
   }
 
   const summaries = [...cachedSummaries, ...newSummaries];

@@ -8,6 +8,7 @@
     "collect": "tsx src/collect/index.ts",
     "summarize": "tsx src/summarize/index.ts",
     "index-page": "tsx src/summarize/index-page.ts",
+    "doctor": "tsx src/doctor/index.ts",
     "test": "tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
