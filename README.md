@@ -44,10 +44,17 @@ Phase 1+ workflow (working):
 
 ```bash
 pnpm collect    # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
-pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report
+pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report (also generates HTML + index)
+pnpm index-page # Regenerate the reports index.html listing page
 ```
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
+
+### HTML Reports & GitHub Pages
+
+`pnpm summarize` now produces a self-contained HTML version of each report alongside the Markdown file. An `index.html` listing page is also generated automatically in `reports/`.
+
+Reports are deployed to GitHub Pages on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
 ### 0.1.3
 Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.
@@ -102,6 +109,9 @@ See:
 Public launch prep is complete. The repo is ready to share, and the first human-reviewed report is committed.
 
 ## Changelog
+
+### 0.1.5
+HTML report generation. `pnpm summarize` now produces self-contained HTML reports alongside Markdown. Index page auto-generated in `reports/`. GitHub Pages deployment via GitHub Actions workflow.
 
 ### 0.1.4
 Source configuration via `sources.yaml`. Users can now customize the source list without editing TypeScript. Copy `sources.example.yaml` to `sources.yaml` and edit. If the file is missing, built-in defaults are used.
