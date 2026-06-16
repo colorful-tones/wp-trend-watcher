@@ -8,17 +8,15 @@ The goal is not to automate opinions, replace expertise, or publish without revi
 
 The goal is to collect useful WordPress ecosystem updates, summarize them efficiently, review them with human judgment, and produce a weekly report that developers can actually use.
 
-## Launch Status
+## Status
 
-- Repo is public.
-- First human-reviewed weekly report is committed.
-- Ready to share.
+Phase 2 complete. The repo now has:
 
-## Phase 1 Goal
-
-Ship one human-reviewed weekly WordPress trend report.
-
-Phase 1 should prove the workflow before adding automation, dashboards, historical trend tracking, or complex storage.
+- **6 sources** (4 Tier 1 + 2 Tier 2) with clean collection summaries
+- **sources.yaml** for user-customizable sources
+- **HTML reports** with self-contained styling, generated alongside Markdown
+- **GitHub Pages** deployment via GitHub Actions on push to main
+- **First weekly report** published and committed
 
 ## Intended Audience
 
@@ -106,7 +104,7 @@ See:
 
 ## Status
 
-Public launch prep is complete. The repo is ready to share, and the first human-reviewed report is committed.
+Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
 
