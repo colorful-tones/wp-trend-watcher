@@ -1,4 +1,5 @@
 import Parser from "rss-parser";
+import { loadEnvFile, parseNonNegativeIntegerEnv } from "../env.js";
 import { type Source } from "../sources.js";
 import { loadSources } from "../load-sources.js";
 import { writeArticlesJson, type CollectedArticle } from "./storage.js";
@@ -58,7 +59,7 @@ function toCollectedArticle(source: Source, item: FeedItem): CollectedArticle[] 
 function parseDaysArg(): number {
   const daysIndex = process.argv.indexOf("--days");
   if (daysIndex === -1 || daysIndex === process.argv.length - 1) {
-    return 7;
+    return parseNonNegativeIntegerEnv("WP_TREND_DAYS", 7);
   }
   const value = parseInt(process.argv[daysIndex + 1], 10);
   if (isNaN(value) || value < 0) {
@@ -84,6 +85,8 @@ function filterRecentArticles(articles: CollectedArticle[], days: number): Colle
 }
 
 async function main(): Promise<void> {
+  loadEnvFile();
+
   const recentDays = parseDaysArg();
   const sources = await loadSources();
   const sourceCount = sources.length;

@@ -31,10 +31,10 @@ pnpm install
 cp .env.example .env   # edit if using a different model or provider
 cp sources.example.yaml sources.yaml  # optional: customize sources
 pnpm collect           # add -- --days 7 for recent articles
-pnpm summarize         # requires Ollama (local, $0) by default
+pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Prerequisites: Node.js 18+, pnpm 9+. Ollama is optional for collection but required for summarization.
+Prerequisites: Node.js 18+, pnpm 9+. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. The CLI automatically loads `.env` from the project root when present.
 
 ## What This Does
 
@@ -127,7 +127,7 @@ Launch readiness pass. Added the README hero image, updated the launch status, a
 
 ### 0.1.1
 
-AI summarization pipeline. Per-article content fetching, LLM summarization, cross-article synthesis with article inventory strategy, parallel processing, summary caching, and provider abstraction. Defaults to Ollama local (llama3.2:3b, $0/run). Provider configurable via `WP_TREND_PROVIDER`, `WP_TREND_OLLAMA_MODEL`, and `WP_TREND_OLLAMA_URL`.
+AI summarization pipeline. Per-article content fetching, LLM summarization, cross-article synthesis with article inventory strategy, parallel processing, summary caching, and provider abstraction. Supports Ollama and OpenAI-compatible local endpoints such as LM Studio. Provider configurable via `WP_TREND_PROVIDER`, `WP_TREND_MODEL`, `WP_TREND_OPENAI_BASE_URL`, `WP_TREND_OLLAMA_MODEL`, and `WP_TREND_OLLAMA_URL`.
 
 ### 0.1.0
 

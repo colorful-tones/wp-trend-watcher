@@ -18,24 +18,42 @@ This strategy is designed for small local models (3B parameters) that struggle t
 
 ## Provider Configuration
 
+The CLI automatically loads `.env` from the project root if the file exists. Environment variables already exported in your shell take precedence.
+
 The provider is selected by environment variables:
 
 | Variable | Default | Description |
 |---|---|---|
-| `WP_TREND_PROVIDER` | `ollama` | Provider: `ollama` or `openai` (when implemented) |
+| `WP_TREND_PROVIDER` | `ollama` | Provider: `openai-compatible` (LM Studio/local OpenAI-compatible servers) or `ollama` |
+| `WP_TREND_OPENAI_BASE_URL` | `http://localhost:1234/v1` | OpenAI-compatible API base URL, without `/chat/completions` |
+| `WP_TREND_MODEL` | `local-model` | Model name for OpenAI-compatible providers; also works as the Ollama model fallback |
+| `WP_TREND_API_KEY` | unset | Optional bearer token for OpenAI-compatible endpoints that require one; leave blank for LM Studio |
 | `WP_TREND_OLLAMA_URL` | `http://localhost:11434` | Ollama API endpoint |
-| `WP_TREND_OLLAMA_MODEL` | `llama3.2:3b` | Model tag to use |
+| `WP_TREND_OLLAMA_MODEL` | `llama3.2:3b` | Ollama model tag; overrides `WP_TREND_MODEL` for Ollama |
 
-Example — use a larger local model:
+Example — LM Studio or another local OpenAI-compatible server:
 
 ```bash
-WP_TREND_OLLAMA_MODEL=qwen3:14b pnpm summarize
+WP_TREND_PROVIDER=openai-compatible \
+WP_TREND_OPENAI_BASE_URL=http://localhost:1234/v1 \
+WP_TREND_MODEL="your-loaded-model" \
+pnpm summarize
 ```
 
-Example — point to a remote Ollama instance:
+Example — Ollama with a larger local model:
 
 ```bash
-WP_TREND_OLLAMA_URL=https://ollama.example.com pnpm summarize
+WP_TREND_PROVIDER=ollama WP_TREND_OLLAMA_MODEL=qwen3:14b pnpm summarize
+```
+
+Example — point to a remote OpenAI-compatible endpoint:
+
+```bash
+WP_TREND_PROVIDER=openai-compatible \
+WP_TREND_OPENAI_BASE_URL=https://api.example.com/v1 \
+WP_TREND_API_KEY=your-token \
+WP_TREND_MODEL=your-model \
+pnpm summarize
 ```
 
 ## Model Tradeoffs
@@ -61,9 +79,9 @@ WP_TREND_OLLAMA_URL=https://ollama.example.com pnpm summarize
 - **Coverage:** Consistent 7/7 with better nuance
 - **Best for:** Final report generation before human review
 
-### Cloud models (future)
+### OpenAI-compatible models
 
-When the OpenAI provider is implemented, models like GPT-4o mini (~$0.01/report) will offer near-perfect coverage with no local resource requirements.
+LM Studio and other OpenAI-compatible chat completions endpoints let you use whatever local or remote model that server exposes. Local endpoints are usually $0/run; remote endpoint costs depend on the provider.
 
 ## Caching
 
