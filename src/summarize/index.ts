@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { fetchArticleContent } from "./content.js";
+import { generateHtmlReport, generateIndexPage } from "./html.js";
 
 // --- Types ---
 
@@ -411,6 +412,25 @@ async function main(): Promise<void> {
   await writeFile(outputPath, report, "utf8");
 
   console.log(`Report written: ${outputPath}`);
+
+  // 6. Generate HTML report (non-blocking — warn on failure)
+  try {
+    const htmlPath = await generateHtmlReport(outputPath);
+    console.log(`HTML report written: ${htmlPath}`);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`Warning: HTML report generation failed: ${message}`);
+  }
+
+  // 7. Regenerate index page (non-blocking)
+  try {
+    const reportsDir = join(process.cwd(), "reports");
+    const indexPath = await generateIndexPage(reportsDir);
+    console.log(`Index page written: ${indexPath}`);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`Warning: Index page generation failed: ${message}`);
+  }
 }
 
 await main();

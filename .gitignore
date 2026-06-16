@@ -8,3 +8,6 @@ dist/
 data/articles/**
 
 AGENTS.md
+
+# User-customized source config (see sources.example.yaml)
+sources.yaml

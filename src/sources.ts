@@ -37,4 +37,18 @@ export const sources: Source[] = [
     feedUrl: "https://www.advancedcustomfields.com/blog/feed/",
     tier: 1,
   },
+  {
+    id: "gutenberg-times",
+    name: "Gutenberg Times",
+    url: "https://gutenbergtimes.com/",
+    feedUrl: "https://gutenbergtimes.com/feed/",
+    tier: 2,
+  },
+  {
+    id: "acf-chat-fridays",
+    name: "ACF Chat Fridays",
+    url: "https://www.advancedcustomfields.com/blog/tag/acf-chat-fridays/",
+    feedUrl: "https://www.advancedcustomfields.com/blog/tag/acf-chat-fridays/feed/",
+    tier: 2,
+  },
 ];

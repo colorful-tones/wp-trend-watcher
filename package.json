@@ -1,12 +1,13 @@
 {
   "name": "wp-trend-watcher",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "A lightweight, human-reviewed WordPress ecosystem trend watching workflow.",
   "type": "module",
   "private": false,
   "scripts": {
     "collect": "tsx src/collect/index.ts",
     "summarize": "tsx src/summarize/index.ts",
+    "index-page": "tsx src/summarize/index-page.ts",
     "test": "tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
@@ -19,9 +20,11 @@
   "author": "Damon Cook",
   "license": "MIT",
   "dependencies": {
+    "js-yaml": "^4.2.0",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.10.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
