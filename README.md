@@ -108,6 +108,10 @@ Phase 2 complete. The repo collects from 6 sources, supports custom source confi
 
 ## Changelog
 
+### 0.2.0 — Phase 2 Release
+
+All Phase 2 enhancements together: collection summary with 6 sources (4 Tier 1 + 2 Tier 2), YAML source configuration, HTML reports with self-contained inline styling, GitHub Pages deployment via Actions, and auto-release workflow on tag push. pnpm 11 compatibility verified. No new dependencies.
+
 ### 0.1.5
 HTML report generation. `pnpm summarize` now produces self-contained HTML reports alongside Markdown. Index page auto-generated in `reports/`. GitHub Pages deployment via GitHub Actions workflow.
 
