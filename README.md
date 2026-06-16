@@ -44,6 +44,7 @@ Phase 1+ workflow (working):
 pnpm collect    # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
 pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report (also generates HTML + index)
 pnpm index-page # Regenerate the reports index.html listing page
+pnpm doctor     # Check environment readiness before first summarize
 ```
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
@@ -107,6 +108,9 @@ See:
 Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
+
+### 0.2.1
+`pnpm doctor` command for setup sanity checks. Reports Node/pnpm versions, .env status, provider config, endpoint reachability, sources, and directory writability. Exits nonzero only for true blockers.
 
 ### 0.2.0 — Phase 2 Release
 
