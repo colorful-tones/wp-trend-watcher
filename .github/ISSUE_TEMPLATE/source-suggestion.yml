@@ -1,0 +1,73 @@
+name: Source Suggestion
+description: Suggest a new RSS source for WP Trend Watcher to track
+title: "[Source] "
+labels: ["source-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Suggest a Source
+
+        Thanks for suggesting a new source! Please provide the details below.
+
+        **What makes a good source?** Sources should:
+        - Publish WordPress developer-relevant updates
+        - Have an RSS feed or predictable public URL
+        - Produce information that can affect real development decisions
+        - Be citeable in a public report
+
+        Sources are generally **excluded** if they are mostly marketing, rumors, drama, duplicate commentary, too broad to be useful, or contain unsupported claims.
+
+        See [docs/sources.md](../docs/sources.md) for full criteria and current source list.
+
+  - type: input
+    id: source-name
+    attributes:
+      label: Source Name
+      description: The display name of the source (e.g., "WordPress Developer Blog")
+      placeholder: e.g., "Developer Blog"
+    validations:
+      required: true
+
+  - type: input
+    id: homepage-url
+    attributes:
+      label: Homepage URL
+      description: The main URL of the source
+      placeholder: "https://example.com"
+    validations:
+      required: true
+
+  - type: input
+    id: feed-url
+    attributes:
+      label: RSS Feed URL
+      description: The RSS or Atom feed URL for the source
+      placeholder: "https://example.com/feed/"
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why does this source belong?
+      description: |
+        Explain how this source meets the inclusion criteria. Reference specific aspects of the source that make it valuable for WordPress developers.
+      placeholder: |
+        This source publishes weekly deep-dives on block editor internals and
+        core performance work that directly impact plugin development decisions.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Suggested Tier
+      description: |
+        **Tier 1** — Official or primary sources (WordPress.org, Make Core, ACF Blog).
+        **Tier 2** — Community-curated sources with consistent developer value (Gutenberg Times, ACF Chat Fridays).
+      options:
+        - Tier 2 (default)
+        - Tier 1
+    validations:
+      required: false
