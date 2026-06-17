@@ -151,11 +151,14 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
       }
 
       const data = (await response.json()) as {
-        choices?: Array<{ message?: { content?: string } }>;
+        choices?: Array<{
+          message?: { content?: string; reasoning_content?: string };
+        }>;
         usage?: { prompt_tokens?: number; completion_tokens?: number };
       };
 
-      const text = data.choices?.[0]?.message?.content;
+      const message = data.choices?.[0]?.message;
+      const text = message?.content ?? message?.reasoning_content ?? "";
       if (!text) {
         throw new Error("OpenAI-compatible endpoint returned empty response");
       }
