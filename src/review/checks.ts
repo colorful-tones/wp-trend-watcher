@@ -3,6 +3,8 @@
  * Separated for testability — no side effects, no filesystem imports.
  */
 
+import { isArticleReferenced } from "../summarize/source-refs.js";
+
 /** Check severity for the review checklist. */
 export type ReviewStatus = "pass" | "warn" | "fail";
 
@@ -92,9 +94,7 @@ export function checkSourceReferences(
 
   const unreferenced: string[] = [];
   for (const article of articles) {
-    const titlePresent = body.includes(article.title);
-    const urlPresent = body.includes(article.url);
-    if (!titlePresent && !urlPresent) {
+    if (!isArticleReferenced(article.title, article.url, body)) {
       unreferenced.push(article.title);
     }
   }

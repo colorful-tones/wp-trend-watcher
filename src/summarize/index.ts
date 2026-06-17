@@ -4,6 +4,7 @@ import { loadEnvFile, parsePositiveIntegerEnv } from "../env.js";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { fetchArticleContent } from "./content.js";
 import { generateHtmlReport, generateIndexPage } from "./html.js";
+import { ensureSourceReferences } from "./source-refs.js";
 
 // --- Types ---
 
@@ -213,6 +214,8 @@ function assembleReport(
   totalPromptTokens: number,
   totalCompletionTokens: number,
 ): string {
+  const ensuredSynthesis = ensureSourceReferences(synthesis, articles);
+
   // Group articles by source for the source listing
   const bySource = new Map<string, CollectedArticle[]>();
   for (const a of articles) {
@@ -248,7 +251,7 @@ function assembleReport(
 
   return `# WordPress Trend Report — ${date}
 
-${synthesis}
+${ensuredSynthesis}
 
 ---
 
