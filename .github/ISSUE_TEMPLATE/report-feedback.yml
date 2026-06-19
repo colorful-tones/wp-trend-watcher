@@ -1,0 +1,91 @@
+name: Report Feedback
+description: Provide feedback on a generated weekly report
+title: "[Report Feedback] "
+labels: ["report-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feedback on Weekly Report
+
+        Thanks for reading the report and taking time to give feedback! Your input helps improve future reports.
+
+        **What kind of feedback is most useful?**
+        - Specific, actionable observations (e.g., "The Core section missed the latest REST API changes in 6.8")
+        - Context on what a section got wrong or right
+        - Suggestions for missing topics or sources
+        - Links to articles that should have been included
+
+        Feedback about report *formatting* or *accessibility* is also welcome here.
+
+  - type: input
+    id: report-date
+    attributes:
+      label: Report Date
+      description: Which weekly report is this feedback about? (e.g., "2025-W25" or "June 16, 2025")
+      placeholder: "e.g., 2025-W25"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feedback-type
+    attributes:
+      label: Feedback Type
+      description: What kind of feedback are you providing?
+      options:
+        - Missing topic or source
+        - Incorrect or misleading summary
+        - Suggestion for improvement
+        - General positive feedback
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which Section?
+      description: Which section of the report does this feedback relate to? Select "General" if it applies to the whole report.
+      options:
+        - Weekly Summary
+        - Emerging Trends
+        - Developer Implications
+        - What I'm Watching
+        - Build Notes
+        - General (multiple sections or whole report)
+    validations:
+      required: true
+
+  - type: textarea
+    id: feedback-description
+    attributes:
+      label: Detailed Feedback
+      description: |
+        Describe your feedback in detail. Include:
+        - What the report said vs. what you think is accurate
+        - Missing topics, sources, or context
+        - Suggestions for how the report could be improved
+      placeholder: |
+        "The Emerging Trends section covered the block binding proposal but missed the
+        recent discussion about improving block patterns API stability, which directly
+        impacts how I structure client sites."
+    validations:
+      required: true
+
+  - type: input
+    id: source-link
+    attributes:
+      label: Source Article Link
+      description: If your feedback references a specific article or source, paste the URL here
+      placeholder: "https://developer.wordpress.org/news/..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Anything else you'd like to share (e.g., your role, what you're building, why this section matters to you)
+      placeholder: "Optional additional context about your feedback"
+    validations:
+      required: false
