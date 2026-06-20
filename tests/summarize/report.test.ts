@@ -189,6 +189,7 @@ test("assembleReport produces a complete Markdown report", () => {
   );
 
   assert.ok(report.includes("# WordPress Trend Report — 2026-06-20"));
+  assert.ok(report.includes("## Weekly Summary"));
   assert.ok(report.includes("### Article Inventory"));
   assert.ok(report.includes("### Emerging Trends"));
   assert.ok(report.includes("### Developer Implications"));
@@ -314,4 +315,25 @@ test("assembleReport includes human placeholders", () => {
 
   assert.ok(report.includes("Human-authored: add your observations here"));
   assert.ok(report.includes("Review time: (add after human review)"));
+});
+
+test("assembleReport does not duplicate Weekly Summary heading when model includes it", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis =
+    "## Weekly Summary\n\n### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+  );
+
+  const matches = report.match(/## Weekly Summary/g);
+  assert.ok(matches, "expected ## Weekly Summary in report");
+  assert.equal(matches!.length, 1, "heading should appear exactly once");
 });
