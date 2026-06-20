@@ -112,6 +112,9 @@ Phase 2 complete. The repo collects from 6 sources, supports custom source confi
 
 ## Changelog
 
+### 0.2.6
+Fix missing Weekly Summary heading in report output and review check. The review checklist now looks for the h2 heading and falls back to the Article Inventory sub-section. Report assembly guarantees the heading is present even when the model omits it.
+
 ### 0.2.5
 Cross-article report prompts now include inline Markdown links for source article titles and ask the model to preserve them when referencing specific articles. Release-planning prompts now preserve high-signal roadmap, schedule, proposal, and testing details for trend and developer-impact synthesis.
 
