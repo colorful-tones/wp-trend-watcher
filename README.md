@@ -27,6 +27,8 @@ Freelance and agency WordPress developers who want to stay current without readi
 ```bash
 git clone https://github.com/colorful-tones/wp-trend-watcher.git
 cd wp-trend-watcher
+nvm use
+corepack enable
 pnpm install
 cp .env.example .env   # edit if using a different model or provider
 cp sources.example.yaml sources.yaml  # optional: customize sources
@@ -34,7 +36,7 @@ pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Prerequisites: Node.js 18+, pnpm 9+. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. The CLI automatically loads `.env` from the project root when present.
+Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. The CLI automatically loads `.env` from the project root when present.
 
 ## What This Does
 
@@ -109,6 +111,12 @@ See:
 Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
+
+### 0.2.4
+Pinned local tooling to Node.js 22 and pnpm 11 via `.nvmrc`, `packageManager`, `engines`, and npm strictness settings. Quick Start now documents `nvm use` and Corepack setup for contributors and local agents.
+
+### 0.2.3
+`pnpm generate-report` command for regenerating the cross-article synthesis and Markdown/HTML reports from existing article summaries. Useful for iterating on report prompts without re-summarizing articles. Shared report assembly logic extracted into `src/summarize/report.ts`.
 
 ### 0.2.2
 `pnpm review` command for report review checklists. Checks Weekly Summary, source article references, weasel words, Build Notes, What I'm Watching, markdown link validity, and HTML report presence. Exits nonzero only for true blockers.

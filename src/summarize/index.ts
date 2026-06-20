@@ -4,67 +4,17 @@ import { loadEnvFile, parsePositiveIntegerEnv } from "../env.js";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { fetchArticleContent } from "./content.js";
 import { generateHtmlReport, generateIndexPage } from "./html.js";
-import { ensureSourceReferences } from "./source-refs.js";
-
-// --- Types ---
-
-type CollectedArticle = {
-  id: string;
-  sourceId: string;
-  sourceName: string;
-  title: string;
-  url: string;
-  publishedAt?: string;
-};
-
-type ArticlesJson = {
-  date: string;
-  collectedAt: string;
-  articleCount: number;
-  articles: CollectedArticle[];
-};
-
-type ArticleSummary = {
-  articleId: string;
-  title: string;
-  sourceName: string;
-  url: string;
-  summary: string;
-  model: string;
-  promptTokens: number;
-  completionTokens: number;
-};
-
-type SummariesJson = {
-  date: string;
-  provider: string;
-  model: string;
-  articleCount: number;
-  summaries: ArticleSummary[];
-  totalPromptTokens: number;
-  totalCompletionTokens: number;
-};
-
-// --- Article loading ---
-
-async function findLatestArticlesJson(): Promise<string> {
-  const { readdir } = await import("node:fs/promises");
-  const articlesRoot = join(process.cwd(), "data/articles");
-  const dateDirs = await readdir(articlesRoot);
-  const sorted = dateDirs.sort().reverse();
-
-  for (const dateDir of sorted) {
-    const filePath = join(articlesRoot, dateDir, "articles.json");
-    try {
-      await readFile(filePath);
-      return filePath;
-    } catch {
-      continue;
-    }
-  }
-
-  throw new Error("No articles.json files found. Run `pnpm collect` first.");
-}
+import {
+  type CollectedArticle,
+  type ArticlesJson,
+  type ArticleSummary,
+  findLatestArticlesJson,
+  loadExistingSummaries,
+  writeSummariesJson,
+  REPORT_SYSTEM_PROMPT,
+  buildReportPrompt,
+  assembleReport,
+} from "./report.js";
 
 // --- Per-article summarization ---
 
@@ -163,173 +113,6 @@ async function summarizeArticleBatch(
   return results;
 }
 
-const REPORT_SYSTEM_PROMPT = `You write weekly WordPress trend reports for freelance and agency developers.
-Rules:
-- Be direct and specific, not generic.
-- Every claim must be traceable to a source article.
-- Write in clear, plain language — no hype, no marketing speak.
-- Avoid phrases like "diving deep," "in this report we explore," "game-changing," or "unprecedented."
-- If there is no real trend or implication, say so rather than inventing one.`;
-
-function buildReportPrompt(
-  summaries: ArticleSummary[],
-  date: string,
-): string {
-  // Distill each summary to its first key sentence for the inventory
-  const inventory = summaries
-    .map((s, i) => {
-      const firstSentence = s.summary.split(". ")[0] + ".";
-      return `${i + 1}. **${s.title}** (${s.sourceName})\n   ${firstSentence}`;
-    })
-    .join("\n\n");
-
-  return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
-
-## Article Inventory
-
-Every item below must appear in the Weekly Summary. If an item has no developer relevance, note that explicitly — do not silently skip it.
-
-${inventory}
-
-## Weekly Summary
-
-Include these three sub-sections using exactly the heading levels shown:
-
-### Article Inventory
-List every article from the inventory above with its number. Reference articles by title and source.
-
-### Emerging Trends
-Topics appearing across multiple sources — or note if there are none.
-
-### Developer Implications
-What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects.`;
-}
-
-// --- Report assembly ---
-
-function assembleReport(
-  date: string,
-  articles: CollectedArticle[],
-  synthesis: string,
-  summaries: ArticleSummary[],
-  provider: ReturnType<typeof createProvider>,
-  totalPromptTokens: number,
-  totalCompletionTokens: number,
-): string {
-  const ensuredSynthesis = ensureSourceReferences(synthesis, articles);
-
-  // Group articles by source for the source listing
-  const bySource = new Map<string, CollectedArticle[]>();
-  for (const a of articles) {
-    const existing = bySource.get(a.sourceName) ?? [];
-    existing.push(a);
-    bySource.set(a.sourceName, existing);
-  }
-
-  const sourceList = [...bySource.entries()]
-    .map(([name, arts]) => {
-      const items = arts
-        .map((a) => {
-          const dateStr = a.publishedAt
-            ? new Date(a.publishedAt).toLocaleDateString()
-            : "Unknown date";
-          return `- [${a.title}](${a.url}) — ${dateStr}`;
-        })
-        .join("\n");
-      return `### ${name}\n${items}`;
-    })
-    .join("\n\n");
-
-  const sourceNames = [...bySource.keys()].join(", ");
-  const cost = provider.costFor({
-    text: "",
-    promptTokens: totalPromptTokens,
-    completionTokens: totalCompletionTokens,
-  });
-  const costStr =
-    cost === 0
-      ? "$0.00 (local model)"
-      : `$${cost.toFixed(4)}`;
-
-  return `# WordPress Trend Report — ${date}
-
-${ensuredSynthesis}
-
----
-
-## What I'm Watching
-<!-- Human-authored: add your observations here -->
-
----
-
-## Source Articles
-
-${sourceList}
-
----
-
-## Build Notes
-- Articles analyzed: ${articles.length}
-- Sources: ${sourceNames}
-- Model: ${provider.name}/${provider.model}
-- Tokens: ${totalPromptTokens} prompt + ${totalCompletionTokens} completion
-- Estimated cost: ${costStr}
-- Review time: (add after human review)
-`;
-}
-
-// --- Summaries persistence ---
-
-async function writeSummariesJson(
-  date: string,
-  summaries: ArticleSummary[],
-  provider: ReturnType<typeof createProvider>,
-  totalPromptTokens: number,
-  totalCompletionTokens: number,
-): Promise<string> {
-  const payload: SummariesJson = {
-    date,
-    provider: provider.name,
-    model: provider.model,
-    articleCount: summaries.length,
-    summaries,
-    totalPromptTokens,
-    totalCompletionTokens,
-  };
-
-  const filePath = join(
-    process.cwd(),
-    "data/articles",
-    date,
-    "summaries.json",
-  );
-  await mkdir(dirname(filePath), { recursive: true });
-  await writeFile(filePath, JSON.stringify(payload, null, 2) + "\n", "utf8");
-  return filePath;
-}
-
-// --- Summary caching ---
-
-async function loadExistingSummaries(
-  date: string,
-): Promise<{ summaries: ArticleSummary[]; existingIds: Set<string> }> {
-  const filePath = join(
-    process.cwd(),
-    "data/articles",
-    date,
-    "summaries.json",
-  );
-  try {
-    const raw = await readFile(filePath, "utf8");
-    const data = JSON.parse(raw) as SummariesJson;
-    const summaries = data.summaries;
-    const existingIds = new Set(summaries.map((s) => s.articleId));
-    return { summaries, existingIds };
-  } catch {
-    return { summaries: [], existingIds: new Set() };
-  }
-}
-
 // --- Main ---
 
 async function main(): Promise<void> {
@@ -390,7 +173,7 @@ async function main(): Promise<void> {
     `\n${successfulSummaries.length}/${summaries.length} articles summarized successfully`,
   );
 
-  // 3. Save per-article summaries
+  // 4. Save per-article summaries
   const summariesPath = await writeSummariesJson(
     articlesData.date,
     summaries,
@@ -400,7 +183,7 @@ async function main(): Promise<void> {
   );
   console.log(`\nSummaries saved: ${summariesPath}`);
 
-  // 4. Cross-article synthesis
+  // 5. Cross-article synthesis
   const synthesisResult: SummarizeResult = await provider.summarize(
     REPORT_SYSTEM_PROMPT,
     buildReportPrompt(successfulSummaries, articlesData.date),
@@ -408,7 +191,7 @@ async function main(): Promise<void> {
   const synthesisPromptTokens = synthesisResult.promptTokens;
   const synthesisCompletionTokens = synthesisResult.completionTokens;
 
-  // 5. Assemble and write report
+  // 6. Assemble and write report
   const report = assembleReport(
     articlesData.date,
     articlesData.articles,
@@ -425,7 +208,7 @@ async function main(): Promise<void> {
 
   console.log(`Report written: ${outputPath}`);
 
-  // 6. Generate HTML report (non-blocking — warn on failure)
+  // 7. Generate HTML report (non-blocking — warn on failure)
   try {
     const htmlPath = await generateHtmlReport(outputPath);
     console.log(`HTML report written: ${htmlPath}`);
@@ -434,7 +217,7 @@ async function main(): Promise<void> {
     console.warn(`Warning: HTML report generation failed: ${message}`);
   }
 
-  // 7. Regenerate index page (non-blocking)
+  // 8. Regenerate index page (non-blocking)
   try {
     const reportsDir = join(process.cwd(), "reports");
     const indexPath = await generateIndexPage(reportsDir);
