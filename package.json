@@ -1,12 +1,13 @@
 {
   "name": "wp-trend-watcher",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A lightweight, human-reviewed WordPress ecosystem trend watching workflow.",
   "type": "module",
   "private": false,
   "scripts": {
     "collect": "tsx src/collect/index.ts",
     "summarize": "tsx src/summarize/index.ts",
+    "generate-report": "tsx src/generate-report/index.ts",
     "index-page": "tsx src/summarize/index-page.ts",
     "doctor": "tsx src/doctor/index.ts",
     "review": "tsx src/review/index.ts",

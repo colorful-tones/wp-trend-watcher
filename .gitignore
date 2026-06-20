@@ -7,7 +7,5 @@ dist/
 # Commit only the snapshots that directly support a reviewed/published report.
 data/articles/**
 
-AGENTS.md
-
 # User-customized source config (see sources.example.yaml)
 sources.yaml

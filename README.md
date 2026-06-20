@@ -110,6 +110,9 @@ Phase 2 complete. The repo collects from 6 sources, supports custom source confi
 
 ## Changelog
 
+### 0.2.3
+`pnpm generate-report` command for regenerating the cross-article synthesis and Markdown/HTML reports from existing article summaries. Useful for iterating on report prompts without re-summarizing articles. Shared report assembly logic extracted into `src/summarize/report.ts`.
+
 ### 0.2.2
 `pnpm review` command for report review checklists. Checks Weekly Summary, source article references, weasel words, Build Notes, What I'm Watching, markdown link validity, and HTML report presence. Exits nonzero only for true blockers.
 
