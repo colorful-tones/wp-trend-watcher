@@ -166,9 +166,9 @@ export function buildReportPrompt(
   const inventory = summaries
     .map((s, i) => {
       const firstSentence = s.summary.split(". ")[0] + ".";
-      return `${i + 1}. **${s.title}** (${s.sourceName})\n   ${firstSentence}`;
+      return `${i + 1}. **${s.title}** (${s.sourceName}) — ${firstSentence}`;
     })
-    .join("\n\n");
+    .join("\n");
 
   return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
 
