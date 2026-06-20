@@ -97,12 +97,36 @@ function markdownToHtml(md: string): string {
       continue;
     }
 
-    // Ordered list
+    // Ordered list — handles both tight (no blank lines between items) and
+    // loose (blank lines between items) formats. Collects indented continuation
+    // lines that follow a numbered item as part of that item's content.
     if (/^\d+\.\s+/.test(line)) {
       const items: string[] = [];
       while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
-        items.push(`<li>${inlineFormat(lines[i].replace(/^\d+\.\s+/, ""))}</li>`);
+        let itemText = lines[i].replace(/^\d+\.\s+/, "");
         i++;
+        // Collect indented continuation lines (part of this list item)
+        while (
+          i < lines.length &&
+          /^\s{2,}\S/.test(lines[i]) &&
+          !/^\d+\.\s+/.test(lines[i]) &&
+          !/^(#{1,6})\s+/.test(lines[i]) &&
+          !/^[-*]\s+/.test(lines[i]) &&
+          !/^---+\s*$/.test(lines[i])
+        ) {
+          itemText += " " + lines[i].trim();
+          i++;
+        }
+        // Skip blank line between loose list items (next line is another item)
+        if (
+          i < lines.length &&
+          lines[i].trim() === "" &&
+          i + 1 < lines.length &&
+          /^\d+\.\s+/.test(lines[i + 1])
+        ) {
+          i++;
+        }
+        items.push(`<li>${inlineFormat(itemText)}</li>`);
       }
       out.push(`<ol>\n${items.join("\n")}\n</ol>`);
       continue;

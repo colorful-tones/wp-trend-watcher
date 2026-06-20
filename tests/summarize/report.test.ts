@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildReportPrompt,
   assembleReport,
+  isHighSignalReleasePlanningArticle,
 } from "../../src/summarize/report.js";
 import type {
   ArticleSummary,
@@ -50,17 +51,45 @@ function makeSummary(
 
 // --- buildReportPrompt ---
 
-test("buildReportPrompt includes all summaries in the inventory", () => {
+test("isHighSignalReleasePlanningArticle detects release-planning titles", () => {
+  assert.equal(isHighSignalReleasePlanningArticle("Roadmap to 7.1"), true);
+  assert.equal(
+    isHighSignalReleasePlanningArticle("WordPress 7.0.1 Release Schedule"),
+    true,
+  );
+  assert.equal(
+    isHighSignalReleasePlanningArticle(
+      "Call for Testing: Unicode email addresses",
+    ),
+    true,
+  );
+  assert.equal(
+    isHighSignalReleasePlanningArticle("Building layouts with container queries"),
+    false,
+  );
+});
+
+test("buildReportPrompt includes all summaries as linked titles in the inventory", () => {
   const summaries = [
-    makeSummary({ title: "Article A", sourceName: "Source A", summary: "Summary A text goes here. More text." }),
-    makeSummary({ title: "Article B", sourceName: "Source B", summary: "Summary B text goes here. More text." }),
+    makeSummary({
+      title: "Article A",
+      sourceName: "Source A",
+      url: "https://example.com/a",
+      summary: "Summary A text goes here. More text.",
+    }),
+    makeSummary({
+      title: "Article B",
+      sourceName: "Source B",
+      url: "https://example.com/b",
+      summary: "Summary B text goes here. More text.",
+    }),
   ];
   const prompt = buildReportPrompt(summaries, "2026-06-20");
   assert.ok(prompt.includes("Week ending 2026-06-20"));
   assert.ok(prompt.includes("2 articles"));
-  assert.ok(prompt.includes("**Article A**"));
+  assert.ok(prompt.includes("[Article A](https://example.com/a)"));
   assert.ok(prompt.includes("(Source A)"));
-  assert.ok(prompt.includes("**Article B**"));
+  assert.ok(prompt.includes("[Article B](https://example.com/b)"));
   assert.ok(prompt.includes("(Source B)"));
   assert.ok(prompt.includes("Summary A text goes here."));
   assert.ok(prompt.includes("Summary B text goes here."));
@@ -87,17 +116,55 @@ test("buildReportPrompt truncates summaries to first sentence", () => {
   assert.ok(!prompt.includes("Second sentence continues"));
 });
 
+test("buildReportPrompt keeps full summaries for high-signal release-planning articles", () => {
+  const summaries = [
+    makeSummary({
+      title: "WordPress 7.0.1 Release Schedule",
+      summary:
+        "The post outlines release timing for WordPress 7.0.1. It names the planned beta and release candidate windows. Freelance developers should monitor final dates and compatibility issues.",
+    }),
+  ];
+  const prompt = buildReportPrompt(summaries, "2026-06-20");
+  assert.ok(prompt.includes("Signal: release planning."));
+  assert.ok(prompt.includes("It names the planned beta and release candidate windows."));
+  assert.ok(
+    prompt.includes(
+      "Freelance developers should monitor final dates and compatibility issues.",
+    ),
+  );
+});
+
+test("buildReportPrompt includes release-planning instructions", () => {
+  const prompt = buildReportPrompt([makeSummary()], "2026-06-20");
+  assert.ok(
+    prompt.includes(
+      "Release roadmaps, release schedules, major proposals, and calls for testing need explicit attention",
+    ),
+  );
+  assert.ok(prompt.includes("concrete dates"));
+  assert.ok(prompt.includes("freelance and agency developers should monitor"));
+});
+
 test("buildReportPrompt numbers summaries sequentially", () => {
   const summaries = [
-    makeSummary({ title: "A", sourceName: "S1" }),
-    makeSummary({ title: "B", sourceName: "S2" }),
-    makeSummary({ title: "C", sourceName: "S3" }),
+    makeSummary({ title: "A", sourceName: "S1", url: "https://example.com/a" }),
+    makeSummary({ title: "B", sourceName: "S2", url: "https://example.com/b" }),
+    makeSummary({ title: "C", sourceName: "S3", url: "https://example.com/c" }),
   ];
   const prompt = buildReportPrompt(summaries, "2026-06-20");
   // Check sequential numbering
-  assert.ok(prompt.includes("1. **A**"));
-  assert.ok(prompt.includes("2. **B**"));
-  assert.ok(prompt.includes("3. **C**"));
+  assert.ok(prompt.includes("1. [A](https://example.com/a)"));
+  assert.ok(prompt.includes("2. [B](https://example.com/b)"));
+  assert.ok(prompt.includes("3. [C](https://example.com/c)"));
+});
+
+test("buildReportPrompt instructs the model to preserve Markdown article links", () => {
+  const prompt = buildReportPrompt([makeSummary()], "2026-06-20");
+  assert.ok(
+    prompt.includes(
+      "Preserve the Markdown links when mentioning specific article titles",
+    ),
+  );
 });
 
 // --- assembleReport ---
