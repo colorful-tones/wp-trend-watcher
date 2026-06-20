@@ -149,6 +149,19 @@ Rules:
 - If there is no real trend or implication, say so rather than inventing one.`;
 
 /**
+ * Detect whether an article title is likely to be a high-signal WordPress
+ * release-planning post that should retain more summary detail in synthesis.
+ *
+ * @param title - Article title to classify
+ * @returns True when the title contains release-planning signals
+ */
+export function isHighSignalReleasePlanningArticle(title: string): boolean {
+  return /\b(?:roadmap|release schedule|release squad|proposal|call for testing|beta|release candidate)\b/i.test(
+    title,
+  ) || /\bWordPress\s+\d+\.\d+(?:\.\d+)?\b/i.test(title);
+}
+
+/**
  * Build the user prompt for cross-article synthesis.
  *
  * Produces a structured prompt containing an inventory of all article
@@ -165,8 +178,10 @@ export function buildReportPrompt(
 ): string {
   const inventory = summaries
     .map((s, i) => {
-      const firstSentence = s.summary.split(". ")[0] + ".";
-      return `${i + 1}. **${s.title}** (${s.sourceName}) — ${firstSentence}`;
+      const highSignal = isHighSignalReleasePlanningArticle(s.title);
+      const summary = highSignal ? s.summary : s.summary.split(". ")[0] + ".";
+      const signal = highSignal ? " Signal: release planning." : "";
+      return `${i + 1}. [${s.title}](${s.url}) (${s.sourceName}) —${signal} ${summary}`;
     })
     .join("\n");
 
@@ -183,13 +198,15 @@ ${inventory}
 Include these three sub-sections using exactly the heading levels shown:
 
 ### Article Inventory
-List every article from the inventory above with its number. Reference articles by title and source.
+List every article from the inventory above with its number. Reference articles by title and source. Preserve the Markdown links when mentioning specific article titles.
 
 ### Emerging Trends
-Topics appearing across multiple sources — or note if there are none.
+Topics appearing across multiple sources — or note if there are none. Link specific article mentions where useful, without over-linking or inventing links.
+Release roadmaps, release schedules, major proposals, and calls for testing need explicit attention here when present. Include concrete dates, proposed changes, and decisions under discussion.
 
 ### Developer Implications
-What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects.`;
+What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects. Link specific article mentions where useful, without over-linking or inventing links.
+For release-planning items, explain what freelance and agency developers should monitor, including compatibility risks, testing windows, proposed focus areas, and upcoming decision points.`;
 }
 
 // --- Report assembly ---

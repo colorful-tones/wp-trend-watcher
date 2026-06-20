@@ -24,6 +24,7 @@ Rules:
 - Include the key technical takeaway if there is one.
 - Be specific, not generic.
 - Do not use marketing phrases like "dive deep into" or "in this article we explore."
+- For release roadmap, schedule, proposal, or call-for-testing posts, include dates, proposed focus areas, decisions under discussion, and developer-facing implications.
 - Do not evaluate or review the article — just summarize what it says.
 - Respond with the summary only. No prefixes like "Here is the summary" or "Summary:".`;
 
