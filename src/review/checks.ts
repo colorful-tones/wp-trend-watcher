@@ -63,12 +63,21 @@ export function parseSourceArticles(report: string): SourceArticle[] {
  * @returns Review check result.
  */
 export function checkWeeklySummary(body: string): ReviewCheck {
-  const marker = "### Weekly Summary";
-  const idx = body.indexOf(marker);
+  const h2Marker = "## Weekly Summary";
+  const inventoryMarker = "### Article Inventory";
+
+  const h2Idx = body.indexOf(h2Marker);
+  const inventoryIdx = body.indexOf(inventoryMarker);
+
+  // Accept either the expected h2 parent heading or the first sub-section
+  // as evidence the weekly summary content is present.  Some models omit the
+  // parent heading and emit sub-sections directly.
+  const idx = h2Idx >= 0 ? h2Idx : inventoryIdx;
   if (idx < 0) {
     return { name: "Weekly Summary", status: "fail", message: "section not found" };
   }
 
+  const marker = h2Idx >= 0 ? h2Marker : inventoryMarker;
   const afterMarker = body.slice(idx + marker.length).trim();
   if (!afterMarker) {
     return { name: "Weekly Summary", status: "fail", message: "section is empty" };

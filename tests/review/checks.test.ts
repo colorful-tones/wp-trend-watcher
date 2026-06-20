@@ -18,7 +18,7 @@ import {
 test("extractReportBody returns everything before Source Articles", () => {
   const report = `# Title
 
-### Weekly Summary
+## Weekly Summary
 Hello world.
 
 ## Source Articles
@@ -61,7 +61,7 @@ test("parseSourceArticles returns empty array for empty section", () => {
 // --- checkWeeklySummary ---
 
 test("checkWeeklySummary passes when section has content", () => {
-  const body = "### Weekly Summary\nHere is the summary.";
+  const body = "## Weekly Summary\nHere is the summary.";
   const result = checkWeeklySummary(body);
   assert.equal(result.status, "pass");
 });
@@ -73,9 +73,15 @@ test("checkWeeklySummary fails when section is missing", () => {
 });
 
 test("checkWeeklySummary fails when section is empty", () => {
-  const result = checkWeeklySummary("### Weekly Summary");
+  const result = checkWeeklySummary("## Weekly Summary");
   assert.equal(result.status, "fail");
   assert.ok(result.message.includes("empty"));
+});
+
+test("checkWeeklySummary passes when h2 missing but Article Inventory sub-section present", () => {
+  const body = "### Article Inventory\n1. [Title](https://example.com) — summary.";
+  const result = checkWeeklySummary(body);
+  assert.equal(result.status, "pass");
 });
 
 // --- checkSourceReferences ---

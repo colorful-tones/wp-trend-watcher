@@ -238,6 +238,13 @@ export function assembleReport(
 ): string {
   const ensuredSynthesis = ensureSourceReferences(synthesis, articles);
 
+  // Guarantee the Weekly Summary heading is present. Some models skip the
+  // parent h2 and emit sub-sections (### Article Inventory, etc.) directly.
+  const hasWeeklySummary = /^## Weekly Summary\b/m.test(ensuredSynthesis);
+  const synthesisWithHeading = hasWeeklySummary
+    ? ensuredSynthesis
+    : `## Weekly Summary\n\n${ensuredSynthesis}`;
+
   const bySource = new Map<string, CollectedArticle[]>();
   for (const a of articles) {
     const existing = bySource.get(a.sourceName) ?? [];
@@ -272,7 +279,7 @@ export function assembleReport(
 
   return `# WordPress Trend Report — ${date}
 
-${ensuredSynthesis}
+${synthesisWithHeading}
 
 ---
 

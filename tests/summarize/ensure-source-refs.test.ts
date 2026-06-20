@@ -175,7 +175,7 @@ test("integration: ensureSourceReferences makes checkSourceReferences pass", () 
   const ensured = ensureSourceReferences(synthesis, articles);
 
   // Simulate a report body
-  const reportBody = `### Weekly Summary\n${ensured}`;
+  const reportBody = `## Weekly Summary\n${ensured}`;
   const parsedArticles = articles.map((a) => ({
     title: a.title,
     url: a.url,
@@ -211,7 +211,7 @@ test("integration: paraphrased titles pass review check", () => {
   // Paraphrased synthesis
   const synthesis =
     "WordPress is seeking release managers for the 7.0.x maintenance releases. WordCamp Europe 2026 took place in Kraków.";
-  const reportBody = `### Weekly Summary\n${synthesis}`;
+  const reportBody = `## Weekly Summary\n${synthesis}`;
   const parsedArticles = articles.map((a) => ({
     title: a.title,
     url: a.url,
