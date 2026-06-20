@@ -76,8 +76,8 @@ function markdownToHtml(md: string): string {
       continue;
     }
 
-    // Headings
-    const headingMatch = line.match(/^(#{1,3})\s+(.*)/);
+    // Headings (h1–h6)
+    const headingMatch = line.match(/^(#{1,6})\s+(.*)/);
     if (headingMatch) {
       const level = headingMatch[1].length;
       const text = inlineFormat(headingMatch[2]);
@@ -97,6 +97,17 @@ function markdownToHtml(md: string): string {
       continue;
     }
 
+    // Ordered list
+    if (/^\d+\.\s+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
+        items.push(`<li>${inlineFormat(lines[i].replace(/^\d+\.\s+/, ""))}</li>`);
+        i++;
+      }
+      out.push(`<ol>\n${items.join("\n")}\n</ol>`);
+      continue;
+    }
+
     // Blank line — skip
     if (line.trim() === "") {
       i++;
@@ -108,8 +119,9 @@ function markdownToHtml(md: string): string {
     while (
       i < lines.length &&
       lines[i].trim() !== "" &&
-      !/^(#{1,3})\s+/.test(lines[i]) &&
+      !/^(#{1,6})\s+/.test(lines[i]) &&
       !/^[-*]\s+/.test(lines[i]) &&
+      !/^\d+\.\s+/.test(lines[i]) &&
       !/^---+\s*$/.test(lines[i]) &&
       !/^\s*<!--/.test(lines[i])
     ) {
