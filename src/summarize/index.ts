@@ -191,15 +191,17 @@ Every item below must appear in the Weekly Summary. If an item has no developer 
 
 ${inventory}
 
-Generate these three sections. Use Markdown headings.
-
 ## Weekly Summary
-Cover every article from the inventory above. Group related items. Reference articles by their inventory number.
 
-## Emerging Trends
+Include these three sub-sections using exactly the heading levels shown:
+
+### Article Inventory
+List every article from the inventory above with its number. Reference articles by title and source.
+
+### Emerging Trends
 Topics appearing across multiple sources — or note if there are none.
 
-## Developer Implications
+### Developer Implications
 What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects.`;
 }
 
