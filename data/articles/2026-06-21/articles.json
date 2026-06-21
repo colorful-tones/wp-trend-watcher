@@ -1,0 +1,103 @@
+{
+  "date": "2026-06-21",
+  "collectedAt": "2026-06-21T13:28:41.202Z",
+  "articleCount": 12,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/06/dynamically-loading-template-parts-in-block-themes/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "Dynamically loading template parts in block themes",
+      "url": "https://developer.wordpress.org/news/2026/06/dynamically-loading-template-parts-in-block-themes/",
+      "publishedAt": "2026-06-18T21:28:46.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Roadmap to 7.1",
+      "url": "https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/",
+      "publishedAt": "2026-06-19T00:04:09.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/18/wordpress-7-0-1-release-schedule/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.0.1 Release Schedule",
+      "url": "https://make.wordpress.org/core/2026/06/18/wordpress-7-0-1-release-schedule/",
+      "publishedAt": "2026-06-18T14:59:18.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/17/recap-restoring-removed-version-history/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Recap: Restoring removed version history.",
+      "url": "https://make.wordpress.org/core/2026/06/17/recap-restoring-removed-version-history/",
+      "publishedAt": "2026-06-17T18:53:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/17/announcing-the-wordpress-7-1-release-squad/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Announcing the WordPress 7.1 Release Squad",
+      "url": "https://make.wordpress.org/core/2026/06/17/announcing-the-wordpress-7-1-release-squad/",
+      "publishedAt": "2026-06-17T15:03:18.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/17/whats-new-in-gutenberg-23-3-03-jun-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.4? (June 17, 2026)",
+      "url": "https://make.wordpress.org/core/2026/06/17/whats-new-in-gutenberg-23-3-03-jun-2/",
+      "publishedAt": "2026-06-17T10:15:30.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/17/dev-chat-agenda-june-17-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – June 17, 2026",
+      "url": "https://make.wordpress.org/core/2026/06/17/dev-chat-agenda-june-17-2026/",
+      "publishedAt": "2026-06-17T02:51:05.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/16/performance-chat-summary-16-june-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 16 June 2026",
+      "url": "https://make.wordpress.org/core/2026/06/16/performance-chat-summary-16-june-2026/",
+      "publishedAt": "2026-06-16T17:10:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/15/core-committers-meeting-wordcamp-europe-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Core Committers Meeting – WordCamp Europe 2026",
+      "url": "https://make.wordpress.org/core/2026/06/15/core-committers-meeting-wordcamp-europe-2026/",
+      "publishedAt": "2026-06-15T13:54:16.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/kim-parsell-wcus-scholarship/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Kim Parsell Memorial Scholarship Opens for WordCamp US 2026",
+      "url": "https://wordpress.org/news/2026/06/kim-parsell-wcus-scholarship/",
+      "publishedAt": "2026-06-19T16:55:00.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/global-partners-first-half-2026/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Global Partners Across the First Half of the 2026 WordPress Event Season",
+      "url": "https://wordpress.org/news/2026/06/global-partners-first-half-2026/",
+      "publishedAt": "2026-06-18T17:01:21.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "WordPress Redis Object Cache and What to Do If It Fails",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/",
+      "publishedAt": "2026-06-18T14:25:59.000Z"
+    }
+  ]
+}
