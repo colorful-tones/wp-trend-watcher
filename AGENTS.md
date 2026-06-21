@@ -12,7 +12,7 @@ WP Trend Watcher is in Phase 3. The current goal is to keep the weekly WordPress
 
 Do not add dashboards, autonomous publishing, scheduled/social automation, embeddings, vector storage, complex plugin systems, or a database unless explicitly directed. Preserve file-based storage and the small TypeScript pipeline. Prefer improvements that make provider setup, source management, diagnostics, review, reporting, and release polish clearer without changing the core workflow.
 
-The package is currently `0.2.4`. Expected scripts include `collect`, `summarize`, `generate-report`, `index-page`, `doctor`, `review`, `test`, and `typecheck`.
+The package is currently `0.2.8`. Expected scripts include `collect`, `summarize`, `generate-report`, `index-page`, `doctor`, `review`, `test`, and `typecheck`.
 
 ## Package Manager
 

@@ -10,13 +10,17 @@ The goal is to collect useful WordPress ecosystem updates, summarize them effici
 
 ## Status
 
-Phase 2 complete. The repo now has:
+Phase 3 is underway. The repo now has:
 
 - **6 sources** (4 Tier 1 + 2 Tier 2) with clean collection summaries
 - **sources.yaml** for user-customizable sources
 - **HTML reports** with self-contained styling, generated alongside Markdown
 - **GitHub Pages** deployment via GitHub Actions on push to main
-- **First weekly report** published and committed
+- **Doctor and review commands** for setup checks and report review
+- **Report regeneration** from saved article summaries
+- **OpenAI-compatible and LM Studio tuning** for local model runs
+- **Deterministic Article Inventory** with linked titles and takeaways
+- **Published weekly reports** for ongoing use
 
 ## Intended Audience
 
@@ -40,14 +44,15 @@ Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinn
 
 ## What This Does
 
-Phase 1+ workflow (working):
+Current workflow:
 
 ```bash
 pnpm collect    # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
-pnpm summarize  # Fetch article content, generate per-article summaries, synthesize weekly report (also generates HTML + index)
-pnpm index-page # Regenerate the reports index.html listing page
-pnpm doctor     # Check environment readiness before first summarize
-pnpm review     # Review checklist for the latest report
+pnpm summarize       # Fetch article content, generate summaries, synthesize the weekly report, and build HTML + index
+pnpm generate-report # Regenerate the report from saved article summaries
+pnpm index-page      # Regenerate the reports index.html listing page
+pnpm doctor          # Check environment readiness before first summarize
+pnpm review          # Review checklist for the latest report
 ```
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
@@ -106,10 +111,6 @@ See:
 - [Human Review](docs/human-review.md)
 - [Cost Notes](docs/cost-notes.md)
 - [Contributing](CONTRIBUTING.md)
-
-## Status
-
-Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
 
