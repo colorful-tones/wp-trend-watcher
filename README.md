@@ -76,6 +76,7 @@ Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collecti
 Each weekly report should include:
 
 - Weekly Summary
+- Article Inventory
 - Emerging Trends
 - Developer Implications
 - What I'm Watching
@@ -111,6 +112,9 @@ See:
 Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
+
+### 0.2.8
+Article Inventory is now assembled deterministically from saved article summaries, giving every source a linked title and one-sentence takeaway while reserving model output for trends and implications.
 
 ### 0.2.7
 Added local provider tuning for LM Studio and other OpenAI-compatible models. Users can now configure max tokens, request timeout, and optional Qwen `/no_think` prompting through environment variables.

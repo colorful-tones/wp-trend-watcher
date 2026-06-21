@@ -165,8 +165,9 @@ export function isHighSignalReleasePlanningArticle(title: string): boolean {
  * Build the user prompt for cross-article synthesis.
  *
  * Produces a structured prompt containing an inventory of all article
- * summaries, with instructions to produce a Weekly Summary with three
- * sub-sections: Article Inventory, Emerging Trends, Developer Implications.
+ * summaries, with instructions to synthesize only trend and implication
+ * sections. The Article Inventory section is assembled deterministically from
+ * saved summaries during report assembly.
  *
  * @param summaries - Successfully summarized articles
  * @param date - Report date in YYYY-MM-DD format
@@ -179,7 +180,7 @@ export function buildReportPrompt(
   const inventory = summaries
     .map((s, i) => {
       const highSignal = isHighSignalReleasePlanningArticle(s.title);
-      const summary = highSignal ? s.summary : s.summary.split(". ")[0] + ".";
+      const summary = highSignal ? s.summary : firstSentence(s.summary);
       const signal = highSignal ? " Signal: release planning." : "";
       return `${i + 1}. [${s.title}](${s.url}) (${s.sourceName}) —${signal} ${summary}`;
     })
@@ -187,18 +188,15 @@ export function buildReportPrompt(
 
   return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
 
-## Article Inventory
+## Source Inventory
 
-Every item below must appear in the Weekly Summary. If an item has no developer relevance, note that explicitly — do not silently skip it.
+Use this inventory as source material for trend and implication synthesis. The final report's Article Inventory section is assembled separately, so do not write an Article Inventory section in your response.
 
 ${inventory}
 
 ## Weekly Summary
 
-Include these three sub-sections using exactly the heading levels shown:
-
-### Article Inventory
-List every article from the inventory above with its number. Reference articles by title and source. Preserve the Markdown links when mentioning specific article titles.
+Write only these two sub-sections using exactly the heading levels shown. Do not include an Article Inventory section.
 
 ### Emerging Trends
 Topics appearing across multiple sources — or note if there are none. Link specific article mentions where useful, without over-linking or inventing links.
@@ -207,6 +205,53 @@ Release roadmaps, release schedules, major proposals, and calls for testing need
 ### Developer Implications
 What a freelance or agency WordPress developer should pay attention to. Be specific: name APIs, versions, deadlines, or decisions that affect real projects. Link specific article mentions where useful, without over-linking or inventing links.
 For release-planning items, explain what freelance and agency developers should monitor, including compatibility risks, testing windows, proposed focus areas, and upcoming decision points.`;
+}
+
+/**
+ * Build a deterministic Article Inventory section from saved article summaries.
+ *
+ * @param summaries - Article summaries to list in report order
+ * @returns Markdown Article Inventory section with linked titles and takeaways
+ */
+export function buildArticleInventorySection(
+  summaries: ArticleSummary[],
+): string {
+  const items = summaries
+    .map((summary, index) => {
+      const takeaway = firstSentence(summary.summary);
+      return `${index + 1}. [${summary.title}](${summary.url}) (${summary.sourceName}) — ${takeaway}`;
+    })
+    .join("\n");
+
+  return `### Article Inventory\n\n${items}`;
+}
+
+/**
+ * Extract the first sentence-like takeaway from a summary.
+ *
+ * @param value - Full article summary text
+ * @returns First sentence, or the trimmed summary when no sentence terminator exists
+ */
+function firstSentence(value: string): string {
+  const trimmed = value.trim();
+  const match = trimmed.match(/^.*?[.!?](?=\s|$|[A-Z])/s);
+  return match ? match[0].trim() : trimmed;
+}
+
+/**
+ * Remove any LLM-generated Article Inventory from synthesis output.
+ *
+ * @param synthesis - Raw LLM synthesis text
+ * @returns Synthesis text without Weekly Summary or Article Inventory wrappers
+ */
+function stripGeneratedArticleInventory(synthesis: string): string {
+  return synthesis
+    .replace(/^## Weekly Summary\b\s*/m, "")
+    .replace(
+      /^#{2,6}\s+Article Inventory\b[^\n]*\n[\s\S]*?(?=^#{2,6}\s+|(?![\s\S]))/m,
+      "",
+    )
+    .trim();
 }
 
 // --- Report assembly ---
@@ -236,14 +281,12 @@ export function assembleReport(
   totalPromptTokens: number,
   totalCompletionTokens: number,
 ): string {
-  const ensuredSynthesis = ensureSourceReferences(synthesis, articles);
-
-  // Guarantee the Weekly Summary heading is present. Some models skip the
-  // parent h2 and emit sub-sections (### Article Inventory, etc.) directly.
-  const hasWeeklySummary = /^## Weekly Summary\b/m.test(ensuredSynthesis);
-  const synthesisWithHeading = hasWeeklySummary
-    ? ensuredSynthesis
-    : `## Weekly Summary\n\n${ensuredSynthesis}`;
+  const articleInventory = buildArticleInventorySection(summaries);
+  const synthesisWithoutInventory = stripGeneratedArticleInventory(synthesis);
+  const weeklySummary = ensureSourceReferences(
+    `## Weekly Summary\n\n${articleInventory}\n\n${synthesisWithoutInventory}`,
+    articles,
+  );
 
   const bySource = new Map<string, CollectedArticle[]>();
   for (const a of articles) {
@@ -279,7 +322,7 @@ export function assembleReport(
 
   return `# WordPress Trend Report — ${date}
 
-${synthesisWithHeading}
+${weeklySummary}
 
 ---
 
