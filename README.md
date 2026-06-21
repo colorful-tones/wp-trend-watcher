@@ -36,7 +36,7 @@ pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. LM Studio users should set a completion cap such as `WP_TREND_MAX_TOKENS=900` for predictable report generation. The CLI automatically loads `.env` from the project root when present.
+Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. LM Studio users should set a completion cap such as `WP_TREND_MAX_TOKENS=2048` for predictable report generation. The CLI automatically loads `.env` from the project root when present.
 
 ## What This Does
 
