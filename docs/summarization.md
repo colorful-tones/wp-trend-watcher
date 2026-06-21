@@ -28,17 +28,42 @@ The provider is selected by environment variables:
 | `WP_TREND_OPENAI_BASE_URL` | `http://localhost:1234/v1` | OpenAI-compatible API base URL, without `/chat/completions` |
 | `WP_TREND_MODEL` | `local-model` | Model name for OpenAI-compatible providers; also works as the Ollama model fallback |
 | `WP_TREND_API_KEY` | unset | Optional bearer token for OpenAI-compatible endpoints that require one; leave blank for LM Studio |
+| `WP_TREND_MAX_TOKENS` | unset | Optional completion cap for OpenAI-compatible providers; useful for keeping local report synthesis bounded |
+| `WP_TREND_REQUEST_TIMEOUT_MS` | `60000` | Request timeout for LLM calls in milliseconds |
+| `WP_TREND_DISABLE_REASONING` | `false` | Appends `/no_think` to OpenAI-compatible prompts for Qwen-style reasoning models |
 | `WP_TREND_OLLAMA_URL` | `http://localhost:11434` | Ollama API endpoint |
 | `WP_TREND_OLLAMA_MODEL` | `llama3.2:3b` | Ollama model tag; overrides `WP_TREND_MODEL` for Ollama |
 
-Example — LM Studio or another local OpenAI-compatible server:
+Example — LM Studio with the known-good local baseline:
 
 ```bash
 WP_TREND_PROVIDER=openai-compatible \
 WP_TREND_OPENAI_BASE_URL=http://localhost:1234/v1 \
-WP_TREND_MODEL="your-loaded-model" \
+WP_TREND_MODEL=qwen/qwen3.5-9b \
+WP_TREND_MAX_TOKENS=2048 \
+WP_TREND_REQUEST_TIMEOUT_MS=120000 \
+WP_TREND_DISABLE_REASONING=true \
 pnpm summarize
 ```
+
+Use `pnpm generate-report` with the same environment values when testing a
+model or prompt change against existing summaries. It isolates the final
+cross-article synthesis step without re-fetching or re-summarizing articles.
+
+LM Studio users should keep an explicit completion cap. The cross-article
+synthesis step asks the model to cover every article, preserve links, and write
+multiple sections; without `WP_TREND_MAX_TOKENS`, some local models continue
+generating long enough to hit the request timeout. A cap around 2048 tokens has
+worked better than 900 for full multi-section reports. Qwen reasoning models may
+also spend extra time on hidden reasoning unless thinking is disabled in LM
+Studio; `WP_TREND_DISABLE_REASONING=true` adds `/no_think` as a prompt-level
+safeguard, but it is not a replacement for LM Studio's model setting.
+
+For local report quality, `qwen/qwen3.5-9b` tends to allocate more output to
+Emerging Trends, while `qwen/qwen3-14b` tends to spend more output on Article
+Inventory detail. Both can run locally with thinking disabled, max context, and
+`WP_TREND_MAX_TOKENS=2048`; choose based on whether speed or inventory detail is
+more important for the review pass.
 
 Example — Ollama with a larger local model:
 

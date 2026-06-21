@@ -1,8 +1,23 @@
+import {
+  parseBooleanEnv,
+  parseOptionalPositiveIntegerEnv,
+  parsePositiveIntegerEnv,
+} from "./env.js";
+
 export interface SummarizeResult {
   text: string;
   promptTokens: number;
   completionTokens: number;
 }
+
+type OpenAiChatRequestBody = {
+  model: string;
+  messages: Array<{ role: "system" | "user"; content: string }>;
+  temperature: number;
+  max_tokens?: number;
+};
+
+const DEFAULT_REQUEST_TIMEOUT_MS = 60_000;
 
 export interface SummarizeProvider {
   name: string;
@@ -34,6 +49,10 @@ function createOllamaProvider(): SummarizeProvider {
     process.env.WP_TREND_OLLAMA_MODEL ??
     process.env.WP_TREND_MODEL ??
     "llama3.2:3b";
+  const requestTimeoutMs = parsePositiveIntegerEnv(
+    "WP_TREND_REQUEST_TIMEOUT_MS",
+    DEFAULT_REQUEST_TIMEOUT_MS,
+  );
 
   return {
     name: "ollama",
@@ -56,7 +75,7 @@ function createOllamaProvider(): SummarizeProvider {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body,
-          signal: AbortSignal.timeout(60_000),
+          signal: AbortSignal.timeout(requestTimeoutMs),
         });
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
@@ -106,20 +125,40 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
   );
   const model = process.env.WP_TREND_MODEL ?? "local-model";
   const apiKey = process.env.WP_TREND_API_KEY;
+  const requestTimeoutMs = parsePositiveIntegerEnv(
+    "WP_TREND_REQUEST_TIMEOUT_MS",
+    DEFAULT_REQUEST_TIMEOUT_MS,
+  );
+  const maxTokens = parseOptionalPositiveIntegerEnv("WP_TREND_MAX_TOKENS");
+  const disableReasoning = parseBooleanEnv(
+    "WP_TREND_DISABLE_REASONING",
+    false,
+  );
 
   return {
     name: "openai-compatible",
     model,
 
     async summarize(systemPrompt, userPrompt) {
-      const body = JSON.stringify({
+      const requestBody: OpenAiChatRequestBody = {
         model,
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
+          {
+            role: "user",
+            content: disableReasoning
+              ? appendNoThinkDirective(userPrompt)
+              : userPrompt,
+          },
         ],
         temperature: 0.3,
-      });
+      };
+
+      if (maxTokens !== undefined) {
+        requestBody.max_tokens = maxTokens;
+      }
+
+      const body = JSON.stringify(requestBody);
 
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
@@ -134,7 +173,7 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
           method: "POST",
           headers,
           body,
-          signal: AbortSignal.timeout(60_000),
+          signal: AbortSignal.timeout(requestTimeoutMs),
         });
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
@@ -178,4 +217,18 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
 
 function stripTrailingSlash(value: string): string {
   return value.replace(/\/+$/, "");
+}
+
+/**
+ * Add Qwen's non-thinking directive unless the prompt already includes it.
+ *
+ * @param prompt - User prompt sent to an OpenAI-compatible local model
+ * @returns Prompt with a trailing /no_think directive
+ */
+function appendNoThinkDirective(prompt: string): string {
+  if (/\/no_think\b/.test(prompt)) {
+    return prompt;
+  }
+
+  return `${prompt}\n\n/no_think`;
 }

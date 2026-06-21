@@ -36,7 +36,7 @@ pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. The CLI automatically loads `.env` from the project root when present.
+Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. LM Studio users should set a completion cap such as `WP_TREND_MAX_TOKENS=2048` for predictable report generation. The CLI automatically loads `.env` from the project root when present.
 
 ## What This Does
 
@@ -111,6 +111,9 @@ See:
 Phase 2 complete. The repo collects from 6 sources, supports custom source configuration, produces styled HTML reports, and deploys to GitHub Pages. Ready for ongoing weekly use and community contributions.
 
 ## Changelog
+
+### 0.2.7
+Added local provider tuning for LM Studio and other OpenAI-compatible models. Users can now configure max tokens, request timeout, and optional Qwen `/no_think` prompting through environment variables.
 
 ### 0.2.6
 Fix missing Weekly Summary heading in report output and review check. The review checklist now looks for the h2 heading and falls back to the Article Inventory sub-section. Report assembly guarantees the heading is present even when the model omits it.
