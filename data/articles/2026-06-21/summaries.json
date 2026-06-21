@@ -1,0 +1,130 @@
+{
+  "date": "2026-06-21",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3.5-9b",
+  "articleCount": 12,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/06/dynamically-loading-template-parts-in-block-themes/",
+      "title": "Dynamically loading template parts in block themes",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/06/dynamically-loading-template-parts-in-block-themes/",
+      "summary": "The `render_block_data` filter allows block theme authors to dynamically swap template part slugs based on page context, replacing the need for multiple nearly identical top-level templates. Developers should implement this by checking the block name and attributes within the filter callback, then returning the modified `$parsed_block` array to apply the new slug before rendering.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1064,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/",
+      "title": "Roadmap to 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/",
+      "summary": "WordPress 7.1, scheduled for release on August 19th, 2026, introduces a new Notes feature with suggestion mode and emoji reactions, alongside expanded responsive and pseudo-state styling options in the Site Editor. The release also adds a persistent Guidelines feature for encoding editorial rules, unifies block discovery with shortcodes and embeds, and includes significant media handling updates like a free-form image cropper. Developers should note that while real-time collaboration and expanded Unicode support are key focus areas, specific implementation details remain under discussion, and a dedicated outreach effort is launching for collaborative testing.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 972,
+      "completionTokens": 121
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/18/wordpress-7-0-1-release-schedule/",
+      "title": "WordPress 7.0.1 Release Schedule",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/18/wordpress-7-0-1-release-schedule/",
+      "summary": "WordPress 7.0.1 is a bug-fix-only maintenance release scheduled for a general release on July 9, 2026, following a series of bug scrub meetings and a release candidate phase. The release will strictly address regressions and deferred issues from the 7.0 cycle, excluding any new features or performance enhancements. Developers should monitor the #7-0-release-leads channel for final coordination decisions and can participate in scheduled scrubs or run their own to validate ticket resolutions.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1171,
+      "completionTokens": 102
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/17/recap-restoring-removed-version-history/",
+      "title": "Recap: Restoring removed version history.",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/17/recap-restoring-removed-version-history/",
+      "summary": "Removing shared PHP files from the `wordpress-develop` repository to enforce a single source of truth in Gutenberg broke distributed hosting tests and disabled minification for specific assets. The team is restoring the removed version history to re-establish a dual source of truth, ensuring developers can accurately diagnose defects and track changes between the Core and Gutenberg repositories.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 967,
+      "completionTokens": 66
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/17/announcing-the-wordpress-7-1-release-squad/",
+      "title": "Announcing the WordPress 7.1 Release Squad",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/17/announcing-the-wordpress-7-1-release-squad/",
+      "summary": "WordPress 7.1 has formed a streamlined Release Squad led by Anne McCarthy, with specific roles for coordination, tech leads, triage, and testing assigned to selected volunteers. This structure emphasizes collaboration with Make Team Reps to reduce overhead while ensuring all team priorities are represented throughout the cycle. Developers not selected for the squad can still contribute by participating in testing, bug scrubs, triage, or documentation.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 889,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/17/whats-new-in-gutenberg-23-3-03-jun-2/",
+      "title": "What’s new in Gutenberg 23.4? (June 17, 2026)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/17/whats-new-in-gutenberg-23-3-03-jun-2/",
+      "summary": "Gutenberg 23.4 introduces an experimental flag allowing developers to test plugins and themes against React 19 runtime scripts via the Experiments page, requiring specific checks for console errors and build pipeline adjustments. The release also updates the Site Editor to match the admin color scheme and refines the media editor with improved attachment fields and mobile aspect ratio controls.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1074,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/17/dev-chat-agenda-june-17-2026/",
+      "title": "Dev Chat Agenda – June 17, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/17/dev-chat-agenda-june-17-2026/",
+      "summary": "The June 17, 2026, WordPress Developers Chat will occur at 15:00 UTC on the Make WordPress Slack core channel to address upcoming releases and specific topics like the WCEU recap, Gutenberg 23.4 updates, and a call for testing on Unicode email addresses. Developers should post specific ticket requests or discussion nominations in the comments, noting their availability for synchronous or async participation, as tickets in the next major or maintenance release milestone will be prioritized during the session.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 660,
+      "completionTokens": 105
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/16/performance-chat-summary-16-june-2026/",
+      "title": "Performance Chat Summary: 16 June 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/16/performance-chat-summary-16-june-2026/",
+      "summary": "The June 16, 2026 Performance Chat summary identifies View Transitions and Enhanced Responsive Images as the primary focus areas for the upcoming WordPress 7.1 release, with both requiring final iteration before merge. A new Core Trac ticket is being proposed to track a libvips-based image editor, driven by its superior CPU and memory efficiency compared to Imagick. The team plans a Thursday release contingent on merging pending PRs, specifically targeting Performance Lab and View Transitions, while also addressing long-pending items like chronological pagination transitions.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1033,
+      "completionTokens": 112
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/15/core-committers-meeting-wordcamp-europe-2026/",
+      "title": "Core Committers Meeting – WordCamp Europe 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/15/core-committers-meeting-wordcamp-europe-2026/",
+      "summary": "The meeting addressed persistent synchronization friction between the Gutenberg and WordPress core codebases, specifically noting that `svn:ignore` properties remain out of sync with `.gitignore` rules and that the removal of pinned `@wordpress` npm dependencies has broken the `package-update` workflow. To improve stability, the team emphasized a need for earlier communication regarding explorations and planned changes to prevent breaking contributor workflows and reduce unconsidered edge cases.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 997,
+      "completionTokens": 87
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/06/kim-parsell-wcus-scholarship/",
+      "title": "Kim Parsell Memorial Scholarship Opens for WordCamp US 2026",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/06/kim-parsell-wcus-scholarship/",
+      "summary": "The Kim Parsell Memorial Scholarship for WordCamp US 2026 awards a single grant covering a ticket, round-trip flight, and lodging to one active female contributor who has never attended the event. Applications must be submitted by July 10, 2026, with decisions finalized by July 24, 2026, for the August 16–19, 2026, conference in Phoenix, Arizona. This initiative specifically targets women facing financial barriers to attend the largest annual WordPress gathering, honoring the legacy of Kim Parsell's community contributions.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 856,
+      "completionTokens": 123
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/06/global-partners-first-half-2026/",
+      "title": "Global Partners Across the First Half of the 2026 WordPress Event Season",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/06/global-partners-first-half-2026/",
+      "summary": "In the first half of 2026, the five Global Partners (Jetpack, WordPress.com, WooCommerce, Bluehost, and Hostinger) supported over a dozen regional WordCamps and a growing network of Campus Connect events, reaching thousands of developers and students globally. Bluehost and Hostinger recently joined the program as top-tier Global Sponsors, providing the financial backing necessary to underwrite the global WordCamp and Campus Connect initiatives.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1054,
+      "completionTokens": 90
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/",
+      "title": "WordPress Redis Object Cache and What to Do If It Fails",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/",
+      "summary": "WordPress's built-in object cache is non-persistent and resets with every request, whereas Redis provides persistent caching for database objects like posts and options to reduce query load. When implementing Redis, you must verify hosting support, configure unique cache prefixes to prevent collisions, and establish a recovery plan for potential Redis failures.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 351,
+      "completionTokens": 62
+    }
+  ],
+  "totalPromptTokens": 11088,
+  "totalCompletionTokens": 1091
+}
