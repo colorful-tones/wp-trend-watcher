@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   buildReportPrompt,
+  buildArticleInventorySection,
   assembleReport,
   isHighSignalReleasePlanningArticle,
 } from "../../src/summarize/report.js";
@@ -98,9 +99,9 @@ test("buildReportPrompt includes all summaries as linked titles in the inventory
 test("buildReportPrompt includes expected section headings", () => {
   const summaries = [makeSummary()];
   const prompt = buildReportPrompt(summaries, "2026-06-20");
-  assert.ok(prompt.includes("## Article Inventory"));
+  assert.ok(prompt.includes("## Source Inventory"));
   assert.ok(prompt.includes("## Weekly Summary"));
-  assert.ok(prompt.includes("### Article Inventory"));
+  assert.ok(!prompt.includes("### Article Inventory"));
   assert.ok(prompt.includes("### Emerging Trends"));
   assert.ok(prompt.includes("### Developer Implications"));
 });
@@ -108,7 +109,7 @@ test("buildReportPrompt includes expected section headings", () => {
 test("buildReportPrompt truncates summaries to first sentence", () => {
   const summaries = [
     makeSummary({
-      summary: "First sentence ends here. Second sentence continues. Third one too.",
+      summary: "First sentence ends here.Second sentence continues. Third one too.",
     }),
   ];
   const prompt = buildReportPrompt(summaries, "2026-06-20");
@@ -158,12 +159,36 @@ test("buildReportPrompt numbers summaries sequentially", () => {
   assert.ok(prompt.includes("3. [C](https://example.com/c)"));
 });
 
-test("buildReportPrompt instructs the model to preserve Markdown article links", () => {
+test("buildReportPrompt instructs the model not to write Article Inventory", () => {
   const prompt = buildReportPrompt([makeSummary()], "2026-06-20");
   assert.ok(
     prompt.includes(
-      "Preserve the Markdown links when mentioning specific article titles",
+      "do not write an Article Inventory section",
     ),
+  );
+});
+
+test("buildArticleInventorySection renders linked titles with deterministic takeaways", () => {
+  const summaries = [
+    makeSummary({
+      title: "Article A",
+      sourceName: "Source A",
+      url: "https://example.com/a",
+      summary: "First takeaway. Extra detail should stay out of inventory.",
+    }),
+    makeSummary({
+      title: "Article B",
+      sourceName: "Source B",
+      url: "https://example.com/b",
+      summary: "Single takeaway without terminal punctuation",
+    }),
+  ];
+
+  const inventory = buildArticleInventorySection(summaries);
+
+  assert.equal(
+    inventory,
+    "### Article Inventory\n\n1. [Article A](https://example.com/a) (Source A) — First takeaway.\n2. [Article B](https://example.com/b) (Source B) — Single takeaway without terminal punctuation",
   );
 });
 
@@ -269,13 +294,19 @@ test("assembleReport includes build notes with token counts and cost", () => {
   assert.ok(report.includes("$0.00 (local model)"));
 });
 
-test("assembleReport enforces source references for unreferenced articles", () => {
+test("assembleReport uses deterministic inventory for source references", () => {
   const articles = [
     makeArticle({ title: "Referenced Article", url: "https://example.com/ref" }),
     makeArticle({ title: "Unreferenced Article", url: "https://example.com/unref" }),
   ];
-  const summaries = articles.map((a) => makeSummary({ title: a.title }));
-  const synthesis = "### Article Inventory\n\n1. Referenced Article.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+  const summaries = articles.map((a) =>
+    makeSummary({
+      title: a.title,
+      sourceName: a.sourceName,
+      url: a.url,
+    }),
+  );
+  const synthesis = "### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
 
   const report = assembleReport(
     "2026-06-20",
@@ -287,15 +318,9 @@ test("assembleReport enforces source references for unreferenced articles", () =
     100,
   );
 
-  // ensureSourceReferences should have appended unreferenced articles
-  assert.ok(report.includes("Additional source references"));
+  assert.ok(report.includes("1. [Referenced Article](https://example.com/ref)"));
   assert.ok(report.includes("[Unreferenced Article](https://example.com/unref)"));
-  // Referenced article appears in the Source Articles listing (all articles listed there),
-  // but should NOT appear in the "Additional source references" block specifically
-  const additionalStart = report.indexOf("Additional source references");
-  const additionalEnd = report.indexOf("---", additionalStart);
-  const additionalBlock = report.substring(additionalStart, additionalEnd);
-  assert.ok(!additionalBlock.includes("[Referenced Article]"));
+  assert.ok(!report.includes("Additional source references"));
 });
 
 test("assembleReport includes human placeholders", () => {
@@ -336,4 +361,68 @@ test("assembleReport does not duplicate Weekly Summary heading when model includ
   const matches = report.match(/## Weekly Summary/g);
   assert.ok(matches, "expected ## Weekly Summary in report");
   assert.equal(matches!.length, 1, "heading should appear exactly once");
+});
+
+test("assembleReport removes model-generated Article Inventory", () => {
+  const articles = [makeArticle({ title: "Article One", url: "https://example.com/1" })];
+  const summaries = [
+    makeSummary({
+      title: "Article One",
+      url: "https://example.com/1",
+      summary: "Deterministic takeaway. Extra detail.",
+    }),
+  ];
+  const synthesis =
+    "## Weekly Summary\n\n### Article Inventory\n\n1. Model-made inventory should be removed.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+  );
+
+  assert.ok(!report.includes("Model-made inventory should be removed"));
+  assert.ok(
+    report.includes(
+      "1. [Article One](https://example.com/1) (Test Source) — Deterministic takeaway.",
+    ),
+  );
+  assert.ok(report.includes("### Emerging Trends"));
+  assert.ok(report.includes("### Developer Implications"));
+});
+
+test("assembleReport removes model-generated h2 Article Inventory", () => {
+  const articles = [makeArticle({ title: "Article One", url: "https://example.com/1" })];
+  const summaries = [
+    makeSummary({
+      title: "Article One",
+      url: "https://example.com/1",
+      summary: "Deterministic takeaway. Extra detail.",
+    }),
+  ];
+  const synthesis =
+    "## Article Inventory\n\n1. H2 inventory should be removed.\n\n## Emerging Trends\n\nNone.\n\n## Developer Implications\n\nNone.";
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+  );
+
+  assert.ok(!report.includes("H2 inventory should be removed"));
+  assert.ok(
+    report.includes(
+      "1. [Article One](https://example.com/1) (Test Source) — Deterministic takeaway.",
+    ),
+  );
+  assert.ok(report.includes("## Emerging Trends"));
+  assert.ok(report.includes("## Developer Implications"));
 });
