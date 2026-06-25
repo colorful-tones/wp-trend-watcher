@@ -5,3 +5,7 @@ dist/
 
 # User-customized source config (see sources.example.yaml)
 sources.yaml
+
+# AI
+.ai
+.ai/
