@@ -10,16 +10,18 @@ The goal is to collect useful WordPress ecosystem updates, summarize them effici
 
 ## Status
 
-Phase 3 is underway. The repo now has:
+Phase 4 is complete. The repo now has:
 
 - **6 sources** (4 Tier 1 + 2 Tier 2) with clean collection summaries
 - **sources.yaml** for user-customizable sources
-- **HTML reports** with self-contained styling, generated alongside Markdown
+- **HTML reports** with table-of-contents navigation, stable heading IDs, and polished styling
+- **Reports index page** with card-style listing, friendly dates, and latest-report badge
 - **GitHub Pages** deployment via GitHub Actions on push to main
 - **Doctor and review commands** for setup checks and report review
 - **Report regeneration** from saved article summaries
 - **OpenAI-compatible and LM Studio tuning** for local model runs
 - **Deterministic Article Inventory** with linked titles and takeaways
+- **Previous-report comparison** with automatically generated `## Since Last Report` section
 - **Published weekly reports** for ongoing use
 
 ## Intended Audience
@@ -59,13 +61,16 @@ See [Summarization](docs/summarization.md) for provider configuration, model opt
 
 ### HTML Reports & GitHub Pages
 
-`pnpm summarize` now produces a self-contained HTML version of each report alongside the Markdown file. An `index.html` listing page is also generated automatically in `reports/`.
+`pnpm summarize` produces a self-contained HTML version of each report alongside the Markdown file. Reports now include:
+
+- A styled report header card with left-border accent
+- A table-of-contents navigation block (auto-generated when 2+ sections exist)
+- Stable heading IDs for deep linking to report sections
+- Polished Article Inventory and Build Notes styling
+
+An `index.html` listing page is automatically generated in `reports/`, displaying reports as styled cards with friendly date formatting and a "Latest report" badge on the newest entry.
 
 Reports are deployed to GitHub Pages on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
-
-### 0.1.3
-Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.
-
 
 ## What This Does Not Do Yet
 
@@ -82,6 +87,7 @@ Each weekly report should include:
 
 - Weekly Summary
 - Article Inventory
+- Since Last Report (auto-generated when a previous report exists — compares topics across weeks)
 - Emerging Trends
 - Developer Implications
 - What I'm Watching
@@ -113,6 +119,33 @@ See:
 - [Contributing](CONTRIBUTING.md)
 
 ## Changelog
+
+### 0.4.0 — Phase 4 Release
+
+**Previous-report comparison:**
+- Reports now include an optional `## Since Last Report` section comparing topics to the previous week
+- Auto-generated from existing report files — no LLM call or database required
+- Up to 3 bullets per report (Continued topic, New topic, Dropped topic), prioritized by signal
+
+**HTML report polish:**
+- Added stable heading IDs (`id="weekly-summary"`, etc.) for deep linking
+- Added auto-generated table of contents on reports with 2+ sections
+- Added styled report header card with left-border accent
+- Added Article Inventory list item styling for better scannability
+- Added muted Build Notes metadata panel
+- HTML entity escaping for XSS prevention
+
+**Reports index page polish:**
+- Card-style report listing with border, rounded corners, and hover effect
+- Friendly date formatting ("June 21, 2026") via `toLocaleDateString`
+- "Latest report" badge on the newest entry
+- Dynamic report count with singular/plural support
+
+**Under the hood:**
+- New `src/summarize/report-comparison.ts` module with topic parsing and comparison helpers
+- `findPreviousReportPath()` helper for deterministic previous-report discovery
+- Both `pnpm summarize` and `pnpm generate-report` support the comparison pipeline
+- 114 tests across all modules, 0 failures, typecheck clean
 
 ### 0.2.8
 Article Inventory is now assembled deterministically from saved article summaries, giving every source a linked title and one-sentence takeaway while reserving model output for trends and implications.
