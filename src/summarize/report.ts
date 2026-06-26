@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import type { SummarizeProvider } from "../providers.js";
 import { ensureSourceReferences } from "./source-refs.js";
@@ -54,7 +54,6 @@ export type SummariesJson = {
  * @throws If no articles.json files are found
  */
 export async function findLatestArticlesJson(): Promise<string> {
-  const { readdir } = await import("node:fs/promises");
   const articlesRoot = join(process.cwd(), "data/articles");
   const dateDirs = await readdir(articlesRoot);
   const sorted = dateDirs.sort().reverse();
@@ -70,6 +69,33 @@ export async function findLatestArticlesJson(): Promise<string> {
   }
 
   throw new Error("No articles.json files found. Run `pnpm collect` first.");
+}
+
+/**
+ * Find the Markdown report immediately before the current report date.
+ *
+ * Scans date-named Markdown files in the given reports directory, excluding
+ * index.md and the current report, then returns the newest report dated before
+ * the current date.
+ *
+ * @param reportsDir - Directory containing Markdown reports
+ * @param currentDate - Current report date in YYYY-MM-DD format
+ * @returns Absolute or relative path to the previous report, or null when none exists
+ */
+export async function findPreviousReportPath(
+  reportsDir: string,
+  currentDate: string,
+): Promise<string | null> {
+  const reportDatePattern = /^(\d{4}-\d{2}-\d{2})\.md$/;
+  const files = await readdir(reportsDir);
+  const previousReport = files
+    .map((file) => ({ file, match: file.match(reportDatePattern) }))
+    .filter((entry): entry is { file: string; match: RegExpMatchArray } =>
+      entry.match !== null && entry.match[1] < currentDate,
+    )
+    .sort((a, b) => b.match[1].localeCompare(a.match[1]))[0];
+
+  return previousReport ? join(reportsDir, previousReport.file) : null;
 }
 
 // --- Summary persistence ---
