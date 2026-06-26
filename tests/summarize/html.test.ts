@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { writeFile, mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { generateHtmlReport } from "../../src/summarize/html.js";
+import { generateHtmlReport, generateIndexPage } from "../../src/summarize/html.js";
 
 test("slugify produces stable lowercase-hyphenated strings", async () => {
   // We can test slugify indirectly by creating a .md with a heading
@@ -128,4 +128,92 @@ test("generateHtmlReport wraps report header with h1 inside .report-header", asy
   );
 
   assert.ok(html.includes('<h1 id="my-report-title">My Report Title</h1>'));
+});
+
+test("generateIndexPage renders report cards sorted by date descending", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  // Create 3 HTML files with different dates
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-06-14.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-07-01.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  // Extract report-card hrefs in order
+  const cardRegex = /<a\s+href="([^"]+\.html)"[^>]*class="report-card"/g;
+  const matches = [];
+  let m;
+  while ((m = cardRegex.exec(html)) !== null) {
+    matches.push(m[1]);
+  }
+
+  assert.equal(matches.length, 3);
+  assert.equal(matches[0], "2026-07-01.html");
+  assert.equal(matches[1], "2026-06-21.html");
+  assert.equal(matches[2], "2026-06-14.html");
+});
+
+test("generateIndexPage marks the newest report as Latest report", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-01-01.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-06-15.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  // Only the first card (newest) should have the "Latest report" label
+  const cards = html.match(/<a\s+href="([^"]+\.html)"[^>]*class="report-card"/g);
+  assert.ok(cards, "should have at least one report card");
+  assert.equal(cards.length, 2);
+
+  // The first card in the HTML should be the newest and have the label
+  const firstCardStart = html.indexOf('<a href="2026-06-15.html"');
+  const secondCardStart = html.indexOf('<a href="2026-01-01.html"');
+  assert.ok(firstCardStart >= 0, "newest report link should exist");
+  assert.ok(secondCardStart >= 0, "oldest report link should exist");
+  assert.ok(firstCardStart < secondCardStart, "newest should appear first");
+
+  // The Latest report label should appear once, after the first card's href
+  // but before the second card starts
+  const labelCount = (html.match(/Latest report/g) || []).length;
+  assert.equal(labelCount, 1);
+
+  const betweenCards = html.slice(firstCardStart, secondCardStart);
+  assert.ok(
+    betweenCards.includes("Latest report"),
+    "newest card should contain the Latest report label",
+  );
+});
+
+test("generateIndexPage shows correct report count", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-06-14.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-06-07.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(
+    html.includes("3 weekly WordPress ecosystem trend reports"),
+    `Expected "3 weekly WordPress ecosystem trend reports" in output`,
+  );
+});
+
+test("generateIndexPage skips index.html itself", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+  await writeFile(join(tmpDir, "2026-06-14.html"), "<html></html>", "utf8");
+  // index.html should already exist or we create one to ensure it's skipped
+  const indexPath = await generateIndexPage(tmpDir);
+  // Read the generated index to verify count
+  const html = await readFile(indexPath, "utf8");
+
+  // Count report cards
+  const cardCount = (html.match(/class="report-card"/g) || []).length;
+  assert.equal(cardCount, 2, "index.html should not be counted as a report card");
+
+  // Also verify no card links to index.html
+  assert.ok(!html.includes('href="index.html"'), "no card should link to index.html");
 });

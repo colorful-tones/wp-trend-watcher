@@ -63,6 +63,30 @@ em { font-style: italic; }
 /* Build Notes panel */
 #build-notes ~ * { font-size: 0.9rem; color: #555; }
 #build-notes { font-size: 1rem; color: #666; margin-top: 2rem; border-top: 1px solid #e0e0e0; padding-top: 1rem; }
+
+/* Report index page */
+.report-card-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+.report-card {
+  display: block;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.report-card:hover { background: #f6f8fa; border-color: #d0d0d0; }
+.report-card-date { display: block; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.15rem; }
+.report-card-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1em 0.5em;
+}
 `.trim();
 
 /**
@@ -297,10 +321,30 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
     .sort()
     .reverse();
 
-  const links = htmlFiles
-    .map((f) => {
-      const date = f.replace(".html", "");
-      return `    <li><a href="${f}">${date}</a></li>`;
+  const reportCount = htmlFiles.length;
+  const reportLabel =
+    reportCount === 1
+      ? "1 weekly WordPress ecosystem trend report."
+      : `${reportCount} weekly WordPress ecosystem trend reports.`;
+
+  const cards = htmlFiles
+    .map((f, i) => {
+      const dateStr = f.replace(".html", "");
+      // Parse YYYY-MM-DD into a Date object for locale formatting
+      const [year, month, day] = dateStr.split("-").map(Number);
+      const dateObj = new Date(year, month - 1, day);
+      const formattedDate = dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      const labelHtml =
+        i === 0
+          ? `\n    <span class="report-card-label">Latest report</span>`
+          : "";
+      return `    <a href="${f}" class="report-card">
+      <span class="report-card-date">${formattedDate}</span>${labelHtml}
+    </a>`;
     })
     .join("\n");
 
@@ -316,10 +360,10 @@ h1 { border-bottom: none; }
 </head>
 <body>
   <h1>WP Trend Watcher — Reports</h1>
-  <p class="meta">Weekly WordPress ecosystem trend reports.</p>
-  <ul>
-${links}
-  </ul>
+  <p class="meta">${reportLabel}</p>
+  <div class="report-card-grid">
+${cards}
+  </div>
 </body>
 </html>`;
 
