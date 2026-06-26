@@ -150,3 +150,103 @@ export function normalizeLabel(label: string): string {
 
   return result;
 }
+
+// --- Comparison ---
+
+/**
+ * Build a "## Since Last Report" section comparing current report topics to
+ * previous report topics.
+ *
+ * For each topic, the label is normalized via {@link normalizeLabel} before
+ * comparison. Topics are classified as:
+ *
+ * - **Continued**: normalized label present in both current and previous
+ * - **New**: normalized label present in current but not in previous
+ * - **Dropped**: normalized label present in previous but not in current
+ *
+ * The output is at most 3 bullets, prioritising continued, then new, then
+ * dropped. The original (non-normalized) label from the current report is
+ * used for continued and new topics; the original label from the previous
+ * report is used for dropped topics.
+ *
+ * @param currentTopics - Topics parsed from the current report
+ * @param previousTopics - Topics parsed from the previous report
+ * @returns Markdown bullet list string, or null when there is nothing to report
+ */
+export function buildSinceLastReportSection(
+  currentTopics: ReportTopic[],
+  previousTopics: ReportTopic[],
+): string | null {
+  // No topics at all — nothing to compare
+  if (currentTopics.length === 0 && previousTopics.length === 0) {
+    return null;
+  }
+
+  // No previous topics — no meaningful "since last report" story
+  if (previousTopics.length === 0) {
+    return null;
+  }
+
+  // Build normalized → original label maps (first occurrence wins for original)
+  const currentMap = new Map<string, string>();
+  for (const t of currentTopics) {
+    const key = normalizeLabel(t.label);
+    if (!currentMap.has(key)) {
+      currentMap.set(key, t.label);
+    }
+  }
+
+  const previousMap = new Map<string, string>();
+  for (const t of previousTopics) {
+    const key = normalizeLabel(t.label);
+    if (!previousMap.has(key)) {
+      previousMap.set(key, t.label);
+    }
+  }
+
+  // Classify topics
+  const continued: string[] = [];
+  const newLabels: string[] = [];
+  const dropped: string[] = [];
+
+  for (const [key, label] of currentMap) {
+    if (previousMap.has(key)) {
+      continued.push(label);
+    } else {
+      newLabels.push(label);
+    }
+  }
+
+  for (const [key, label] of previousMap) {
+    if (!currentMap.has(key)) {
+      dropped.push(label);
+    }
+  }
+
+  // If there is nothing new or dropped, the sets are effectively identical
+  if (newLabels.length === 0 && dropped.length === 0) {
+    return null;
+  }
+
+  // Build bullets: at most 3, prioritising continued → new → dropped
+  const bullets: string[] = [];
+
+  for (const label of continued) {
+    if (bullets.length >= 3) break;
+    bullets.push(`* **Continued topic:** ${label}`);
+  }
+
+  for (const label of newLabels) {
+    if (bullets.length >= 3) break;
+    bullets.push(`* **New topic:** ${label}`);
+  }
+
+  for (const label of dropped) {
+    if (bullets.length >= 3) break;
+    bullets.push(`* **Dropped topic:** ${label}`);
+  }
+
+  if (bullets.length === 0) return null;
+
+  return bullets.join("\n");
+}

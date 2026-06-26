@@ -2,6 +2,10 @@ import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import type { SummarizeProvider } from "../providers.js";
 import { ensureSourceReferences } from "./source-refs.js";
+import {
+  parseReportTopics,
+  buildSinceLastReportSection,
+} from "./report-comparison.js";
 
 // --- Types ---
 
@@ -289,6 +293,9 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * sections for human review. Runs source-reference enforcement to catch any
  * articles the LLM omitted.
  *
+ * When a previous report is provided, a "## Since Last Report" section is
+ * inserted highlighting continued, new, and dropped topics.
+ *
  * @param date - Report date in YYYY-MM-DD format
  * @param articles - All collected articles
  * @param synthesis - LLM-generated synthesis text
@@ -296,6 +303,7 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * @param provider - The LLM provider (for build notes)
  * @param totalPromptTokens - Cumulative prompt tokens across all LLM calls
  * @param totalCompletionTokens - Cumulative completion tokens across all LLM calls
+ * @param previousReportMd - Full Markdown of the previous report (if any)
  * @returns Assembled Markdown report string
  */
 export function assembleReport(
@@ -306,6 +314,7 @@ export function assembleReport(
   provider: SummarizeProvider,
   totalPromptTokens: number,
   totalCompletionTokens: number,
+  previousReportMd?: string | null,
 ): string {
   const articleInventory = buildArticleInventorySection(summaries);
   const synthesisWithoutInventory = stripGeneratedArticleInventory(synthesis);
@@ -346,9 +355,20 @@ export function assembleReport(
       ? "$0.00 (local model)"
       : `$${cost.toFixed(4)}`;
 
+  // Build "Since Last Report" section if previous report is available
+  let sinceLastReportBlock = "";
+  if (previousReportMd) {
+    const currentTopics = parseReportTopics(weeklySummary);
+    const previousTopics = parseReportTopics(previousReportMd);
+    const slr = buildSinceLastReportSection(currentTopics, previousTopics);
+    if (slr !== null) {
+      sinceLastReportBlock = `\n\n## Since Last Report\n\n${slr}\n`;
+    }
+  }
+
   return `# WordPress Trend Report — ${date}
 
-${weeklySummary}
+${weeklySummary}${sinceLastReportBlock}
 
 ---
 

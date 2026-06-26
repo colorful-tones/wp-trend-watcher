@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   parseReportTopics,
   normalizeLabel,
+  buildSinceLastReportSection,
   type ReportTopic,
 } from "../../src/summarize/report-comparison.js";
 
@@ -182,4 +183,157 @@ test("normalizeLabel trims leading and trailing whitespace", () => {
 test("normalizeLabel handles string with no markdown or punctuation", () => {
   const result = normalizeLabel("Hello World");
   assert.equal(result, "hello world");
+});
+
+// --- buildSinceLastReportSection ---
+
+/**
+ * Helper to create a ReportTopic with the given label.
+ * Source is irrelevant for comparison tests.
+ */
+function topic(label: string, source: ReportTopic["source"] = "emerging-trends"): ReportTopic {
+  return { label, source };
+}
+
+test("buildSinceLastReportSection returns null when both topic arrays are empty", () => {
+  const result = buildSinceLastReportSection([], []);
+  assert.equal(result, null);
+});
+
+test("buildSinceLastReportSection returns null when previous topics array is empty", () => {
+  const result = buildSinceLastReportSection(
+    [topic("WordPress 7.1 Release Planning")],
+    [],
+  );
+  assert.equal(result, null);
+});
+
+test("buildSinceLastReportSection returns null when topic sets are identical", () => {
+  const current = [
+    topic("WordPress 7.1 Release Planning"),
+    topic("Gutenberg 23.4 React 19 Integration"),
+  ];
+  const previous = [
+    topic("WordPress 7.1 Release Planning"),
+    topic("Gutenberg 23.4 React 19 Integration"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.equal(result, null);
+});
+
+test("buildSinceLastReportSection returns single continued bullet when one topic continued and one is new", () => {
+  // current has [A, B], previous has [A] → A is continued, B is new
+  const current = [
+    topic("WordPress 7.1 Release Planning"),
+    topic("Gutenberg 23.4 React 19 Integration"),
+  ];
+  const previous = [
+    topic("WordPress 7.1 Release Planning"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+  assert.ok(result.includes("**Continued topic:**"));
+  assert.ok(result.includes("WordPress 7.1 Release Planning"));
+  // Should include both the continued and new bullets
+  assert.ok(result.includes("**New topic:**"));
+  assert.ok(result.includes("Gutenberg 23.4 React 19 Integration"));
+});
+
+test("buildSinceLastReportSection returns bullets prioritizing continued, then new, then dropped", () => {
+  const current = [
+    topic("Continued A"),
+    topic("New C"),
+  ];
+  const previous = [
+    topic("Continued A"),
+    topic("Dropped B"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+
+  const lines = result.split("\n");
+  // First bullet should be continued, second should be new, third should be dropped
+  assert.ok(lines[0].includes("**Continued topic:**"));
+  assert.ok(lines[0].includes("Continued A"));
+  assert.ok(lines[1].includes("**New topic:**"));
+  assert.ok(lines[1].includes("New C"));
+  assert.ok(lines[2].includes("**Dropped topic:**"));
+  assert.ok(lines[2].includes("Dropped B"));
+});
+
+test("buildSinceLastReportSection caps at 3 bullets when there are more than 3 changes", () => {
+  const current = [
+    topic("C1"),
+    topic("C2"),
+    topic("C3"),
+    topic("N1"),
+    topic("N2"),
+  ];
+  const previous = [
+    topic("C1"),
+    topic("C2"),
+    topic("C3"),
+    topic("D1"),
+    topic("D2"),
+    topic("D3"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+
+  const lines = result.split("\n");
+  assert.equal(lines.length, 3);
+  // All three should be continued (highest priority)
+  assert.ok(lines[0].includes("**Continued topic:**"));
+  assert.ok(lines[1].includes("**Continued topic:**"));
+  assert.ok(lines[2].includes("**Continued topic:**"));
+});
+
+test("buildSinceLastReportSection uses normalized matching for continued topics", () => {
+  // Labels that differ only in punctuation should match as continued.
+  // Include a second new topic so the comparison is not empty (no new/dropped).
+  const current = [
+    topic("WordPress 7.1 Release Planning!"),
+    topic("Brand New Topic"),
+  ];
+  const previous = [
+    topic("WordPress 7.1 Release Planning"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+  assert.ok(result.includes("**Continued topic:**"));
+  // Should use the current label (with the exclamation) in the output
+  assert.ok(result.includes("WordPress 7.1 Release Planning!"));
+  // Should use current label for new topic
+  assert.ok(result.includes("Brand New Topic"));
+});
+
+test("buildSinceLastReportSection includes both continued and dropped when no new topics", () => {
+  const current = [
+    topic("WordPress 7.1 Release Planning"),
+  ];
+  const previous = [
+    topic("WordPress 7.1 Release Planning"),
+    topic("Gutenberg 23.4"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+  assert.ok(result.includes("**Continued topic:**"));
+  assert.ok(result.includes("WordPress 7.1 Release Planning"));
+  assert.ok(result.includes("**Dropped topic:**"));
+  assert.ok(result.includes("Gutenberg 23.4"));
+});
+
+test("buildSinceLastReportSection uses current label for continued and new, previous label for dropped", () => {
+  // Labels may differ slightly due to normalization, but output uses original labels
+  const current = [
+    topic("WordPress 7.1!"),
+  ];
+  const previous = [
+    topic("WordPress 7.1!"),
+    topic("Dropped Item (old)"),
+  ];
+  const result = buildSinceLastReportSection(current, previous);
+  assert.ok(result !== null);
+  assert.ok(result.includes("WordPress 7.1!"));
+  assert.ok(result.includes("Dropped Item (old)"));
 });
