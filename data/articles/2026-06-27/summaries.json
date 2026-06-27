@@ -1,0 +1,80 @@
+{
+  "date": "2026-06-27",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3.5-9b",
+  "articleCount": 7,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/",
+      "title": "Dev Chat Agenda – June 24, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/",
+      "summary": "The June 24, 2026, WordPress Dev Chat will address the 7.1 release squad, roadmap, and a merge proposal for a new custom post type, alongside the 7.0.1 schedule and Gutenberg 23.4 updates. Developers should post specific ticket requests or discussion topics in the comments, noting their availability for synchronous or async review, as tickets in the next release milestone are prioritized.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 711,
+      "completionTokens": 90
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/",
+      "title": "Hiding the Classic block from the inserter in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 hides the Classic block from the block inserter, block library, and slash commands to enforce architectural consistency and reduce new legacy content creation. The block remains registered and fully editable for existing content, while a new filter allows developers to explicitly re-add it to the inserter if required by their specific use cases.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1023,
+      "completionTokens": 67
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/",
+      "title": "WordPress 7.0 Release Retrospective",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/",
+      "summary": "WordPress 7.0 (\"Armstrong\") has officially released, and the Make Core team is soliciting non-anonymous feedback from all contributors regarding the development cycle, squad dynamics, and processes. Submissions via the provided form or comments are due by July 20, 2026, after which an anonymized summary will be published to inform improvements for future release cycles.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 671,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/",
+      "title": "Merge Proposal: Guidelines built on Knowledge",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/",
+      "summary": "The Make Core team proposes merging the `wp_knowledge` custom post type into WordPress 7.1, establishing it as the canonical, shared primitive for storing site-wide standards such as voice, tone, and block rules. This implementation consolidates previously fragmented plugin-specific storage and permission models into a single core resource accessible to writers, editors, plugins, and AI assistants. The feature builds on the Guidelines experiment, which was stabilized for core after community feedback following its initial landing in Gutenberg 22.7.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 973,
+      "completionTokens": 103
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/06/open-web-merch/",
+      "title": "Browse the New Mercantile Swag Store",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/06/open-web-merch/",
+      "summary": "The Mercantile storefront is rebuilt almost entirely with blocks, including a block-based cart and checkout, and leverages the Interactivity API for catalog navigation and modal states. It runs on WordPress 7.0 with accessibility built-in, featuring reduced-motion preferences and WCAG color contrast standards. Product pages now surface specific attributes like size and material, while the checkout flow supports local pickup and event-only products for in-person sales.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 755,
+      "completionTokens": 86
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-search-plugin/",
+      "title": "WordPress Search Plugins Compared by Use Case",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-search-plugin/",
+      "summary": "SearchWP and Relevanssi serve content-heavy sites, with SearchWP offering visual configuration and Relevanssi providing deeper code-level control alongside more generous agency licensing. For WooCommerce stores, FiboSearch prioritizes speed for add-to-cart UX, while SearchWP Pro offers granular control over SKUs, attributes, and custom product metadata. Large-scale sites should offload search to dedicated infrastructure like ElasticPress or WP Engine Smart Search to handle high traffic and complex workloads outside the WordPress database.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 393,
+      "completionTokens": 99
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/nextjs-wordpress/",
+      "title": "How Headless WordPress Works with Next.js",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/nextjs-wordpress/",
+      "summary": "Headless WordPress decouples the backend content management system from the Next.js frontend, typically utilizing the WPGraphQL API for complex content structures over the REST API. The recommended rendering strategy is Incremental Static Regeneration (ISR) to balance performance with dynamic updates, though developers must manage increased complexity regarding separate deployments, hosting, and security. A well-structured content model is critical for success, with ACF PRO providing the advanced field types like Repeater and Flexible Content that are essential for building effective Next.js frontends.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 361,
+      "completionTokens": 104
+    }
+  ],
+  "totalPromptTokens": 4887,
+  "totalCompletionTokens": 628
+}

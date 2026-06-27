@@ -1,0 +1,63 @@
+{
+  "date": "2026-06-27",
+  "collectedAt": "2026-06-27T22:14:08.015Z",
+  "articleCount": 7,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – June 24, 2026",
+      "url": "https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/",
+      "publishedAt": "2026-06-24T03:52:21.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Hiding the Classic block from the inserter in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/",
+      "publishedAt": "2026-06-23T08:34:13.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.0 Release Retrospective",
+      "url": "https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/",
+      "publishedAt": "2026-06-22T19:04:40.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Merge Proposal: Guidelines built on Knowledge",
+      "url": "https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/",
+      "publishedAt": "2026-06-22T07:46:17.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/open-web-merch/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Browse the New Mercantile Swag Store",
+      "url": "https://wordpress.org/news/2026/06/open-web-merch/",
+      "publishedAt": "2026-06-22T15:07:00.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-search-plugin/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "WordPress Search Plugins Compared by Use Case",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-search-plugin/",
+      "publishedAt": "2026-06-25T12:00:00.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/nextjs-wordpress/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "How Headless WordPress Works with Next.js",
+      "url": "https://www.advancedcustomfields.com/blog/nextjs-wordpress/",
+      "publishedAt": "2026-06-24T11:28:43.000Z"
+    }
+  ]
+}
