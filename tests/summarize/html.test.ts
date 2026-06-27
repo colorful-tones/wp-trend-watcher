@@ -217,3 +217,53 @@ test("generateIndexPage skips index.html itself", async () => {
   // Also verify no card links to index.html
   assert.ok(!html.includes('href="index.html"'), "no card should link to index.html");
 });
+
+test("generateHtmlReport includes back-to-index footer link", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
+  const mdPath = join(tmpDir, "2026-06-21.md");
+  await writeFile(
+    mdPath,
+    "# My Report\n\n## Section One\n\nSome content.\n",
+    "utf8",
+  );
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  assert.ok(
+    html.includes('<footer class="nav-footer">'),
+    "report should include nav-footer",
+  );
+  assert.ok(
+    html.includes('<a href="index.html">← Back to Reports</a>'),
+    "report should include back-to-index link",
+  );
+});
+
+test("generateIndexPage includes feedback and source suggestion links", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(
+    html.includes("Suggest a source"),
+    "index page should include source suggestion link",
+  );
+  assert.ok(
+    html.includes("source-suggestion.yml"),
+    "source suggestion link should point to the issue template",
+  );
+  assert.ok(
+    html.includes("Send feedback"),
+    "index page should include feedback link",
+  );
+  assert.ok(
+    html.includes("report-feedback.yml"),
+    "feedback link should point to the issue template",
+  );
+  assert.ok(
+    html.includes('<footer class="nav-footer">'),
+    "index page should include nav-footer",
+  );
+});
