@@ -45,7 +45,59 @@ hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
 strong { font-weight: 600; }
 em { font-style: italic; }
 .meta { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+
+/* Report header */
+.report-header { border-left: 4px solid #0969da; padding-left: 1rem; margin-bottom: 1.5rem; }
+.report-header h1 { margin-bottom: 0.25rem; border-bottom: none; }
+
+/* Table of contents */
+.toc { background: #f6f8fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
+.toc h2 { margin-top: 0; border-bottom: none; font-size: 1rem; }
+.toc ul { margin-bottom: 0; }
+.toc a { font-size: 0.9rem; }
+
+/* Article Inventory list */
+#article-inventory + ol li { padding: 0.25rem 0; border-bottom: 1px solid #f0f0f0; }
+#article-inventory + ol li:last-child { border-bottom: none; }
+
+/* Build Notes panel */
+#build-notes ~ * { font-size: 0.9rem; color: #555; }
+#build-notes { font-size: 1rem; color: #666; margin-top: 2rem; border-top: 1px solid #e0e0e0; padding-top: 1rem; }
+
+/* Report index page */
+.report-card-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+.report-card {
+  display: block;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.report-card:hover { background: #f6f8fa; border-color: #d0d0d0; }
+.report-card-date { display: block; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.15rem; }
+.report-card-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1em 0.5em;
+}
 `.trim();
+
+/**
+ * Convert a URL-friendly slug from plain text.
+ *
+ * Strips non-alphanumeric characters, lowercases, and collapses whitespace
+ * into hyphens. Used to generate stable heading ids.
+ */
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
 
 /**
  * Convert a simple Markdown string to HTML.
@@ -76,12 +128,13 @@ function markdownToHtml(md: string): string {
       continue;
     }
 
-    // Headings (h1–h6)
+    // Headings (h1–h6) — add stable id attribute
     const headingMatch = line.match(/^(#{1,6})\s+(.*)/);
     if (headingMatch) {
       const level = headingMatch[1].length;
       const text = inlineFormat(headingMatch[2]);
-      out.push(`<h${level}>${text}</h${level}>`);
+      const id = slugify(headingMatch[2]);
+      out.push(`<h${level} id="${id}">${text}</h${level}>`);
       i++;
       continue;
     }
@@ -166,6 +219,10 @@ function markdownToHtml(md: string): string {
 function inlineFormat(text: string): string {
   return (
     text
+      // HTML-escape angle brackets for XSS prevention (before other transforms)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
       // Inline code (must come before bold/italic to avoid conflicts)
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       // Bold
@@ -199,6 +256,33 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   const date = dateFromFilename(mdPath);
   const htmlContent = markdownToHtml(md);
 
+  // Extract the h1 heading for the report header
+  const h1Match = htmlContent.match(/<h1[^>]*>.*?<\/h1>/);
+  let headerHtml = "";
+  let bodyHtml = htmlContent;
+  if (h1Match) {
+    headerHtml = `<header class="report-header">\n  ${h1Match[0]}\n</header>`;
+    bodyHtml = htmlContent.slice(h1Match.index! + h1Match[0].length).trim();
+  } else {
+    headerHtml = `<header class="report-header">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
+  }
+
+  // Build table of contents from h2 headings (if 2 or more exist)
+  const h2Regex = /<h2[^>]*id="([^"]*)"[^>]*>(.*?)<\/h2>/g;
+  const tocEntries: { id: string; text: string }[] = [];
+  let tocMatch: RegExpExecArray | null;
+  while ((tocMatch = h2Regex.exec(htmlContent)) !== null) {
+    tocEntries.push({ id: tocMatch[1], text: tocMatch[2] });
+  }
+
+  let tocHtml = "";
+  if (tocEntries.length >= 2) {
+    const links = tocEntries
+      .map((entry) => `    <li><a href="#${entry.id}">${entry.text}</a></li>`)
+      .join("\n");
+    tocHtml = `<nav class="toc">\n  <h2>Contents</h2>\n  <ul>\n${links}\n  </ul>\n</nav>`;
+  }
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,7 +292,11 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <style>${STYLESHEET}</style>
 </head>
 <body>
-  ${htmlContent}
+  ${headerHtml}
+  ${tocHtml}
+  <div class="report-body">
+  ${bodyHtml}
+</div>
 </body>
 </html>`;
 
@@ -233,10 +321,30 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
     .sort()
     .reverse();
 
-  const links = htmlFiles
-    .map((f) => {
-      const date = f.replace(".html", "");
-      return `    <li><a href="${f}">${date}</a></li>`;
+  const reportCount = htmlFiles.length;
+  const reportLabel =
+    reportCount === 1
+      ? "1 weekly WordPress ecosystem trend report."
+      : `${reportCount} weekly WordPress ecosystem trend reports.`;
+
+  const cards = htmlFiles
+    .map((f, i) => {
+      const dateStr = f.replace(".html", "");
+      // Parse YYYY-MM-DD into a Date object for locale formatting
+      const [year, month, day] = dateStr.split("-").map(Number);
+      const dateObj = new Date(year, month - 1, day);
+      const formattedDate = dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      const labelHtml =
+        i === 0
+          ? `\n    <span class="report-card-label">Latest report</span>`
+          : "";
+      return `    <a href="${f}" class="report-card">
+      <span class="report-card-date">${formattedDate}</span>${labelHtml}
+    </a>`;
     })
     .join("\n");
 
@@ -252,10 +360,10 @@ h1 { border-bottom: none; }
 </head>
 <body>
   <h1>WP Trend Watcher — Reports</h1>
-  <p class="meta">Weekly WordPress ecosystem trend reports.</p>
-  <ul>
-${links}
-  </ul>
+  <p class="meta">${reportLabel}</p>
+  <div class="report-card-grid">
+${cards}
+  </div>
 </body>
 </html>`;
 

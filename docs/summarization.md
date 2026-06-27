@@ -122,3 +122,12 @@ To force re-summarization of all articles, delete the summaries.json file:
 rm data/articles/YYYY-MM-DD/summaries.json
 pnpm summarize
 ```
+
+## Previous-Report Comparison
+
+When a previous report exists in `reports/`, the assembly step automatically generates a `## Since Last Report` section comparing topics across weeks. This comparison:
+
+- Parses `### Emerging Trends`, `### Developer Implications`, and `### Article Inventory` sections from both reports
+- Classifies topics as Continued, New, or Dropped using normalized label matching
+- Outputs at most 3 bullets per report, prioritizing continued topics first
+- Requires no LLM call, database, or historical store — purely file-based and deterministic

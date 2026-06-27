@@ -8,6 +8,7 @@ import {
   type ArticleSummary,
   type SummariesJson,
   findLatestArticlesJson,
+  findPreviousReportPath,
   REPORT_SYSTEM_PROMPT,
   buildReportPrompt,
   assembleReport,
@@ -91,6 +92,21 @@ async function main(): Promise<void> {
   const synthesisPromptTokens = synthesisResult.promptTokens;
   const synthesisCompletionTokens = synthesisResult.completionTokens;
 
+  // 4. Load previous report for comparison (non-blocking)
+  let previousReportMd: string | null = null;
+  try {
+    const reportsDir = join(process.cwd(), "reports");
+    const previousReportPath = await findPreviousReportPath(
+      reportsDir,
+      articlesData.date,
+    );
+    if (previousReportPath) {
+      previousReportMd = await readFile(previousReportPath, "utf8");
+    }
+  } catch {
+    // No previous report available — comparison section will be omitted
+  }
+
   // 4. Assemble and write report
   const report = assembleReport(
     articlesData.date,
@@ -100,6 +116,7 @@ async function main(): Promise<void> {
     provider,
     cachedPromptTokens + synthesisPromptTokens,
     cachedCompletionTokens + synthesisCompletionTokens,
+    previousReportMd,
   );
 
   const outputPath = join(process.cwd(), "reports", `${articlesData.date}.md`);

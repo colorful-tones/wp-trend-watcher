@@ -1,7 +1,11 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import type { SummarizeProvider } from "../providers.js";
 import { ensureSourceReferences } from "./source-refs.js";
+import {
+  parseReportTopics,
+  buildSinceLastReportSection,
+} from "./report-comparison.js";
 
 // --- Types ---
 
@@ -54,7 +58,6 @@ export type SummariesJson = {
  * @throws If no articles.json files are found
  */
 export async function findLatestArticlesJson(): Promise<string> {
-  const { readdir } = await import("node:fs/promises");
   const articlesRoot = join(process.cwd(), "data/articles");
   const dateDirs = await readdir(articlesRoot);
   const sorted = dateDirs.sort().reverse();
@@ -70,6 +73,33 @@ export async function findLatestArticlesJson(): Promise<string> {
   }
 
   throw new Error("No articles.json files found. Run `pnpm collect` first.");
+}
+
+/**
+ * Find the Markdown report immediately before the current report date.
+ *
+ * Scans date-named Markdown files in the given reports directory, excluding
+ * index.md and the current report, then returns the newest report dated before
+ * the current date.
+ *
+ * @param reportsDir - Directory containing Markdown reports
+ * @param currentDate - Current report date in YYYY-MM-DD format
+ * @returns Absolute or relative path to the previous report, or null when none exists
+ */
+export async function findPreviousReportPath(
+  reportsDir: string,
+  currentDate: string,
+): Promise<string | null> {
+  const reportDatePattern = /^(\d{4}-\d{2}-\d{2})\.md$/;
+  const files = await readdir(reportsDir);
+  const previousReport = files
+    .map((file) => ({ file, match: file.match(reportDatePattern) }))
+    .filter((entry): entry is { file: string; match: RegExpMatchArray } =>
+      entry.match !== null && entry.match[1] < currentDate,
+    )
+    .sort((a, b) => b.match[1].localeCompare(a.match[1]))[0];
+
+  return previousReport ? join(reportsDir, previousReport.file) : null;
 }
 
 // --- Summary persistence ---
@@ -263,6 +293,9 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * sections for human review. Runs source-reference enforcement to catch any
  * articles the LLM omitted.
  *
+ * When a previous report is provided, a "## Since Last Report" section is
+ * inserted highlighting continued, new, and dropped topics.
+ *
  * @param date - Report date in YYYY-MM-DD format
  * @param articles - All collected articles
  * @param synthesis - LLM-generated synthesis text
@@ -270,6 +303,7 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * @param provider - The LLM provider (for build notes)
  * @param totalPromptTokens - Cumulative prompt tokens across all LLM calls
  * @param totalCompletionTokens - Cumulative completion tokens across all LLM calls
+ * @param previousReportMd - Full Markdown of the previous report (if any)
  * @returns Assembled Markdown report string
  */
 export function assembleReport(
@@ -280,6 +314,7 @@ export function assembleReport(
   provider: SummarizeProvider,
   totalPromptTokens: number,
   totalCompletionTokens: number,
+  previousReportMd?: string | null,
 ): string {
   const articleInventory = buildArticleInventorySection(summaries);
   const synthesisWithoutInventory = stripGeneratedArticleInventory(synthesis);
@@ -320,9 +355,20 @@ export function assembleReport(
       ? "$0.00 (local model)"
       : `$${cost.toFixed(4)}`;
 
+  // Build "Since Last Report" section if previous report is available
+  let sinceLastReportBlock = "";
+  if (previousReportMd) {
+    const currentTopics = parseReportTopics(weeklySummary);
+    const previousTopics = parseReportTopics(previousReportMd);
+    const slr = buildSinceLastReportSection(currentTopics, previousTopics);
+    if (slr !== null) {
+      sinceLastReportBlock = `\n\n## Since Last Report\n\n${slr}\n`;
+    }
+  }
+
   return `# WordPress Trend Report — ${date}
 
-${weeklySummary}
+${weeklySummary}${sinceLastReportBlock}
 
 ---
 

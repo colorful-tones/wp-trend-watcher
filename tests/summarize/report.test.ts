@@ -1,10 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { mkdtemp, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   buildReportPrompt,
   buildArticleInventorySection,
   assembleReport,
   isHighSignalReleasePlanningArticle,
+  findPreviousReportPath,
 } from "../../src/summarize/report.js";
 import type {
   ArticleSummary,
@@ -49,6 +53,64 @@ function makeSummary(
     completionTokens: overrides.completionTokens ?? 50,
   };
 }
+
+async function makeReportsDir(files: string[]): Promise<string> {
+  const reportsDir = await mkdtemp(join(tmpdir(), "wp-trend-reports-"));
+  await Promise.all(
+    files.map((file) => writeFile(join(reportsDir, file), "# Report\n", "utf8")),
+  );
+  return reportsDir;
+}
+
+// --- findPreviousReportPath ---
+
+test("findPreviousReportPath finds the immediate previous date", async () => {
+  const reportsDir = await makeReportsDir([
+    "2026-06-06.md",
+    "2026-06-13.md",
+    "2026-06-20.md",
+  ]);
+
+  const previous = await findPreviousReportPath(reportsDir, "2026-06-20");
+
+  assert.equal(previous, join(reportsDir, "2026-06-13.md"));
+});
+
+test("findPreviousReportPath ignores future reports", async () => {
+  const reportsDir = await makeReportsDir([
+    "2026-06-13.md",
+    "2026-06-20.md",
+    "2026-06-27.md",
+  ]);
+
+  const previous = await findPreviousReportPath(reportsDir, "2026-06-20");
+
+  assert.equal(previous, join(reportsDir, "2026-06-13.md"));
+});
+
+test("findPreviousReportPath ignores index.md", async () => {
+  const reportsDir = await makeReportsDir([
+    "index.md",
+    "2026-06-13.md",
+    "2026-06-20.md",
+  ]);
+
+  const previous = await findPreviousReportPath(reportsDir, "2026-06-20");
+
+  assert.equal(previous, join(reportsDir, "2026-06-13.md"));
+});
+
+test("findPreviousReportPath returns null with no previous report", async () => {
+  const reportsDir = await makeReportsDir([
+    "index.md",
+    "2026-06-20.md",
+    "2026-06-27.md",
+  ]);
+
+  const previous = await findPreviousReportPath(reportsDir, "2026-06-20");
+
+  assert.equal(previous, null);
+});
 
 // --- buildReportPrompt ---
 

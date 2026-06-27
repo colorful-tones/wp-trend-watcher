@@ -42,15 +42,62 @@ hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
 strong { font-weight: 600; }
 em { font-style: italic; }
 .meta { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+
+/* Report header */
+.report-header { border-left: 4px solid #0969da; padding-left: 1rem; margin-bottom: 1.5rem; }
+.report-header h1 { margin-bottom: 0.25rem; border-bottom: none; }
+
+/* Table of contents */
+.toc { background: #f6f8fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
+.toc h2 { margin-top: 0; border-bottom: none; font-size: 1rem; }
+.toc ul { margin-bottom: 0; }
+.toc a { font-size: 0.9rem; }
+
+/* Article Inventory list */
+#article-inventory + ol li { padding: 0.25rem 0; border-bottom: 1px solid #f0f0f0; }
+#article-inventory + ol li:last-child { border-bottom: none; }
+
+/* Build Notes panel */
+#build-notes ~ * { font-size: 0.9rem; color: #555; }
+#build-notes { font-size: 1rem; color: #666; margin-top: 2rem; border-top: 1px solid #e0e0e0; padding-top: 1rem; }
+
+/* Report index page */
+.report-card-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+.report-card {
+  display: block;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.report-card:hover { background: #f6f8fa; border-color: #d0d0d0; }
+.report-card-date { display: block; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.15rem; }
+.report-card-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1em 0.5em;
+}
 h1 { border-bottom: none; }
   </style>
 </head>
 <body>
   <h1>WP Trend Watcher — Reports</h1>
-  <p class="meta">Weekly WordPress ecosystem trend reports.</p>
-  <ul>
-    <li><a href="2026-06-21.html">2026-06-21</a></li>
-    <li><a href="2026-06-12.html">2026-06-12</a></li>
-  </ul>
+  <p class="meta">2 weekly WordPress ecosystem trend reports.</p>
+  <div class="report-card-grid">
+    <a href="2026-06-21.html" class="report-card">
+      <span class="report-card-date">June 21, 2026</span>
+    <span class="report-card-label">Latest report</span>
+    </a>
+    <a href="2026-06-12.html" class="report-card">
+      <span class="report-card-date">June 12, 2026</span>
+    </a>
+  </div>
 </body>
 </html>
