@@ -84,6 +84,25 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.4.1
+
+**README and documentation overhaul:**
+- Added Requirements section with Node/pnpm/Corepack/LLM prerequisites
+- Added Latest Reports section linking to the GitHub Pages index
+- Added Feedback & Sources section linking to the GitHub issue templates (report feedback and source suggestion)
+- Removed stale Status snapshot, What This Does Not Do Yet, Report Format, and Data Snapshot Policy (all covered by docs/ or Project Principles)
+- New `docs/weekly-workflow.md` — 7-step command sequence quick reference with scannable table
+
+**HTML navigation polish:**
+- Individual report pages now include a "← Back to Reports" footer link
+- Reports index page now includes "Suggest a source" and "Send feedback" footer links pointing to the issue templates
+- New `.nav-footer` CSS class for consistent navigation styling
+
+**Smarter default collection window:**
+- `pnpm collect` now auto-calculates `--days` from the most recent report date instead of defaulting to 7
+- Priority: explicit `--days N` flag → `WP_TREND_DAYS` env var → auto-calculated from last report → 7 day fallback
+- New `findDaysSinceLastReport` helper scans `reports/` for date-named `.md` files
+
 ### 0.4.0 — Phase 4 Release
 
 **Previous-report comparison:**
