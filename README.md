@@ -8,25 +8,22 @@ The goal is not to automate opinions, replace expertise, or publish without revi
 
 The goal is to collect useful WordPress ecosystem updates, summarize them efficiently, review them with human judgment, and produce a weekly report that developers can actually use.
 
-## Status
+## Latest Reports
 
-Phase 4 is complete. The repo now has:
-
-- **6 sources** (4 Tier 1 + 2 Tier 2) with clean collection summaries
-- **sources.yaml** for user-customizable sources
-- **HTML reports** with table-of-contents navigation, stable heading IDs, and polished styling
-- **Reports index page** with card-style listing, friendly dates, and latest-report badge
-- **GitHub Pages** deployment via GitHub Actions on push to main
-- **Doctor and review commands** for setup checks and report review
-- **Report regeneration** from saved article summaries
-- **OpenAI-compatible and LM Studio tuning** for local model runs
-- **Deterministic Article Inventory** with linked titles and takeaways
-- **Previous-report comparison** with automatically generated `## Since Last Report` section
-- **Published weekly reports** for ongoing use
+Published weekly reports are available at [colorful-tones.github.io/wp-trend-watcher](https://colorful-tones.github.io/wp-trend-watcher/).
 
 ## Intended Audience
 
 Freelance and agency WordPress developers who want to stay current without reading every Make post, Developer Blog update, and ecosystem article.
+
+## Requirements
+
+- **Node.js 22** (pinned in `.nvmrc` and `engines`). nvm is recommended for version management but not required.
+- **pnpm 11** (pinned in `packageManager`). Corepack ships with Node.js and provides the correct pnpm version automatically when enabled.
+- **Corepack enabled** — run `corepack enable` once per machine.
+- **git** — to clone the repo.
+- **A local LLM provider** for summarization: LM Studio, Ollama, or any OpenAI-compatible endpoint. Collection, doctor, and review work without one, but summarization requires it.
+- **macOS, Linux, or WSL2**. The tooling assumes a Unix-like environment.
 
 ## Quick Start
 
@@ -42,14 +39,12 @@ pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Prerequisites: Node.js 22 and Corepack. Run `nvm use` to select the version pinned in `.nvmrc`, then `corepack enable` so the `packageManager` pin (`pnpm@11.5.0`) is used automatically. Summarization requires a local LLM provider such as LM Studio (OpenAI-compatible endpoint) or Ollama; collection does not. LM Studio users should set a completion cap such as `WP_TREND_MAX_TOKENS=2048` for predictable report generation. The CLI automatically loads `.env` from the project root when present.
+Summarization requires a local LLM provider (see Requirements above). LM Studio users should set `WP_TREND_MAX_TOKENS=*** in `.env` for predictable report generation. The CLI automatically loads `.env` from the project root.
 
 ## What This Does
 
-Current workflow:
-
 ```bash
-pnpm collect    # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
+pnpm collect         # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
 pnpm summarize       # Fetch article content, generate summaries, synthesize the weekly report, and build HTML + index
 pnpm generate-report # Regenerate the report from saved article summaries
 pnpm index-page      # Regenerate the reports index.html listing page
@@ -57,49 +52,9 @@ pnpm doctor          # Check environment readiness before first summarize
 pnpm review          # Review checklist for the latest report
 ```
 
+`pnpm summarize` produces a self-contained HTML report alongside the Markdown file. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
+
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
-
-### HTML Reports & GitHub Pages
-
-`pnpm summarize` produces a self-contained HTML version of each report alongside the Markdown file. Reports now include:
-
-- A styled report header card with left-border accent
-- A table-of-contents navigation block (auto-generated when 2+ sections exist)
-- Stable heading IDs for deep linking to report sections
-- Polished Article Inventory and Build Notes styling
-
-An `index.html` listing page is automatically generated in `reports/`, displaying reports as styled cards with friendly date formatting and a "Latest report" badge on the newest entry.
-
-Reports are deployed to GitHub Pages on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
-
-## What This Does Not Do Yet
-
-- No autonomous publishing.
-- No vector database.
-- No embeddings.
-- No agent swarms.
-- No UI/dashboard.
-- No historical trend engine.
-
-## Report Format
-
-Each weekly report should include:
-
-- Weekly Summary
-- Article Inventory
-- Since Last Report (auto-generated when a previous report exists — compares topics across weeks)
-- Emerging Trends
-- Developer Implications
-- What I'm Watching
-- Build Notes
-
-Build Notes should include article count, sources reviewed, model/provider, estimated cost, and human review time.
-
-## Data Snapshot Policy
-
-Article collection snapshots under `data/articles/YYYY-MM-DD/articles.json` are generated local output by default.
-
-Commit a snapshot only when it directly supports a reviewed or published report. Ad hoc collection runs should stay local, even when they help test the workflow.
 
 ## Project Principles
 
@@ -117,6 +72,14 @@ See:
 - [Human Review](docs/human-review.md)
 - [Cost Notes](docs/cost-notes.md)
 - [Contributing](CONTRIBUTING.md)
+
+## Feedback & Sources
+
+Found a gap in the latest report? [Open a report feedback issue](https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml).
+
+Want to suggest a new RSS source? [Open a source suggestion issue](https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml).
+
+Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
