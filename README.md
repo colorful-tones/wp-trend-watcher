@@ -66,6 +66,7 @@ See [Summarization](docs/summarization.md) for provider configuration, model opt
 
 See:
 
+- [Weekly Workflow](docs/weekly-workflow.md)
 - [Project Philosophy](docs/philosophy.md)
 - [Sources](docs/sources.md)
 - [Summarization](docs/summarization.md)
