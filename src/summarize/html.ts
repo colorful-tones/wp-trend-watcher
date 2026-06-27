@@ -87,6 +87,16 @@ em { font-style: italic; }
   border-radius: 3px;
   padding: 0.1em 0.5em;
 }
+
+/* Navigation footer */
+.nav-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #666;
+}
+.nav-footer a { color: #0969da; }
 `.trim();
 
 /**
@@ -297,6 +307,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <div class="report-body">
   ${bodyHtml}
 </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+  </footer>
 </body>
 </html>`;
 
@@ -364,6 +377,13 @@ h1 { border-bottom: none; }
   <div class="report-card-grid">
 ${cards}
   </div>
+  <footer class="nav-footer">
+    <p>
+      <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml">Suggest a source</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml">Send feedback</a>
+    </p>
+  </footer>
 </body>
 </html>`;
 
