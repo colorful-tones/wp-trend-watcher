@@ -1,0 +1,170 @@
+{
+  "date": "2026-07-05",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3.5-9b",
+  "articleCount": 16,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/03/bug-scrub-schedule-for-wordpress-7-1/",
+      "title": "Bug Scrub Schedule for WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/03/bug-scrub-schedule-for-wordpress-7-1/",
+      "summary": "WordPress 7.1 bug scrubs transition from twice-weekly sessions to a daily schedule as the release date approaches, with a strict focus on fixing regressions rather than enhancements. Key sessions are scheduled for July and August 2026 in the #core Slack channel, led by @sajjad67 and @adrianduffell, while specific component scrubs for accessibility, performance, and testing occur on recurring weekly or bi-weekly cycles. Developers should monitor the schedule for updates and join the appropriate Slack channels to triage reported issues and ensure a smooth launch.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1266,
+      "completionTokens": 119
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/03/wordpress-7-1-release-party-schedule/",
+      "title": "WordPress 7.1 Release Party Schedule",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/03/wordpress-7-1-release-party-schedule/",
+      "summary": "WordPress 7.1 is scheduled for general release on August 19, 2026, following a release cycle that includes three beta phases, two release candidates, and a 24-hour code freeze starting August 15. The release squad, consisting of Benjamin Zekavica, Krupajnanda, Wildworks, Joe Dolson, and Sergey Biryukov, will coordinate all milestones via the #core Slack channel and a live WordCamp US 2026 event. Developers should monitor the canonical release post for last-minute schedule adjustments and prepare to attend the final release party to assist with the transition.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1167,
+      "completionTokens": 131
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/03/xpost-call-for-testing-responsive-styling/",
+      "title": "X-post: Call for Testing: Responsive Styling",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/03/xpost-call-for-testing-responsive-styling/",
+      "summary": "WordPress 7.1 introduces responsive styling, allowing users to apply specific styles to tablet and mobile breakpoints directly within the editor without writing custom CSS. PR #75121 unifies the resizable canvas with the device-preview switcher, meaning dragging resize handles now automatically updates the active viewport in the dropdown. Developers should test this integration in the WordPress Playground by verifying that per-breakpoint edits are preserved correctly and that the \"Responsive editing\" toggle properly isolates styles for specific devices.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1021,
+      "completionTokens": 98
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/02/merge-proposal-expanding-wordpress-core-abilities/",
+      "title": "Merge Proposal: Expanding WordPress Core Abilities",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/02/merge-proposal-expanding-wordpress-core-abilities/",
+      "summary": "WordPress 7.1 will introduce three read-only abilities—`core/read-settings`, `core/read-content`, and `core/read-users`—to provide a canonical baseline for agents and workflows to access site configuration, posts, and user data without re-implementing logic. This expansion builds on the Abilities API from 6.9 by using a `show_in_abilities` flag to restrict exposure, ensuring only explicitly opted-in settings and post types are accessible to prevent data leakage. The proposal establishes a pattern where future abilities will pair these read functions with corresponding manage actions, enabling the AI Client to execute specific tasks like summarizing content.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1007,
+      "completionTokens": 129
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/01/summary-dev-chat-july-1-2026/",
+      "title": "Dev Chat summary: July 1, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/01/summary-dev-chat-july-1-2026/",
+      "summary": "The 7.1 release cycle includes a proposal to merge a new custom post type and hides the Classic block from the block inserter by default, with corresponding dev notes pending. The community is actively discussing a new Core Handbook policy requiring disclosure of AI tool usage in posts and Slack comments to address concerns about content provenance. Additionally, the Dev Chat meeting time is proposed to shift to Thursdays at 15:00 starting week 1 of the 7.1 beta to resolve scheduling conflicts with other Core team meetings.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1102,
+      "completionTokens": 108
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/01/whats-new-in-gutenberg-23-5-july-1-2026/",
+      "title": "What’s new in Gutenberg 23.5? (July 1, 2026)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/01/whats-new-in-gutenberg-23-5-july-1-2026/",
+      "summary": "Gutenberg 23.5 introduces experimental cropping controls to the Media editor and brings those capabilities to the Cover block, alongside new aspect-ratio and flex-alignment options for responsive styles. Developers must ensure their sites run WordPress 6.9 or later, as this release bumps the minimum version requirement, while also noting the public export of the `ThemeProvider` from `@wordpress/theme`.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1071,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/01/wordpress-7-0-1-rc1-is-now-available/",
+      "title": "WordPress 7.0.1 RC1 is now available",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/01/wordpress-7-0-1-rc1-is-now-available/",
+      "summary": "WordPress 7.0.1 RC1 is a bug-fix-only maintenance release led by core contributors, intended to resolve issues introduced during the 7.0 cycle or intentionally deferred. The release specifically targets fixes for Twemoji replacement logic, PHP 8.5 array access errors in `wp_get_attachment_image_src`, and accessibility regressions in the Visual History block. Developers can test this candidate by selecting the \"Point Release\" channel in the Beta Tester plugin, using `wp core update` via WP-CLI, or downloading the direct zip file.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1115,
+      "completionTokens": 112
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/30/dev-chat-agenda-july-1-2026/",
+      "title": "Dev Chat Agenda – July 1, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/30/dev-chat-agenda-july-1-2026/",
+      "summary": "The July 1, 2026, Dev Chat will address the 7.1 release roadmap, specifically reviewing a proposal to merge a new custom post type and confirming that the Classic block will be hidden from the inserter by default. Developers should prepare feedback on these items and any pending tickets for the upcoming release cycle, noting that the meeting includes an open floor for ad-hoc assistance.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 874,
+      "completionTokens": 82
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/30/performance-chat-summary-30-june-2026/",
+      "title": "Performance Chat Summary: 30 June 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/30/performance-chat-summary-30-june-2026/",
+      "summary": "The June 30, 2026 Performance Chat confirms no tickets are available for the 7.0.1 release, so the \"Awaiting Review\" queue will be scrubbed and the meeting rescheduled for July 14, 2026. Developers should finalize PR #2540 to ensure the planned Performance Lab plugin release proceeds as scheduled.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 680,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/30/guidelines-for-syncing-code-from-gutenberg-into-wordpress-develop/",
+      "title": "Guidelines for Syncing Code From Gutenberg Into WordPress Develop",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/30/guidelines-for-syncing-code-from-gutenberg-into-wordpress-develop/",
+      "summary": "During the 7.1 release cycle, code syncing from Gutenberg to WordPress trunk will occur one week after each Gutenberg general release to ensure trunk remains reasonably up to date. Once Beta 1 is reached, the pinned SHA value in `package.json` will be updated to match the corresponding `wp/X.Y` branch hash in the Gutenberg repository to prevent untested features from leaking into the stable codebase. This cadence allows for frequent cherry-picking of changes targeted for the upcoming WordPress release, with the ultimate goal of transitioning to weekly or daily syncing.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 1026,
+      "completionTokens": 112
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/06/29/xpost-wordpress-credits-updates/",
+      "title": "X-post: WordPress Credits Updates",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/06/29/xpost-wordpress-credits-updates/",
+      "summary": "The WP Credits program is shifting its 2026 focus from rapid growth to quality and retention, aiming to reach 35 school partnerships by year-end while establishing a public dashboard for impact tracking. A new mentorship structure introduces regional leads to coordinate mentors, replacing the ineffective self-onboarding model validated by earlier pilots. This strategic pivot ensures the program builds durable foundations for the anticipated 2027 scale-up rather than merely expanding numbers prematurely.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 997,
+      "completionTokens": 92
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/06/ai-leaders-graduates/",
+      "title": "The First AI Leaders Graduates",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/06/ai-leaders-graduates/",
+      "summary": "On June 23, 40 students from UIC, Louisiana Tech, and UL Lafayette completed the AI Leaders Micro-Credential by building real projects with generative AI and contributing code to the WordPress open source ecosystem. This pilot, funded by the UIC Tech Solutions Open Source Fund and Automattic, validates a model where open source learning directly connects to verified job pathways rather than just issuing certificates. The next cohort is currently in development, with the program aiming to expand access to AI and open source skills regardless of location or financial constraints.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 780,
+      "completionTokens": 111
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "title": "ACF Chat Fridays: Introducing the ACF Data Store and Block Bindings UI",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "summary": "ACF 6.8.1 introduces a Data Store that enables real-time synchronization between ACF fields and the Gutenberg editor, resolving latency issues in block-based workflows. This update also includes specific security patches and maintenance improvements to ensure plugin stability. Developers should review the session recording to understand the implementation details for integrating live field updates into custom block themes.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 324,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-page-templates/",
+      "title": "How WordPress Page Templates Actually Work",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-page-templates/",
+      "summary": "WordPress templates define the layout structure via a hierarchical fallback system, whereas individual pages store dynamic content, meaning template edits apply globally while page edits remain isolated. Classic themes utilize PHP files for this separation, while block themes manage editable HTML blocks through the Site Editor, with ACF extending flexibility by injecting structured content via custom fields and blocks.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 351,
+      "completionTokens": 67
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-5-security-release/",
+      "title": "ACF 6.8.5 Security Release",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-5-security-release/",
+      "summary": "ACF 6.8.5 addresses four critical security vulnerabilities: it restricts WooCommerce order field updates to authenticated users via HPOS, patches a stored XSS vector in the Flexible Content modal, enforces a 1000-choice limit for Checkbox/Radio/Select fields (customizable via `acf/fields/max_appended_choices`), and ensures proper escaping of special characters in `LIKE` patterns. All users of ACF and ACF PRO must upgrade immediately to mitigate these risks.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 509,
+      "completionTokens": 101
+    },
+    {
+      "articleId": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "title": "ACF Chat Fridays: Introducing the ACF Data Store and Block Bindings UI",
+      "sourceName": "ACF Chat Fridays",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "summary": "ACF 6.8.1 introduces a Data Store that enables real-time synchronization between ACF fields and the Gutenberg editor. The update also includes a new Block Bindings UI for managing field relationships and addresses specific security and maintenance improvements. Developers should review the session recording to understand the implementation details for integrating live data into block-based themes.",
+      "model": "qwen/qwen3.5-9b",
+      "promptTokens": 325,
+      "completionTokens": 69
+    }
+  ],
+  "totalPromptTokens": 13615,
+  "totalCompletionTokens": 1560
+}
