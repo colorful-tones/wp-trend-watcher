@@ -6,6 +6,12 @@ Rules for AI/coding agents working in this repository.
 
 Read a file before editing it. Understand existing patterns, types, and conventions before making changes.
 
+## AI Collaboration Notes
+
+Write AI-facing project materials into `.ai/`, which is symlinked to the project's Obsidian vault folder. This includes implementation plans, research notes, task lists, execution logs, decisions, review notes, and other AI collaboration-style Markdown files.
+
+Do not create new planning or notes directories such as `.hermes/plans/` inside this repo. Use the existing `.ai/` structure instead, such as `.ai/phase-N/PLAN.md` for phase plans and `.ai/reference/` for reusable collaboration guidance.
+
 ## Project Direction
 
 WP Trend Watcher is in Phase 3. The current goal is to keep the weekly WordPress trend-report workflow boring, local-first, reviewable, and easy for other people to run.
