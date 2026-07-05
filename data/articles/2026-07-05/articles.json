@@ -1,0 +1,135 @@
+{
+  "date": "2026-07-05",
+  "collectedAt": "2026-07-05T13:29:36.076Z",
+  "articleCount": 16,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/03/bug-scrub-schedule-for-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Bug Scrub Schedule for WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/03/bug-scrub-schedule-for-wordpress-7-1/",
+      "publishedAt": "2026-07-03T08:09:47.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/03/wordpress-7-1-release-party-schedule/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Party Schedule",
+      "url": "https://make.wordpress.org/core/2026/07/03/wordpress-7-1-release-party-schedule/",
+      "publishedAt": "2026-07-03T08:03:21.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/03/xpost-call-for-testing-responsive-styling/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Call for Testing: Responsive Styling",
+      "url": "https://make.wordpress.org/core/2026/07/03/xpost-call-for-testing-responsive-styling/",
+      "publishedAt": "2026-07-03T04:25:29.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/02/merge-proposal-expanding-wordpress-core-abilities/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Merge Proposal: Expanding WordPress Core Abilities",
+      "url": "https://make.wordpress.org/core/2026/07/02/merge-proposal-expanding-wordpress-core-abilities/",
+      "publishedAt": "2026-07-02T17:47:21.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/01/summary-dev-chat-july-1-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: July 1, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/01/summary-dev-chat-july-1-2026/",
+      "publishedAt": "2026-07-01T21:26:22.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/01/whats-new-in-gutenberg-23-5-july-1-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.5? (July 1, 2026)",
+      "url": "https://make.wordpress.org/core/2026/07/01/whats-new-in-gutenberg-23-5-july-1-2026/",
+      "publishedAt": "2026-07-01T18:54:59.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/01/wordpress-7-0-1-rc1-is-now-available/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.0.1 RC1 is now available",
+      "url": "https://make.wordpress.org/core/2026/07/01/wordpress-7-0-1-rc1-is-now-available/",
+      "publishedAt": "2026-07-01T18:03:33.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/30/dev-chat-agenda-july-1-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – July 1, 2026",
+      "url": "https://make.wordpress.org/core/2026/06/30/dev-chat-agenda-july-1-2026/",
+      "publishedAt": "2026-06-30T21:24:32.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/30/performance-chat-summary-30-june-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 30 June 2026",
+      "url": "https://make.wordpress.org/core/2026/06/30/performance-chat-summary-30-june-2026/",
+      "publishedAt": "2026-06-30T17:49:25.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/30/guidelines-for-syncing-code-from-gutenberg-into-wordpress-develop/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Guidelines for Syncing Code From Gutenberg Into WordPress Develop",
+      "url": "https://make.wordpress.org/core/2026/06/30/guidelines-for-syncing-code-from-gutenberg-into-wordpress-develop/",
+      "publishedAt": "2026-06-30T03:24:39.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/06/29/xpost-wordpress-credits-updates/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: WordPress Credits Updates",
+      "url": "https://make.wordpress.org/core/2026/06/29/xpost-wordpress-credits-updates/",
+      "publishedAt": "2026-06-29T12:11:29.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/06/ai-leaders-graduates/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "The First AI Leaders Graduates",
+      "url": "https://wordpress.org/news/2026/06/ai-leaders-graduates/",
+      "publishedAt": "2026-06-29T20:29:26.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF Chat Fridays: Introducing the ACF Data Store and Block Bindings UI",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "publishedAt": "2026-07-01T21:48:05.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-page-templates/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "How WordPress Page Templates Actually Work",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-page-templates/",
+      "publishedAt": "2026-07-01T08:31:17.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-5-security-release/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.5 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-5-security-release/",
+      "publishedAt": "2026-06-30T16:15:48.000Z"
+    },
+    {
+      "id": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "sourceId": "acf-chat-fridays",
+      "sourceName": "ACF Chat Fridays",
+      "title": "ACF Chat Fridays: Introducing the ACF Data Store and Block Bindings UI",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-introducing-the-acf-data-store-and-block-bindings-ui/",
+      "publishedAt": "2026-07-01T21:48:05.000Z"
+    }
+  ]
+}
