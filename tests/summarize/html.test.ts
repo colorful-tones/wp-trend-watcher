@@ -267,3 +267,32 @@ test("generateIndexPage includes feedback and source suggestion links", async ()
     "index page should include nav-footer",
   );
 });
+
+test("generateHtmlReport links a shared external stylesheet", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
+  const mdPath = join(tmpDir, "2026-06-21.md");
+  await writeFile(mdPath, "# My Report\n\nContent.", "utf8");
+
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+  const css = await readFile(join(tmpDir, "assets", "report.css"), "utf8");
+
+  assert.ok(html.includes('<link rel="stylesheet" href="assets/report.css">'));
+  assert.ok(html.includes('<body class="report-page">'));
+  assert.ok(!html.includes("<style>"));
+  assert.ok(css.includes(".report-header"));
+});
+
+test("generateIndexPage links a shared external stylesheet", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+  const css = await readFile(join(tmpDir, "assets", "report.css"), "utf8");
+
+  assert.ok(html.includes('<link rel="stylesheet" href="assets/report.css">'));
+  assert.ok(html.includes('<body class="report-index">'));
+  assert.ok(!html.includes("<style>"));
+  assert.ok(css.includes(".report-index h1"));
+});
