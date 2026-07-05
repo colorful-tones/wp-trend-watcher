@@ -52,7 +52,7 @@ pnpm doctor          # Check environment readiness before first summarize
 pnpm review          # Review checklist for the latest report
 ```
 
-`pnpm summarize` produces a self-contained HTML report alongside the Markdown file. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
+`pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
@@ -83,6 +83,11 @@ Want to suggest a new RSS source? [Open a source suggestion issue](https://githu
 Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
+
+### 0.4.2
+
+- Changed generated HTML reports and the report index to share `reports/assets/report.css` instead of embedding the full stylesheet in every HTML file.
+- Migrated previously generated report HTML from existing Markdown only, without changing report Markdown or article data.
 
 ### 0.4.1
 
