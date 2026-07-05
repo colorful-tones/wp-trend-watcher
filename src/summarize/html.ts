@@ -1,103 +1,8 @@
-import { readFile, writeFile, readdir } from "node:fs/promises";
+import { mkdir, readFile, writeFile, readdir } from "node:fs/promises";
 import { join, basename, dirname } from "node:path";
 
-/**
- * Minimal CSS for report pages.
- *
- * Single-column, system font stack, dark-on-light readable design.
- */
-const STYLESHEET = `
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
-  color: #1a1a1a;
-  background: #fff;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-h1 { font-size: 1.75rem; margin-bottom: 0.5rem; line-height: 1.3; }
-h2 { font-size: 1.35rem; margin-top: 2rem; margin-bottom: 0.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.25rem; }
-h3 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
-p { margin-bottom: 1rem; }
-ul { margin: 0 0 1rem 1.5rem; }
-li { margin-bottom: 0.35rem; }
-a { color: #0969da; text-decoration: none; }
-a:hover { text-decoration: underline; }
-code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.9em;
-  background: #f0f0f0;
-  padding: 0.15em 0.35em;
-  border-radius: 3px;
-}
-pre {
-  background: #f6f8fa;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 1rem;
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-pre code { background: none; padding: 0; font-size: 0.85em; }
-hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
-strong { font-weight: 600; }
-em { font-style: italic; }
-.meta { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
-
-/* Report header */
-.report-header { border-left: 4px solid #0969da; padding-left: 1rem; margin-bottom: 1.5rem; }
-.report-header h1 { margin-bottom: 0.25rem; border-bottom: none; }
-
-/* Table of contents */
-.toc { background: #f6f8fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
-.toc h2 { margin-top: 0; border-bottom: none; font-size: 1rem; }
-.toc ul { margin-bottom: 0; }
-.toc a { font-size: 0.9rem; }
-
-/* Article Inventory list */
-#article-inventory + ol li { padding: 0.25rem 0; border-bottom: 1px solid #f0f0f0; }
-#article-inventory + ol li:last-child { border-bottom: none; }
-
-/* Build Notes panel */
-#build-notes ~ * { font-size: 0.9rem; color: #555; }
-#build-notes { font-size: 1rem; color: #666; margin-top: 2rem; border-top: 1px solid #e0e0e0; padding-top: 1rem; }
-
-/* Report index page */
-.report-card-grid { display: flex; flex-direction: column; gap: 0.75rem; }
-.report-card {
-  display: block;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.15s;
-}
-.report-card:hover { background: #f6f8fa; border-color: #d0d0d0; }
-.report-card-date { display: block; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.15rem; }
-.report-card-label {
-  display: inline-block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #888;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 0.1em 0.5em;
-}
-
-/* Navigation footer */
-.nav-footer {
-  margin-top: 3rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.9rem;
-  color: #666;
-}
-.nav-footer a { color: #0969da; }
-`.trim();
+const REPORT_STYLESHEET_HREF = "assets/report.css";
+const REPORT_STYLESHEET_SOURCE = new URL("./report.css", import.meta.url);
 
 /**
  * Convert a URL-friendly slug from plain text.
@@ -253,10 +158,24 @@ function dateFromFilename(filePath: string): string {
 }
 
 /**
+ * Copy the shared report stylesheet into the generated reports asset directory.
+ *
+ * @param reportsDir - Directory containing generated report HTML files.
+ * @returns Relative stylesheet href for report-root HTML pages.
+ */
+async function ensureReportStylesheet(reportsDir: string): Promise<string> {
+  const css = await readFile(REPORT_STYLESHEET_SOURCE, "utf8");
+  const assetsDir = join(reportsDir, "assets");
+  await mkdir(assetsDir, { recursive: true });
+  await writeFile(join(assetsDir, "report.css"), css, "utf8");
+  return REPORT_STYLESHEET_HREF;
+}
+
+/**
  * Generate a styled HTML report from a Markdown report file.
  *
- * Reads the Markdown, converts to HTML with inline styles, and writes a
- * self-contained HTML file alongside the original.
+ * Reads the Markdown, converts to HTML, writes the shared stylesheet, and
+ * writes an HTML file alongside the original.
  *
  * @param mdPath - Absolute path to the Markdown report (e.g. reports/2026-06-12.md)
  * @returns Absolute path to the generated HTML file
@@ -264,6 +183,7 @@ function dateFromFilename(filePath: string): string {
 export async function generateHtmlReport(mdPath: string): Promise<string> {
   const md = await readFile(mdPath, "utf8");
   const date = dateFromFilename(mdPath);
+  const stylesheetHref = await ensureReportStylesheet(dirname(mdPath));
   const htmlContent = markdownToHtml(md);
 
   // Extract the h1 heading for the report header
@@ -299,9 +219,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WordPress Trend Report — ${date}</title>
-  <style>${STYLESHEET}</style>
+  <link rel="stylesheet" href="${stylesheetHref}">
 </head>
-<body>
+<body class="report-page">
   ${headerHtml}
   ${tocHtml}
   <div class="report-body">
@@ -328,6 +248,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
  * @returns Absolute path to the generated index.html
  */
 export async function generateIndexPage(reportsDir: string): Promise<string> {
+  const stylesheetHref = await ensureReportStylesheet(reportsDir);
   const files = await readdir(reportsDir);
   const htmlFiles = files
     .filter((f) => f.endsWith(".html") && f !== "index.html")
@@ -367,11 +288,9 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
-  <style>${STYLESHEET}
-h1 { border-bottom: none; }
-  </style>
+  <link rel="stylesheet" href="${stylesheetHref}">
 </head>
-<body>
+<body class="report-index">
   <h1>WP Trend Watcher — Reports</h1>
   <p class="meta">${reportLabel}</p>
   <div class="report-card-grid">
