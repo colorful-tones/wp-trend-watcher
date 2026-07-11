@@ -199,10 +199,10 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   let headerHtml = "";
   let bodyHtml = htmlContent;
   if (h1Match) {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">\n  ${h1Match[0]}\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  ${h1Match[0]}\n</header>`;
     bodyHtml = htmlContent.slice(h1Match.index! + h1Match[0].length).trim();
   } else {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)
@@ -299,7 +299,7 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <link rel="stylesheet" href="${stylesheetHref}">
 </head>
 <body class="report-index">
-  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
+  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
   <h1>WP Trend Watcher — Reports</h1>
   <p class="meta">${reportLabel}</p>
   <div class="report-card-grid">
