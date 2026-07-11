@@ -1,6 +1,6 @@
 {
   "name": "wp-trend-watcher",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "A lightweight, human-reviewed WordPress ecosystem trend watching workflow.",
   "type": "module",
   "private": false,
