@@ -3,6 +3,8 @@ import { join, basename, dirname } from "node:path";
 
 const REPORT_STYLESHEET_HREF = "assets/report.css";
 const REPORT_STYLESHEET_SOURCE = new URL("./report.css", import.meta.url);
+const REPORT_ICON_HREF = "assets/icon.svg";
+const REPORT_ICON_SOURCE = new URL("./icon.svg", import.meta.url);
 
 /**
  * Convert a URL-friendly slug from plain text.
@@ -158,7 +160,8 @@ function dateFromFilename(filePath: string): string {
 }
 
 /**
- * Copy the shared report stylesheet into the generated reports asset directory.
+ * Copy the shared report stylesheet and icon into the generated reports
+ * asset directory.
  *
  * @param reportsDir - Directory containing generated report HTML files.
  * @returns Relative stylesheet href for report-root HTML pages.
@@ -168,6 +171,11 @@ async function ensureReportStylesheet(reportsDir: string): Promise<string> {
   const assetsDir = join(reportsDir, "assets");
   await mkdir(assetsDir, { recursive: true });
   await writeFile(join(assetsDir, "report.css"), css, "utf8");
+
+  // Also copy the icon into the assets directory alongside the stylesheet.
+  const icon = await readFile(REPORT_ICON_SOURCE);
+  await writeFile(join(assetsDir, "icon.svg"), icon);
+
   return REPORT_STYLESHEET_HREF;
 }
 
@@ -191,10 +199,10 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   let headerHtml = "";
   let bodyHtml = htmlContent;
   if (h1Match) {
-    headerHtml = `<header class="report-header">\n  ${h1Match[0]}\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  ${h1Match[0]}\n</header>`;
     bodyHtml = htmlContent.slice(h1Match.index! + h1Match[0].length).trim();
   } else {
-    headerHtml = `<header class="report-header">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)
@@ -291,7 +299,10 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <link rel="stylesheet" href="${stylesheetHref}">
 </head>
 <body class="report-index">
-  <h1>WP Trend Watcher — Reports</h1>
+  <header class="report-header">
+    <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
+    <h1>WP Trend Watcher — Reports</h1>
+  </header>
   <p class="meta">${reportLabel}</p>
   <div class="report-card-grid">
 ${cards}
