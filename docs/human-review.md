@@ -58,7 +58,7 @@ A transparency section that may include:
 
 ## Publishing Rule
 
-Do not publish automatically in Phase 1.
+Do not publish automatically.
 
 The output of the tool is a draft. The public report is a reviewed artifact.
 

@@ -84,6 +84,14 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.4.3
+
+- Repaired flaky auto-days test assertion.
+- Aligned package version with changelog.
+- Corrected README token-cap example.
+- Corrected weekly-workflow auto-window documentation.
+- Removed stale Phase 1 phrasing from active docs.
+
 ### 0.4.2
 
 - Changed generated HTML reports and the report index to share `reports/assets/report.css` instead of embedding the full stylesheet in every HTML file.

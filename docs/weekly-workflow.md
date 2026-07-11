@@ -26,7 +26,7 @@ pnpm collect -- --days 7
 
 Fetches RSS feeds from all configured sources (6 by default: 4 Tier 1 + 2 Tier 2). Filters to articles published in the last 7 days, deduplicates, and writes `data/articles/YYYY-MM-DD/articles.json`.
 
-- Omit `-- --days 7` to collect everything (no date filter).
+- Omit `-- --days 7` to auto-calculate from the most recent report date (falls back to 7 days if no reports exist).
 - Adjust the number for a different window (`-- --days 3`, `-- --days 14`).
 
 ### 3. Summarize
@@ -83,7 +83,7 @@ Regenerates `reports/index.html` independently. Normally `pnpm summarize` alread
 | Step | Command | Requires LLM? | Idempotent? |
 |---|---|---|---|
 | Doctor | `pnpm doctor` | No | Yes |
-| Collect | `pnpm collect -- --days 7` | No | Yes (merges) |
+| Collect | `pnpm collect` (or `-- --days 7` to override) | No | Yes (merges) |
 | Summarize | `pnpm summarize` | Yes | Yes (cached) |
 | Review | `pnpm review` | No | Yes |
 | Regenerate | `pnpm generate-report` | Yes | Yes |
