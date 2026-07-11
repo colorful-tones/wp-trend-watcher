@@ -84,6 +84,13 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.5.0
+
+- Added `pnpm watch` zero-dependency live-reload dev server with SSE browser reload.
+- Added project icon to report headers and index page (flexbox-aligned with h1).
+- Added `pnpm regen-html` command to batch-regenerate all report HTML from existing Markdown — no LLM calls.
+- Refined report CSS: cleaned-up header, horizontal table-of-contents layout, tighter spacing on build notes and footer.
+
 ### 0.4.3
 
 - Repaired flaky auto-days test assertion.

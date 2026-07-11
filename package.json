@@ -1,6 +1,6 @@
 {
   "name": "wp-trend-watcher",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "A lightweight, human-reviewed WordPress ecosystem trend watching workflow.",
   "type": "module",
   "private": false,
@@ -13,7 +13,8 @@
     "review": "tsx src/review/index.ts",
     "test": "tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "watch": "tsx src/dev/watch.ts"
+    "watch": "tsx src/dev/watch.ts",
+    "regen-html": "tsx src/dev/regen-html.ts"
   },
   "keywords": [
     "wordpress",
