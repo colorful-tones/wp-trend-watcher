@@ -12,7 +12,8 @@
     "doctor": "tsx src/doctor/index.ts",
     "review": "tsx src/review/index.ts",
     "test": "tsx --test tests/**/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "watch": "tsx src/dev/watch.ts"
   },
   "keywords": [
     "wordpress",
