@@ -1,0 +1,71 @@
+{
+  "date": "2026-07-11",
+  "collectedAt": "2026-07-11T17:01:14.520Z",
+  "articleCount": 8,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/07/whats-new-for-developers-july-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers (July 2026)",
+      "url": "https://developer.wordpress.org/news/2026/07/whats-new-for-developers-july-2026/",
+      "publishedAt": "2026-07-10T14:17:56.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/08/transitioning-to-rulesets-in-the-gutenberg-repository/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Transitioning To Rulesets In The Gutenberg Repository",
+      "url": "https://make.wordpress.org/core/2026/07/08/transitioning-to-rulesets-in-the-gutenberg-repository/",
+      "publishedAt": "2026-07-08T18:02:03.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/08/dev-chat-agenda-july-8-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – July 8, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/08/dev-chat-agenda-july-8-2026/",
+      "publishedAt": "2026-07-08T02:16:16.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/07/merge-proposal-design-system-theming/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Merge Proposal: Design System Theming",
+      "url": "https://make.wordpress.org/core/2026/07/07/merge-proposal-design-system-theming/",
+      "publishedAt": "2026-07-07T15:31:22.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/07/the-classic-block-stays-in-the-inserter-for-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "The Classic block stays in the inserter for WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/07/the-classic-block-stays-in-the-inserter-for-wordpress-7-1/",
+      "publishedAt": "2026-07-07T06:22:52.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-0-1-maintenance-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0.1 Maintenance Release",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-0-1-maintenance-release/",
+      "publishedAt": "2026-07-09T17:33:42.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/roadmap-7-1-gutenberg-23-5-responsive-styling-migration-to-block-themes-weekend-edition-368/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Roadmap 7.1, Gutenberg 23.5, Responsive Styling, Migration to Block themes — Weekend Edition #368",
+      "url": "https://gutenbergtimes.com/roadmap-7-1-gutenberg-23-5-responsive-styling-migration-to-block-themes-weekend-edition-368/",
+      "publishedAt": "2026-07-11T01:37:00.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-0-1-fixes-registration-spam-wp_kses-css-corruption-and-7-0-admin-design-glitches/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.0.1 Fixes Registration Spam, wp_kses() CSS Corruption, and 7.0 Admin Design Glitches",
+      "url": "https://gutenbergtimes.com/wordpress-7-0-1-fixes-registration-spam-wp_kses-css-corruption-and-7-0-admin-design-glitches/",
+      "publishedAt": "2026-07-10T09:34:45.000Z"
+    }
+  ]
+}
