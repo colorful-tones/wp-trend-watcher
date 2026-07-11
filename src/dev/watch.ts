@@ -15,7 +15,7 @@
 import { watch } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import { join, extname } from "node:path";
+import { join, extname, resolve } from "node:path";
 import { generateIndexPage } from "../summarize/html.js";
 
 const PORT = 3000;
@@ -134,7 +134,15 @@ function handleRequest(req: IncomingMessage, res: ServerResponse): void {
 
   // Route "/" → index.html, everything else → reports/<path>
   const relative = url === "/" ? "/index.html" : url;
-  const filePath = join(REPORTS_DIR, relative);
+  const filePath = resolve(join(REPORTS_DIR, relative));
+
+  // Prevent path traversal: ensure the resolved path stays inside reports/
+  if (!filePath.startsWith(REPORTS_DIR + "/") && filePath !== REPORTS_DIR) {
+    res.writeHead(403);
+    res.end("Forbidden\n");
+    return;
+  }
+
   serveFile(res, filePath);
 }
 
@@ -144,9 +152,11 @@ function handleRequest(req: IncomingMessage, res: ServerResponse): void {
 console.log("[watch] initial CSS refresh…");
 await refreshCss();
 
-// Watch the source CSS for changes
+// Watch the source CSS for changes.
+// Respond to both "change" (overwrite) and "rename" (atomic-save
+// editors that write to a temp file then rename) to catch all editors.
 watch(CSS_SOURCE, async (eventType) => {
-  if (eventType === "change") {
+  if (eventType === "change" || eventType === "rename") {
     console.log("[watch] CSS changed, refreshing…");
     await refreshCss();
   }
