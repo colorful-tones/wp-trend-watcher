@@ -1,8 +1,8 @@
 # Sources
 
-This file defines the Phase 1 source list and source-selection rules.
+This file defines the source list and source-selection rules.
 
-## Phase 1 Source Rules
+## Source Rules
 
 A source belongs in this project if it:
 

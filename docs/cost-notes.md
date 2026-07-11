@@ -4,7 +4,7 @@ WP Trend Watcher should make AI cost visible.
 
 The target is practical usage, not impressive automation.
 
-## Phase 1 Cost Targets
+## Cost Targets
 
 - Personal usage: less than $1/month.
 - Heavier usage: less than $5/month.

@@ -41,7 +41,7 @@ Potential providers may include:
 - Gemini
 - other compatible APIs
 
-Phase 1 should not overbuild provider support. Start with the smallest provider abstraction that allows future swapping.
+Avoid overbuilding provider support. Use the smallest provider abstraction that allows future swapping.
 
 ## Open Source First
 
@@ -59,7 +59,7 @@ Public docs should explain:
 
 Avoid unnecessary architecture until the core workflow proves useful.
 
-Phase 1 avoids:
+This project avoids:
 
 - vector databases
 - embeddings
