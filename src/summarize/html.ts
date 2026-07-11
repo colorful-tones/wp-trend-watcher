@@ -299,8 +299,10 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <link rel="stylesheet" href="${stylesheetHref}">
 </head>
 <body class="report-index">
-  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
-  <h1>WP Trend Watcher — Reports</h1>
+  <header class="report-header">
+    <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
+    <h1>WP Trend Watcher — Reports</h1>
+  </header>
   <p class="meta">${reportLabel}</p>
   <div class="report-card-grid">
 ${cards}
