@@ -39,7 +39,7 @@ pnpm collect           # add -- --days 7 for recent articles
 pnpm summarize         # requires a local LLM endpoint for summarization
 ```
 
-Summarization requires a local LLM provider (see Requirements above). LM Studio users should set `WP_TREND_MAX_TOKENS=*** in `.env` for predictable report generation. The CLI automatically loads `.env` from the project root.
+Summarization requires a local LLM provider (see Requirements above). LM Studio users should set `WP_TREND_MAX_TOKENS=2048` in `.env` for predictable report generation. The CLI automatically loads `.env` from the project root.
 
 ## What This Does
 
