@@ -38,8 +38,9 @@ em { font-style: italic; }
 .meta { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
 
 /* Report header */
-.report-header { border-left: 4px solid #0969da; padding-left: 1rem; margin-bottom: 1.5rem; }
+.report-header { border-left: 4px solid #0969da; padding-left: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
 .report-header h1 { margin-bottom: 0.25rem; border-bottom: none; }
+.report-icon { flex-shrink: 0; }
 
 /* Table of contents */
 .toc { background: #f6f8fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
