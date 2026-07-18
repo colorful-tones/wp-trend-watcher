@@ -12,7 +12,7 @@ import { mkdtemp, writeFile, mkdir, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import http from "node:http";
-import { createReviewServer } from "../../src/review/server.js";
+import { createReviewServer, markdownToHtml } from "../../src/review/server.js";
 import type { Server } from "node:http";
 
 /** Minimal fixture report with a placeholder "What I'm Watching" section. */
@@ -422,6 +422,56 @@ test("GET on save endpoint returns 405", async () => {
   } finally {
     await teardownFixture(fixture);
   }
+});
+
+// --- markdownToHtml link safety ---
+
+test("markdownToHtml strips javascript: links", () => {
+  const result = markdownToHtml("[click me](javascript:alert(1))");
+  assert.ok(!result.includes("<a href"), "should not contain anchor tag");
+  assert.ok(!result.includes("javascript:"), "should not contain javascript URL");
+  assert.ok(result.includes("click me"), "should preserve link text");
+});
+
+test("markdownToHtml strips data: links", () => {
+  const result = markdownToHtml("[text](data:text/html,<script>alert(1)</script>)");
+  assert.ok(!result.includes("<a href"), "should not contain anchor tag");
+  assert.ok(!result.includes("data:"), "should not contain data URL");
+  assert.ok(result.includes("text"), "should preserve link text");
+});
+
+test("markdownToHtml strips vbscript: links", () => {
+  const result = markdownToHtml("[text](vbscript:msgbox(1))");
+  assert.ok(!result.includes("<a href"), "should not contain anchor tag");
+  assert.ok(!result.includes("vbscript:"), "should not contain vbscript URL");
+  assert.ok(result.includes("text"), "should preserve link text");
+});
+
+test("markdownToHtml strips unsafe links case-insensitively", () => {
+  const result = markdownToHtml("[text](JAVASCRIPT:alert(1))");
+  assert.ok(!result.includes("<a href"), "should not contain anchor tag");
+  assert.ok(!result.includes("JAVASCRIPT:"), "should not contain javascript URL");
+  assert.ok(result.includes("text"), "should preserve link text");
+});
+
+test("markdownToHtml preserves safe https: links", () => {
+  const result = markdownToHtml("[safe](https://example.com)");
+  assert.ok(result.includes('<a href="https://example.com"'), "should keep the anchor");
+  assert.ok(result.includes("safe"), "should keep link text");
+});
+
+test("markdownToHtml preserves safe http: links", () => {
+  const result = markdownToHtml("[safe](http://example.com)");
+  assert.ok(result.includes('<a href="http://example.com"'), "should keep the anchor");
+  assert.ok(result.includes("safe"), "should keep link text");
+});
+
+test("markdownToHtml handles mixed safe and unsafe links", () => {
+  const md = "- [good](https://ok.com) and [bad](javascript:evil) in one line";
+  const result = markdownToHtml(md);
+  assert.ok(result.includes('<a href="https://ok.com"'), "keeps safe link");
+  assert.ok(!result.includes("javascript:"), "strips unsafe link");
+  assert.ok(result.includes("bad"), "preserves unsafe link text");
 });
 
 // --- Server binding protection ---

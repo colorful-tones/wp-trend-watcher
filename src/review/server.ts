@@ -194,7 +194,14 @@ export function markdownToHtml(md: string): string {
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.+?)\*/g, "<em>$1</em>")
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      .replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        (_m: string, linkText: string, url: string) => {
+          const unsafe = /^(javascript:|data:|vbscript:)/i;
+          if (unsafe.test(url)) return linkText;
+          return `<a href="${url}">${linkText}</a>`;
+        },
+      );
   }
 
   while (i < lines.length) {

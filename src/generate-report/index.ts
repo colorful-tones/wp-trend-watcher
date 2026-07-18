@@ -148,7 +148,7 @@ async function main(): Promise<void> {
     console.warn(`Warning: HTML report generation failed: ${message}`);
   }
 
-  // 6. Regenerate index page (non-blocking)
+  // 8. Regenerate index page (non-blocking)
   try {
     const reportsDir = join(process.cwd(), "reports");
     const indexPath = await generateIndexPage(reportsDir);
