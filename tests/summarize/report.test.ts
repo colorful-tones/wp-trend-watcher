@@ -488,3 +488,209 @@ test("assembleReport removes model-generated h2 Article Inventory", () => {
   assert.ok(report.includes("## Emerging Trends"));
   assert.ok(report.includes("## Developer Implications"));
 });
+
+// --- Preservation of human-authored "What I'm Watching" content ---
+
+test("assembleReport preserves human-authored content from existing same-date report", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  // An existing report where the human already wrote observations
+  const existingReport = `# WordPress Trend Report — 2026-06-20
+
+## Weekly Summary
+
+### Article Inventory
+
+1. [Test Article](https://example.com/1) (Test Source) — Test takeaway.
+
+### Emerging Trends
+
+None.
+
+### Developer Implications
+
+None.
+
+---
+
+## What I'm Watching
+
+The design system proposal is worth monitoring closely.
+
+---
+
+## Source Articles
+
+### Test Source
+- [Test Article](https://example.com/1) — 6/15/2026
+
+---
+
+## Build Notes
+- Model: stub/test-model
+- Tokens: 200 prompt + 100 completion
+`;
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null, // no previous report
+    existingReport, // same-date existing report with human content
+  );
+
+  assert.ok(report.includes("The design system proposal is worth monitoring closely."));
+  assert.ok(!report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport does not preserve placeholder content from existing report", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  // An existing report that still has only the placeholder
+  const existingReport = `# WordPress Trend Report — 2026-06-20
+
+## What I'm Watching
+
+<!-- Human-authored: add your observations here -->
+
+---
+
+## Source Articles
+`;
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null,
+    existingReport,
+  );
+
+  assert.ok(report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport generates fresh placeholder when no existing report provided", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null, // no previous report
+    null, // no existing report
+  );
+
+  assert.ok(report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport preserves multiline human content from existing report", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  const existingReport = `# WordPress Trend Report — 2026-06-20
+
+## What I'm Watching
+
+- First observation about the merge proposal.
+- Second thought on the release schedule.
+- Third note about testing windows.
+
+---
+
+## Source Articles
+`;
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null,
+    existingReport,
+  );
+
+  assert.ok(report.includes("- First observation about the merge proposal."));
+  assert.ok(report.includes("- Second thought on the release schedule."));
+  assert.ok(report.includes("- Third note about testing windows."));
+  assert.ok(!report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport does not carry forward content from a different report date", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  // A report from a DIFFERENT date — should NOT be treated as same-date existing
+  // The function only preserves from existingReportMd param, which is specifically
+  // the same-date report.  A different date's content would never be passed as
+  // existingReportMd.
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null, // previous report (different date) — handled via Since Last Report
+    null, // no same-date existing report — uses fresh placeholder
+  );
+
+  // Should get the default placeholder since no same-date existing report
+  assert.ok(report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport treats existing TODO as placeholder (not preserved)", () => {
+  const articles = [makeArticle()];
+  const summaries = [makeSummary()];
+  const synthesis = "### Article Inventory\n\n1. Test.\n\n### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.";
+
+  const existingReport = `# WordPress Trend Report — 2026-06-20
+
+## What I'm Watching
+
+TODO: fill this in later
+
+---
+
+## Source Articles
+`;
+
+  const report = assembleReport(
+    "2026-06-20",
+    articles,
+    synthesis,
+    summaries,
+    stubProvider,
+    200,
+    100,
+    null,
+    existingReport,
+  );
+
+  assert.ok(report.includes("Human-authored: add your observations here"));
+  assert.ok(!report.includes("TODO: fill this in later"));
+});

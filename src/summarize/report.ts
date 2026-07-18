@@ -6,6 +6,10 @@ import {
   parseReportTopics,
   buildSinceLastReportSection,
 } from "./report-comparison.js";
+import {
+  findWatchingSection,
+  isPlaceholderContent,
+} from "../review/report-edit.js";
 
 // --- Types ---
 
@@ -296,6 +300,10 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * When a previous report is provided, a "## Since Last Report" section is
  * inserted highlighting continued, new, and dropped topics.
  *
+ * When an existing same-date report is provided and contains a non-placeholder
+ * "What I'm Watching" section, that content is preserved in the assembled
+ * report instead of the generated placeholder.
+ *
  * @param date - Report date in YYYY-MM-DD format
  * @param articles - All collected articles
  * @param synthesis - LLM-generated synthesis text
@@ -304,6 +312,7 @@ function stripGeneratedArticleInventory(synthesis: string): string {
  * @param totalPromptTokens - Cumulative prompt tokens across all LLM calls
  * @param totalCompletionTokens - Cumulative completion tokens across all LLM calls
  * @param previousReportMd - Full Markdown of the previous report (if any)
+ * @param existingReportMd - Full Markdown of the same-date report (if any), used to preserve human-authored content
  * @returns Assembled Markdown report string
  */
 export function assembleReport(
@@ -315,6 +324,7 @@ export function assembleReport(
   totalPromptTokens: number,
   totalCompletionTokens: number,
   previousReportMd?: string | null,
+  existingReportMd?: string | null,
 ): string {
   const articleInventory = buildArticleInventorySection(summaries);
   const synthesisWithoutInventory = stripGeneratedArticleInventory(synthesis);
@@ -366,6 +376,17 @@ export function assembleReport(
     }
   }
 
+  // Preserve existing human-authored "What I'm Watching" content when
+  // regenerating a report for the same date. Only carry forward
+  // non-placeholder content from a same-date existing report.
+  let watchingContent = "<!-- Human-authored: add your observations here -->";
+  if (existingReportMd) {
+    const existingSection = findWatchingSection(existingReportMd);
+    if (existingSection && !isPlaceholderContent(existingSection.body)) {
+      watchingContent = existingSection.body;
+    }
+  }
+
   return `# WordPress Trend Report — ${date}
 
 ${weeklySummary}${sinceLastReportBlock}
@@ -373,7 +394,8 @@ ${weeklySummary}${sinceLastReportBlock}
 ---
 
 ## What I'm Watching
-<!-- Human-authored: add your observations here -->
+
+${watchingContent}
 
 ---
 

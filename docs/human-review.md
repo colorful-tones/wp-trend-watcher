@@ -35,6 +35,18 @@ Before publishing a report:
 - Cost and review time should be listed.
 - Uncertainty should be stated clearly.
 
+## Local Review Server
+
+The `pnpm weekly` command starts a local review server at http://127.0.0.1:3001/review after running the automated pipeline. The review page displays:
+
+- Automated review checks (Weekly Summary, source references, weasel words, Build Notes, What I'm Watching, markdown links, HTML report presence)
+- A rendered preview of the report
+- An editable textarea for the "What I'm Watching" section
+
+Saving your observations via the review page updates the canonical Markdown report atomically and regenerates the matching HTML. Press Ctrl-C to stop the server when you're done reviewing.
+
+You can also review the report manually in your editor — the Markdown file at `reports/YYYY-MM-DD.md` is the canonical source of truth. The review server is an optional convenience, not a required step.
+
 ## Human-Authored Sections
 
 Each report should include:
