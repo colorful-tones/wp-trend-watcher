@@ -1,0 +1,130 @@
+{
+  "date": "2026-07-19",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3-14b",
+  "articleCount": 12,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/",
+      "title": "On-brand maintenance mode for WordPress Block Themes",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/",
+      "summary": "WordPress block themes can now use the Site Editor to create and manage a custom, on-brand maintenance mode page without code changes. A hook in functions.php directs WordPress to look for a template named \"Maintenance\" in the database, ensuring logged-in users bypass it. For SEO, adding temporary unavailability headers helps search engines understand the downtime is brief.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1129,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/",
+      "title": "Performance Chat Summary: 14 July 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/",
+      "summary": "The July 14, 2026 Performance Chat discussed proposals for environment variables to control WordPress features like Speculative Loading and Realtime Collaboration, with emphasis on host manageability. A PR for WordPress 7.1 aims to let hosting providers adjust default behavior without mu-plugins, and the next chat is scheduled for July 28, 2026 at 16:00 UTC.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 779,
+      "completionTokens": 85
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/",
+      "title": "Dev Chat Agenda – July 14, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/",
+      "summary": "The WordPress Developers Chat on July 14, 2026, will focus on upcoming releases and include an open floor for discussions. WordPress 7.1 Beta 1 is set to release on July 15, with a dev note highlighting consistent navigation via a persistent toolbar.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 905,
+      "completionTokens": 60
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/",
+      "title": "X-post: Hardening GitHub Actions workflows across the WordPress organisation",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/",
+      "summary": "The WordPress organisation has been hardening GitHub Actions workflows to prevent supply chain attacks by tightening permissions, removing unsafe expressions, and introducing tools like Actionlint and Zizmor. Key changes include archiving unmaintained repos, scoping permissions minimally, and documenting supply chain workflows in the HackerOne bug bounty program.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1057,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/",
+      "title": "Consistent navigation in WordPress 7.1 with persistent toolbar",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/",
+      "summary": "WordPress 7.1 introduces a persistent toolbar in the editor and admin interface to improve navigation consistency, replacing the site icon with a dedicated back button and ensuring each toolbar icon has a single, clear function. Developers should check if their plugins' toolbar nodes work correctly in the Site Editor and use screen checks to conditionally hide them if needed.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1090,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-0-2-release/",
+      "title": "WordPress 7.0.2 Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-0-2-release/",
+      "summary": "WordPress 7.0.2 is a security release addressing one critical and one high severity vulnerability, with forced auto-updates enabled for affected sites. The release includes fixes for a SQL injection issue and a REST API vulnerability leading to Remote Code Execution, with CVE identifiers CVE-2026-60137 and CVE-2026-63030. Backports for WordPress 6.9, 6.8, and 7.1 beta2 have also been released with corresponding security fixes.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 826,
+      "completionTokens": 110
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/",
+      "title": "WordPress 7.1 Beta 1",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/",
+      "summary": "WordPress 7.1 Beta 1 is available for testing, with a final release scheduled for August 19, 2026. Key updates include enhanced styling controls, improved media handling, and a more personalized admin experience, along with new Notes features supporting inline formatting, @mentions, and flexible note placement. Developers can test the beta using plugins, direct download, WP-CLI, or the WordPress Playground.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1052,
+      "completionTokens": 86
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/07/wcus-2026-guide/",
+      "title": "Your Guide to WordCamp US 2026",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/07/wcus-2026-guide/",
+      "summary": "WordCamp US 2026 will take place August 16–19, 2026, in Phoenix, Arizona, featuring four tracks including AI, Technical WordPress, and beginner-focused sessions. Contributor Day precedes the event, offering opportunities to contribute directly to WordPress core and related projects. Showcase Day highlights real-world WordPress implementations from major organizations, while the main conference days explore AI integration, development workflows, and business practices.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1002,
+      "completionTokens": 91
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-6/",
+      "title": "ACF 6.8.6",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-6/",
+      "summary": "ACF 6.8.6 includes several bug fixes, such as preventing double-encoding of Google Maps field values and improving field appearance on WordPress 7.0+. The update also ensures ACF fields save correctly with WooCommerce orders in HPOS compatibility mode.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 432,
+      "completionTokens": 54
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/",
+      "title": "#WCUS Schedule, iframed Post Editor, WooCommerce 11.0 and so much more — Weekend Edition 369",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/",
+      "summary": "WordCamp US 2026 will take place August 16–19 in Phoenix, featuring four tracks, three workshops, and 34 confirmed speakers. The first speaker lineup includes notable developers, educators, and community leaders, with sessions on AI, technical WordPress, and beginner topics. WooCommerce 11.0 is scheduled for release in about 10 days, introducing performance improvements like product object caching and removing the Product Editor beta. The iframed Post Editor in Gutenberg allows for embedding external editors within WordPress, and WordPress 7.1 Beta 1 is available for testing with persistent toolbar navigation and the Classic block remaining in the inserter. Security updates include WordPress 7.0.2, which should be applied immediately to production sites.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1222,
+      "completionTokens": 156
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/",
+      "title": "The post editor is going full iframe: what block developers need to know before WordPress 7.1",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/",
+      "summary": "WordPress 7.1 will enforce an iframe for the post editor, affecting all themes and blocks regardless of their apiVersion. Block developers must update their block.json to use apiVersion 3 and ensure their blocks don't rely on the global document or window, as the iframe changes where code runs versus where markup lives. The timeline shows enforcement begins in WordPress 7.1, with earlier versions providing warnings and partial enforcement based on inserted blocks.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1165,
+      "completionTokens": 90
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-132/",
+      "title": "Gutenberg Changelog #132 – Proposals for Core, Calls for Testing, WordPress 7.1 and Gutenberg 23.4 and 23.5",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-132/",
+      "summary": "WordPress 7.1 and Gutenberg 23.4/23.5 updates include core proposals like Core Abilities for AI agents, the Knowledge post type, and Design System Theming with CSS variables. The post editor will be iframed by WordPress 7.0, with preparation starting in November 2025. Gutenberg 23.4 adds auto-generated block documentation, and 23.5 introduces grid layout properties. The Classic Block remains in the inserter for WordPress 7.1, and React 19 is temporarily reverted in Gutenberg. Community testing is encouraged for features like responsive styling and media editing.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1184,
+      "completionTokens": 131
+    }
+  ],
+  "totalPromptTokens": 11843,
+  "totalCompletionTokens": 1066
+}
