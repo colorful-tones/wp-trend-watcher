@@ -2,13 +2,19 @@
 
 The sequence of commands to go from zero to a published weekly report.
 
-## Prerequisites
+## Quick Start (Recommended)
 
-- [Requirements](../README.md#requirements) met (Node 22, pnpm 11, Corepack, LLM provider)
-- `.env` configured with your provider settings (see [Summarization](summarization.md))
-- `sources.yaml` in place (copy from `sources.example.yaml` if you haven't yet)
+```bash
+pnpm weekly
+```
 
-## The Sequence
+Runs the entire pipeline in one command: doctor → collect → summarize → review → opens a local review page. After reviewing and saving your observations, press Ctrl-C to stop the server.
+
+Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
+
+Individual commands below remain available for diagnosis and recovery.
+
+## Step-by-Step Commands
 
 ### 1. Doctor Check
 

@@ -107,7 +107,20 @@ async function main(): Promise<void> {
     // No previous report available — comparison section will be omitted
   }
 
-  // 4. Assemble and write report
+  // 5. Load existing same-date report for preservation (non-blocking)
+  let existingReportMd: string | null = null;
+  try {
+    const existingPath = join(
+      process.cwd(),
+      "reports",
+      `${articlesData.date}.md`,
+    );
+    existingReportMd = await readFile(existingPath, "utf8");
+  } catch {
+    // No existing report for this date — use fresh placeholder
+  }
+
+  // 6. Assemble and write report
   const report = assembleReport(
     articlesData.date,
     articlesData.articles,
@@ -117,6 +130,7 @@ async function main(): Promise<void> {
     cachedPromptTokens + synthesisPromptTokens,
     cachedCompletionTokens + synthesisCompletionTokens,
     previousReportMd,
+    existingReportMd,
   );
 
   const outputPath = join(process.cwd(), "reports", `${articlesData.date}.md`);
@@ -125,7 +139,7 @@ async function main(): Promise<void> {
 
   console.log(`Report written: ${outputPath}`);
 
-  // 5. Generate HTML report (non-blocking — warn on failure)
+  // 7. Generate HTML report (non-blocking — warn on failure)
   try {
     const htmlPath = await generateHtmlReport(outputPath);
     console.log(`HTML report written: ${htmlPath}`);
@@ -134,7 +148,7 @@ async function main(): Promise<void> {
     console.warn(`Warning: HTML report generation failed: ${message}`);
   }
 
-  // 6. Regenerate index page (non-blocking)
+  // 8. Regenerate index page (non-blocking)
   try {
     const reportsDir = join(process.cwd(), "reports");
     const indexPath = await generateIndexPage(reportsDir);

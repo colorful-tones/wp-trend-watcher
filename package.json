@@ -11,6 +11,7 @@
     "index-page": "tsx src/summarize/index-page.ts",
     "doctor": "tsx src/doctor/index.ts",
     "review": "tsx src/review/index.ts",
+    "weekly": "tsx src/weekly/index.ts",
     "test": "tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit",
     "watch": "tsx src/dev/watch.ts",

@@ -50,7 +50,14 @@ pnpm generate-report # Regenerate the report from saved article summaries
 pnpm index-page      # Regenerate the reports index.html listing page
 pnpm doctor          # Check environment readiness before first summarize
 pnpm review          # Review checklist for the latest report
+pnpm weekly          # Run the full weekly workflow (doctor → collect → summarize → review → review server)
 ```
+
+`pnpm weekly` is the recommended single-command workflow. It runs doctor, collect, summarize, and review sequentially, then starts a local review server at http://127.0.0.1:3001/review where you can view automated checks, read the rendered report, and save your "What I'm Watching" observations. Saved edits update both the canonical Markdown report and regenerated HTML. Press Ctrl-C to stop the server when you're done.
+
+Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
+
+Individual commands remain available for diagnosis and recovery — for example, running `pnpm collect` or `pnpm summarize` separately when you only need that step.
 
 `pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
@@ -83,6 +90,18 @@ Want to suggest a new RSS source? [Open a source suggestion issue](https://githu
 Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
+
+### 0.6.0
+
+- Added `pnpm weekly` single-command workflow: doctor → collect → summarize → review → local review server.
+- Added localhost-only review server (http://127.0.0.1:3001/review) for browser-based human review.
+- Review page displays automated checks, rendered report, and an editable "What I'm Watching" textarea.
+- Saving via the review page updates the canonical Markdown report and regenerates matching HTML atomically.
+- Human-authored "What I'm Watching" content is now preserved during same-date report regeneration (`pnpm summarize` and `pnpm generate-report`).
+- Added pure Markdown section helpers (`src/review/report-edit.ts`) for extracting and replacing the "What I'm Watching" section.
+- New `docs/human-review.md` updated to mention the local review page.
+- Added 36 new tests for report editing, preservation behaviour, and review server request handling.
+- No new runtime dependencies — uses Node.js native HTTP server.
 
 ### 0.5.0
 

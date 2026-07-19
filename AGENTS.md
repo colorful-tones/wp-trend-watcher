@@ -10,15 +10,15 @@ Read a file before editing it. Understand existing patterns, types, and conventi
 
 Write AI-facing project materials into `.ai/`, which is symlinked to the project's Obsidian vault folder. This includes implementation plans, research notes, task lists, execution logs, decisions, review notes, and other AI collaboration-style Markdown files.
 
-Do not create new planning or notes directories such as `.hermes/plans/` inside this repo. Use the existing `.ai/` structure instead, such as `.ai/phase-N/PLAN.md` for phase plans and `.ai/reference/` for reusable collaboration guidance.
+New implementation plans belong in `.ai/Plans/` and should use descriptive filenames such as `.ai/Plans/Weekly Review Workflow.md`. Do not create new planning or notes directories such as `.hermes/plans/` inside this repo, and do not organize new work under `phase-[n]/` folders. Existing phase folders are historical records only.
 
 ## Project Direction
 
-WP Trend Watcher is in Phase 3. The current goal is to keep the weekly WordPress trend-report workflow boring, local-first, reviewable, and easy for other people to run.
+WP Trend Watcher is in active enhancement planning. The current goal is to keep the weekly WordPress trend-report workflow boring, local-first, reviewable, and easy for other people to run.
 
 Do not add dashboards, autonomous publishing, scheduled/social automation, embeddings, vector storage, complex plugin systems, or a database unless explicitly directed. Preserve file-based storage and the small TypeScript pipeline. Prefer improvements that make provider setup, source management, diagnostics, review, reporting, and release polish clearer without changing the core workflow.
 
-The package is currently `0.2.8`. Expected scripts include `collect`, `summarize`, `generate-report`, `index-page`, `doctor`, `review`, `test`, and `typecheck`.
+The package is currently `0.5.0`. Expected scripts include `collect`, `summarize`, `generate-report`, `index-page`, `doctor`, `review`, `test`, and `typecheck`. New commands should be documented in the README and the active plan under `.ai/Plans/`.
 
 ## Package Manager
 
