@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress Trend Report — 2026-07-19</title>
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body class="report-page">
+  <header class="report-header">
+  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
+  <h1 id="wordpress-trend-report-2026-07-19">WordPress Trend Report — 2026-07-19</h1>
+</header>
+  <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+  <div class="report-body">
+  <h2 id="weekly-summary">Weekly Summary</h2>
+<h3 id="article-inventory">Article Inventory</h3>
+<ol>
+<li><a href="https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/">On-brand maintenance mode for WordPress Block Themes</a> (WordPress Developer Blog) — WordPress block themes can now use the Site Editor to create and manage a custom, on-brand maintenance mode page without code changes.</li>
+<li><a href="https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/">Performance Chat Summary: 14 July 2026</a> (Make Core) — The July 14, 2026 Performance Chat discussed proposals for environment variables to control WordPress features like Speculative Loading and Realtime Collaboration, with emphasis on host manageability.</li>
+<li><a href="https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/">Dev Chat Agenda – July 14, 2026</a> (Make Core) — The WordPress Developers Chat on July 14, 2026, will focus on upcoming releases and include an open floor for discussions.</li>
+<li><a href="https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/">X-post: Hardening GitHub Actions workflows across the WordPress organisation</a> (Make Core) — The WordPress organisation has been hardening GitHub Actions workflows to prevent supply chain attacks by tightening permissions, removing unsafe expressions, and introducing tools like Actionlint and Zizmor.</li>
+<li><a href="https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/">Consistent navigation in WordPress 7.1 with persistent toolbar</a> (Make Core) — WordPress 7.1 introduces a persistent toolbar in the editor and admin interface to improve navigation consistency, replacing the site icon with a dedicated back button and ensuring each toolbar icon has a single, clear function.</li>
+<li><a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release/">WordPress 7.0.2 Release</a> (WordPress.org News) — WordPress 7.0.2 is a security release addressing one critical and one high severity vulnerability, with forced auto-updates enabled for affected sites.</li>
+<li><a href="https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/">WordPress 7.1 Beta 1</a> (WordPress.org News) — WordPress 7.1 Beta 1 is available for testing, with a final release scheduled for August 19, 2026.</li>
+<li><a href="https://wordpress.org/news/2026/07/wcus-2026-guide/">Your Guide to WordCamp US 2026</a> (WordPress.org News) — WordCamp US 2026 will take place August 16–19, 2026, in Phoenix, Arizona, featuring four tracks including AI, Technical WordPress, and beginner-focused sessions.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-6/">ACF 6.8.6</a> (ACF Blog) — ACF 6.8.6 includes several bug fixes, such as preventing double-encoding of Google Maps field values and improving field appearance on WordPress 7.0+.</li>
+<li><a href="https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/">#WCUS Schedule, iframed Post Editor, WooCommerce 11.0 and so much more — Weekend Edition 369</a> (Gutenberg Times) — WordCamp US 2026 will take place August 16–19 in Phoenix, featuring four tracks, three workshops, and 34 confirmed speakers.</li>
+<li><a href="https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/">The post editor is going full iframe: what block developers need to know before WordPress 7.1</a> (Gutenberg Times) — WordPress 7.1 will enforce an iframe for the post editor, affecting all themes and blocks regardless of their apiVersion.</li>
+<li><a href="https://gutenbergtimes.com/podcast/gutenberg-changelog-132/">Gutenberg Changelog #132 – Proposals for Core, Calls for Testing, WordPress 7.1 and Gutenberg 23.4 and 23.5</a> (Gutenberg Times) — WordPress 7.1 and Gutenberg 23.4/23.5 updates include core proposals like Core Abilities for AI agents, the Knowledge post type, and Design System Theming with CSS variables.</li>
+</ol>
+<h3 id="emerging-trends">Emerging Trends  </h3>
+<p>WordPress 7.1 is a major focus across multiple sources, with Beta 1 now available for testing and scheduled for release on August 19, 2026. Key changes include a persistent toolbar for consistent navigation, enhanced styling controls, improved media handling, and new Notes features with inline formatting and @mentions. Additionally, the post editor will be fully iframed starting in WordPress 7.1, a change that affects all themes and blocks regardless of their <code>apiVersion</code>. This shift is part of broader release planning, with preparation for the iframe transition starting in November 2025.  </p>
+<p>The WordPress core team is also working on proposals for environment variables to control features like Speculative Loading and Realtime Collaboration, emphasizing host manageability during the July 14 Performance Chat. Security remains a priority, as evidenced by WordPress 7.0.2 addressing critical vulnerabilities with forced auto-updates for affected sites, including fixes for SQL injection and REST API issues.  </p>
+<p>WordCamp US 2026 is another recurring theme, with confirmed dates of August 16–19 in Phoenix and a focus on tracks like AI, Technical WordPress, and beginner-focused sessions.  </p>
+<h3 id="developer-implications">Developer Implications  </h3>
+<p>Freelance and agency developers should prioritize testing WordPress 7.1 Beta 1, which is available for download via plugins, direct download, WP-CLI, or the WordPress Playground. The iframe transition in the post editor requires immediate attention: block developers must update their <code>block.json</code> files to use <code>apiVersion 3</code> and ensure their blocks do not rely on the global document or window. This change will be enforced in WordPress 7.1, with earlier versions providing warnings and partial enforcement based on inserted blocks.  </p>
+<p>Developers should also review their plugins for compatibility with the persistent toolbar introduced in WordPress 7.1, ensuring that toolbar nodes function correctly within the Site Editor and using screen checks to conditionally hide them when necessary.  </p>
+<p>Security updates in WordPress 7.0.2, including fixes for CVE-2026-60137 and CVE-2026-63030, require immediate action. Sites running affected versions should apply the forced auto-updates and backports for WordPress 6.9, 6.8, and 7.1 beta2 to mitigate risks.  </p>
+<p>For those working with Advanced Custom Fields (ACF), upgrading to ACF 6.8.6 is recommended, as it includes bug fixes that prevent double-encoding of Google Maps field values and improves appearance on WordPress 7.0+.  </p>
+<p>WordPress core developers should monitor the ongoing discussions around environment variables for features like Speculative Loading and Realtime Collaboration, as these may impact how certain WordPress behaviors are configured in different hosting environments.  </p>
+<p>Finally, developers should consider attending WordCamp US 2026 for insights into upcoming trends and tools, particularly in AI integration, technical WordPress development, and new Gutenberg features like grid layout properties and auto-generated block documentation.</p>
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/">On-brand maintenance mode for WordPress Block Themes</a> (WordPress Developer Blog) — WordPress block themes can now use the Site Editor to create and manage a custom, on-brand maintenance mode page without code changes.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/">Performance Chat Summary: 14 July 2026</a> (Make Core) — The July 14, 2026 Performance Chat discussed proposals for environment variables to control WordPress features like Speculative Loading and Realtime Collaboration, with emphasis on host manageability.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/">Dev Chat Agenda – July 14, 2026</a> (Make Core) — The WordPress Developers Chat on July 14, 2026, will focus on upcoming releases and include an open floor for discussions.</li>
+</ul>
+<hr>
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p><strong><a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release/">WordPress 7.0.2 Release</a> (7/17/2026) is a security release, and it is highly encouraged you update ASAP (if forced auto-update did not do it).</strong></p>
+<p>WordPress 7.1 Beta 1 is ready for testing. Testing instructions are included in <a href="https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/">the announcement post</a>. I would encourage folks to review the <a href="https://make.wordpress.org/test/2026/07/03/call-for-testing-responsive-styling/">Call for Testing: Responsive Styling</a>. Test these features and provide your critical feedback. Folks have been asking for responsive styling for years and now that they're being actively developed it is important to make them top notch.</p>
+<p>See ya next week! 👋</p>
+<hr>
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="wordpress-developer-blog">WordPress Developer Blog</h3>
+<ul>
+<li><a href="https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/">On-brand maintenance mode for WordPress Block Themes</a> — 7/13/2026</li>
+</ul>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/">Performance Chat Summary: 14 July 2026</a> — 7/14/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/">Dev Chat Agenda – July 14, 2026</a> — 7/14/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/">X-post: Hardening GitHub Actions workflows across the WordPress organisation</a> — 7/13/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/">Consistent navigation in WordPress 7.1 with persistent toolbar</a> — 7/13/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release/">WordPress 7.0.2 Release</a> — 7/17/2026</li>
+<li><a href="https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/">WordPress 7.1 Beta 1</a> — 7/15/2026</li>
+<li><a href="https://wordpress.org/news/2026/07/wcus-2026-guide/">Your Guide to WordCamp US 2026</a> — 7/13/2026</li>
+</ul>
+<h3 id="acf-blog">ACF Blog</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-6/">ACF 6.8.6</a> — 7/14/2026</li>
+</ul>
+<h3 id="gutenberg-times">Gutenberg Times</h3>
+<ul>
+<li><a href="https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/">#WCUS Schedule, iframed Post Editor, WooCommerce 11.0 and so much more — Weekend Edition 369</a> — 7/18/2026</li>
+<li><a href="https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/">The post editor is going full iframe: what block developers need to know before WordPress 7.1</a> — 7/17/2026</li>
+<li><a href="https://gutenbergtimes.com/podcast/gutenberg-changelog-132/">Gutenberg Changelog #132 – Proposals for Core, Calls for Testing, WordPress 7.1 and Gutenberg 23.4 and 23.5</a> — 7/12/2026</li>
+</ul>
+<hr>
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 12</li>
+<li>Sources: WordPress Developer Blog, Make Core, WordPress.org News, ACF Blog, Gutenberg Times</li>
+<li>Model: openai-compatible/qwen/qwen3-14b</li>
+<li>Tokens: 13566 prompt + 1685 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~15 minutes</li>
+</ul>
+</div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+  </footer>
+</body>
+</html>

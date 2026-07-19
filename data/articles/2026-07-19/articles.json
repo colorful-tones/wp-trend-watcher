@@ -1,0 +1,103 @@
+{
+  "date": "2026-07-19",
+  "collectedAt": "2026-07-19T12:33:17.511Z",
+  "articleCount": 12,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "On-brand maintenance mode for WordPress Block Themes",
+      "url": "https://developer.wordpress.org/news/2026/07/on-brand-maintenance-mode-for-wordpress-block-themes/",
+      "publishedAt": "2026-07-13T11:22:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 14 July 2026",
+      "url": "https://make.wordpress.org/core/2026/07/14/performance-chat-summary-14-july-2026/",
+      "publishedAt": "2026-07-14T17:09:08.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – July 14, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/14/dev-chat-agenda-july-14-2026/",
+      "publishedAt": "2026-07-14T05:08:43.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Hardening GitHub Actions workflows across the WordPress organisation",
+      "url": "https://make.wordpress.org/core/2026/07/13/xpost-hardening-github-actions-workflows-across-the-wordpress-organisation/",
+      "publishedAt": "2026-07-13T21:30:51.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Consistent navigation in WordPress 7.1 with persistent toolbar",
+      "url": "https://make.wordpress.org/core/2026/07/13/consistent-navigation-in-wordpress-7-1-with-persistent-toolbar/",
+      "publishedAt": "2026-07-13T10:58:16.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-0-2-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0.2 Release",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-0-2-release/",
+      "publishedAt": "2026-07-17T18:45:54.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1 Beta 1",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-1/",
+      "publishedAt": "2026-07-15T15:53:33.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wcus-2026-guide/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Your Guide to WordCamp US 2026",
+      "url": "https://wordpress.org/news/2026/07/wcus-2026-guide/",
+      "publishedAt": "2026-07-13T13:07:07.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-6/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.6",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-6/",
+      "publishedAt": "2026-07-14T20:58:09.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "#WCUS Schedule, iframed Post Editor, WooCommerce 11.0 and so much more — Weekend Edition 369",
+      "url": "https://gutenbergtimes.com/wcus-schedule-iframed-post-editor-woocommerce-11-0-and-so-much-more-weekend-edition-369/",
+      "publishedAt": "2026-07-18T13:15:22.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "The post editor is going full iframe: what block developers need to know before WordPress 7.1",
+      "url": "https://gutenbergtimes.com/the-post-editor-is-going-full-iframe-what-block-developers-need-to-know-before-wordpress-7-1/",
+      "publishedAt": "2026-07-17T16:21:43.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-132/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Gutenberg Changelog #132 – Proposals for Core, Calls for Testing, WordPress 7.1 and Gutenberg 23.4 and 23.5",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-132/",
+      "publishedAt": "2026-07-12T10:57:10.000Z"
+    }
+  ]
+}
