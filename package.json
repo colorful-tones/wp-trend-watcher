@@ -1,6 +1,6 @@
 {
   "name": "wp-trend-watcher",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "description": "A lightweight, human-reviewed WordPress ecosystem trend watching workflow.",
   "type": "module",
   "private": false,
@@ -27,10 +27,12 @@
   "license": "MIT",
   "dependencies": {
     "js-yaml": "^4.2.0",
+    "markdown-it": "^14.3.0",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.10.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
