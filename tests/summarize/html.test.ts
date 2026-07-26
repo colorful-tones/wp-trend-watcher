@@ -296,3 +296,32 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(!html.includes("<style>"));
   assert.ok(css.includes(".report-index h1"));
 });
+
+test("ensureReportStylesheet copies the Radio Canada font into assets/", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "font-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  await generateIndexPage(tmpDir);
+
+  const src = await readFile(
+    join(process.cwd(), "assets/fonts/RadioCanada-VariableFont_wdth,wght.woff2"),
+  );
+  const copied = await readFile(
+    join(tmpDir, "assets/RadioCanada-VariableFont_wdth,wght.woff2"),
+  );
+  assert.equal(copied.byteLength, src.byteLength, "font should be copied verbatim");
+
+  const css = await readFile(join(tmpDir, "assets", "report.css"), "utf8");
+  assert.ok(
+    css.includes('@font-face'),
+    "stylesheet should declare the Radio Canada @font-face rule",
+  );
+  assert.ok(
+    css.includes('font-family: "Radio Canada"'),
+    "stylesheet should register the Radio Canada family",
+  );
+  assert.ok(
+    css.includes("RadioCanada-VariableFont_wdth,wght.woff2"),
+    "stylesheet should reference the copied font file",
+  );
+});

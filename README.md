@@ -59,7 +59,7 @@ Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
 
 Individual commands remain available for diagnosis and recovery — for example, running `pnpm collect` or `pnpm summarize` separately when you only need that step.
 
-`pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
+`pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. The Radio Canada variable font is copied to `reports/assets/` alongside it. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
@@ -99,6 +99,7 @@ Both templates walk you through what's needed — takes about a minute.
 - Report sections render in a configurable presentation order (`DEFAULT_PRESENTATION_ORDER`), so generated HTML layout can change without rewriting report history. Canonical Markdown data stays the source of truth.
 - Added a free-form **Review time** field to the local review page (`Build Notes`) and the review API; it persists to the `Review time:` line in the canonical Markdown.
 - `pnpm regen-html` now refreshes all report HTML from existing Markdown with no LLM calls; historical report data is unchanged.
+- Added the Radio Canada variable font to generated HTML reports: the shared stylesheet declares a `@font-face` rule and uses it as the primary `body` font, with system fonts as fallback. The font file is copied into `reports/assets/` at generation time (alongside `report.css` and `icon.svg`) so it ships with GitHub Pages deployments.
 - Bumped package version to 0.7.0.
 
 ### 0.6.0

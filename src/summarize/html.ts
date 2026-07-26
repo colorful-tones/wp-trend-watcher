@@ -12,6 +12,16 @@ const REPORT_STYLESHEET_SOURCE = new URL("./report.css", import.meta.url);
 const REPORT_ICON_HREF = "assets/icon.svg";
 const REPORT_ICON_SOURCE = new URL("./icon.svg", import.meta.url);
 
+// Radio Canada variable font (source lives at repo-root assets/fonts/).
+// Copied into reports/assets/ alongside the stylesheet so it ships with
+// GitHub Pages deployments.
+const REPORT_FONT_FILE = "RadioCanada-VariableFont_wdth,wght.woff2";
+const REPORT_FONT_HREF = `assets/${REPORT_FONT_FILE}`;
+const REPORT_FONT_SOURCE = new URL(
+  `../../assets/fonts/${REPORT_FONT_FILE}`,
+  import.meta.url,
+);
+
 /**
  * Extract the report date from a Markdown filename like "2026-06-12.md".
  */
@@ -35,6 +45,11 @@ async function ensureReportStylesheet(reportsDir: string): Promise<string> {
   // Also copy the icon into the assets directory alongside the stylesheet.
   const icon = await readFile(REPORT_ICON_SOURCE);
   await writeFile(join(assetsDir, "icon.svg"), icon);
+
+  // Copy the Radio Canada variable font so the shared stylesheet's
+  // @font-face rule can load it from the same assets directory.
+  const font = await readFile(REPORT_FONT_SOURCE);
+  await writeFile(join(assetsDir, REPORT_FONT_FILE), font);
 
   return REPORT_STYLESHEET_HREF;
 }
