@@ -127,14 +127,41 @@ hr {
 }
 
 /* Table of contents */
-.toc { background: #f6f8fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1rem 1.5rem; margin-bottom: 2rem; }
-.toc h2 { margin-top: 0; border-bottom: none; font-size: 1rem; }
-.toc ul { column-gap: 1rem; display: flex; list-style: none; margin: 0; }
-.toc a { font-size: 0.9rem; }
+.toc {
+  background: #f6f8fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+
+}
+.toc h2 {
+  margin-top: 0;
+  border-bottom: none;
+  font-size: 1rem;
+}
+
+.toc ul {
+  column-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.toc a {
+  font-size: 0.9rem;
+}
 
 /* Article Inventory disclosure */
-#article-inventory + ol li { padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }
-#article-inventory + ol li:last-child { border-bottom: none; }
+#article-inventory + ol li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#article-inventory + ol li:last-child {
+  border-bottom: none;
+}
 
 /* Collapsible Article Inventory */
 details.article-inventory {
