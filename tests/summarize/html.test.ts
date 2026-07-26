@@ -127,7 +127,11 @@ test("generateHtmlReport wraps report header with h1 inside .report-header", asy
     fs.readFile(htmlPath, "utf8"),
   );
 
-  assert.ok(html.includes('<h1 id="my-report-title">My Report Title</h1>'));
+  assert.ok(
+    html.includes(
+      '<h1 id="my-report-title"><a href="index.html" title="Back to all reports">My Report Title</a></h1>',
+    ),
+  );
 });
 
 test("generateIndexPage renders report cards sorted by date descending", async () => {

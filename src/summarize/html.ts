@@ -74,9 +74,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   let headerHtml: string;
   if (h1Match) {
     const h1Id = slugify(h1Match[1]);
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}">${h1Match[1]}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${h1Match[1]}</a></h1>\n</header>`;
   } else {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1>WordPress Trend Report — ${date}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report — ${date}</a></h1>\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)

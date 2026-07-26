@@ -112,6 +112,16 @@ hr {
   margin-bottom: 0.25rem;
 }
 
+/* h1 doubles as a back-to-index link */
+.report-header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.report-header h1 a:hover {
+  text-decoration: underline;
+}
+
 .report-icon {
   flex-shrink: 0;
 }
