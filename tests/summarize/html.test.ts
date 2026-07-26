@@ -134,6 +134,31 @@ test("generateHtmlReport wraps report header with h1 inside .report-header", asy
   );
 });
 
+test("generateHtmlReport links only the title portion of the h1, leaving the date as plain text", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
+  const mdPath = join(tmpDir, "2026-07-05.md");
+  await writeFile(
+    mdPath,
+    "# WordPress Trend Report — 2026-07-05\n\nContent.\n",
+    "utf8",
+  );
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  // Only "WordPress Trend Report" is inside the anchor.
+  assert.ok(
+    html.includes(
+      '<h1 id="wordpress-trend-report-2026-07-05"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-07-05</h1>',
+    ),
+    "h1 should link only the title, not the date",
+  );
+  // The date must not be inside the anchor (anchor closes before it).
+  assert.ok(
+    !html.includes('<a href="index.html" title="Back to all reports">WordPress Trend Report — 2026-07-05</a>'),
+    "date should remain outside the link",
+  );
+});
+
 test("generateIndexPage renders report cards sorted by date descending", async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
   // Create 3 HTML files with different dates

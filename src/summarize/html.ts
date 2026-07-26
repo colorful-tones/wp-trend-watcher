@@ -69,14 +69,19 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   const stylesheetHref = await ensureReportStylesheet(dirname(mdPath));
   const bodyHtml = renderReportBody(md);
 
-  // Extract the h1 heading for the report header
+  // Extract the h1 heading for the report header. Only the title portion
+  // (before the " — " separator) becomes a link back to the index; the
+  // trailing date stays as plain text so it isn't part of the click target.
   const h1Match = md.match(/^#\s+(.*)$/m);
   let headerHtml: string;
   if (h1Match) {
     const h1Id = slugify(h1Match[1]);
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${h1Match[1]}</a></h1>\n</header>`;
+    const dashIdx = h1Match[1].indexOf(" — ");
+    const linkText = dashIdx >= 0 ? h1Match[1].slice(0, dashIdx) : h1Match[1];
+    const restText = dashIdx >= 0 ? h1Match[1].slice(dashIdx) : "";
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${linkText}</a>${restText}</h1>\n</header>`;
   } else {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report — ${date}</a></h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — ${date}</h1>\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)
