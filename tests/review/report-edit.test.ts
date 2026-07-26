@@ -4,6 +4,8 @@ import {
   findWatchingSection,
   replaceWatchingSection,
   isPlaceholderContent,
+  findReviewTime,
+  replaceReviewTime,
 } from "../../src/review/report-edit.js";
 
 // --- Stripped-down test report ---
@@ -234,4 +236,49 @@ test("isPlaceholderContent returns false for multiline human content", () => {
 test("isPlaceholderContent returns true for ADD YOUR NOTE casing variants", () => {
   assert.equal(isPlaceholderContent("Add your note here"), true);
   assert.equal(isPlaceholderContent("ADD YOUR NOTE"), true);
+});
+
+// --- findReviewTime / replaceReviewTime ---
+
+const REVIEW_TIME_REPORT = `# WordPress Trend Report — 2026-07-11
+
+## Weekly Summary
+
+Some summary content.
+
+---
+
+## Build Notes
+- Articles analyzed: 3
+- Review time: ~15 minutes
+`;
+
+test("findReviewTime returns value after the prefix", () => {
+  assert.equal(findReviewTime(REVIEW_TIME_REPORT), "~15 minutes");
+});
+
+test("findReviewTime returns empty string when line absent", () => {
+  const report = REVIEW_TIME_REPORT.replace(/Review time:.*\n/, "");
+  assert.equal(findReviewTime(report), "");
+});
+
+test("replaceReviewTime updates only the Review time line", () => {
+  const result = replaceReviewTime(REVIEW_TIME_REPORT, "20 minutes");
+  assert.ok(result, "replacement should succeed");
+  assert.ok(result!.includes("- Review time: 20 minutes"));
+  assert.ok(!result!.includes("~15 minutes"));
+  // Surrounding Build Notes preserved
+  assert.ok(result!.includes("- Articles analyzed: 3"));
+  assert.ok(result!.includes("## Weekly Summary"));
+});
+
+test("replaceReviewTime resets to placeholder when value empty", () => {
+  const result = replaceReviewTime(REVIEW_TIME_REPORT, "");
+  assert.ok(result, "replacement should succeed");
+  assert.ok(result!.includes("- Review time: (add after human review)"));
+});
+
+test("replaceReviewTime returns null when no Build Notes review-time line", () => {
+  const report = REVIEW_TIME_REPORT.replace(/Review time:.*\n/, "");
+  assert.equal(replaceReviewTime(report, "10 minutes"), null);
 });

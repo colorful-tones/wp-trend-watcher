@@ -179,3 +179,52 @@ export function replaceWatchingSection(
 
   return beforeBody.trimEnd() + "\n\n" + cleanContent + "\n" + afterBody;
 }
+
+/** Marker line prefix used in Build Notes for the human review time. */
+const REVIEW_TIME_PREFIX = "- Review time:";
+
+/**
+ * Extract the human-entered review time from a report's Build Notes.
+ *
+ * @param report - Full Markdown report text.
+ * @returns The review time value (after the prefix), or an empty string when
+ *   the line is absent or still a placeholder.
+ */
+export function findReviewTime(report: string): string {
+  const idx = report.indexOf(REVIEW_TIME_PREFIX);
+  if (idx === -1) return "";
+  const after = report.slice(idx + REVIEW_TIME_PREFIX.length);
+  const lineEnd = after.search(/\r?\n/);
+  const raw = lineEnd === -1 ? after : after.slice(0, lineEnd);
+  return raw.trim();
+}
+
+/**
+ * Replace only the `Review time:` line inside `## Build Notes`.
+ *
+ * Preserves all other report content. When `newValue` is empty, the line is
+ * reset to the placeholder text `(add after human review)` so the field stays
+ * visible for future review. Returns the modified report, or `null` when no
+ * Build Notes review-time line exists.
+ *
+ * @param report - Full Markdown report text.
+ * @param newValue - Free-form review-time text (e.g. "~15 minutes").
+ * @returns Modified report, or null when no review-time line is present.
+ */
+export function replaceReviewTime(
+  report: string,
+  newValue: string,
+): string | null {
+  const idx = report.indexOf(REVIEW_TIME_PREFIX);
+  if (idx === -1) return null;
+
+  const after = report.slice(idx + REVIEW_TIME_PREFIX.length);
+  const lineEnd = after.search(/\r?\n/);
+  const sliceEnd = lineEnd === -1 ? report.length : idx + REVIEW_TIME_PREFIX.length + lineEnd;
+  const before = report.slice(0, idx + REVIEW_TIME_PREFIX.length);
+  const rest = report.slice(sliceEnd);
+
+  const clean = newValue.trim();
+  const replacement = clean.length === 0 ? " (add after human review)" : ` ${clean}`;
+  return before + replacement + rest;
+}
