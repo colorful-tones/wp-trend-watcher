@@ -354,3 +354,40 @@ test("ensureReportStylesheet copies the Radio Canada font into assets/", async (
     "stylesheet should reference the copied font file",
   );
 });
+
+test("ensureReportStylesheet copies the OG image and emits SEO meta", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "seo-test-"));
+  const mdPath = join(tmpDir, "2026-07-05.md");
+  await writeFile(mdPath, "# WordPress Trend Report — 2026-07-05\n\nContent.\n", "utf8");
+
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  // OG image copied into assets/
+  const src = await readFile(
+    join(process.cwd(), "assets/WP-Trend-Watcher_1200x630.png"),
+  );
+  const copied = await readFile(
+    join(tmpDir, "assets/WP-Trend-Watcher_1200x630.png"),
+  );
+  assert.equal(copied.byteLength, src.byteLength, "OG image should be copied verbatim");
+
+  // Standard SEO / social meta present and absolute
+  assert.ok(html.includes('<meta name="description" content="'));
+  assert.ok(html.includes('<link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-07-05.html">'));
+  assert.ok(html.includes('<meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
+  assert.ok(html.includes('<meta property="og:type" content="article">'));
+});
+
+test("generateIndexPage emits absolute SEO meta", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "seo-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(html.includes('<meta property="og:type" content="website">'));
+  assert.ok(html.includes('<meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/index.html">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
+});

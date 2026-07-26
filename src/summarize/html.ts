@@ -22,11 +22,65 @@ const REPORT_FONT_SOURCE = new URL(
   import.meta.url,
 );
 
+// Social sharing image (Open Graph / Twitter card). Same repo-root assets/
+// convention as the icon and font: copied into reports/assets/ at generation
+// time so it ships with GitHub Pages deployments and resolves at the site root.
+const REPORT_OG_IMAGE_FILE = "WP-Trend-Watcher_1200x630.png";
+const REPORT_OG_IMAGE_HREF = `assets/${REPORT_OG_IMAGE_FILE}`;
+const REPORT_OG_IMAGE_SOURCE = new URL(
+  `../../assets/${REPORT_OG_IMAGE_FILE}`,
+  import.meta.url,
+);
+
+// Canonical site base URL for absolute Open Graph / Twitter / canonical URLs.
+// Must match the GitHub Pages deployment root (see README).
+const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
+
+// Shared SEO description for report pages.
+const REPORT_SEO_DESCRIPTION =
+  "Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.";
+
 /**
  * Extract the report date from a Markdown filename like "2026-06-12.md".
  */
 function dateFromFilename(filePath: string): string {
   return basename(filePath, ".md");
+}
+
+/**
+ * Build standard SEO / social-sharing meta tags for a report or index page.
+ *
+ * Emits a description, canonical link, Open Graph tags, and Twitter Card tags.
+ * The image and page URL are absolute so social scrapers can resolve them
+ * without knowing the deployment path.
+ *
+ * @param opts.title - Page title (also used for OG/Twitter title)
+ * @param opts.description - Page description (also used for OG/Twitter)
+ * @param opts.url - Absolute canonical URL for the page
+ * @param opts.type - Open Graph type ("article" for reports, "website" for index)
+ * @returns Newline-joined meta/link tags for the document head
+ */
+function buildSeoMeta(opts: {
+  title: string;
+  description: string;
+  url: string;
+  type: string;
+}): string {
+  const image = `${SITE_BASE_URL}assets/${REPORT_OG_IMAGE_FILE}`;
+  return [
+    `<meta name="description" content="${opts.description}">`,
+    `<link rel="canonical" href="${opts.url}">`,
+    `<meta property="og:type" content="${opts.type}">`,
+    `<meta property="og:site_name" content="WP Trend Watcher">`,
+    `<meta property="og:title" content="${opts.title}">`,
+    `<meta property="og:description" content="${opts.description}">`,
+    `<meta property="og:image" content="${image}">`,
+    `<meta property="og:url" content="${opts.url}">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${opts.title}">`,
+    `<meta name="twitter:description" content="${opts.description}">`,
+    `<meta name="twitter:image" content="${image}">`,
+  ].join("\n  ");
 }
 
 /**
@@ -50,6 +104,11 @@ async function ensureReportStylesheet(reportsDir: string): Promise<string> {
   // @font-face rule can load it from the same assets directory.
   const font = await readFile(REPORT_FONT_SOURCE);
   await writeFile(join(assetsDir, REPORT_FONT_FILE), font);
+
+  // Copy the social-sharing image so Open Graph / Twitter cards resolve on
+  // GitHub Pages deployments.
+  const ogImage = await readFile(REPORT_OG_IMAGE_SOURCE);
+  await writeFile(join(assetsDir, REPORT_OG_IMAGE_FILE), ogImage);
 
   return REPORT_STYLESHEET_HREF;
 }
@@ -104,6 +163,12 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WordPress Trend Report — ${date}</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${buildSeoMeta({
+    title: `WordPress Trend Report — ${date}`,
+    description: REPORT_SEO_DESCRIPTION,
+    url: `${SITE_BASE_URL}${date}.html`,
+    type: "article",
+  })}
 </head>
 <body class="report-page">
   ${headerHtml}
@@ -173,6 +238,12 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${buildSeoMeta({
+    title: "WP Trend Watcher — Reports",
+    description: "Weekly human-reviewed WordPress ecosystem trend reports.",
+    url: `${SITE_BASE_URL}index.html`,
+    type: "website",
+  })}
 </head>
 <body class="report-index">
   <header class="report-header">

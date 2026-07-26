@@ -100,6 +100,7 @@ Both templates walk you through what's needed — takes about a minute.
 - Added a free-form **Review time** field to the local review page (`Build Notes`) and the review API; it persists to the `Review time:` line in the canonical Markdown.
 - `pnpm regen-html` now refreshes all report HTML from existing Markdown with no LLM calls; historical report data is unchanged.
 - Added the Radio Canada variable font to generated HTML reports: the shared stylesheet declares a `@font-face` rule and uses it as the primary `body` font, with system fonts as fallback. The font file is copied into `reports/assets/` at generation time (alongside `report.css` and `icon.svg`) so it ships with GitHub Pages deployments.
+- Added standard SEO and social-sharing meta to generated HTML reports and the index page: description, canonical link, Open Graph tags, and a `summary_large_image` Twitter card. The shared `assets/WP-Trend-Watcher_1200x630.png` is copied into `reports/assets/` so the Open Graph image resolves on GitHub Pages deployments. All meta URLs are absolute to the `colorful-tones.github.io/wp-trend-watcher/` site root.
 - Bumped package version to 0.7.0.
 
 ### 0.6.0
