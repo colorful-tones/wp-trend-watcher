@@ -23,21 +23,23 @@
 </nav>
   <div class="report-body">
   <h2 id="weekly-summary">Weekly Summary</h2>
-<h3 id="article-inventory">Article Inventory</h3>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(7 articles)</span></summary>
 <ol>
 <li><a href="https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/">Dev Chat Agenda – June 24, 2026</a> (Make Core) — The June 24, 2026, WordPress Dev Chat will address the 7.1 release squad, roadmap, and a merge proposal for a new custom post type, alongside the 7.0.1 schedule and Gutenberg 23.4 updates.</li>
 <li><a href="https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/">Hiding the Classic block from the inserter in WordPress 7.1</a> (Make Core) — WordPress 7.1 hides the Classic block from the block inserter, block library, and slash commands to enforce architectural consistency and reduce new legacy content creation.</li>
-<li><a href="https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/">WordPress 7.0 Release Retrospective</a> (Make Core) — WordPress 7.0 ("Armstrong") has officially released, and the Make Core team is soliciting non-anonymous feedback from all contributors regarding the development cycle, squad dynamics, and processes.</li>
+<li><a href="https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/">WordPress 7.0 Release Retrospective</a> (Make Core) — WordPress 7.0 (&quot;Armstrong&quot;) has officially released, and the Make Core team is soliciting non-anonymous feedback from all contributors regarding the development cycle, squad dynamics, and processes.</li>
 <li><a href="https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/">Merge Proposal: Guidelines built on Knowledge</a> (Make Core) — The Make Core team proposes merging the <code>wp_knowledge</code> custom post type into WordPress 7.1, establishing it as the canonical, shared primitive for storing site-wide standards such as voice, tone, and block rules.</li>
 <li><a href="https://wordpress.org/news/2026/06/open-web-merch/">Browse the New Mercantile Swag Store</a> (WordPress.org News) — The Mercantile storefront is rebuilt almost entirely with blocks, including a block-based cart and checkout, and leverages the Interactivity API for catalog navigation and modal states.</li>
 <li><a href="https://www.advancedcustomfields.com/blog/wordpress-search-plugin/">WordPress Search Plugins Compared by Use Case</a> (ACF Blog) — SearchWP and Relevanssi serve content-heavy sites, with SearchWP offering visual configuration and Relevanssi providing deeper code-level control alongside more generous agency licensing.</li>
 <li><a href="https://www.advancedcustomfields.com/blog/nextjs-wordpress/">How Headless WordPress Works with Next.js</a> (ACF Blog) — Headless WordPress decouples the backend content management system from the Next.js frontend, typically utilizing the WPGraphQL API for complex content structures over the REST API.</li>
 </ol>
+</details>
 <h3 id="emerging-trends">Emerging Trends</h3>
 <ul>
 <li><strong>WordPress 7.1 Release Roadmap:</strong> The 7.1 release is scheduled to include the removal of the Classic block from the block inserter, slash commands, and the block library, effectively ending new legacy content creation in core while maintaining editability for existing posts. This change is confirmed for the 7.1 release cycle.</li>
 <li><strong>Introduction of the <code>wp_knowledge</code> Custom Post Type:</strong> A merge proposal submitted for WordPress 7.1 introduces a new <code>wp_knowledge</code> custom post type designed to serve as the canonical storage mechanism for site-wide standards, including voice, tone, and block rules. This feature consolidates previously fragmented plugin-specific implementations into a single core resource.</li>
-<li><strong>Release Cycle Feedback Solicitation:</strong> Following the official release of WordPress 7.0 ("Armstrong"), the Make Core team is actively soliciting non-anonymous feedback from contributors regarding development cycles, squad dynamics, and processes. The deadline for this feedback is July 20, 2026.</li>
+<li><strong>Release Cycle Feedback Solicitation:</strong> Following the official release of WordPress 7.0 (&quot;Armstrong&quot;), the Make Core team is actively soliciting non-anonymous feedback from contributors regarding development cycles, squad dynamics, and processes. The deadline for this feedback is July 20, 2026.</li>
 <li><strong>Block-Based E-Commerce Implementation:</strong> The WordPress.org Mercantile storefront has been rebuilt almost entirely using blocks, including a block-based cart and checkout system, leveraging the Interactivity API for navigation and modal states.</li>
 </ul>
 <h3 id="developer-implications">Developer Implications</h3>
@@ -48,16 +50,22 @@
 <li><strong>Adopt Block-Based E-Commerce Patterns:</strong> When building or updating e-commerce stores, developers should leverage the block-based cart and checkout patterns demonstrated in the Mercantile storefront, utilizing the Interactivity API for dynamic catalog navigation and modal states to ensure a modern, block-native user experience.</li>
 <li><strong>Evaluate Search Plugin Licensing and Architecture:</strong> When selecting a search solution, agencies should consider the trade-offs between SearchWP (visual configuration) and Relevanssi (code-level control and agency licensing) based on the specific use case and client requirements.</li>
 </ul>
+
+
 <h2 id="since-last-report">Since Last Report</h2>
 <ul>
 <li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/06/24/dev-chat-agenda-june-24-2026/">Dev Chat Agenda – June 24, 2026</a> (Make Core) — The June 24, 2026, WordPress Dev Chat will address the 7.1 release squad, roadmap, and a merge proposal for a new custom post type, alongside the 7.0.1 schedule and Gutenberg 23.4 updates.</li>
 <li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/06/23/hiding-the-classic-block-from-the-inserter-in-wordpress-7-1/">Hiding the Classic block from the inserter in WordPress 7.1</a> (Make Core) — WordPress 7.1 hides the Classic block from the block inserter, block library, and slash commands to enforce architectural consistency and reduce new legacy content creation.</li>
-<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/">WordPress 7.0 Release Retrospective</a> (Make Core) — WordPress 7.0 ("Armstrong") has officially released, and the Make Core team is soliciting non-anonymous feedback from all contributors regarding the development cycle, squad dynamics, and processes.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/06/22/wordpress-7-0-release-retrospective/">WordPress 7.0 Release Retrospective</a> (Make Core) — WordPress 7.0 (&quot;Armstrong&quot;) has officially released, and the Make Core team is soliciting non-anonymous feedback from all contributors regarding the development cycle, squad dynamics, and processes.</li>
 </ul>
 <hr>
+
+
 <h2 id="what-i-m-watching">What I'm Watching</h2>
-<p>The <a href="https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/">proposal</a> to introduce a new custom post type: <code>wp_knowledge</code> and a related taxonomy is worth keeping 👀 on. It seems to extend the AI APIs and should "Provide a canonical storage primitive for author-facing and agent-facing site knowledge". Make sense to me.</p>
+<p>The <a href="https://make.wordpress.org/core/2026/06/22/merge-proposal-guidelines-built-on-knowledge/">proposal</a> to introduce a new custom post type: <code>wp_knowledge</code> and a related taxonomy is worth keeping 👀 on. It seems to extend the AI APIs and should &quot;Provide a canonical storage primitive for author-facing and agent-facing site knowledge&quot;. Make sense to me.</p>
 <hr>
+
+
 <h2 id="source-articles">Source Articles</h2>
 <h3 id="make-core">Make Core</h3>
 <ul>
@@ -76,6 +84,8 @@
 <li><a href="https://www.advancedcustomfields.com/blog/nextjs-wordpress/">How Headless WordPress Works with Next.js</a> — 6/24/2026</li>
 </ul>
 <hr>
+
+
 <h2 id="build-notes">Build Notes</h2>
 <ul>
 <li>Articles analyzed: 7</li>
@@ -83,8 +93,11 @@
 <li>Model: openai-compatible/qwen/qwen3.5-9b</li>
 <li>Tokens: 5974 prompt + 1248 completion</li>
 <li>Estimated cost: $0.00 (local model)</li>
+</ul>
+<ul>
 <li>Review time: ~12 minutes</li>
 </ul>
+
 </div>
   <footer class="nav-footer">
     <a href="index.html">← Back to Reports</a>

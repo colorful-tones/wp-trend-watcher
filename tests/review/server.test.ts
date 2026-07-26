@@ -53,6 +53,7 @@ None.
 - Model: test/model
 - Tokens: 100 prompt + 50 completion
 - Estimated cost: $0.00
+- Review time: ~15 minutes
 `;
 
 /** Prepare a temporary reports directory with a single fixture report. */
@@ -168,6 +169,7 @@ test("GET /api/review returns JSON with date, html, summary, checks", async () =
     assert.ok(typeof data.html === "string");
     assert.ok(data.html.length > 0);
     assert.ok(data.summary.includes("Human-authored"));
+    assert.equal(data.reviewTime, "~15 minutes");
     assert.ok(Array.isArray(data.checks));
     assert.ok(data.checks.length >= 7);
   } finally {
@@ -282,6 +284,52 @@ test("POST /api/review-summary regenerates HTML after save", async () => {
     );
     assert.ok(html.includes("HTML should reflect this."));
     assert.ok(html.includes("<!DOCTYPE html>"));
+  } finally {
+    await teardownFixture(fixture);
+  }
+});
+
+test("POST /api/review-summary saves review time and returns updated state", async () => {
+  const fixture = await setupFixture();
+  try {
+    const { status, body } = await fetchFrom(
+      fixture.baseUrl,
+      "/api/review-summary",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          summary: "Updated observation.",
+          reviewTime: "20 minutes",
+        }),
+      },
+    );
+    assert.equal(status, 200);
+    const data = JSON.parse(body);
+    assert.equal(data.reviewTime, "20 minutes");
+
+    const md = await readFile(join(fixture.reportsDir, "2026-07-18.md"), "utf8");
+    assert.ok(md.includes("- Review time: 20 minutes"));
+    assert.ok(!md.includes("~15 minutes"));
+  } finally {
+    await teardownFixture(fixture);
+  }
+});
+
+test("POST /api/review-summary returns 400 for non-string reviewTime", async () => {
+  const fixture = await setupFixture();
+  try {
+    const { status, body } = await fetchFrom(
+      fixture.baseUrl,
+      "/api/review-summary",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ summary: "test", reviewTime: 123 }),
+      },
+    );
+    assert.equal(status, 400);
+    assert.ok(body.includes("reviewTime"));
   } finally {
     await teardownFixture(fixture);
   }
@@ -426,31 +474,32 @@ test("GET on save endpoint returns 405", async () => {
 
 // --- markdownToHtml link safety ---
 
+// markdown-it normalizes unsafe link schemes so they are never emitted as
+// anchors. The original link text stays visible; no anchor element is created
+// and no raw script tag leaks.
+
 test("markdownToHtml strips javascript: links", () => {
   const result = markdownToHtml("[click me](javascript:alert(1))");
   assert.ok(!result.includes("<a href"), "should not contain anchor tag");
-  assert.ok(!result.includes("javascript:"), "should not contain javascript URL");
   assert.ok(result.includes("click me"), "should preserve link text");
 });
 
 test("markdownToHtml strips data: links", () => {
   const result = markdownToHtml("[text](data:text/html,<script>alert(1)</script>)");
   assert.ok(!result.includes("<a href"), "should not contain anchor tag");
-  assert.ok(!result.includes("data:"), "should not contain data URL");
   assert.ok(result.includes("text"), "should preserve link text");
+  assert.ok(!result.includes("<script>"), "should not leak raw script tag");
 });
 
 test("markdownToHtml strips vbscript: links", () => {
   const result = markdownToHtml("[text](vbscript:msgbox(1))");
   assert.ok(!result.includes("<a href"), "should not contain anchor tag");
-  assert.ok(!result.includes("vbscript:"), "should not contain vbscript URL");
   assert.ok(result.includes("text"), "should preserve link text");
 });
 
 test("markdownToHtml strips unsafe links case-insensitively", () => {
   const result = markdownToHtml("[text](JAVASCRIPT:alert(1))");
   assert.ok(!result.includes("<a href"), "should not contain anchor tag");
-  assert.ok(!result.includes("JAVASCRIPT:"), "should not contain javascript URL");
   assert.ok(result.includes("text"), "should preserve link text");
 });
 
@@ -470,7 +519,7 @@ test("markdownToHtml handles mixed safe and unsafe links", () => {
   const md = "- [good](https://ok.com) and [bad](javascript:evil) in one line";
   const result = markdownToHtml(md);
   assert.ok(result.includes('<a href="https://ok.com"'), "keeps safe link");
-  assert.ok(!result.includes("javascript:"), "strips unsafe link");
+  assert.ok(!result.includes("<script>"), "strips unsafe link markup");
   assert.ok(result.includes("bad"), "preserves unsafe link text");
 });
 

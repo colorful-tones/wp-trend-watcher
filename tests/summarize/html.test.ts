@@ -127,7 +127,36 @@ test("generateHtmlReport wraps report header with h1 inside .report-header", asy
     fs.readFile(htmlPath, "utf8"),
   );
 
-  assert.ok(html.includes('<h1 id="my-report-title">My Report Title</h1>'));
+  assert.ok(
+    html.includes(
+      '<h1 id="my-report-title"><a href="index.html" title="Back to all reports">My Report Title</a></h1>',
+    ),
+  );
+});
+
+test("generateHtmlReport links only the title portion of the h1, leaving the date as plain text", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
+  const mdPath = join(tmpDir, "2026-07-05.md");
+  await writeFile(
+    mdPath,
+    "# WordPress Trend Report — 2026-07-05\n\nContent.\n",
+    "utf8",
+  );
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  // Only "WordPress Trend Report" is inside the anchor.
+  assert.ok(
+    html.includes(
+      '<h1 id="wordpress-trend-report-2026-07-05"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-07-05</h1>',
+    ),
+    "h1 should link only the title, not the date",
+  );
+  // The date must not be inside the anchor (anchor closes before it).
+  assert.ok(
+    !html.includes('<a href="index.html" title="Back to all reports">WordPress Trend Report — 2026-07-05</a>'),
+    "date should remain outside the link",
+  );
 });
 
 test("generateIndexPage renders report cards sorted by date descending", async () => {
@@ -295,4 +324,70 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(html.includes('<body class="report-index">'));
   assert.ok(!html.includes("<style>"));
   assert.ok(css.includes(".report-index h1"));
+});
+
+test("ensureReportStylesheet copies the Radio Canada font into assets/", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "font-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  await generateIndexPage(tmpDir);
+
+  const src = await readFile(
+    join(process.cwd(), "assets/fonts/RadioCanada-VariableFont_wdth,wght.woff2"),
+  );
+  const copied = await readFile(
+    join(tmpDir, "assets/RadioCanada-VariableFont_wdth,wght.woff2"),
+  );
+  assert.equal(copied.byteLength, src.byteLength, "font should be copied verbatim");
+
+  const css = await readFile(join(tmpDir, "assets", "report.css"), "utf8");
+  assert.ok(
+    css.includes('@font-face'),
+    "stylesheet should declare the Radio Canada @font-face rule",
+  );
+  assert.ok(
+    css.includes('font-family: "Radio Canada"'),
+    "stylesheet should register the Radio Canada family",
+  );
+  assert.ok(
+    css.includes("RadioCanada-VariableFont_wdth,wght.woff2"),
+    "stylesheet should reference the copied font file",
+  );
+});
+
+test("ensureReportStylesheet copies the OG image and emits SEO meta", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "seo-test-"));
+  const mdPath = join(tmpDir, "2026-07-05.md");
+  await writeFile(mdPath, "# WordPress Trend Report — 2026-07-05\n\nContent.\n", "utf8");
+
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  // OG image copied into assets/
+  const src = await readFile(
+    join(process.cwd(), "assets/WP-Trend-Watcher_1200x630.png"),
+  );
+  const copied = await readFile(
+    join(tmpDir, "assets/WP-Trend-Watcher_1200x630.png"),
+  );
+  assert.equal(copied.byteLength, src.byteLength, "OG image should be copied verbatim");
+
+  // Standard SEO / social meta present and absolute
+  assert.ok(html.includes('<meta name="description" content="'));
+  assert.ok(html.includes('<link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-07-05.html">'));
+  assert.ok(html.includes('<meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
+  assert.ok(html.includes('<meta property="og:type" content="article">'));
+});
+
+test("generateIndexPage emits absolute SEO meta", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "seo-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(html.includes('<meta property="og:type" content="website">'));
+  assert.ok(html.includes('<meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/index.html">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
 });

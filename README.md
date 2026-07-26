@@ -59,7 +59,7 @@ Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
 
 Individual commands remain available for diagnosis and recovery — for example, running `pnpm collect` or `pnpm summarize` separately when you only need that step.
 
-`pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
+`pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. The Radio Canada variable font is copied to `reports/assets/` alongside it. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
@@ -91,6 +91,18 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.7.0
+
+- Added `markdown-it` dependency; report HTML generation and the local review server now share one Markdown renderer (`src/summarize/renderer.ts`) instead of two bespoke converters.
+- Renderer keeps raw HTML disabled and strips unsafe link schemes (`javascript:`, `data:`, `vbscript:`) so generated pages stay safe even from untrusted feeds.
+- Article Inventory now renders inside a collapsible `<details>` element (closed by default) with a visible article count, de-emphasizing long vertical lists without removing the data.
+- Report sections render in a configurable presentation order (`DEFAULT_PRESENTATION_ORDER`), so generated HTML layout can change without rewriting report history. Canonical Markdown data stays the source of truth.
+- Added a free-form **Review time** field to the local review page (`Build Notes`) and the review API; it persists to the `Review time:` line in the canonical Markdown.
+- `pnpm regen-html` now refreshes all report HTML from existing Markdown with no LLM calls; historical report data is unchanged.
+- Added the Radio Canada variable font to generated HTML reports: the shared stylesheet declares a `@font-face` rule and uses it as the primary `body` font, with system fonts as fallback. The font file is copied into `reports/assets/` at generation time (alongside `report.css` and `icon.svg`) so it ships with GitHub Pages deployments.
+- Added standard SEO and social-sharing meta to generated HTML reports and the index page: description, canonical link, Open Graph tags, and a `summary_large_image` Twitter card. The shared `assets/WP-Trend-Watcher_1200x630.png` is copied into `reports/assets/` so the Open Graph image resolves on GitHub Pages deployments. All meta URLs are absolute to the `colorful-tones.github.io/wp-trend-watcher/` site root.
+- Bumped package version to 0.7.0.
+
 ### 0.6.0
 
 - Added `pnpm weekly` single-command workflow: doctor → collect → summarize → review → local review server.
@@ -110,110 +122,4 @@ Both templates walk you through what's needed — takes about a minute.
 - Added `pnpm regen-html` command to batch-regenerate all report HTML from existing Markdown — no LLM calls.
 - Refined report CSS: cleaned-up header, horizontal table-of-contents layout, tighter spacing on build notes and footer.
 
-### 0.4.3
-
-- Repaired flaky auto-days test assertion.
-- Aligned package version with changelog.
-- Corrected README token-cap example.
-- Corrected weekly-workflow auto-window documentation.
-- Removed stale Phase 1 phrasing from active docs.
-
-### 0.4.2
-
-- Changed generated HTML reports and the report index to share `reports/assets/report.css` instead of embedding the full stylesheet in every HTML file.
-- Migrated previously generated report HTML from existing Markdown only, without changing report Markdown or article data.
-
-### 0.4.1
-
-**README and documentation overhaul:**
-- Added Requirements section with Node/pnpm/Corepack/LLM prerequisites
-- Added Latest Reports section linking to the GitHub Pages index
-- Added Feedback & Sources section linking to the GitHub issue templates (report feedback and source suggestion)
-- Removed stale Status snapshot, What This Does Not Do Yet, Report Format, and Data Snapshot Policy (all covered by docs/ or Project Principles)
-- New `docs/weekly-workflow.md` — 7-step command sequence quick reference with scannable table
-
-**HTML navigation polish:**
-- Individual report pages now include a "← Back to Reports" footer link
-- Reports index page now includes "Suggest a source" and "Send feedback" footer links pointing to the issue templates
-- New `.nav-footer` CSS class for consistent navigation styling
-
-**Smarter default collection window:**
-- `pnpm collect` now auto-calculates `--days` from the most recent report date instead of defaulting to 7
-- Priority: explicit `--days N` flag → `WP_TREND_DAYS` env var → auto-calculated from last report → 7 day fallback
-- New `findDaysSinceLastReport` helper scans `reports/` for date-named `.md` files
-
-### 0.4.0 — Phase 4 Release
-
-**Previous-report comparison:**
-- Reports now include an optional `## Since Last Report` section comparing topics to the previous week
-- Auto-generated from existing report files — no LLM call or database required
-- Up to 3 bullets per report (Continued topic, New topic, Dropped topic), prioritized by signal
-
-**HTML report polish:**
-- Added stable heading IDs (`id="weekly-summary"`, etc.) for deep linking
-- Added auto-generated table of contents on reports with 2+ sections
-- Added styled report header card with left-border accent
-- Added Article Inventory list item styling for better scannability
-- Added muted Build Notes metadata panel
-- HTML entity escaping for XSS prevention
-
-**Reports index page polish:**
-- Card-style report listing with border, rounded corners, and hover effect
-- Friendly date formatting ("June 21, 2026") via `toLocaleDateString`
-- "Latest report" badge on the newest entry
-- Dynamic report count with singular/plural support
-
-**Under the hood:**
-- New `src/summarize/report-comparison.ts` module with topic parsing and comparison helpers
-- `findPreviousReportPath()` helper for deterministic previous-report discovery
-- Both `pnpm summarize` and `pnpm generate-report` support the comparison pipeline
-- 114 tests across all modules, 0 failures, typecheck clean
-
-### 0.2.8
-Article Inventory is now assembled deterministically from saved article summaries, giving every source a linked title and one-sentence takeaway while reserving model output for trends and implications.
-
-### 0.2.7
-Added local provider tuning for LM Studio and other OpenAI-compatible models. Users can now configure max tokens, request timeout, and optional Qwen `/no_think` prompting through environment variables.
-
-### 0.2.6
-Fix missing Weekly Summary heading in report output and review check. The review checklist now looks for the h2 heading and falls back to the Article Inventory sub-section. Report assembly guarantees the heading is present even when the model omits it.
-
-### 0.2.5
-Cross-article report prompts now include inline Markdown links for source article titles and ask the model to preserve them when referencing specific articles. Release-planning prompts now preserve high-signal roadmap, schedule, proposal, and testing details for trend and developer-impact synthesis.
-
-### 0.2.4
-Pinned local tooling to Node.js 22 and pnpm 11 via `.nvmrc`, `packageManager`, `engines`, and npm strictness settings. Quick Start now documents `nvm use` and Corepack setup for contributors and local agents.
-
-### 0.2.3
-`pnpm generate-report` command for regenerating the cross-article synthesis and Markdown/HTML reports from existing article summaries. Useful for iterating on report prompts without re-summarizing articles. Shared report assembly logic extracted into `src/summarize/report.ts`.
-
-### 0.2.2
-`pnpm review` command for report review checklists. Checks Weekly Summary, source article references, weasel words, Build Notes, What I'm Watching, markdown link validity, and HTML report presence. Exits nonzero only for true blockers.
-
-### 0.2.1
-`pnpm doctor` command for setup sanity checks. Reports Node/pnpm versions, .env status, provider config, endpoint reachability, sources, and directory writability. Exits nonzero only for true blockers.
-
-### 0.2.0 — Phase 2 Release
-
-All Phase 2 enhancements together: collection summary with 6 sources (4 Tier 1 + 2 Tier 2), YAML source configuration, HTML reports with self-contained inline styling, GitHub Pages deployment via Actions, and auto-release workflow on tag push. pnpm 11 compatibility verified. No new dependencies.
-
-### 0.1.5
-HTML report generation. `pnpm summarize` now produces self-contained HTML reports alongside Markdown. Index page auto-generated in `reports/`. GitHub Pages deployment via GitHub Actions workflow.
-
-### 0.1.4
-Source configuration via `sources.yaml`. Users can now customize the source list without editing TypeScript. Copy `sources.example.yaml` to `sources.yaml` and edit. If the file is missing, built-in defaults are used.
-
-### 0.1.3
-Tier 2 sources (Gutenberg Times, ACF Chat Fridays) added to the default collection. Collection now prints a clean summary with article counts, filtered counts, and source error reporting.
-
-### 0.1.2
-
-Launch readiness pass. Added the README hero image, updated the launch status, and documented the public share point with the first human-reviewed report.
-
-### 0.1.1
-
-AI summarization pipeline. Per-article content fetching, LLM summarization, cross-article synthesis with article inventory strategy, parallel processing, summary caching, and provider abstraction. Supports Ollama and OpenAI-compatible local endpoints such as LM Studio. Provider configurable via `WP_TREND_PROVIDER`, `WP_TREND_MODEL`, `WP_TREND_OPENAI_BASE_URL`, `WP_TREND_OLLAMA_MODEL`, and `WP_TREND_OLLAMA_URL`.
-
-### 0.1.0
-
-Initial project scaffold. Phase 1 source definitions, RSS collection pipeline, atomic file storage with merge-on-write, and project documentation.
+For older releases, see the [GitHub Releases page](https://github.com/colorful-tones/wp-trend-watcher/releases).

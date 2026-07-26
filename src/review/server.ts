@@ -35,10 +35,13 @@ import {
 } from "node:path";
 import { randomBytes } from "node:crypto";
 import { generateHtmlReport } from "../summarize/html.js";
+import { renderReportBody } from "../summarize/renderer.js";
 import {
   findWatchingSection,
   replaceWatchingSection,
   isPlaceholderContent,
+  findReviewTime,
+  replaceReviewTime,
 } from "./report-edit.js";
 import {
   extractReportBody,
@@ -64,6 +67,7 @@ export interface ReviewData {
   date: string;
   html: string;
   summary: string;
+  reviewTime: string;
   checks: ReviewCheck[];
 }
 
@@ -175,126 +179,7 @@ export async function findLatestReportFile(
  * Handles the subset of Markdown found in trend reports.
  */
 export function markdownToHtml(md: string): string {
-  const lines = md.split("\n");
-  const out: string[] = [];
-  let i = 0;
-
-  function slugify(text: string): string {
-    return text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  }
-
-  function inlineFormat(text: string): string {
-    return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\*(.+?)\*/g, "<em>$1</em>")
-      .replace(
-        /\[([^\]]+)\]\(([^)]+)\)/g,
-        (_m: string, linkText: string, url: string) => {
-          const unsafe = /^(javascript:|data:|vbscript:)/i;
-          if (unsafe.test(url)) return linkText;
-          return `<a href="${url}">${linkText}</a>`;
-        },
-      );
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    if (/^\s*<!--/.test(line)) {
-      out.push(line);
-      i++;
-      continue;
-    }
-
-    if (/^---+$/.test(line)) {
-      out.push("<hr>");
-      i++;
-      continue;
-    }
-
-    const headingMatch = line.match(/^(#{1,6})\s+(.*)/);
-    if (headingMatch) {
-      const level = headingMatch[1].length;
-      const text = inlineFormat(headingMatch[2]);
-      const id = slugify(headingMatch[2]);
-      out.push(`<h${level} id="${id}">${text}</h${level}>`);
-      i++;
-      continue;
-    }
-
-    if (/^[*-]\s+/.test(line)) {
-      const items: string[] = [];
-      while (i < lines.length && /^[*-]\s+/.test(lines[i])) {
-        items.push(
-          `<li>${inlineFormat(lines[i].replace(/^[-*]\s+/, ""))}</li>`,
-        );
-        i++;
-      }
-      out.push(`<ul>\n${items.join("\n")}\n</ul>`);
-      continue;
-    }
-
-    if (/^\d+\.\s+/.test(line)) {
-      const items: string[] = [];
-      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
-        let itemText = lines[i].replace(/^\d+\.\s+/, "");
-        i++;
-        while (
-          i < lines.length &&
-          /^\s{2,}\S/.test(lines[i]) &&
-          !/^\d+\.\s+/.test(lines[i]) &&
-          !/^(#{1,6})\s+/.test(lines[i]) &&
-          !/^[-*]\s+/.test(lines[i]) &&
-          !/^---+$/.test(lines[i])
-        ) {
-          itemText += " " + lines[i].trim();
-          i++;
-        }
-        if (
-          i < lines.length &&
-          lines[i].trim() === "" &&
-          i + 1 < lines.length &&
-          /^\d+\.\s+/.test(lines[i + 1])
-        ) {
-          i++;
-        }
-        items.push(`<li>${inlineFormat(itemText)}</li>`);
-      }
-      out.push(`<ol>\n${items.join("\n")}\n</ol>`);
-      continue;
-    }
-
-    if (line.trim() === "") {
-      i++;
-      continue;
-    }
-
-    const paraLines: string[] = [];
-    while (
-      i < lines.length &&
-      lines[i].trim() !== "" &&
-      !/^(#{1,6})\s+/.test(lines[i]) &&
-      !/^[-*]\s+/.test(lines[i]) &&
-      !/^\d+\.\s+/.test(lines[i]) &&
-      !/^---+$/.test(lines[i]) &&
-      !/^\s*<!--/.test(lines[i])
-    ) {
-      paraLines.push(lines[i]);
-      i++;
-    }
-    if (paraLines.length > 0) {
-      out.push(`<p>${inlineFormat(paraLines.join("\n"))}</p>`);
-    }
-  }
-
-  return out.join("\n");
+  return renderReportBody(md);
 }
 
 /**
@@ -501,6 +386,8 @@ function reviewPageHtml(): string {
   <p class="meta">Edit the <em>What I'm Watching</em> section below. Saving updates the canonical Markdown report and regenerates the matching HTML.</p>
   <label class="editor-label" for="summary-textarea">What I'm Watching</label>
   <textarea id="summary-textarea" placeholder="Add your observations here…"></textarea>
+  <label class="editor-label" for="review-time-input">Review time</label>
+  <input id="review-time-input" type="text" placeholder="e.g. ~15 minutes" autocomplete="off">
   <button class="btn" id="save-btn" onclick="saveSummary()">💾 Save summary</button>
   <div class="status" id="save-status"></div>
 </section>
@@ -518,6 +405,7 @@ async function loadReview() {
     renderChecks(data.checks);
     document.getElementById('report-container').innerHTML = data.html;
     document.getElementById('summary-textarea').value = data.summary;
+    document.getElementById('review-time-input').value = data.reviewTime || '';
   } catch (err) {
     document.getElementById('meta-info').textContent = 'Failed to load: ' + err.message;
   }
@@ -540,6 +428,7 @@ async function saveSummary() {
   const statusEl = document.getElementById('save-status');
   const btn = document.getElementById('save-btn');
   const summary = document.getElementById('summary-textarea').value;
+  const reviewTime = document.getElementById('review-time-input').value;
 
   statusEl.className = 'status loading';
   statusEl.textContent = 'Saving…';
@@ -549,7 +438,7 @@ async function saveSummary() {
     const res = await fetch('/api/review-summary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ summary: summary }),
+      body: JSON.stringify({ summary: summary, reviewTime: reviewTime }),
     });
 
     if (!res.ok) {
@@ -561,6 +450,8 @@ async function saveSummary() {
     statusEl.className = 'status success';
     statusEl.textContent = '✓ Saved successfully — Markdown and HTML updated.';
     document.getElementById('report-container').innerHTML = data.html;
+    document.getElementById('summary-textarea').value = data.summary;
+    document.getElementById('review-time-input').value = data.reviewTime || '';
     document.getElementById('meta-info').textContent =
       'Report: ' + data.date + ' — ' + data.checks.length + ' checks run';
   } catch (err) {
@@ -711,6 +602,9 @@ async function serveReviewData(
     const section = findWatchingSection(report);
     const summary = section ? section.body : "";
 
+    // Extract review time from Build Notes
+    const reviewTime = findReviewTime(report);
+
     const htmlPath = join(ctx.reportsDir, `${date}.html`);
     let htmlExists = false;
     try {
@@ -729,7 +623,7 @@ async function serveReviewData(
       checkHtmlReport(htmlExists, htmlPath),
     ];
 
-    const data: ReviewData = { date, html, summary, checks };
+    const data: ReviewData = { date, html, summary, reviewTime, checks };
 
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify(data) + "\n");
@@ -764,7 +658,7 @@ async function handleSaveSummary(
     return;
   }
 
-  let payload: { summary?: unknown };
+  let payload: { summary?: unknown; reviewTime?: unknown };
   try {
     payload = JSON.parse(body);
   } catch {
@@ -781,7 +675,17 @@ async function handleSaveSummary(
     return;
   }
 
+  // reviewTime is optional; when provided it must be a string.
+  if (payload.reviewTime !== undefined && typeof payload.reviewTime !== "string") {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({ error: 'Invalid "reviewTime" field' }) + "\n",
+    );
+    return;
+  }
+
   const newSummary = payload.summary;
+  const newReviewTime = typeof payload.reviewTime === "string" ? payload.reviewTime : "";
 
   // Find latest report
   const reportFile = await findLatestReportFile(ctx.reportsDir);
@@ -814,12 +718,21 @@ async function handleSaveSummary(
     return;
   }
 
+  // Update review time in Build Notes when provided.
+  let finalReport = updatedReport;
+  if (newReviewTime !== "") {
+    const withReviewTime = replaceReviewTime(updatedReport, newReviewTime);
+    if (withReviewTime !== null) {
+      finalReport = withReviewTime;
+    }
+  }
+
   // Atomic write: write to temp file, then rename
   const tmpPath =
     reportPath + "." + randomBytes(8).toString("hex") + ".tmp";
   try {
     await mkdir(dirname(tmpPath), { recursive: true });
-    await writeFile(tmpPath, updatedReport, "utf8");
+    await writeFile(tmpPath, finalReport, "utf8");
     await rename(tmpPath, reportPath);
   } catch (err) {
     // Clean up temp file if it exists
@@ -841,11 +754,12 @@ async function handleSaveSummary(
   }
 
   // Return updated state
-  const html = markdownToHtml(updatedReport);
-  const section = findWatchingSection(updatedReport);
+  const html = markdownToHtml(finalReport);
+  const section = findWatchingSection(finalReport);
   const summary = section ? section.body : "";
-  const rbody = extractReportBody(updatedReport);
-  const articles = parseSourceArticles(updatedReport);
+  const reviewTime = findReviewTime(finalReport);
+  const rbody = extractReportBody(finalReport);
+  const articles = parseSourceArticles(finalReport);
 
   const htmlPath = join(ctx.reportsDir, `${date}.html`);
   let htmlExists = false;
@@ -859,13 +773,13 @@ async function handleSaveSummary(
     checkWeeklySummary(rbody),
     checkSourceReferences(articles, rbody),
     checkWeaselWords(rbody),
-    checkBuildNotes(updatedReport),
-    checkWatchingSection(updatedReport),
-    checkMarkdownLinks(updatedReport),
+    checkBuildNotes(finalReport),
+    checkWatchingSection(finalReport),
+    checkMarkdownLinks(finalReport),
     checkHtmlReport(htmlExists, htmlPath),
   ];
 
-  const data: ReviewData = { date, html, summary, checks };
+  const data: ReviewData = { date, html, summary, reviewTime, checks };
 
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data) + "\n");

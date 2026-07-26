@@ -42,6 +42,7 @@ The `pnpm weekly` command starts a local review server at http://127.0.0.1:3001/
 - Automated review checks (Weekly Summary, source references, weasel words, Build Notes, What I'm Watching, markdown links, HTML report presence)
 - A rendered preview of the report
 - An editable textarea for the "What I'm Watching" section
+- A free-form "Review time" field that records how long you spent reviewing and publishing the report
 
 Saving your observations via the review page updates the canonical Markdown report atomically and regenerates the matching HTML. Press Ctrl-C to stop the server when you're done reviewing.
 
@@ -64,7 +65,7 @@ A transparency section that may include:
 - model/provider used
 - estimated cloud cost
 - local model used, if any
-- human review time
+- human review time (free-form, e.g. "~15 minutes" or "20 minutes review + 5 publishing")
 - prompt changes
 - workflow issues
 

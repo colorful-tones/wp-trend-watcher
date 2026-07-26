@@ -85,4 +85,6 @@ Add JSDoc docblocks (`/** ... */`) to all new functions, types, and exported int
 
 User-facing changes must be recorded in the README's Changelog section. Use semantic versioning. Entries are date-free.
 
+Keep the Changelog short: list only the three most recent version headings (e.g. 0.7.0, 0.6.0, 0.5.0) in the README, then link to the [GitHub Releases page](https://github.com/colorful-tones/wp-trend-watcher/releases) for everything older. When a new version ships, drop the oldest of the three retained entries rather than growing the section.
+
 Update README/docs when provider behavior, source configuration, review checks, doctor checks, report output, cost/build-note behavior, or weekly workflow expectations change.

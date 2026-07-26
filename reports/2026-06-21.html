@@ -22,7 +22,8 @@
 </nav>
   <div class="report-body">
   <h2 id="weekly-summary">Weekly Summary</h2>
-<h3 id="article-inventory">Article Inventory</h3>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(12 articles)</span></summary>
 <ol>
 <li><a href="https://developer.wordpress.org/news/2026/06/dynamically-loading-template-parts-in-block-themes/">Dynamically loading template parts in block themes</a> (WordPress Developer Blog) — The <code>render_block_data</code> filter allows block theme authors to dynamically swap template part slugs based on page context, replacing the need for multiple nearly identical top-level templates.</li>
 <li><a href="https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/">Roadmap to 7.1</a> (Make Core) — WordPress 7.1, scheduled for release on August 19th, 2026, introduces a new Notes feature with suggestion mode and emoji reactions, alongside expanded responsive and pseudo-state styling options in the Site Editor.</li>
@@ -37,6 +38,7 @@
 <li><a href="https://wordpress.org/news/2026/06/global-partners-first-half-2026/">Global Partners Across the First Half of the 2026 WordPress Event Season</a> (WordPress.org News) — In the first half of 2026, the five Global Partners (Jetpack, WordPress.com, WooCommerce, Bluehost, and Hostinger) supported over a dozen regional WordCamps and a growing network of Campus Connect events, reaching thousands of developers and students globally.</li>
 <li><a href="https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/">WordPress Redis Object Cache and What to Do If It Fails</a> (ACF Blog) — WordPress's built-in object cache is non-persistent and resets with every request, whereas Redis provides persistent caching for database objects like posts and options to reduce query load.</li>
 </ol>
+</details>
 <h3 id="emerging-trends">Emerging Trends</h3>
 <ul>
 <li><strong>WordPress 7.1 Release Planning:</strong> The community is finalizing the roadmap for WordPress 7.1, scheduled for release on August 19, 2026. Key features under active development include a new Notes feature with suggestion mode and emoji reactions, expanded responsive and pseudo-state styling in the Site Editor, and a persistent Guidelines feature for encoding editorial rules. Performance Chat summaries identify View Transitions and Enhanced Responsive Images as the primary focus areas requiring final iteration before merge. A dedicated outreach effort for collaborative testing is launching, led by a streamlined Release Squad assigned specific roles for coordination, tech leads, triage, and testing.</li>
@@ -56,22 +58,30 @@
 <li><strong>Participate in Testing and Outreach:</strong> If you are not selected for the WordPress 7.1 Release Squad, you can still contribute by participating in the upcoming collaborative testing outreach, bug scrubs, triage, or documentation efforts. Keep an eye on the June 17, 2026, Dev Chat for specific testing calls, such as the one for Unicode email addresses.</li>
 </ul>
 <hr>
+
+
 <h2 id="what-i-m-watching">What I'm Watching</h2>
 <p>Mostly watching new proposed iterations for the following features in the upcoming WordPress 7.1 (~Aug. 26, 2026), including:</p>
 <ul>
 <li>Stabilize admin design system, which should empower plugins and custom projects to leverage consistent design tokens to make their experience seemless. (See <a href="https://github.com/WordPress/gutenberg/issues/76941">Design system theming for WordPress 7.1 #76941</a>)</li>
 <li>Extending Block Bindings API for <code>innerBlocks</code> support. (See <a href="https://github.com/WordPress/gutenberg/issues/77199">Block Bindings in WordPress 7.1 #77199</a>)</li>
-<li>🔥 Icon block API expansion - unlock 3rd-party providers to use new <code>register_icon()</code> and <code>unregister_icon()</code>, and collection support. Custom icons in the block editor anyone? 👋</li>
-</ul>
-<p>  * See: <a href="https://github.com/WordPress/gutenberg/issues/75715#issuecomment-4679395256">SVG Icon API: Iteration for WordPress 7.1 #75715</a></p>
+<li>🔥 Icon block API expansion - unlock 3rd-party providers to use new <code>register_icon()</code> and <code>unregister_icon()</code>, and collection support. Custom icons in the block editor anyone? 👋
 <ul>
-<li>Image block get a great accessibility enhancement: <a href="https://github.com/WordPress/gutenberg/pull/78064">Image block: Add "Mark as decorative" toggle for accessibility #78064</a></li>
-<li>Explorations on pseudo styling interactive state styling, and inherited Global Styles is worth keeping an eye on: <a href="https://github.com/WordPress/gutenberg/issues/77595">Block Styles: Display inherited Global Styles and own Block Style Variation styles in Block Inspector #77595</a></li>
-<li>🔥 Responsive styles enhancements - adjust block styling for different screen sizes. 👏</li>
+<li>See: <a href="https://github.com/WordPress/gutenberg/issues/75715#issuecomment-4679395256">SVG Icon API: Iteration for WordPress 7.1 #75715</a></li>
 </ul>
-<p>  * See: <a href="https://github.com/WordPress/gutenberg/issues/77817">Responsive style states for blocks - iteration for WP 7.1 #77817</a></p>
+</li>
+<li>Image block get a great accessibility enhancement: <a href="https://github.com/WordPress/gutenberg/pull/78064">Image block: Add &quot;Mark as decorative&quot; toggle for accessibility #78064</a></li>
+<li>Explorations on pseudo styling interactive state styling, and inherited Global Styles is worth keeping an eye on: <a href="https://github.com/WordPress/gutenberg/issues/77595">Block Styles: Display inherited Global Styles and own Block Style Variation styles in Block Inspector #77595</a></li>
+<li>🔥 Responsive styles enhancements - adjust block styling for different screen sizes. 👏
+<ul>
+<li>See: <a href="https://github.com/WordPress/gutenberg/issues/77817">Responsive style states for blocks - iteration for WP 7.1 #77817</a></li>
+</ul>
+</li>
+</ul>
 <p>Those are just a few highlights, but so much more on the roadmap.</p>
 <hr>
+
+
 <h2 id="source-articles">Source Articles</h2>
 <h3 id="wordpress-developer-blog">WordPress Developer Blog</h3>
 <ul>
@@ -98,6 +108,8 @@
 <li><a href="https://www.advancedcustomfields.com/blog/wordpress-redis-object-cache/">WordPress Redis Object Cache and What to Do If It Fails</a> — 6/18/2026</li>
 </ul>
 <hr>
+
+
 <h2 id="build-notes">Build Notes</h2>
 <ul>
 <li>Articles analyzed: 12</li>
@@ -105,8 +117,11 @@
 <li>Model: openai-compatible/qwen/qwen3.5-9b</li>
 <li>Tokens: 12781 prompt + 1997 completion</li>
 <li>Estimated cost: $0.00 (local model)</li>
+</ul>
+<ul>
 <li>Review time: ~18 minutes</li>
 </ul>
+
 </div>
   <footer class="nav-footer">
     <a href="index.html">← Back to Reports</a>
