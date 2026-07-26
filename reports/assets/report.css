@@ -48,9 +48,39 @@ em { font-style: italic; }
 .toc ul { column-gap: 1rem; display: flex; list-style: none;margin: 0; }
 .toc a { font-size: 0.9rem; }
 
-/* Article Inventory list */
+/* Article Inventory disclosure */
 #article-inventory + ol li { padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }
 #article-inventory + ol li:last-child { border-bottom: none; }
+
+/* Collapsible Article Inventory */
+details.article-inventory {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 0;
+  background: #fafafa;
+}
+details.article-inventory > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  list-style: none;
+}
+details.article-inventory > summary::-webkit-details-marker { display: none; }
+details.article-inventory > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+details.article-inventory[open] > summary::before {
+  content: "▾ ";
+}
+details.article-inventory .article-inventory-count {
+  font-weight: 400;
+  color: #666;
+  font-size: 0.9rem;
+}
+details.article-inventory ol { margin-top: 0.75rem; }
 
 /* Build Notes panel */
 #build-notes ~ * { font-size: 0.9rem; color: #555; }
