@@ -91,6 +91,16 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.7.0
+
+- Added `markdown-it` dependency; report HTML generation and the local review server now share one Markdown renderer (`src/summarize/renderer.ts`) instead of two bespoke converters.
+- Renderer keeps raw HTML disabled and strips unsafe link schemes (`javascript:`, `data:`, `vbscript:`) so generated pages stay safe even from untrusted feeds.
+- Article Inventory now renders inside a collapsible `<details>` element (closed by default) with a visible article count, de-emphasizing long vertical lists without removing the data.
+- Report sections render in a configurable presentation order (`DEFAULT_PRESENTATION_ORDER`), so generated HTML layout can change without rewriting report history. Canonical Markdown data stays the source of truth.
+- Added a free-form **Review time** field to the local review page (`Build Notes`) and the review API; it persists to the `Review time:` line in the canonical Markdown.
+- `pnpm regen-html` now refreshes all report HTML from existing Markdown with no LLM calls; historical report data is unchanged.
+- Bumped package version to 0.7.0.
+
 ### 0.6.0
 
 - Added `pnpm weekly` single-command workflow: doctor → collect → summarize → review → local review server.

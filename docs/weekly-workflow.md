@@ -76,6 +76,14 @@ pnpm generate-report
 
 If you edited the report Markdown and want to rebuild the HTML, or if you want to re-run the cross-article synthesis step without re-summarizing articles, run this. It uses saved article summaries from `summaries.json` and skips content fetching and per-article LLM calls.
 
+To refresh the HTML for every report from its Markdown without any LLM calls (for example after a layout or styling change), use:
+
+```bash
+pnpm regen-html
+```
+
+This rewrites all `reports/*.html` from the existing `reports/*.md` files. Report Markdown and article data are never changed — only the generated presentation.
+
 ### 7. Index Page (if needed)
 
 ```bash
