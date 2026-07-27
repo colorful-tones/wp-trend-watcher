@@ -1,0 +1,135 @@
+{
+  "date": "2026-07-26",
+  "collectedAt": "2026-07-26T23:59:25.521Z",
+  "articleCount": 16,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-background-gradient-background-gradient/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "New Block Support in WordPress 7.1: Background Gradient (background.gradient)",
+      "url": "https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-background-gradient-background-gradient/",
+      "publishedAt": "2026-07-26T12:18:44.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-minimum-width/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "New Block Support in WordPress 7.1: Minimum Width",
+      "url": "https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-minimum-width/",
+      "publishedAt": "2026-07-26T12:14:42.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/24/registering-and-rendering-svg-icons-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Registering and rendering SVG icons in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/24/registering-and-rendering-svg-icons-in-wordpress-7-1/",
+      "publishedAt": "2026-07-24T08:53:10.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/24/react-19-punted-beyond-wordpress-7-1-experiment-in-gutenberg/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "React 19: punted beyond WordPress 7.1, experiment in Gutenberg",
+      "url": "https://make.wordpress.org/core/2026/07/24/react-19-punted-beyond-wordpress-7-1-experiment-in-gutenberg/",
+      "publishedAt": "2026-07-24T05:52:30.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/23/editor-components-updates-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Editor components updates in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/23/editor-components-updates-in-wordpress-7-1/",
+      "publishedAt": "2026-07-23T12:51:14.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/23/editable-blocks-inside-the-custom-html-block/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Editable blocks inside the Custom HTML block",
+      "url": "https://make.wordpress.org/core/2026/07/23/editable-blocks-inside-the-custom-html-block/",
+      "publishedAt": "2026-07-23T12:29:20.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/23/media-library-infinite-scrolling-is-now-enabled-by-default-with-a-per-user-opt-out/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Media Library infinite scrolling is now enabled by default, with a per-user opt-out",
+      "url": "https://make.wordpress.org/core/2026/07/23/media-library-infinite-scrolling-is-now-enabled-by-default-with-a-per-user-opt-out/",
+      "publishedAt": "2026-07-23T09:30:50.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/23/text-shadow-support-in-global-styles/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Text Shadow Support in Global Styles",
+      "url": "https://make.wordpress.org/core/2026/07/23/text-shadow-support-in-global-styles/",
+      "publishedAt": "2026-07-23T08:45:43.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/22/client-side-media-processing-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Client-Side Media Processing in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/22/client-side-media-processing-in-wordpress-7-1/",
+      "publishedAt": "2026-07-22T17:24:03.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/22/whats-new-in-gutenberg-23-6-july-22-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.6? (July 22, 2026)",
+      "url": "https://make.wordpress.org/core/2026/07/22/whats-new-in-gutenberg-23-6-july-22-2026/",
+      "publishedAt": "2026-07-22T13:15:41.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/21/summary-dev-chat-july-21-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: July 21, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/21/summary-dev-chat-july-21-2026/",
+      "publishedAt": "2026-07-21T20:08:14.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/21/dev-chat-agenda-july-21-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – July 21, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/21/dev-chat-agenda-july-21-2026/",
+      "publishedAt": "2026-07-21T13:25:05.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-3/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1 Beta 3",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-3/",
+      "publishedAt": "2026-07-22T15:23:14.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-agency-workflow/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF Chat Fridays: Agency Workflow",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-agency-workflow/",
+      "publishedAt": "2026-07-20T15:25:05.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-beta-3-ai-in-action-at-wcus-playground-ui-testing-and-more-weekend-edition-370/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 Beta 3, AI in Action at #WCUS, Playground UI testing and more — Weekend Edition 370",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-beta-3-ai-in-action-at-wcus-playground-ui-testing-and-more-weekend-edition-370/",
+      "publishedAt": "2026-07-25T10:41:00.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/how-wordpress-decides-a-theme-is-a-block-theme/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "How WordPress decides a theme is a “block theme”",
+      "url": "https://gutenbergtimes.com/how-wordpress-decides-a-theme-is-a-block-theme/",
+      "publishedAt": "2026-07-21T18:57:12.000Z"
+    }
+  ]
+}

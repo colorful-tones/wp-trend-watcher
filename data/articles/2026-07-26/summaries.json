@@ -1,0 +1,170 @@
+{
+  "date": "2026-07-26",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3-14b",
+  "articleCount": 16,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-background-gradient-background-gradient/",
+      "title": "New Block Support in WordPress 7.1: Background Gradient (background.gradient)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-background-gradient-background-gradient/",
+      "summary": "WordPress 7.1 adds a new background.gradient block support that allows gradients and background images to coexist on the same block by using the background-image longhand property instead of the shorthand. The gradient is stored at style.background.gradient and rendered alongside any background image as comma-separated values in a single CSS declaration. To use it, add \"gradient\": true under the background support in block.json and set gradient values in theme.json or via block-level settings.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1040,
+      "completionTokens": 92
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-minimum-width/",
+      "title": "New Block Support in WordPress 7.1: Minimum Width",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/26/new-block-support-in-wordpress-7-1-minimum-width/",
+      "summary": "WordPress 7.1 adds minWidth support to blocks, allowing them to set a minimum width through the Dimensions panel. The feature is registered under dimensions block support and can be enabled via block.json or theme.json, applying the CSS min-width property with optional dimension presets.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1018,
+      "completionTokens": 54
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/24/registering-and-rendering-svg-icons-in-wordpress-7-1/",
+      "title": "Registering and rendering SVG icons in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/24/registering-and-rendering-svg-icons-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces a public API for registering and rendering SVG icons, allowing developers to add custom icon collections and individual icons that can be used in the editor, REST API, and PHP. Icons are grouped into collections with names like `core` or `my-plugin`, and can be registered using `wp_register_icon_collection()` and rendered with `wp_get_icon()`.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1027,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/24/react-19-punted-beyond-wordpress-7-1-experiment-in-gutenberg/",
+      "title": "React 19: punted beyond WordPress 7.1, experiment in Gutenberg",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/24/react-19-punted-beyond-wordpress-7-1-experiment-in-gutenberg/",
+      "summary": "WordPress 7.1 will not include an upgrade to React 19 due to compatibility issues found during testing, requiring further refinement of a compatibility layer for existing plugins. A new experimental feature in the Gutenberg plugin allows testing React 19 support, with users encouraged to check for errors like mixed React versions or deprecated APIs in their plugins.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1006,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/23/editor-components-updates-in-wordpress-7-1/",
+      "title": "Editor components updates in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/23/editor-components-updates-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 updates @wordpress/components form controls to use a default height of 40px, removing the need for the __next40pxDefaultSize prop. The change affects multiple components, and developers should remove any usage of this prop or related size props like __unstable-large. Additionally, the deprecated Navigation component and __experimentalApplyValueToSides utility are removed, with migration guidance provided for Emotion-based styling.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1089,
+      "completionTokens": 90
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/23/editable-blocks-inside-the-custom-html-block/",
+      "title": "Editable blocks inside the Custom HTML block",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/23/editable-blocks-inside-the-custom-html-block/",
+      "summary": "WordPress 7.1 introduces support for editable blocks within the Custom HTML block, allowing static HTML to be interwoven with regular blocks that are editable but not movable or removable. The innerContent field in block variations enables predefined HTML structures with editable slots, offering a way to create reusable components without custom blocks.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 764,
+      "completionTokens": 63
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/23/media-library-infinite-scrolling-is-now-enabled-by-default-with-a-per-user-opt-out/",
+      "title": "Media Library infinite scrolling is now enabled by default, with a per-user opt-out",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/23/media-library-infinite-scrolling-is-now-enabled-by-default-with-a-per-user-opt-out/",
+      "summary": "WordPress 7.1 enables infinite scrolling in the Media Library by default, with users able to opt out via their profile settings. The media_library_infinite_scrolling filter now defaults to true, overriding previous behavior where it was disabled by default for accessibility and performance reasons. Developers relying on the old behavior should use the filter to enforce infinite scrolling off for all users.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1027,
+      "completionTokens": 74
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/23/text-shadow-support-in-global-styles/",
+      "title": "Text Shadow Support in Global Styles",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/23/text-shadow-support-in-global-styles/",
+      "summary": "WordPress 7.1 adds support for defining text-shadow values in Global Styles via theme.json, allowing themes to apply shadows globally, per-block, or on specific elements like links. The textShadow property under styles.typography maps directly to CSS and supports multiple shadows, but no UI controls are included in this release.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1044,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/22/client-side-media-processing-in-wordpress-7-1/",
+      "title": "Client-Side Media Processing in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/22/client-side-media-processing-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces client-side media processing using WebAssembly, handling image compression, resizing, and thumbnail generation directly in the browser with wasm-vips. This reduces server load and ensures consistent image processing across all users, regardless of the server's installed image library. The finalize step applies the wp_generate_attachment_metadata filter with 'update' context to ensure plugins receive full sub-sizes metadata.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 997,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/22/whats-new-in-gutenberg-23-6-july-22-2026/",
+      "title": "What’s new in Gutenberg 23.6? (July 22, 2026)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/22/whats-new-in-gutenberg-23-6-july-22-2026/",
+      "summary": "Gutenberg 23.6 introduces cropping controls in the Media editor, adds responsive style states with aspect-ratio, flex-alignment, and text-shadow controls, and raises the minimum WordPress version to 6.9. The Playlist and Tabs blocks are now stable, Notes includes inline notes and @mention autocomplete, and the Gallery block gains a dynamic mode that displays all post media automatically.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1042,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/21/summary-dev-chat-july-21-2026/",
+      "title": "Dev Chat summary: July 21, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/21/summary-dev-chat-july-21-2026/",
+      "summary": "WordPress 7.0.2, an urgent security release, is now available, and WordPress 7.1 Beta 3 is set for release on July 22 with a release party at 15:00 UTC. The Gutenberg 23.6 release process will begin around 9:00 UTC on July 22, followed by a core and Gutenberg sync for Beta3, with a commit freeze at 14:00 UTC. Key technical discussions include landing ticket #50921, improving documentation with interactive code examples using opt-in php codefences, and addressing Trac tickets for 7.1 by prioritizing remaining issues.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1137,
+      "completionTokens": 140
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/21/dev-chat-agenda-july-21-2026/",
+      "title": "Dev Chat Agenda – July 21, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/21/dev-chat-agenda-july-21-2026/",
+      "summary": "The WordPress Developers Chat on July 21, 2026, will focus on upcoming releases and include an open floor for discussion. WordPress 7.1 Beta 3 is set to release on July 22, and there are 140 Trac tickets milestone for the release, with some bugs having simple PRs ready for review.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 915,
+      "completionTokens": 74
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-3/",
+      "title": "WordPress 7.1 Beta 3",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-3/",
+      "summary": "WordPress 7.1 Beta 3 is available for testing, with a final release scheduled for August 19, 2026. Key changes include a revised global style application process in the block editor and fixes for media uploads, including handling of HEIC images and EXIF rotation. Developers should note the updated WordPress Coding Standards to version 3.4.0.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1089,
+      "completionTokens": 78
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-agency-workflow/",
+      "title": "ACF Chat Fridays: Agency Workflow",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-agency-workflow/",
+      "summary": "The July ACF Chat Fridays session discussed agency workflows for WordPress development, focusing on scalable site building, deployment pipelines, and team collaboration. Key takeaways included strategies for reproducible development processes and tools to streamline agency workflows.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 323,
+      "completionTokens": 45
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-beta-3-ai-in-action-at-wcus-playground-ui-testing-and-more-weekend-edition-370/",
+      "title": "WordPress 7.1 Beta 3, AI in Action at #WCUS, Playground UI testing and more — Weekend Edition 370",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-beta-3-ai-in-action-at-wcus-playground-ui-testing-and-more-weekend-edition-370/",
+      "summary": "WordPress 7.1 Beta 3 is available for testing, with updates including text shadow support in global styles, editable blocks within the Custom HTML block, and SVG icon registration. WCUS 2026 will feature an AI track addressing ethical boundaries, agentic commerce readiness, and practical development challenges with sessions running August 16–19 in Phoenix.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1157,
+      "completionTokens": 75
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/how-wordpress-decides-a-theme-is-a-block-theme/",
+      "title": "How WordPress decides a theme is a “block theme”",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/how-wordpress-decides-a-theme-is-a-block-theme/",
+      "summary": "WordPress determines if a theme is a \"block theme\" by checking for the presence of `templates/index.html` or `block-templates/index.html`, regardless of other block-related features like theme.json or patterns. The existence of these specific files is the sole criterion, making it a filesystem check rather than a declaration in style.css or theme support functions.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1174,
+      "completionTokens": 71
+    }
+  ],
+  "totalPromptTokens": 15849,
+  "totalCompletionTokens": 1225
+}
