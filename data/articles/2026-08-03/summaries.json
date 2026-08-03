@@ -1,0 +1,170 @@
+{
+  "date": "2026-08-03",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3-14b",
+  "articleCount": 16,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/07/build-your-first-ai-powered-wordpress-plugin/",
+      "title": "Build your first AI-Powered WordPress plugin",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/07/build-your-first-ai-powered-wordpress-plugin/",
+      "summary": "The article guides developers through building the \"Photo to Post\" plugin, which uses WordPress's Abilities API, AI Client, and MCP Adapter to create a post from an image. The key technical takeaway is that the plugin combines three composable abilities—describe-image, generate-post-from-description, and create-post-from-photo—to demonstrate ability composition via WP_Ability::execute(). Developers need a local WordPress environment (7.0+), Composer, Node.js, and API credentials for an AI provider with vision capabilities to follow along.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1056,
+      "completionTokens": 106
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/",
+      "title": "Iframed Editor Changes in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 makes the post editor always iframed, removing previous conditional logic based on block API versions or theme types. Developers should test custom blocks and plugins in the fully iframed environment to ensure compatibility.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1041,
+      "completionTokens": 46
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/31/json-schema-preparation-for-client-compatibility-in-wordpress-7-1/",
+      "title": "JSON Schema preparation for client compatibility in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/31/json-schema-preparation-for-client-compatibility-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces the `wp_prepare_json_schema_for_client()` function to convert internal WordPress schemas into a portable, client-facing format compatible with REST clients, frontend apps, and AI tools. This ensures schemas used by external systems are consistent and free from server-specific details like PHP callbacks. Developers should use this function when exposing WordPress-style schemas outside of server-side validation, but should not replace canonical schemas used internally.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 971,
+      "completionTokens": 85
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/31/abilities-api-improvements-in-wordpress-7-1/",
+      "title": "Abilities API improvements in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/31/abilities-api-improvements-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 enhances the Abilities API with custom validation hooks for input and output, allowing plugins to enforce rules beyond JSON Schema. The `wp_ability_validate_input` and `wp_ability_validate_output` filters let developers check values against specific criteria, returning true for valid inputs or a `WP_Error` for invalid ones.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1042,
+      "completionTokens": 66
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/31/design-system-theming-in-wordpress-7-1/",
+      "title": "Design System Theming in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/31/design-system-theming-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces a new wp-theme stylesheet with semantic design tokens as CSS custom properties for theming admin interface components. These tokens allow consistent styling of WordPress and plugin UIs by referencing predefined values like color, spacing, and border radius. The ThemeProvider React component enables automatic inheritance of theme settings, simplifying UI customization across the admin dashboard.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 955,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/31/filtering-site-editor-screens-in-wordpress-7-1/",
+      "title": "Filtering Site Editor Screens in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/31/filtering-site-editor-screens-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces four new filters to customize Site Editor screens, allowing developers to configure DataViews and DataForm components for pages, templates, template parts, and patterns. The filters let you modify default views, layouts, view lists, and form configurations using a provided API. Example code demonstrates how to adjust the Pages screen's layout, sorting, and visible fields via a filter callback.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 935,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/30/leaner-steadier-phpunit-runs-for-upcoming-releases/",
+      "title": "Leaner, steadier PHPUnit runs for upcoming releases",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/30/leaner-steadier-phpunit-runs-for-upcoming-releases/",
+      "summary": "The WordPress Core team has reduced PHPUnit job count and duration by trimming the PHP matrix and optimizing Docker image pulls, resulting in about 52% fewer jobs and 54% fewer job-minutes per run. Future plans include trimming the 6.8 matrix and testing a larger-runner pool for release windows.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 979,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/29/jquery-ui-updated-to-1-14-2-in-wordpress-7-1/",
+      "title": "jQuery UI updated to 1.14.2 in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/29/jquery-ui-updated-to-1-14-2-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 updates jQuery UI to version 1.14.2, removing support for Internet Explorer and Edge Legacy. The update sets jQuery.uiBackCompat to true for backward compatibility and removes several unused functions, requiring developers to check and update their code if it uses any of these.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 540,
+      "completionTokens": 61
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/29/new-execution-lifecycle-filters-for-the-abilities-api-in-wordpress-7-1/",
+      "title": "New execution lifecycle filters for the Abilities API in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/29/new-execution-lifecycle-filters-for-the-abilities-api-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 adds four filters to the Abilities API, allowing plugins to modify ability execution lifecycle steps such as short-circuiting, input transformation, authorization checks, and result modification. The `wp_pre_execute_ability` filter can bypass the entire execution pipeline, useful for caching or maintenance mode.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1044,
+      "completionTokens": 61
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/29/xpost-help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity/",
+      "title": "X-post: Help shape the next chapter of WP Credits: a developer track, and a pilot opportunity",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/29/xpost-help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity/",
+      "summary": "The WordPress Core team is seeking input from developers and educators to shape a new, developer-focused track for WP Credits, with the goal of defining at least the first tier by August. The pilot aims to provide students with real, job-relevant contributions structured into beginner-to-advanced levels.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 641,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/28/performance-chat-summary-28-july-2026/",
+      "title": "Performance Chat Summary: 28 July 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/28/performance-chat-summary-28-july-2026/",
+      "summary": "The July 28, 2026 Performance Chat discussed updates including a patch for easier performance testing in the development environment, feedback on an open PR related to #65215, and a security update for wp-coding-standards. The next chat is scheduled for August 11, 2026 at 16:00 UTC.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 828,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/07/28/dev-chat-agenda-july-28-2026/",
+      "title": "Dev Chat Agenda – July 28, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/07/28/dev-chat-agenda-july-28-2026/",
+      "summary": "The WordPress Developers Chat on July 28, 2026, will focus on the upcoming 7.1 release cycle, including the scheduled release of Beta 4 and new dev notes covering features like client-side media processing and block editor updates. Developers are encouraged to bring up open tickets, discuss topics for the 7.1 release, and participate in the open floor session.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1020,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-4/",
+      "title": "WordPress 7.1 Beta 4",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-4/",
+      "summary": "WordPress 7.1 Beta 4 is available for testing, with a final release scheduled for August 19, 2026. It includes over 114 updates and fixes since Beta 3, focusing on improving the editor's usability by keeping notes tied to their passages and displaying tagged people more clearly. Testing is encouraged through plugins, direct download, WP-CLI, or the WordPress Playground.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 969,
+      "completionTokens": 85
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-133-gutenberg-23-6-release-and-wordpress-7-1/",
+      "title": "Gutenberg Changelog #133 – Gutenberg 23.6 Release and WordPress 7.1",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-133-gutenberg-23-6-release-and-wordpress-7-1/",
+      "summary": "The episode discusses Gutenberg 23.6 and WordPress 7.1, focusing on new features like customizable viewports via theme.json, SVG icon registration, and iframe-based post editor changes. Key technical takeaways include client-side media processing, editable blocks in Custom HTML, and improved block support for min-width and background gradients. The WordPress 7.1 beta 4 is available for testing, with a release date of August 2026.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1126,
+      "completionTokens": 93
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-is-a-foot-gutenberg-23-6-iframed-post-editor-abilities-api-studio-code-and-more-weekend-edition-371/",
+      "title": "WordPress 7.1 is afoot, Gutenberg 23.6, iframed post editor, Abilities API, Studio Code and more — Weekend Edition 371",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-is-a-foot-gutenberg-23-6-iframed-post-editor-abilities-api-studio-code-and-more-weekend-edition-371/",
+      "summary": "WordPress 7.1 Beta 4 was released, with responsive styling finally landing in the block editor and new block support features like minimum width and background gradient. Gutenberg 23.6 includes stable Playlist and Tabs blocks, dynamic Gallery block mode, and a custom icon registration API.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1225,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "title": "WordPress 7.1 Source of Truth",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "summary": "WordPress 7.1 introduces enhanced block editor styling controls, improved media handling, and new blocks like Playlist and Tabs. Key technical takeaways include responsive editing without custom CSS, unified admin color schemes in editors, and a new media editor modal with free-form cropping and rotation. The release roadmap includes features from Gutenberg plugin versions 22.7 to 23.6, with Field Guide scheduled for August 5.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1121,
+      "completionTokens": 86
+    }
+  ],
+  "totalPromptTokens": 15493,
+  "totalCompletionTokens": 1180
+}

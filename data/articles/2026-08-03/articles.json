@@ -1,0 +1,135 @@
+{
+  "date": "2026-08-03",
+  "collectedAt": "2026-08-03T12:11:33.290Z",
+  "articleCount": 16,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/07/build-your-first-ai-powered-wordpress-plugin/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "Build your first AI-Powered WordPress plugin",
+      "url": "https://developer.wordpress.org/news/2026/07/build-your-first-ai-powered-wordpress-plugin/",
+      "publishedAt": "2026-07-30T17:39:44.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Iframed Editor Changes in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/",
+      "publishedAt": "2026-08-03T05:55:01.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/31/json-schema-preparation-for-client-compatibility-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "JSON Schema preparation for client compatibility in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/31/json-schema-preparation-for-client-compatibility-in-wordpress-7-1/",
+      "publishedAt": "2026-07-31T19:15:49.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/31/abilities-api-improvements-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Abilities API improvements in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/31/abilities-api-improvements-in-wordpress-7-1/",
+      "publishedAt": "2026-07-31T19:07:43.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/31/design-system-theming-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Design System Theming in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/31/design-system-theming-in-wordpress-7-1/",
+      "publishedAt": "2026-07-31T12:51:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/31/filtering-site-editor-screens-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Filtering Site Editor Screens in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/31/filtering-site-editor-screens-in-wordpress-7-1/",
+      "publishedAt": "2026-07-31T09:19:17.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/30/leaner-steadier-phpunit-runs-for-upcoming-releases/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Leaner, steadier PHPUnit runs for upcoming releases",
+      "url": "https://make.wordpress.org/core/2026/07/30/leaner-steadier-phpunit-runs-for-upcoming-releases/",
+      "publishedAt": "2026-07-30T01:12:10.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/29/jquery-ui-updated-to-1-14-2-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "jQuery UI updated to 1.14.2 in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/29/jquery-ui-updated-to-1-14-2-in-wordpress-7-1/",
+      "publishedAt": "2026-07-29T18:57:23.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/29/new-execution-lifecycle-filters-for-the-abilities-api-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "New execution lifecycle filters for the Abilities API in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/07/29/new-execution-lifecycle-filters-for-the-abilities-api-in-wordpress-7-1/",
+      "publishedAt": "2026-07-29T08:07:53.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/29/xpost-help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Help shape the next chapter of WP Credits: a developer track, and a pilot opportunity",
+      "url": "https://make.wordpress.org/core/2026/07/29/xpost-help-shape-the-next-chapter-of-wp-credits-a-developer-track-and-a-pilot-opportunity/",
+      "publishedAt": "2026-07-29T01:49:00.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/28/performance-chat-summary-28-july-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 28 July 2026",
+      "url": "https://make.wordpress.org/core/2026/07/28/performance-chat-summary-28-july-2026/",
+      "publishedAt": "2026-07-28T17:02:18.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/07/28/dev-chat-agenda-july-28-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – July 28, 2026",
+      "url": "https://make.wordpress.org/core/2026/07/28/dev-chat-agenda-july-28-2026/",
+      "publishedAt": "2026-07-28T01:41:45.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/07/wordpress-7-1-beta-4/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1 Beta 4",
+      "url": "https://wordpress.org/news/2026/07/wordpress-7-1-beta-4/",
+      "publishedAt": "2026-07-29T15:30:58.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-133-gutenberg-23-6-release-and-wordpress-7-1/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Gutenberg Changelog #133 – Gutenberg 23.6 Release and WordPress 7.1",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-133-gutenberg-23-6-release-and-wordpress-7-1/",
+      "publishedAt": "2026-08-02T08:21:46.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-is-a-foot-gutenberg-23-6-iframed-post-editor-abilities-api-studio-code-and-more-weekend-edition-371/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 is afoot, Gutenberg 23.6, iframed post editor, Abilities API, Studio Code and more — Weekend Edition 371",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-is-a-foot-gutenberg-23-6-iframed-post-editor-abilities-api-studio-code-and-more-weekend-edition-371/",
+      "publishedAt": "2026-08-01T01:17:00.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 Source of Truth",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "publishedAt": "2026-07-30T13:51:54.000Z"
+    }
+  ]
+}
