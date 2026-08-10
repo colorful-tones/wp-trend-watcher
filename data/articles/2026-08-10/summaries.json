@@ -1,0 +1,200 @@
+{
+  "date": "2026-08-10",
+  "provider": "openai-compatible",
+  "model": "prism-ml/bonsai-27b",
+  "articleCount": 19,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/",
+      "title": "What’s new in Gutenberg 23.7? (05 August)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/",
+      "summary": "Gutenberg 23.7 introduces a renamed “Detach” button for the Gallery block’s dynamic mode, clarifying its function via an explanatory modal. It also makes Global Styles inheritance opt-in through Gutenberg Experiments and fixes LaTeX input in the Math block to defer validation errors until focus loss.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1081,
+      "completionTokens": 60
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/",
+      "title": "WordPress 7.1 Release Candidate Phase",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/",
+      "summary": "WordPress 7.1 has entered the Release Candidate phase, requiring double sign-off by two core committers for all trunk commits until the 7.1 branch is created. The branching process has been delayed to early next week to avoid interfering with GitHub Actions improvements, and the dev-feedback keyword must be used to request a second committer’s review.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1021,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
+      "title": "WordPress 7.1 Field Guide",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
+      "summary": "WordPress 7.1 introduces client-side media processing APIs that enable supported image operations to occur in the browser before upload, reducing server load and improving upload performance. The release also updates REST API endpoints to support image dimension validation, size-aware encoding quality selection, and sideloaded file registration for multiple image sizes.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1035,
+      "completionTokens": 63
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/",
+      "title": "The notify_post_author filter now has the final say on post author notifications",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/",
+      "summary": "WordPress 7.1 moves the comment approval check before the `notify_post_author` filter, making the filter’s return value definitive for whether a notification is sent. The default passed to the filter is now `false` for unapproved comments, and returning `true` will force a notification even for spam or trashed comments. Callbacks that blindly return `true` must now explicitly check `$comment->comment_approved === '1'` to avoid unintended notifications.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 998,
+      "completionTokens": 94
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/",
+      "title": "Filtering registered abilities with wp_get_abilities() in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 adds an optional $args array to wp_get_abilities() for filtering registered abilities by category, namespace, or metadata. Two new filters, wp_get_abilities_item_include and wp_get_abilities_result, allow plugins to modify ability retrieval logic.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1031,
+      "completionTokens": 55
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/",
+      "title": "Responsive block styles and configurable viewports in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 adds responsive style states for blocks, allowing Tablet and Mobile overrides via Global Styles or individual block attributes. These values generate media-query-scoped CSS on the frontend, with non-layout per-instance declarations marked !important to override defaults.\n\nThemes can customize breakpoint widths using the top-level settings.viewport, accepting px, em, or rem values. Only valid numeric lengths are accepted; CSS functions and percentages are ignored, and defaults apply if configurations are invalid or missing.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1142,
+      "completionTokens": 97
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/",
+      "title": "Pseudo and custom style states in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 extends pseudo state styling to all blocks via theme.json and block attributes, allowing hover, focus, active, and responsive nesting. Custom states are introduced for theme.json-only use on navigation links to style the current menu item using a -current prefix. Developers can disable state editing globally via the block_states_editing_enabled editor setting, which hides related UI controls.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1147,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/",
+      "title": "A unified public exposure flag for Abilities in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces a unified `public` metadata flag for abilities to indicate external availability across REST API, MCP adapters, and AI agents. This eliminates the need for redundant channel-specific flags while preserving granular control via null-coalescing precedence where explicit settings override the default.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1083,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/",
+      "title": "Miscellaneous Editor Changes in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/",
+      "summary": "The Navigation block in WordPress 7.1 no longer forcefully propagates font-size to child blocks, resolving layout-breaking compounding issues with relative units in deeply nested menus. Theme developers can restore legacy behavior by applying the provided `render_block_core/navigation-link` filter to reapply font-size classes or inline styles.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1105,
+      "completionTokens": 63
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/",
+      "title": "Dev Chat Agenda – August 4, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/",
+      "summary": "WordPress Dev Chat is scheduled for Tuesday, August 4, 2026, at 15:00 UTC in the #core channel on Make WordPress Slack. The meeting will focus on upcoming release discussions and include an open floor for ticket assistance, with 7.1 RC1 slated for August 5, 2026. Key agenda items include new execution lifecycle filters for the Abilities API, jQuery UI updates to 1.14.2, filtering Site Editor screens, and defensive data design improvements.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 901,
+      "completionTokens": 109
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/04/defensive-data-design/",
+      "title": "Defensive Data Design",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/04/defensive-data-design/",
+      "summary": "This post outlines principles for designing WordPress data structures to be safe and secure as AI agents interact more with the platform. Key takeaways include making destructive actions like deletion difficult, ensuring changes are reversible and visible, providing clear error messages with copy-to-clipboard functionality, and assuming all data inputs are potentially hostile.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 565,
+      "completionTokens": 62
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-0-3-release/",
+      "title": "WordPress 7.0.3 release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-0-3-release/",
+      "summary": "WordPress 7.0.3 is a security release containing multiple fixes for stored and reflected XSS vulnerabilities, privilege escalation on multisite networks, information disclosure in the Latest Comments block, slug enumeration, and server-side request forgery (SSRF) issues. Immediate updates are recommended for all sites to mitigate these risks, with backports available for branches through 4.7.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1136,
+      "completionTokens": 76
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/",
+      "title": "WordPress 7.1 Release Candidate 1",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/",
+      "summary": "WordPress 7.1 RC1 is available for testing with over 145 updates since Beta 4, including new Icons APIs, configurable speculative loading via environment variables, email notifications for @mentions in Notes, and shareable revision links. The final release is scheduled for August 19, 2026; test on non-production environments using the Beta Tester plugin, direct download, WP-CLI, or WordPress Playground.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1101,
+      "completionTokens": 89
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/",
+      "title": "WordPress Speed Optimization Explained Layer by Layer",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/",
+      "summary": "Effective WordPress speed optimization requires measuring real-user field data alongside lab results to identify which specific layer—hosting, database, caching, CDN, or browser—is causing bottlenecks. Infrastructure sets the performance ceiling; if server processing or database queries are slow, front-end optimizations like CDNs or image compression will not resolve the underlying delay. Advanced Custom Fields (ACF) improves speed on content-heavy sites by reducing unnecessary metadata and database work through better-structured field models, local JSON, and Repeater pagination.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 958,
+      "completionTokens": 103
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/",
+      "title": "Best WordPress Hosting for Agencies",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/",
+      "summary": "Agency hosting must prioritize site isolation, centralized portfolio management, and granular permissions over raw speed to handle multi-client operations efficiently. The article compares providers across development workflows, billing models, and white-label capabilities to identify platforms that reduce operational friction at scale.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 919,
+      "completionTokens": 51
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/",
+      "title": "WordPress for Enterprise: What It Actually Takes",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/",
+      "summary": "Enterprise WordPress is defined by operational requirements—traffic, security, governance, integrations, and incident response—rather than company size. Success depends on scalable architecture (caching, CDN, DB optimization) and disciplined ownership of infrastructure, content modeling, and release workflows. WP Engine reduces operational burden while organizations retain control over code, content architecture, and integrations; ACF provides structured content modeling via custom post types, fields, blocks, and version-controlled Local JSON.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 907,
+      "completionTokens": 94
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/",
+      "title": "ACF 6.8.7 Security Release",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/",
+      "summary": "ACF 6.8.7 patches security vulnerabilities including server-side validation for Image/Gallery fields, HMAC authentication for acf_encrypt/acf_decrypt helpers, and restricted REST API responses for the User field. Developers should upgrade immediately to prevent unauthorized data exposure and ensure proper form save context handling for comment, user, and options pages.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 563,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/",
+      "title": "WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/",
+      "summary": "WordPress 7.0.3 patches twelve vulnerabilities, including a pre-auth XSS on the login screen and multisite privilege escalation, with backports reaching all supported branches down to 4.7. WordPress 7.1 RC1 is ready for testing, featuring the always-iframed post editor, SVG Icon API, and responsive block styles. Gutenberg 23.7 introduces a renamed \"Convert to images\" button in the Gallery block and makes Global Styles inheritance opt-in via the Experiments page.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1253,
+      "completionTokens": 103
+    },
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/",
+      "title": "What’s new for developers? (August 2026)",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/",
+      "summary": "WordPress 7.1 is scheduled for release on August 19, coinciding with WordCamp US in Phoenix, and the feature set is locked following RC2. The 7.1 Field Guide is published, documenting new APIs like the Abilities API and DataViews, while noting that React 19, real-time collaboration, and the On This Day widget were postponed.\n\nResponsive block styles now ship in Core, allowing themes to define viewport breakpoints via theme.json and apply mobile/tablet CSS overrides. Developers can disable responsive editing for users using the block_editor_settings_all filter, and note that only blocks with standard style supports receive automatic responsive styling.",
+      "model": "prism-ml/bonsai-27b",
+      "promptTokens": 1194,
+      "completionTokens": 132
+    }
+  ],
+  "totalPromptTokens": 19140,
+  "totalCompletionTokens": 1525
+}
