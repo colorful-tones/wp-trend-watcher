@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress Trend Report — 2026-08-10</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <meta name="description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-08-10.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress Trend Report — 2026-08-10">
+  <meta property="og:description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-08-10.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress Trend Report — 2026-08-10">
+  <meta name="twitter:description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header">
+  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
+  <h1 id="wordpress-trend-report-2026-08-10"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-08-10</h1>
+</header>
+  <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+  <div class="report-body">
+  <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(19 articles)</span></summary>
+<ol>
+<li><a href="https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/">What’s new in Gutenberg 23.7? (05 August)</a> (Make Core) — Gutenberg 23.7 introduces a renamed “Detach” button for the Gallery block’s dynamic mode, clarifying its function via an explanatory modal.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/">WordPress 7.1 Release Candidate Phase</a> (Make Core) — WordPress 7.1 has entered the Release Candidate phase, requiring double sign-off by two core committers for all trunk commits until the 7.1 branch is created.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/">WordPress 7.1 Field Guide</a> (Make Core) — WordPress 7.1 introduces client-side media processing APIs that enable supported image operations to occur in the browser before upload, reducing server load and improving upload performance.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/">The notify_post_author filter now has the final say on post author notifications</a> (Make Core) — WordPress 7.1 moves the comment approval check before the <code>notify_post_author</code> filter, making the filter’s return value definitive for whether a notification is sent.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/">Filtering registered abilities with wp_get_abilities() in WordPress 7.1</a> (Make Core) — WordPress 7.1 adds an optional $args array to wp_get_abilities() for filtering registered abilities by category, namespace, or metadata.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/">Responsive block styles and configurable viewports in WordPress 7.1</a> (Make Core) — WordPress 7.1 adds responsive style states for blocks, allowing Tablet and Mobile overrides via Global Styles or individual block attributes.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/">Pseudo and custom style states in WordPress 7.1</a> (Make Core) — WordPress 7.1 extends pseudo state styling to all blocks via theme.json and block attributes, allowing hover, focus, active, and responsive nesting.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/">A unified public exposure flag for Abilities in WordPress 7.1</a> (Make Core) — WordPress 7.1 introduces a unified <code>public</code> metadata flag for abilities to indicate external availability across REST API, MCP adapters, and AI agents.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/">Miscellaneous Editor Changes in WordPress 7.1</a> (Make Core) — The Navigation block in WordPress 7.1 no longer forcefully propagates font-size to child blocks, resolving layout-breaking compounding issues with relative units in deeply nested menus.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/">Dev Chat Agenda – August 4, 2026</a> (Make Core) — WordPress Dev Chat is scheduled for Tuesday, August 4, 2026, at 15:00 UTC in the #core channel on Make WordPress Slack.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/defensive-data-design/">Defensive Data Design</a> (Make Core) — This post outlines principles for designing WordPress data structures to be safe and secure as AI agents interact more with the platform.</li>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-0-3-release/">WordPress 7.0.3 release</a> (WordPress.org News) — WordPress 7.0.3 is a security release containing multiple fixes for stored and reflected XSS vulnerabilities, privilege escalation on multisite networks, information disclosure in the Latest Comments block, slug enumeration, and server-side request forgery (SSRF) issues.</li>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/">WordPress 7.1 Release Candidate 1</a> (WordPress.org News) — WordPress 7.1 RC1 is available for testing with over 145 updates since Beta 4, including new Icons APIs, configurable speculative loading via environment variables, email notifications for @mentions in Notes, and shareable revision links.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/">WordPress Speed Optimization Explained Layer by Layer</a> (ACF Blog) — Effective WordPress speed optimization requires measuring real-user field data alongside lab results to identify which specific layer—hosting, database, caching, CDN, or browser—is causing bottlenecks.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/">Best WordPress Hosting for Agencies</a> (ACF Blog) — Agency hosting must prioritize site isolation, centralized portfolio management, and granular permissions over raw speed to handle multi-client operations efficiently.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/">WordPress for Enterprise: What It Actually Takes</a> (ACF Blog) — Enterprise WordPress is defined by operational requirements—traffic, security, governance, integrations, and incident response—rather than company size.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/">ACF 6.8.7 Security Release</a> (ACF Blog) — ACF 6.8.7 patches security vulnerabilities including server-side validation for Image/Gallery fields, HMAC authentication for acf_encrypt/acf_decrypt helpers, and restricted REST API responses for the User field.</li>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/">WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372</a> (Gutenberg Times) — WordPress 7.0.3 patches twelve vulnerabilities, including a pre-auth XSS on the login screen and multisite privilege escalation, with backports reaching all supported branches down to 4.7.</li>
+<li><a href="https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/">What’s new for developers? (August 2026)</a> (WordPress Developer Blog) — WordPress 7.1 is scheduled for release on August 19, coinciding with WordCamp US in Phoenix, and the feature set is locked following RC2.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>WordPress 7.1 has entered the Release Candidate phase, with RC1 available for testing and a final release scheduled for August 19, 2026. The feature set is locked following RC2, and the branching process has been delayed to early next week to avoid interfering with GitHub Actions improvements. <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/">WordPress 7.1 Release Candidate Phase</a> <a href="https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/">WordPress 7.1 Release Candidate 1</a> <a href="https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/">What’s new for developers? (August 2026)</a></p>
+<p>WordPress 7.1 introduces client-side media processing APIs that enable supported image operations to occur in the browser before upload, reducing server load and improving upload performance. The release also updates REST API endpoints to support image dimension validation, size-aware encoding quality selection, and sideloaded file registration for multiple image sizes. <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/">WordPress 7.1 Field Guide</a></p>
+<p>WordPress 7.1 adds responsive style states for blocks, allowing Tablet and Mobile overrides via Global Styles or individual block attributes. These values generate media-query-scoped CSS on the frontend, with non-layout per-instance declarations marked !important to override defaults. Themes can customize breakpoint widths using the top-level settings.viewport, accepting px, em, or rem values. Only valid numeric lengths are accepted; CSS functions and percentages are ignored, and defaults apply if configurations are invalid or missing. <a href="https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/">Responsive block styles and configurable viewports in WordPress 7.1</a></p>
+<p>WordPress 7.1 extends pseudo state styling to all blocks via theme.json and block attributes, allowing hover, focus, active, and responsive nesting. Custom states are introduced for theme.json-only use on navigation links to style the current menu item using a -current prefix. Developers can disable state editing globally via the block_states_editing_enabled editor setting, which hides related UI controls. <a href="https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/">Pseudo and custom style states in WordPress 7.1</a></p>
+<p>WordPress 7.0.3 is a security release containing multiple fixes for stored and reflected XSS vulnerabilities, privilege escalation on multisite networks, information disclosure in the Latest Comments block, slug enumeration, and server-side request forgery (SSRF) issues. Immediate updates are recommended for all sites to mitigate these risks, with backports available for branches through 4.7. <a href="https://wordpress.org/news/2026/08/wordpress-7-0-3-release/">WordPress 7.0.3 release</a> <a href="https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/">WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372</a></p>
+<p>WordPress Dev Chat is scheduled for Tuesday, August 4, 2026, at 15:00 UTC in the #core channel on Make WordPress Slack. <a href="https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/">Dev Chat Agenda – August 4, 2026</a></p>
+<h3 id="developer-implications">Developer Implications</h3>
+<p>WordPress 7.1 is scheduled for release on August 19, 2026. Test on non-production environments using the Beta Tester plugin, direct download, WP-CLI, or WordPress Playground. The final release is scheduled for August 19, 2026; test on non-production environments using the Beta Tester plugin, direct download, WP-CLI, or WordPress Playground. <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/">WordPress 7.1 Release Candidate Phase</a> <a href="https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/">WordPress 7.1 Release Candidate 1</a> <a href="https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/">What’s new for developers? (August 2026)</a></p>
+<p>WordPress 7.1 moves the comment approval check before the <code>notify_post_author</code> filter, making the filter’s return value definitive for whether a notification is sent. <a href="https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/">The notify_post_author filter now has the final say on post author notifications</a></p>
+<p>WordPress 7.1 adds an optional $args array to wp_get_abilities() for filtering registered abilities by category, namespace, or metadata. Two new filters, wp_get_abilities_item_include and wp_get_abilities_result, allow plugins to modify ability retrieval logic. <a href="https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/">Filtering registered abilities with wp_get_abilities() in WordPress 7.1</a></p>
+<p>WordPress 7.0.3 patches twelve vulnerabilities, including a pre-auth XSS on the login screen and multisite privilege escalation, with backports reaching all supported branches down to 4.7. Immediate updates are recommended for all sites to mitigate these risks, with backports available for branches through 4.7. <a href="https://wordpress.org/news/2026/08/wordpress-7-0-3-release/">WordPress 7.0.3 release</a> <a href="https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/">WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372</a></p>
+<p>WordPress 7.1 introduces a unified public exposure flag for Abilities to indicate external availability across REST API, MCP adapters, and AI agents. This eliminates the need for redundant channel-specific flags while preserving granular control via null-coalescing precedence where explicit settings override the default. <a href="https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/">A unified public exposure flag for Abilities in WordPress 7.1</a></p>
+<p>ACF 6.8.7 patches security vulnerabilities including server-side validation for Image/Gallery fields, HMAC authentication for acf_encrypt/acf_decrypt helpers, and restricted REST API responses for the User field. <a href="https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/">ACF 6.8.7 Security Release</a></p>
+<p>Effective WordPress speed optimization requires measuring real-user field data alongside lab results to identify which specific layer—hosting, database, caching, CDN, or browser—is causing bottlenecks. <a href="https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/">WordPress Speed Optimization Explained Layer by Layer</a></p>
+<p>Agency hosting must prioritize site isolation, centralized portfolio management, and granular permissions over raw speed to handle multi-client operations efficiently. <a href="https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/">Best WordPress Hosting for Agencies</a></p>
+<p>Enterprise WordPress is defined by operational requirements—traffic, security, governance, integrations, and incident response—rather than company size. <a href="https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/">WordPress for Enterprise: What It Actually Takes</a></p>
+<p>This post outlines principles for designing WordPress data structures to be safe and secure as AI agents interact more with the platform. <a href="https://make.wordpress.org/core/2026/08/04/defensive-data-design/">Defensive Data Design</a></p>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/">What’s new in Gutenberg 23.7? (05 August)</a> (Make Core) — Gutenberg 23.7 introduces a renamed “Detach” button for the Gallery block’s dynamic mode, clarifying its function via an explanatory modal.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/">WordPress 7.1 Release Candidate Phase</a> (Make Core) — WordPress 7.1 has entered the Release Candidate phase, requiring double sign-off by two core committers for all trunk commits until the 7.1 branch is created.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/">WordPress 7.1 Field Guide</a> (Make Core) — WordPress 7.1 introduces client-side media processing APIs that enable supported image operations to occur in the browser before upload, reducing server load and improving upload performance.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>The <a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/">WordPress 7.1 Field Guide</a> is out and provides the best way for folks to get familiar with what is going to be a part of the upcoming 7.1 release. The 7.1 release is targeted for August 19th, which is not too far away!</p>
+<p>Check out the #dev-note on: <a href="https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/">Responsive block styles and configurable viewports in WordPress 7.1</a>.</p>
+<p>HumanMade, the enterprise WordPress agency has released <a href="https://www.accelerateplugin.com/block-runner/">Block Runner</a> - &quot;A CLI to turn generated HTML into valid WordPress blocks.&quot; This will likely become a critical part of the developer toolset and help alleviate many of the pain points of migrating HTML to blocks at scale.</p>
+<p>Thanks for reading and please give us a star <a href="https://github.com/colorful-tones/wp-trend-watcher">on GitHub</a>!</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/">What’s new in Gutenberg 23.7? (05 August)</a> — 8/6/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/">WordPress 7.1 Release Candidate Phase</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/">WordPress 7.1 Field Guide</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/">The notify_post_author filter now has the final say on post author notifications</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/">Filtering registered abilities with wp_get_abilities() in WordPress 7.1</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/">Responsive block styles and configurable viewports in WordPress 7.1</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/">Pseudo and custom style states in WordPress 7.1</a> — 8/5/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/">A unified public exposure flag for Abilities in WordPress 7.1</a> — 8/4/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/">Miscellaneous Editor Changes in WordPress 7.1</a> — 8/4/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/">Dev Chat Agenda – August 4, 2026</a> — 8/3/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/04/defensive-data-design/">Defensive Data Design</a> — 8/3/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-0-3-release/">WordPress 7.0.3 release</a> — 8/6/2026</li>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/">WordPress 7.1 Release Candidate 1</a> — 8/5/2026</li>
+</ul>
+<h3 id="acf-blog">ACF Blog</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/">WordPress Speed Optimization Explained Layer by Layer</a> — 8/10/2026</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/">Best WordPress Hosting for Agencies</a> — 8/8/2026</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/">WordPress for Enterprise: What It Actually Takes</a> — 8/7/2026</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/">ACF 6.8.7 Security Release</a> — 8/4/2026</li>
+</ul>
+<h3 id="gutenberg-times">Gutenberg Times</h3>
+<ul>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/">WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372</a> — 8/8/2026</li>
+</ul>
+<h3 id="wordpress-developer-blog">WordPress Developer Blog</h3>
+<ul>
+<li><a href="https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/">What’s new for developers? (August 2026)</a> — 8/10/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 19</li>
+<li>Sources: Make Core, WordPress.org News, ACF Blog, Gutenberg Times, WordPress Developer Blog</li>
+<li>Model: openai-compatible/prism-ml/bonsai-27b</li>
+<li>Tokens: 21543 prompt + 3320 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~21 minutes</li>
+</ul>
+
+</div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+  </footer>
+</body>
+</html>

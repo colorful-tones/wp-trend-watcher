@@ -1,0 +1,159 @@
+{
+  "date": "2026-08-10",
+  "collectedAt": "2026-08-10T21:52:53.174Z",
+  "articleCount": 19,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.7? (05 August)",
+      "url": "https://make.wordpress.org/core/2026/08/06/whats-new-in-gutenberg-23-7-05-august/",
+      "publishedAt": "2026-08-06T07:34:42.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Candidate Phase",
+      "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-release-candidate-phase/",
+      "publishedAt": "2026-08-05T15:39:08.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Field Guide",
+      "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
+      "publishedAt": "2026-08-05T14:42:44.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "The notify_post_author filter now has the final say on post author notifications",
+      "url": "https://make.wordpress.org/core/2026/08/05/the-notify_post_author-filter-now-has-the-final-say-on-post-author-notifications/",
+      "publishedAt": "2026-08-05T12:22:02.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Filtering registered abilities with wp_get_abilities() in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/",
+      "publishedAt": "2026-08-05T11:55:27.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Responsive block styles and configurable viewports in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/",
+      "publishedAt": "2026-08-05T06:50:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Pseudo and custom style states in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/05/pseudo-and-custom-style-states-in-wordpress-7-1/",
+      "publishedAt": "2026-08-05T06:49:35.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "A unified public exposure flag for Abilities in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/04/a-unified-public-exposure-flag-for-abilities-in-wordpress-7-1/",
+      "publishedAt": "2026-08-04T12:49:37.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Miscellaneous Editor Changes in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/04/miscellaneous-block-editor-changes-in-wordpress-7-1/",
+      "publishedAt": "2026-08-04T11:10:09.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – August 4, 2026",
+      "url": "https://make.wordpress.org/core/2026/08/04/dev-chat-agenda-aug-04-2026/",
+      "publishedAt": "2026-08-04T03:34:42.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/04/defensive-data-design/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Defensive Data Design",
+      "url": "https://make.wordpress.org/core/2026/08/04/defensive-data-design/",
+      "publishedAt": "2026-08-04T01:06:46.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-0-3-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0.3 release",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-0-3-release/",
+      "publishedAt": "2026-08-06T18:55:30.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1 Release Candidate 1",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-1-release-candidate-1/",
+      "publishedAt": "2026-08-05T15:37:33.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "WordPress Speed Optimization Explained Layer by Layer",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-speed-optimization/",
+      "publishedAt": "2026-08-10T14:52:10.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Best WordPress Hosting for Agencies",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-hosting-for-agencies/",
+      "publishedAt": "2026-08-08T12:31:04.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "WordPress for Enterprise: What It Actually Takes",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-for-enterprise/",
+      "publishedAt": "2026-08-07T12:26:41.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.7 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-7-security-release/",
+      "publishedAt": "2026-08-04T16:01:22.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 RC, 7.0.3 Security Release, Block Runner, New Playground UI and more — Weekend Edition 372",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-rc-7-0-3-security-release-block-runner-new-playground-ui-and-more-weekend-edition-372/",
+      "publishedAt": "2026-08-08T08:18:54.000Z"
+    },
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (August 2026)",
+      "url": "https://developer.wordpress.org/news/2026/08/whats-new-for-developers-august-2026/",
+      "publishedAt": "2026-08-10T21:18:51.000Z"
+    }
+  ]
+}
