@@ -222,6 +222,11 @@ export function buildReportPrompt(
 
   return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
 
+Before the report sections, output exactly two metadata lines:
+SEO_TITLE: A concise, specific title for this week's report (50-65 characters when possible).
+SEO_DESCRIPTION: A factual one-sentence description of the week's most important signals (140-160 characters when possible).
+Use only information from the source inventory. Do not use hype or generic marketing language.
+
 ## Source Inventory
 
 Use this inventory as source material for trend and implication synthesis. The final report's Article Inventory section is assembled separately, so do not write an Article Inventory section in your response.
@@ -288,6 +293,81 @@ function stripGeneratedArticleInventory(synthesis: string): string {
     .trim();
 }
 
+/**
+ * SEO metadata stored with a generated report.
+ */
+export interface ReportSeoMetadata {
+  title: string;
+  description: string;
+}
+
+const DEFAULT_REPORT_SEO_DESCRIPTION =
+  "Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.";
+
+/**
+ * Parse the two metadata lines emitted by the report synthesis prompt.
+ *
+ * @param synthesis - Raw synthesis returned by the summarization provider
+ * @param fallbackTitle - Date-specific fallback title
+ * @returns Parsed metadata and synthesis content with metadata removed
+ */
+function parseGeneratedSeoMetadata(
+  synthesis: string,
+  fallbackTitle: string,
+): { metadata: ReportSeoMetadata; content: string } {
+  const titleMatch = synthesis.match(/^SEO_TITLE:\s*(.+)$/im);
+  const descriptionMatch = synthesis.match(/^SEO_DESCRIPTION:\s*(.+)$/im);
+  const title = sanitizeSeoValue(titleMatch?.[1] ?? fallbackTitle, 70);
+  const description = sanitizeSeoValue(
+    descriptionMatch?.[1] ?? DEFAULT_REPORT_SEO_DESCRIPTION,
+    160,
+  );
+  const content = synthesis
+    .replace(/^SEO_TITLE:\s*.+$/im, "")
+    .replace(/^SEO_DESCRIPTION:\s*.+$/im, "")
+    .trim();
+  return { metadata: { title, description }, content };
+}
+
+/**
+ * Extract SEO metadata stored in a Markdown report's leading comments.
+ *
+ * @param markdown - Markdown report source
+ * @param fallback - Metadata used when comments are absent
+ * @returns Report metadata suitable for HTML generation
+ */
+export function extractReportSeoMetadata(
+  markdown: string,
+  fallback: ReportSeoMetadata,
+): ReportSeoMetadata {
+  const titleMatch = markdown.match(/^<!-- SEO_TITLE:\s*(.*?)\s*-->$/m);
+  const descriptionMatch = markdown.match(
+    /^<!-- SEO_DESCRIPTION:\s*(.*?)\s*-->$/m,
+  );
+  return {
+    title: sanitizeSeoValue(titleMatch?.[1] ?? fallback.title, 70),
+    description: sanitizeSeoValue(
+      descriptionMatch?.[1] ?? fallback.description,
+      160,
+    ),
+  };
+}
+
+/**
+ * Normalize generated metadata for safe, compact page presentation.
+ *
+ * @param value - Candidate metadata value
+ * @param maxLength - Maximum output length
+ * @returns Single-line trimmed metadata value
+ */
+function sanitizeSeoValue(value: string, maxLength: number): string {
+  return value
+    .replace(/\s+/g, " ")
+    .replace(/--/g, "—")
+    .trim()
+    .slice(0, maxLength);
+}
+
 // --- Report assembly ---
 
 /**
@@ -327,7 +407,13 @@ export function assembleReport(
   existingReportMd?: string | null,
 ): string {
   const articleInventory = buildArticleInventorySection(summaries);
-  const synthesisWithoutInventory = stripGeneratedArticleInventory(synthesis);
+  const { metadata, content: synthesisWithoutMetadata } = parseGeneratedSeoMetadata(
+    synthesis,
+    `WordPress Trend Report — ${date}`,
+  );
+  const synthesisWithoutInventory = stripGeneratedArticleInventory(
+    synthesisWithoutMetadata,
+  );
   const weeklySummary = ensureSourceReferences(
     `## Weekly Summary\n\n${articleInventory}\n\n${synthesisWithoutInventory}`,
     articles,
@@ -387,7 +473,9 @@ export function assembleReport(
     }
   }
 
-  return `# WordPress Trend Report — ${date}
+  return `<!-- SEO_TITLE: ${metadata.title} -->
+<!-- SEO_DESCRIPTION: ${metadata.description} -->
+# WordPress Trend Report — ${date}
 
 ${weeklySummary}${sinceLastReportBlock}
 

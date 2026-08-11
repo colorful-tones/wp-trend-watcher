@@ -96,6 +96,26 @@ test("generateHtmlReport produces valid HTML with .report-header and .toc when e
   assert.ok(html.includes('<a href="#build-notes">'));
 });
 
+test("generateHtmlReport renders report SEO metadata in the head and intro", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
+  const mdPath = join(tmpDir, "2026-06-21.md");
+  await writeFile(
+    mdPath,
+    "<!-- SEO_TITLE: WordPress workflow changes -->\n" +
+      "<!-- SEO_DESCRIPTION: This week's changes affect testing and client work. -->\n" +
+      "# WordPress Trend Report — 2026-06-21\n\n" +
+      "## Weekly Summary\n\nSummary here.",
+    "utf8",
+  );
+
+  const htmlPath = await generateHtmlReport(mdPath);
+  const html = await readFile(htmlPath, "utf8");
+
+  assert.ok(html.includes("<title>WordPress workflow changes</title>"));
+  assert.ok(html.includes('name="description" content="This week&#39;s changes affect testing and client work."'));
+  assert.ok(html.includes('<p class="report-description">This week&#39;s changes affect testing and client work.</p>'));
+});
+
 test("generateHtmlReport does not produce TOC when only 1 heading exists", async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
   const mdPath = join(tmpDir, "2026-06-21.md");
@@ -181,6 +201,24 @@ test("generateIndexPage renders report cards sorted by date descending", async (
   assert.equal(matches[0], "2026-07-01.html");
   assert.equal(matches[1], "2026-06-21.html");
   assert.equal(matches[2], "2026-06-14.html");
+});
+
+test("generateIndexPage renders generated report titles and descriptions on cards", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  await writeFile(join(tmpDir, "2026-07-01.html"), "<html></html>", "utf8");
+  await writeFile(
+    join(tmpDir, "2026-07-01.md"),
+    "<!-- SEO_TITLE: Block editor workflow changes -->\n" +
+      "<!-- SEO_DESCRIPTION: This week's changes affect editor testing and client delivery. -->\n" +
+      "# WordPress Trend Report — 2026-07-01\n",
+    "utf8",
+  );
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(html.includes('<span class="report-card-title">Block editor workflow changes</span>'));
+  assert.ok(html.includes('<span class="report-card-description">This week&#39;s changes affect editor testing and client delivery.</span>'));
 });
 
 test("generateIndexPage marks the newest report as Latest report", async () => {
