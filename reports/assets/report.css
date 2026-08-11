@@ -200,16 +200,19 @@ details.article-inventory ol {
 }
 
 .report-card-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  align-items: stretch;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .report-card {
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   color: inherit;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1rem 1.25rem;
   text-decoration: none;
   transition: background-color 0.15s;
@@ -412,21 +415,88 @@ details.article-inventory {
   color: var(--accent);
 }
 
-.theme-controls {
-  align-items: end;
+.theme-settings {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
   justify-content: flex-end;
   margin: -0.5rem 0 1.5rem;
 }
 
-.theme-controls label {
+.settings-button,
+.theme-settings-actions button {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.settings-button:hover,
+.theme-settings-actions button:hover {
+  border-color: var(--accent);
+}
+
+.settings-button:focus-visible,
+.theme-settings-close:focus-visible,
+.theme-settings-actions button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.theme-settings-dialog {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: var(--text);
+  max-width: min(28rem, calc(100vw - 2rem));
+  padding: 0;
+  width: 100%;
+}
+
+.theme-settings-dialog::backdrop {
+  background: rgba(8, 15, 22, 0.58);
+}
+
+.theme-settings-dialog form {
+  padding: 1.25rem;
+}
+
+.theme-settings-header {
   align-items: center;
-  color: var(--muted);
   display: flex;
-  font-size: 0.75rem;
-  gap: 0.4rem;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.theme-settings-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-settings-close {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.15rem 0.35rem;
+}
+
+.theme-controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-controls label {
+  color: var(--muted);
+  display: grid;
+  font-size: 0.8rem;
+  gap: 0.35rem;
 }
 
 .theme-controls select {
@@ -445,13 +515,24 @@ details.article-inventory {
   outline-offset: 2px;
 }
 
+.theme-settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+
 @media (max-width: 560px) {
-  .theme-controls {
-    justify-content: flex-start;
+  .report-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .theme-controls label {
-    align-items: flex-start;
-    flex-direction: column;
+  .theme-settings {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .report-card-grid {
+    grid-template-columns: 1fr;
   }
 }
