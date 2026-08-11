@@ -325,6 +325,9 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(css.includes(".report-header"));
   assert.ok(css.includes("repeating-linear-gradient(to bottom"));
   assert.ok(css.includes("background-repeat: no-repeat"));
+  assert.ok(css.includes("position: fixed"));
+  assert.ok(css.includes("width: min(28rem, calc(100vw - 2rem))"));
+  assert.ok(css.includes("padding-inline: 0.25rem"));
 });
 
 test("generateIndexPage links a shared external stylesheet", async () => {

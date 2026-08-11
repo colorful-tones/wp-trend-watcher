@@ -450,18 +450,25 @@ details.article-inventory {
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: 10px;
+  box-sizing: border-box;
   color: var(--text);
-  max-width: min(28rem, calc(100vw - 2rem));
+  height: auto;
+  left: 50%;
+  max-height: calc(100vh - 2rem);
+  max-width: calc(100vw - 2rem);
   padding: 0;
-  width: 100%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(28rem, calc(100vw - 2rem));
 }
 
 .theme-settings-dialog::backdrop {
   background: rgba(8, 15, 22, 0.58);
 }
 
-.theme-settings-dialog form {
-  padding: 1.25rem;
+.theme-settings-dialog > div {
+  padding: 1.25rem 1.5rem 1.5rem;
 }
 
 .theme-settings-header {
@@ -490,6 +497,7 @@ details.article-inventory {
 .theme-controls {
   display: grid;
   gap: 1rem;
+  padding-inline: 0.25rem;
 }
 
 .theme-controls label {
@@ -503,11 +511,13 @@ details.article-inventory {
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: 5px;
+  box-sizing: border-box;
   color: var(--text);
   font: inherit;
   font-size: 0.8rem;
   min-height: 2rem;
   padding: 0.25rem 1.75rem 0.25rem 0.5rem;
+  width: 100%;
 }
 
 .theme-controls select:focus-visible {
@@ -532,6 +542,10 @@ details.article-inventory {
 }
 
 @media (max-width: 400px) {
+  .theme-settings-dialog > div {
+    padding-inline: 1rem;
+  }
+
   .report-card-grid {
     grid-template-columns: 1fr;
   }
