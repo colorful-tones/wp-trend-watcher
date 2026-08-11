@@ -270,8 +270,8 @@ details.article-inventory ol {
 :root[data-theme="aurora-blueprint"] {
   --accent: #0759b8;
   --theme-gradient: radial-gradient(circle at 8% 0%, rgba(147, 197, 253, 0.32), transparent 42%), radial-gradient(circle at 92% 85%, rgba(165, 243, 252, 0.28), transparent 45%);
-  --theme-grid-x: linear-gradient(rgba(9, 105, 218, 0.06) 1px, transparent 1px);
-  --theme-grid-y: linear-gradient(90deg, rgba(9, 105, 218, 0.06) 1px, transparent 1px);
+  --theme-grid-x: repeating-linear-gradient(to bottom, rgba(9, 105, 218, 0.06) 0 1px, transparent 1px 24px);
+  --theme-grid-y: repeating-linear-gradient(to right, rgba(9, 105, 218, 0.06) 0 1px, transparent 1px 24px);
 }
 
 :root[data-theme="aurora"] {
@@ -298,8 +298,8 @@ details.article-inventory ol {
 :root[data-theme="aurora-blueprint"][data-mode="dark"] {
   --accent: #8fc7ff;
   --theme-gradient: radial-gradient(circle at 8% 0%, rgba(37, 99, 235, 0.3), transparent 42%), radial-gradient(circle at 92% 85%, rgba(8, 145, 178, 0.25), transparent 45%);
-  --theme-grid-x: linear-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px);
-  --theme-grid-y: linear-gradient(90deg, rgba(96, 165, 250, 0.12) 1px, transparent 1px);
+  --theme-grid-x: repeating-linear-gradient(to bottom, rgba(96, 165, 250, 0.12) 0 1px, transparent 1px 24px);
+  --theme-grid-y: repeating-linear-gradient(to right, rgba(96, 165, 250, 0.12) 0 1px, transparent 1px 24px);
 }
 
 :root[data-theme="aurora"][data-mode="dark"] {
@@ -327,8 +327,8 @@ details.article-inventory ol {
   :root[data-theme="aurora-blueprint"][data-mode="system"] {
     --accent: #8fc7ff;
     --theme-gradient: radial-gradient(circle at 8% 0%, rgba(37, 99, 235, 0.3), transparent 42%), radial-gradient(circle at 92% 85%, rgba(8, 145, 178, 0.25), transparent 45%);
-    --theme-grid-x: linear-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px);
-    --theme-grid-y: linear-gradient(90deg, rgba(96, 165, 250, 0.12) 1px, transparent 1px);
+    --theme-grid-x: repeating-linear-gradient(to bottom, rgba(96, 165, 250, 0.12) 0 1px, transparent 1px 24px);
+    --theme-grid-y: repeating-linear-gradient(to right, rgba(96, 165, 250, 0.12) 0 1px, transparent 1px 24px);
   }
 
   :root[data-theme="aurora"][data-mode="system"] {
@@ -345,7 +345,8 @@ details.article-inventory ol {
 body {
   background-color: var(--page-bg);
   background-image: var(--theme-gradient), var(--theme-grid-x), var(--theme-grid-y);
-  background-size: auto, 24px 24px, 24px 24px;
+  background-repeat: no-repeat;
+  background-size: auto;
   color: var(--text);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
