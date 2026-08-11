@@ -19,7 +19,7 @@ body {
   font-family: "Radio Canada", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 960px;
   padding: 2rem 1.5rem;
 }
 
@@ -101,14 +101,16 @@ hr {
 
 /* Report header */
 .report-header {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   gap: 0.75rem;
+  justify-content: space-between;
   margin-bottom: 1.5rem;
 }
 
 .report-header h1 {
   border-bottom: none;
+  flex: 1;
   margin-bottom: 0.25rem;
 }
 
@@ -442,12 +444,6 @@ details.article-inventory {
   color: var(--accent);
 }
 
-.theme-settings {
-  display: flex;
-  justify-content: flex-end;
-  margin: -0.5rem 0 1.5rem;
-}
-
 .settings-button,
 .theme-settings-actions button {
   background: var(--surface);
@@ -459,6 +455,28 @@ details.article-inventory {
   font-size: 0.85rem;
   min-height: 2.25rem;
   padding: 0.35rem 0.75rem;
+}
+
+.settings-button {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.settings-icon {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.sr-only {
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .settings-button:hover,
@@ -563,8 +581,8 @@ details.article-inventory {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .theme-settings {
-    justify-content: flex-start;
+  .report-header {
+    gap: 0.5rem;
   }
 }
 

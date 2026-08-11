@@ -118,48 +118,49 @@
   <header class="report-header">
   <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
   <h1 id="wordpress-trend-report-2026-08-10"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-08-10</h1>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="sr-only">Settings</span>
+</button>
 </header>
   <p class="report-description">Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</p>
-  <div class="theme-settings">
-  <button
-    class="settings-button"
-    type="button"
-    data-theme-settings-open
-    aria-haspopup="dialog"
-    aria-controls="report-settings"
-  >
-    Settings
-  </button>
   <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
-    <div>
-      <div class="theme-settings-header">
-        <h2 id="report-settings-title">Report settings</h2>
-        <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
-      </div>
-      <div class="theme-controls" aria-label="Report display settings">
-        <label>
-          <span>Style</span>
-          <select data-theme-control="theme" aria-label="Report visual style">
-            <option value="aurora-blueprint">Aurora Blueprint</option>
-            <option value="aurora">Aurora Mesh</option>
-            <option value="signal">Signal Stripe</option>
-          </select>
-        </label>
-        <label>
-          <span>Mode</span>
-          <select data-theme-control="mode" aria-label="Report color mode">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </label>
-      </div>
-      <div class="theme-settings-actions">
-        <button type="button" data-theme-settings-close>Done</button>
-      </div>
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
     </div>
-  </dialog>
-</div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="aurora-blueprint">Aurora Blueprint</option>
+          <option value="aurora">Aurora Mesh</option>
+          <option value="signal">Signal Stripe</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
   <nav class="toc">
   <h2>Contents</h2>
   <ul>

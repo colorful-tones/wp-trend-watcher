@@ -43,46 +43,48 @@ const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
 const DEFAULT_REPORT_THEME = "aurora-blueprint";
 const DEFAULT_REPORT_MODE = "system";
 
-const REPORT_THEME_CONTROLS = `<div class="theme-settings">
-  <button
-    class="settings-button"
-    type="button"
-    data-theme-settings-open
-    aria-haspopup="dialog"
-    aria-controls="report-settings"
-  >
-    Settings
-  </button>
-  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
-    <div>
-      <div class="theme-settings-header">
-        <h2 id="report-settings-title">Report settings</h2>
-        <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
-      </div>
-      <div class="theme-controls" aria-label="Report display settings">
-        <label>
-          <span>Style</span>
-          <select data-theme-control="theme" aria-label="Report visual style">
-            <option value="aurora-blueprint">Aurora Blueprint</option>
-            <option value="aurora">Aurora Mesh</option>
-            <option value="signal">Signal Stripe</option>
-          </select>
-        </label>
-        <label>
-          <span>Mode</span>
-          <select data-theme-control="mode" aria-label="Report color mode">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </label>
-      </div>
-      <div class="theme-settings-actions">
-        <button type="button" data-theme-settings-close>Done</button>
-      </div>
+const REPORT_SETTINGS_BUTTON = `<button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="sr-only">Settings</span>
+</button>`;
+
+const REPORT_THEME_CONTROLS = `<dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
     </div>
-  </dialog>
-</div>`;
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="aurora-blueprint">Aurora Blueprint</option>
+          <option value="aurora">Aurora Mesh</option>
+          <option value="signal">Signal Stripe</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>`;
 
 const REPORT_THEME_SCRIPT = `<script>
 (function () {
@@ -310,9 +312,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
     const dashIdx = h1Match[1].indexOf(" — ");
     const linkText = dashIdx >= 0 ? h1Match[1].slice(0, dashIdx) : h1Match[1];
     const restText = dashIdx >= 0 ? h1Match[1].slice(dashIdx) : "";
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${linkText}</a>${restText}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${linkText}</a>${restText}</h1>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
   } else {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — ${date}</h1>\n</header>`;
+    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — ${date}</h1>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)
@@ -444,6 +446,7 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <header class="report-header">
     <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
     <h1>WP Trend Watcher — Reports</h1>
+    ${REPORT_SETTINGS_BUTTON}
   </header>
   ${REPORT_THEME_CONTROLS}
   <p class="meta">${reportLabel}</p>

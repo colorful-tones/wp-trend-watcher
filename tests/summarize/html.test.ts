@@ -358,6 +358,8 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="theme"'));
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
+  assert.ok(html.includes('aria-label="Open report settings"'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
@@ -382,8 +384,11 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="theme"'));
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
+  assert.ok(html.includes('aria-label="Open report settings"'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(css.includes(".report-index h1"));
+  assert.ok(css.includes("max-width: 960px"));
   assert.ok(css.includes("grid-template-columns: repeat(3"));
 });
 
