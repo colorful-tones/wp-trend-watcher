@@ -65,10 +65,21 @@
         }
       });
     });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
     if (settingsDialog) {
       settingsDialog.addEventListener("click", function (event) {
-        if (event.target === settingsDialog && typeof settingsDialog.close === "function") {
-          settingsDialog.close();
+        if (event.target === settingsDialog) {
+          closeDialog();
         }
       });
     }
@@ -119,10 +130,10 @@
     Settings
   </button>
   <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
-    <form method="dialog">
+    <div>
       <div class="theme-settings-header">
         <h2 id="report-settings-title">Report settings</h2>
-        <button class="theme-settings-close" type="submit" value="close" aria-label="Close report settings">×</button>
+        <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
       </div>
       <div class="theme-controls" aria-label="Report display settings">
         <label>
@@ -143,9 +154,9 @@
         </label>
       </div>
       <div class="theme-settings-actions">
-        <button type="submit" value="close">Done</button>
+        <button type="button" data-theme-settings-close>Done</button>
       </div>
-    </form>
+    </div>
   </dialog>
 </div>
   <nav class="toc">
