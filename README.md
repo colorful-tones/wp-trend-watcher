@@ -99,6 +99,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.10.1
+
+- Bound description requests to compact report context and 512 completion tokens to avoid context-window failures on larger reports.
+- Report per-date backfill failures with sanitized provider error messages.
+
 ### 0.10.0
 
 - Moved SEO description generation to the post-review workflow so descriptions include final human notes.

@@ -96,7 +96,7 @@ pnpm generate-descriptions --all
 pnpm generate-descriptions --date 2026-08-10
 ```
 
-The command changes only the report Markdown's invisible `SEO_DESCRIPTION` metadata and generated presentation files (`reports/*.html` and `reports/index.html`). It does not recollect articles, resummarize articles, or alter human-written report sections. Review the generated Markdown and HTML diffs before committing a backfill.
+The command changes only the report Markdown's invisible `SEO_DESCRIPTION` metadata and generated presentation files (`reports/*.html` and `reports/index.html`). It does not recollect articles, resummarize articles, or alter human-written report sections. Description requests use the report title, analytical sections, human notes, and source titles; long article inventories and Build Notes are excluded to keep the model context bounded. Each failure is reported with its report date and a sanitized provider error. Review the generated Markdown and HTML diffs before committing a backfill.
 
 ### 7. Regenerate (if needed)
 

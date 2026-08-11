@@ -38,7 +38,12 @@ test("generateDescriptionsForReports fills reports without descriptions and rebu
 
   const result = await generateDescriptionsForReports(reportsDir, makeProvider());
 
-  assert.deepEqual(result, { generated: 1, skipped: 1, failed: 0 });
+  assert.deepEqual(result, {
+    generated: 1,
+    skipped: 1,
+    failed: 0,
+    failures: [],
+  });
   assert.ok(
     (await readFile(join(reportsDir, "2026-01-01.md"), "utf8")).includes(
       "<!-- SEO_DESCRIPTION: Description for the first report. -->",
@@ -60,10 +65,41 @@ test("generateDescriptionsForReports force-regenerates existing descriptions", a
     force: true,
   });
 
-  assert.deepEqual(result, { generated: 1, skipped: 0, failed: 0 });
+  assert.deepEqual(result, {
+    generated: 1,
+    skipped: 0,
+    failed: 0,
+    failures: [],
+  });
   assert.ok(
     (await readFile(join(reportsDir, "2026-01-08.md"), "utf8")).includes(
       "Description for the second report.",
     ),
   );
+});
+
+test("generateDescriptionsForReports records the date and reason for provider failures", async () => {
+  const reportsDir = await mkdtemp(join(tmpdir(), "description-backfill-failure-"));
+  await writeFile(
+    join(reportsDir, "2026-01-15.md"),
+    "# WordPress Trend Report — 2026-01-15\n",
+    "utf8",
+  );
+  const provider: SummarizeProvider = {
+    name: "stub",
+    model: "test-model",
+    summarize: async () => {
+      throw new Error("context length exceeded");
+    },
+    costFor: () => 0,
+  };
+
+  const result = await generateDescriptionsForReports(reportsDir, provider);
+
+  assert.deepEqual(result, {
+    generated: 0,
+    skipped: 0,
+    failed: 1,
+    failures: [{ date: "2026-01-15", reason: "context length exceeded" }],
+  });
 });

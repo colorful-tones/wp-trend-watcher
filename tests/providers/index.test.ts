@@ -238,3 +238,30 @@ test("ollama model-specific env var takes precedence over generic model env var"
     restoreEnv();
   }
 });
+
+test("openai-compatible provider allows a per-request max token override", async () => {
+  const restoreEnv = withCleanEnv();
+  const originalFetch = globalThis.fetch;
+
+  try {
+    process.env.WP_TREND_PROVIDER = "openai-compatible";
+    process.env.WP_TREND_MAX_TOKENS = "6400";
+    let requestBody: { max_tokens?: number } = {};
+
+    globalThis.fetch = async (_input, init) => {
+      requestBody = JSON.parse(String(init?.body)) as { max_tokens?: number };
+      return new Response(
+        JSON.stringify({ choices: [{ message: { content: "description" } }] }),
+        { status: 200 },
+      );
+    };
+
+    const provider = createProvider();
+    await provider.summarize("system prompt", "user prompt", { maxTokens: 512 });
+
+    assert.equal(requestBody.max_tokens, 512);
+  } finally {
+    globalThis.fetch = originalFetch;
+    restoreEnv();
+  }
+});
