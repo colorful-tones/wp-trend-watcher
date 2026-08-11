@@ -22,8 +22,18 @@ const DEFAULT_REQUEST_TIMEOUT_MS = 60_000;
 export interface SummarizeProvider {
   name: string;
   model: string;
-  summarize(systemPrompt: string, userPrompt: string): Promise<SummarizeResult>;
+  summarize(
+    systemPrompt: string,
+    userPrompt: string,
+    options?: SummarizeOptions,
+  ): Promise<SummarizeResult>;
   costFor(result: SummarizeResult): number;
+}
+
+/** Optional controls for an individual provider request. */
+export interface SummarizeOptions {
+  /** Maximum number of completion tokens requested from the provider. */
+  maxTokens?: number;
 }
 
 export function createProvider(): SummarizeProvider {
@@ -58,7 +68,7 @@ function createOllamaProvider(): SummarizeProvider {
     name: "ollama",
     model,
 
-    async summarize(systemPrompt, userPrompt) {
+    async summarize(systemPrompt, userPrompt, requestOptions) {
       const body = JSON.stringify({
         model,
         messages: [
@@ -66,7 +76,12 @@ function createOllamaProvider(): SummarizeProvider {
           { role: "user", content: userPrompt },
         ],
         stream: false,
-        options: { temperature: 0.3 },
+        options: {
+          temperature: 0.3,
+          ...(requestOptions?.maxTokens === undefined
+            ? {}
+            : { num_predict: requestOptions.maxTokens }),
+        },
       });
 
       let response: Response;
@@ -139,7 +154,7 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
     name: "openai-compatible",
     model,
 
-    async summarize(systemPrompt, userPrompt) {
+    async summarize(systemPrompt, userPrompt, requestOptions) {
       const requestBody: OpenAiChatRequestBody = {
         model,
         messages: [
@@ -154,8 +169,9 @@ function createOpenAiCompatibleProvider(): SummarizeProvider {
         temperature: 0.3,
       };
 
-      if (maxTokens !== undefined) {
-        requestBody.max_tokens = maxTokens;
+      const requestMaxTokens = requestOptions?.maxTokens ?? maxTokens;
+      if (requestMaxTokens !== undefined) {
+        requestBody.max_tokens = requestMaxTokens;
       }
 
       const body = JSON.stringify(requestBody);

@@ -1,5 +1,41 @@
 import type { SummarizeProvider } from "../providers.js";
 import { DEFAULT_REPORT_SEO_DESCRIPTION } from "./report.js";
+import { extractReportSections } from "./renderer.js";
+
+const DESCRIPTION_MAX_TOKENS = 512;
+
+/**
+ * Build the compact report context used for SEO description generation.
+ *
+ * @param reportMarkdown - Canonical Markdown report after human notes are saved
+ * @returns Analysis, human notes, and source titles without long inventories or build metadata
+ */
+export function buildReportDescriptionInput(reportMarkdown: string): string {
+  const sections = extractReportSections(reportMarkdown);
+  const reportHeading = reportMarkdown.match(/^# .+$/m)?.[0];
+  const selected = [
+    sections.get("weekly-summary")?.replace(
+      /### Article Inventory[\s\S]*?(?=### |$)/,
+      "",
+    ),
+    sections.get("since-last-report"),
+    sections.get("what-i-m-watching"),
+  ].filter((section): section is string => Boolean(section?.trim()));
+
+  if (reportHeading) {
+    selected.unshift(reportHeading);
+  }
+
+  const sourceTitles = [...(sections.get("source-articles") ?? "").matchAll(
+    /\[([^\]]+)\]\([^)]*\)/g,
+  )].map((match) => match[1]);
+
+  if (sourceTitles.length > 0) {
+    selected.push(`Source titles:\n${sourceTitles.map((title) => `- ${title}`).join("\n")}`);
+  }
+
+  return selected.join("\n\n");
+}
 
 /**
  * System instructions for generating a post-review report description.
@@ -21,7 +57,7 @@ Rules:
 export function buildReportDescriptionPrompt(reportMarkdown: string): string {
   return `Create one factual sentence of 140-160 characters for the SEO description of this final reviewed report. Return the description only, with no label or quotation marks.
 
-${reportMarkdown}`;
+${buildReportDescriptionInput(reportMarkdown)}`;
 }
 
 /**
@@ -39,6 +75,7 @@ export async function generateReportDescription(
   const result = await provider.summarize(
     REPORT_DESCRIPTION_SYSTEM_PROMPT,
     buildReportDescriptionPrompt(reportMarkdown),
+    { maxTokens: DESCRIPTION_MAX_TOKENS },
   );
   const description = normalizeDescription(result.text);
   if (!description) {

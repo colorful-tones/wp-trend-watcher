@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  buildReportDescriptionInput,
   buildReportDescriptionPrompt,
   generateReportDescription,
 } from "../../src/summarize/description.js";
@@ -10,7 +11,8 @@ function makeProvider(text: string): SummarizeProvider {
   return {
     name: "stub",
     model: "test-model",
-    summarize: async (_systemPrompt, userPrompt) => {
+    summarize: async (_systemPrompt, userPrompt, options) => {
+      assert.equal(options?.maxTokens, 512);
       assert.ok(userPrompt.includes("Human notes: This week's testing notes."));
       return { text, promptTokens: 10, completionTokens: 5 };
     },
@@ -27,6 +29,20 @@ test("buildReportDescriptionPrompt asks for a factual description from the final
   assert.ok(prompt.includes("140-160 characters"));
   assert.ok(prompt.includes("Human notes: This week's testing notes."));
   assert.ok(!prompt.includes("SEO_DESCRIPTION:"));
+});
+
+test("buildReportDescriptionInput keeps analysis, human notes, and source titles only", () => {
+  const input = buildReportDescriptionInput(
+    "# Report\n\n## Weekly Summary\n\n### Emerging Trends\n\nTrend details.\n\n## Developer Implications\n\nImplications.\n\n## What I'm Watching\n\nHuman notes.\n\n## Source Articles\n\n1. [Source title](https://example.com/source) — Long source detail.\n\n## Build Notes\n\nProvider: secret-model\n",
+  );
+
+  assert.ok(input.includes("Trend details."));
+  assert.ok(input.includes("Implications."));
+  assert.ok(input.includes("Human notes."));
+  assert.ok(input.includes("Source title"));
+  assert.ok(!input.includes("https://example.com/source"));
+  assert.ok(!input.includes("Long source detail."));
+  assert.ok(!input.includes("secret-model"));
 });
 
 test("generateReportDescription returns a normalized model description", async () => {

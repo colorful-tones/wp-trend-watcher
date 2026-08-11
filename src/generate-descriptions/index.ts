@@ -78,6 +78,10 @@ async function main(): Promise<void> {
   console.log(`Skipped: ${result.skipped}`);
   console.log(`Failed: ${result.failed}`);
 
+  for (const failure of result.failures) {
+    console.error(`  ${failure.date}: ${failure.reason}`);
+  }
+
   if (result.failed > 0) {
     process.exitCode = 1;
   }

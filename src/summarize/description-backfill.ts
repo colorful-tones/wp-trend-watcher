@@ -25,6 +25,13 @@ export interface DescriptionBackfillResult {
   generated: number;
   skipped: number;
   failed: number;
+  failures: DescriptionBackfillFailure[];
+}
+
+/** A report-specific provider failure from a backfill run. */
+export interface DescriptionBackfillFailure {
+  date: string;
+  reason: string;
 }
 
 const REPORT_FILE_PATTERN = /^(\d{4}-\d{2}-\d{2})\.md$/;
@@ -60,6 +67,7 @@ export async function generateDescriptionsForReports(
     generated: 0,
     skipped: 0,
     failed: 0,
+    failures: [],
   };
 
   for (const { file, match } of files) {
@@ -85,13 +93,31 @@ export async function generateDescriptionsForReports(
       );
       await generateHtmlReport(reportPath);
       result.generated++;
-    } catch {
+    } catch (error) {
       result.failed++;
+      result.failures.push({
+        date,
+        reason: sanitizeBackfillError(error),
+      });
     }
   }
 
   await generateIndexPage(reportsDir);
   return result;
+}
+
+/**
+ * Format provider errors for CLI output without exposing credentials or long payloads.
+ *
+ * @param error - Provider failure value
+ * @returns Sanitized, bounded error message
+ */
+function sanitizeBackfillError(error: unknown): string {
+  const message = error instanceof Error ? error.message : String(error);
+  return message
+    .replace(/Bearer\s+\S+/gi, "Bearer [REDACTED]")
+    .replace(/https?:\/\/[^\s)]+/gi, "[endpoint]")
+    .slice(0, 300);
 }
 
 
