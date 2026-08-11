@@ -35,6 +35,97 @@ const REPORT_OG_IMAGE_SOURCE = new URL(
 // Canonical site base URL for absolute Open Graph / Twitter / canonical URLs.
 // Must match the GitHub Pages deployment root (see README).
 const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
+const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
+const DEFAULT_REPORT_THEME = "aurora-blueprint";
+const DEFAULT_REPORT_MODE = "system";
+
+const REPORT_THEME_CONTROLS = `<div class="theme-controls" aria-label="Report display settings">
+  <label>
+    <span>Style</span>
+    <select data-theme-control="theme" aria-label="Report visual style">
+      <option value="aurora-blueprint">Aurora Blueprint</option>
+      <option value="aurora">Aurora Mesh</option>
+      <option value="signal">Signal Stripe</option>
+    </select>
+  </label>
+  <label>
+    <span>Mode</span>
+    <select data-theme-control="mode" aria-label="Report color mode">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+</div>`;
+
+const REPORT_THEME_SCRIPT = `<script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "${DEFAULT_REPORT_THEME}"),
+    read(modeKey, modes, "${DEFAULT_REPORT_MODE}"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "${DEFAULT_REPORT_MODE}", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "${DEFAULT_REPORT_THEME}", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "${DEFAULT_REPORT_THEME}", root.dataset.mode || "${DEFAULT_REPORT_MODE}", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>`;
 
 // Shared SEO description for report pages.
 const REPORT_SEO_DESCRIPTION =
@@ -163,6 +254,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WordPress Trend Report — ${date}</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${REPORT_THEME_SCRIPT}
   ${buildSeoMeta({
     title: `WordPress Trend Report — ${date}`,
     description: REPORT_SEO_DESCRIPTION,
@@ -172,12 +264,15 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
 </head>
 <body class="report-page">
   ${headerHtml}
+  ${REPORT_THEME_CONTROLS}
   ${tocHtml}
   <div class="report-body">
   ${bodyHtml}
 </div>
   <footer class="nav-footer">
     <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="${GITHUB_REPO_URL}">View on GitHub ↗</a>
   </footer>
 </body>
 </html>`;
@@ -238,6 +333,7 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${REPORT_THEME_SCRIPT}
   ${buildSeoMeta({
     title: "WP Trend Watcher — Reports",
     description: "Weekly human-reviewed WordPress ecosystem trend reports.",
@@ -250,12 +346,15 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
     <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
     <h1>WP Trend Watcher — Reports</h1>
   </header>
+  ${REPORT_THEME_CONTROLS}
   <p class="meta">${reportLabel}</p>
   <div class="report-card-grid">
 ${cards}
   </div>
   <footer class="nav-footer">
     <p>
+      <a class="repo-link" href="${GITHUB_REPO_URL}">View the project on GitHub ↗</a>
+      &nbsp;·&nbsp;
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml">Suggest a source</a>
       &nbsp;·&nbsp;
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml">Send feedback</a>
