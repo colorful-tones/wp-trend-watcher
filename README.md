@@ -61,6 +61,8 @@ Individual commands remain available for diagnosis and recovery — for example,
 
 `pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. The Radio Canada variable font is copied to `reports/assets/` alongside it. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
 
+Generated report pages include Style and Mode controls for Aurora Blueprint, Aurora Mesh, and Signal Stripe, with Light, Dark, and System modes. The selected preferences are saved in the browser's local storage and reused across the report index and individual reports.
+
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
 ## Project Principles
@@ -78,6 +80,7 @@ See:
 - [Sources](docs/sources.md)
 - [Summarization](docs/summarization.md)
 - [Human Review](docs/human-review.md)
+- [Report Themes](docs/report-themes.md)
 - [Cost Notes](docs/cost-notes.md)
 - [Contributing](CONTRIBUTING.md)
 
@@ -90,6 +93,11 @@ Want to suggest a new RSS source? [Open a source suggestion issue](https://githu
 Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
+
+### 0.8.0
+
+- Added GitHub project links to the report index and individual report footers.
+- Added persistent report style and color-mode controls with accessible light and dark variants for all three visual directions.
 
 ### 0.7.0
 

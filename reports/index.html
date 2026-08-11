@@ -5,6 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="assets/report.css">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "aurora-blueprint"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "aurora-blueprint", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "aurora-blueprint", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
   <meta name="description" content="Weekly human-reviewed WordPress ecosystem trend reports.">
   <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/index.html">
   <meta property="og:type" content="website">
@@ -23,11 +91,30 @@
     <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
     <h1>WP Trend Watcher — Reports</h1>
   </header>
-  <p class="meta">8 weekly WordPress ecosystem trend reports.</p>
+  <div class="theme-controls" aria-label="Report display settings">
+  <label>
+    <span>Style</span>
+    <select data-theme-control="theme" aria-label="Report visual style">
+      <option value="aurora-blueprint">Aurora Blueprint</option>
+      <option value="aurora">Aurora Mesh</option>
+      <option value="signal">Signal Stripe</option>
+    </select>
+  </label>
+  <label>
+    <span>Mode</span>
+    <select data-theme-control="mode" aria-label="Report color mode">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+</div>
+  <p class="meta">9 weekly WordPress ecosystem trend reports.</p>
   <div class="report-card-grid">
     <a href="2026-08-10.html" class="report-card">
       <span class="report-card-date">August 10, 2026</span>
-      <span class="report-card-label">Latest report</span>
+    <span class="report-card-label">Latest report</span>
+    </a>
     <a href="2026-08-03.html" class="report-card">
       <span class="report-card-date">August 3, 2026</span>
     </a>
@@ -55,6 +142,8 @@
   </div>
   <footer class="nav-footer">
     <p>
+      <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View the project on GitHub ↗</a>
+      &nbsp;·&nbsp;
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml">Suggest a source</a>
       &nbsp;·&nbsp;
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml">Send feedback</a>

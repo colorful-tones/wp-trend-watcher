@@ -266,6 +266,10 @@ test("generateHtmlReport includes back-to-index footer link", async () => {
     html.includes('<a href="index.html">← Back to Reports</a>'),
     "report should include back-to-index link",
   );
+  assert.ok(
+    html.includes('href="https://github.com/colorful-tones/wp-trend-watcher"'),
+    "report should include the GitHub repository link",
+  );
 });
 
 test("generateIndexPage includes feedback and source suggestion links", async () => {
@@ -295,6 +299,10 @@ test("generateIndexPage includes feedback and source suggestion links", async ()
     html.includes('<footer class="nav-footer">'),
     "index page should include nav-footer",
   );
+  assert.ok(
+    html.includes('href="https://github.com/colorful-tones/wp-trend-watcher"'),
+    "index page should include the GitHub repository link",
+  );
 });
 
 test("generateHtmlReport links a shared external stylesheet", async () => {
@@ -309,6 +317,9 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(html.includes('<link rel="stylesheet" href="assets/report.css">'));
   assert.ok(html.includes('<body class="report-page">'));
   assert.ok(!html.includes("<style>"));
+  assert.ok(html.includes('data-theme-control="theme"'));
+  assert.ok(html.includes('data-theme-control="mode"'));
+  assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
 });
 
@@ -323,6 +334,8 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(html.includes('<link rel="stylesheet" href="assets/report.css">'));
   assert.ok(html.includes('<body class="report-index">'));
   assert.ok(!html.includes("<style>"));
+  assert.ok(html.includes('data-theme-control="theme"'));
+  assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(css.includes(".report-index h1"));
 });
 
