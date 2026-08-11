@@ -321,6 +321,8 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
+  assert.ok(css.includes("repeating-linear-gradient(to bottom"));
+  assert.ok(css.includes("background-repeat: no-repeat"));
 });
 
 test("generateIndexPage links a shared external stylesheet", async () => {
