@@ -78,7 +78,25 @@ To fill historical reports that do not yet have a post-review description:
 pnpm generate-descriptions
 ```
 
-Use `pnpm generate-descriptions --all` to regenerate every report, or `pnpm generate-descriptions --date 2026-08-10` for one report. This also rebuilds the report index.
+This scans `reports/YYYY-MM-DD.md`, skips reports that already contain a custom description, and generates descriptions only for reports still using the deterministic fallback. Each changed Markdown report gets matching HTML regenerated, and the report index is rebuilt at the end. The command uses the provider and model configured through the normal `.env` settings documented in [Summarization](summarization.md).
+
+For existing and past reports, choose the narrowest command that matches the intended change:
+
+```bash
+# Fill only reports that are missing a generated description.
+pnpm generate-descriptions
+
+# Fill or replace descriptions for one report, even if it already has one.
+pnpm generate-descriptions --all --date 2026-08-10
+
+# Replace descriptions for every report, including valid custom descriptions.
+pnpm generate-descriptions --all
+
+# Inspect a single report without overwriting an existing custom description.
+pnpm generate-descriptions --date 2026-08-10
+```
+
+The command changes only the report Markdown's invisible `SEO_DESCRIPTION` metadata and generated presentation files (`reports/*.html` and `reports/index.html`). It does not recollect articles, resummarize articles, or alter human-written report sections. Review the generated Markdown and HTML diffs before committing a backfill.
 
 ### 7. Regenerate (if needed)
 

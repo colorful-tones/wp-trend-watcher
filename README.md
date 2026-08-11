@@ -66,7 +66,7 @@ Generated report pages include Style and Mode controls for Aurora Blueprint, Aur
 
 Generated reports also include concise SEO metadata in the canonical Markdown source. The title is created during report synthesis; the description is created after human review notes are saved. The description is used for page metadata, Open Graph/Twitter cards, the visible report introduction, and report index-card summaries. If generation is unavailable, the human save still succeeds and HTML uses a safe generic fallback.
 
-To backfill historical reports, run `pnpm generate-descriptions` to fill reports without descriptions, or `pnpm generate-descriptions --all` to regenerate every report. Use `pnpm generate-descriptions --date YYYY-MM-DD` to target one report.
+To backfill historical or existing reports, run `pnpm generate-descriptions` to fill only reports still using the generic fallback. Use `pnpm generate-descriptions --date YYYY-MM-DD` to target one report without overwriting a valid description, `pnpm generate-descriptions --all --date YYYY-MM-DD` to force-regenerate one report, or `pnpm generate-descriptions --all` to force-regenerate every report. These commands modify only invisible Markdown SEO metadata and generated HTML/index files; they do not change article data or human-written report sections. See [Weekly Workflow](docs/weekly-workflow.md) for the full backfill procedure and review guidance.
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
