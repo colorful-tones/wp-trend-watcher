@@ -63,6 +63,8 @@ Individual commands remain available for diagnosis and recovery — for example,
 
 Generated report pages include Style and Mode controls for Aurora Blueprint, Aurora Mesh, and Signal Stripe, with Light, Dark, and System modes. The selected preferences are saved in the browser's local storage and reused across the report index and individual reports.
 
+Generated reports also include concise SEO metadata in the canonical Markdown source. The metadata is used for page titles, descriptions, Open Graph/Twitter cards, the visible report introduction, and report index-card summaries. If older reports do not contain generated metadata, the HTML generator uses a safe generic fallback.
+
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
 ## Project Principles
@@ -93,6 +95,11 @@ Want to suggest a new RSS source? [Open a source suggestion issue](https://githu
 Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
+
+### 0.9.0
+
+- Added generated SEO titles and descriptions to reports, including visible report introductions and concise descriptions on index cards.
+- Reused generated metadata for report page titles, descriptions, canonical social metadata, and index-card headings.
 
 ### 0.8.0
 

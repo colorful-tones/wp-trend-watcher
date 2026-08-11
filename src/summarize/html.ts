@@ -1,6 +1,10 @@
 import { mkdir, readFile, writeFile, readdir } from "node:fs/promises";
 import { join, basename, dirname } from "node:path";
 import {
+  extractReportSeoMetadata,
+  type ReportSeoMetadata,
+} from "./report.js";
+import {
   renderMarkdown,
   renderReportBody,
   extractToc,
@@ -189,6 +193,26 @@ function dateFromFilename(filePath: string): string {
 }
 
 /**
+ * Escape text inserted into generated HTML.
+ *
+ * @param value - Text value to escape
+ * @returns HTML-safe text
+ */
+function escapeHtml(value: string): string {
+  return value.replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[character]!,
+  );
+}
+
+/**
  * Build standard SEO / social-sharing meta tags for a report or index page.
  *
  * Emits a description, canonical link, Open Graph tags, and Twitter Card tags.
@@ -208,18 +232,21 @@ function buildSeoMeta(opts: {
   type: string;
 }): string {
   const image = `${SITE_BASE_URL}assets/${REPORT_OG_IMAGE_FILE}`;
+  const title = escapeHtml(opts.title);
+  const description = escapeHtml(opts.description);
+  const url = escapeHtml(opts.url);
   return [
-    `<meta name="description" content="${opts.description}">`,
-    `<link rel="canonical" href="${opts.url}">`,
+    `<meta name="description" content="${description}">`,
+    `<link rel="canonical" href="${url}">`,
     `<meta property="og:type" content="${opts.type}">`,
     `<meta property="og:site_name" content="WP Trend Watcher">`,
-    `<meta property="og:title" content="${opts.title}">`,
-    `<meta property="og:description" content="${opts.description}">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
     `<meta property="og:image" content="${image}">`,
-    `<meta property="og:url" content="${opts.url}">`,
+    `<meta property="og:url" content="${url}">`,
     `<meta name="twitter:card" content="summary_large_image">`,
-    `<meta name="twitter:title" content="${opts.title}">`,
-    `<meta name="twitter:description" content="${opts.description}">`,
+    `<meta name="twitter:title" content="${title}">`,
+    `<meta name="twitter:description" content="${description}">`,
     `<meta name="twitter:image" content="${image}">`,
   ].join("\n  ");
 }
@@ -267,6 +294,10 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   const md = await readFile(mdPath, "utf8");
   const date = dateFromFilename(mdPath);
   const stylesheetHref = await ensureReportStylesheet(dirname(mdPath));
+  const seo = extractReportSeoMetadata(md, {
+    title: `WordPress Trend Report — ${date}`,
+    description: REPORT_SEO_DESCRIPTION,
+  });
   const bodyHtml = renderReportBody(md);
 
   // Extract the h1 heading for the report header. Only the title portion
@@ -302,18 +333,19 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WordPress Trend Report — ${date}</title>
+  <title>${escapeHtml(seo.title)}</title>
   <link rel="stylesheet" href="${stylesheetHref}">
   ${REPORT_THEME_SCRIPT}
   ${buildSeoMeta({
-    title: `WordPress Trend Report — ${date}`,
-    description: REPORT_SEO_DESCRIPTION,
+    title: seo.title,
+    description: seo.description,
     url: `${SITE_BASE_URL}${date}.html`,
     type: "article",
   })}
 </head>
 <body class="report-page">
   ${headerHtml}
+  <p class="report-description">${escapeHtml(seo.description)}</p>
   ${REPORT_THEME_CONTROLS}
   ${tocHtml}
   <div class="report-body">
@@ -355,9 +387,23 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
       ? "1 weekly WordPress ecosystem trend report."
       : `${reportCount} weekly WordPress ecosystem trend reports.`;
 
-  const cards = htmlFiles
-    .map((f, i) => {
+  const cards = (
+    await Promise.all(
+      htmlFiles.map(async (f, i) => {
       const dateStr = f.replace(".html", "");
+      const fallback: ReportSeoMetadata = {
+        title: `WordPress Trend Report — ${dateStr}`,
+        description: REPORT_SEO_DESCRIPTION,
+      };
+      let seo = fallback;
+      try {
+        seo = extractReportSeoMetadata(
+          await readFile(join(reportsDir, `${dateStr}.md`), "utf8"),
+          fallback,
+        );
+      } catch {
+        // Older generated reports may not have a Markdown source beside them.
+      }
       // Parse YYYY-MM-DD into a Date object for locale formatting
       const [year, month, day] = dateStr.split("-").map(Number);
       const dateObj = new Date(year, month - 1, day);
@@ -371,10 +417,13 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
           ? `\n    <span class="report-card-label">Latest report</span>`
           : "";
       return `    <a href="${f}" class="report-card">
-      <span class="report-card-date">${formattedDate}</span>${labelHtml}
+      <span class="report-card-date">${formattedDate}</span>
+      <span class="report-card-title">${escapeHtml(seo.title)}</span>
+      <span class="report-card-description">${escapeHtml(seo.description)}</span>${labelHtml}
     </a>`;
-    })
-    .join("\n");
+      }),
+    )
+  ).join("\n");
 
   const indexHtml = `<!DOCTYPE html>
 <html lang="en">

@@ -166,6 +166,8 @@ test("buildReportPrompt includes expected section headings", () => {
   assert.ok(!prompt.includes("### Article Inventory"));
   assert.ok(prompt.includes("### Emerging Trends"));
   assert.ok(prompt.includes("### Developer Implications"));
+  assert.ok(prompt.includes("SEO_TITLE:"));
+  assert.ok(prompt.includes("SEO_DESCRIPTION:"));
 });
 
 test("buildReportPrompt truncates summaries to first sentence", () => {
@@ -263,7 +265,7 @@ test("assembleReport produces a complete Markdown report", () => {
   const summaries = [
     makeSummary({ title: "Article One" }),
   ];
-  const synthesis = "### Article Inventory\n\n1. Article One.\n\n### Emerging Trends\n\nNone this week.\n\n### Developer Implications\n\nNothing specific.";
+  const synthesis = "SEO_TITLE: WordPress workflow changes\nSEO_DESCRIPTION: This week's WordPress changes affect testing and client work.\n\n### Article Inventory\n\n1. Article One.\n\n### Emerging Trends\n\nNone this week.\n\n### Developer Implications\n\nNothing specific.";
 
   const report = assembleReport(
     "2026-06-20",
@@ -276,6 +278,9 @@ test("assembleReport produces a complete Markdown report", () => {
   );
 
   assert.ok(report.includes("# WordPress Trend Report — 2026-06-20"));
+  assert.ok(report.includes("<!-- SEO_TITLE: WordPress workflow changes -->"));
+  assert.ok(report.includes("<!-- SEO_DESCRIPTION: This week's WordPress changes affect testing and client work. -->"));
+  assert.ok(!report.includes("SEO_TITLE: WordPress workflow changes\nSEO_DESCRIPTION:"));
   assert.ok(report.includes("## Weekly Summary"));
   assert.ok(report.includes("### Article Inventory"));
   assert.ok(report.includes("### Emerging Trends"));
