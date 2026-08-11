@@ -167,7 +167,7 @@ test("buildReportPrompt includes expected section headings", () => {
   assert.ok(prompt.includes("### Emerging Trends"));
   assert.ok(prompt.includes("### Developer Implications"));
   assert.ok(prompt.includes("SEO_TITLE:"));
-  assert.ok(prompt.includes("SEO_DESCRIPTION:"));
+  assert.ok(prompt.includes("SEO description is generated later"));
 });
 
 test("buildReportPrompt truncates summaries to first sentence", () => {
@@ -279,7 +279,7 @@ test("assembleReport produces a complete Markdown report", () => {
 
   assert.ok(report.includes("# WordPress Trend Report — 2026-06-20"));
   assert.ok(report.includes("<!-- SEO_TITLE: WordPress workflow changes -->"));
-  assert.ok(report.includes("<!-- SEO_DESCRIPTION: This week's WordPress changes affect testing and client work. -->"));
+  assert.ok(report.includes("<!-- SEO_DESCRIPTION: Weekly human-reviewed analysis"));
   assert.ok(!report.includes("SEO_TITLE: WordPress workflow changes\nSEO_DESCRIPTION:"));
   assert.ok(report.includes("## Weekly Summary"));
   assert.ok(report.includes("### Article Inventory"));
@@ -552,6 +552,29 @@ The design system proposal is worth monitoring closely.
 
   assert.ok(report.includes("The design system proposal is worth monitoring closely."));
   assert.ok(!report.includes("Human-authored: add your observations here"));
+});
+
+test("assembleReport preserves an existing post-review SEO description", () => {
+  const existingReport =
+    "<!-- SEO_TITLE: Existing title -->\n" +
+    "<!-- SEO_DESCRIPTION: Existing reviewed description. -->\n" +
+    "# WordPress Trend Report — 2026-06-20\n";
+
+  const report = assembleReport(
+    "2026-06-20",
+    [makeArticle()],
+    "### Emerging Trends\n\nNone.\n\n### Developer Implications\n\nNone.",
+    [makeSummary()],
+    stubProvider,
+    200,
+    100,
+    null,
+    existingReport,
+  );
+
+  assert.ok(
+    report.includes("<!-- SEO_DESCRIPTION: Existing reviewed description. -->"),
+  );
 });
 
 test("assembleReport does not preserve placeholder content from existing report", () => {

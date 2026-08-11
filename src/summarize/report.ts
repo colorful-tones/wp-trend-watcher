@@ -222,10 +222,9 @@ export function buildReportPrompt(
 
   return `Week ending ${date}. ${summaries.length} articles from WordPress developer sources.
 
-Before the report sections, output exactly two metadata lines:
+Before the report sections, output exactly one metadata line:
 SEO_TITLE: A concise, specific title for this week's report (50-65 characters when possible).
-SEO_DESCRIPTION: A factual one-sentence description of the week's most important signals (140-160 characters when possible).
-Use only information from the source inventory. Do not use hype or generic marketing language.
+Use only information from the source inventory. Do not use hype or generic marketing language. The SEO description is generated later, after human review notes are saved.
 
 ## Source Inventory
 
@@ -301,7 +300,7 @@ export interface ReportSeoMetadata {
   description: string;
 }
 
-const DEFAULT_REPORT_SEO_DESCRIPTION =
+export const DEFAULT_REPORT_SEO_DESCRIPTION =
   "Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.";
 
 /**
@@ -316,12 +315,8 @@ function parseGeneratedSeoMetadata(
   fallbackTitle: string,
 ): { metadata: ReportSeoMetadata; content: string } {
   const titleMatch = synthesis.match(/^SEO_TITLE:\s*(.+)$/im);
-  const descriptionMatch = synthesis.match(/^SEO_DESCRIPTION:\s*(.+)$/im);
   const title = sanitizeSeoValue(titleMatch?.[1] ?? fallbackTitle, 70);
-  const description = sanitizeSeoValue(
-    descriptionMatch?.[1] ?? DEFAULT_REPORT_SEO_DESCRIPTION,
-    160,
-  );
+  const description = DEFAULT_REPORT_SEO_DESCRIPTION;
   const content = synthesis
     .replace(/^SEO_TITLE:\s*.+$/im, "")
     .replace(/^SEO_DESCRIPTION:\s*.+$/im, "")
@@ -368,6 +363,31 @@ function sanitizeSeoValue(value: string, maxLength: number): string {
     .slice(0, maxLength);
 }
 
+/**
+ * Update or insert the post-review SEO description in a Markdown report.
+ *
+ * @param markdown - Canonical Markdown report source
+ * @param description - Generated description text
+ * @returns Markdown with exactly one SEO description comment
+ */
+export function updateReportSeoDescription(
+  markdown: string,
+  description: string,
+): string {
+  const comment = `<!-- SEO_DESCRIPTION: ${sanitizeSeoValue(description, 160)} -->`;
+  const descriptionPattern = /^<!-- SEO_DESCRIPTION:\s*.*?\s*-->\n?/m;
+  if (descriptionPattern.test(markdown)) {
+    return markdown.replace(descriptionPattern, `${comment}\n`);
+  }
+
+  const titlePattern = /^(<!-- SEO_TITLE:.*?-->\n)/m;
+  if (titlePattern.test(markdown)) {
+    return markdown.replace(titlePattern, `$1${comment}\n`);
+  }
+
+  return `${comment}\n${markdown}`;
+}
+
 // --- Report assembly ---
 
 /**
@@ -407,10 +427,17 @@ export function assembleReport(
   existingReportMd?: string | null,
 ): string {
   const articleInventory = buildArticleInventorySection(summaries);
-  const { metadata, content: synthesisWithoutMetadata } = parseGeneratedSeoMetadata(
+  const { metadata: generatedMetadata, content: synthesisWithoutMetadata } = parseGeneratedSeoMetadata(
     synthesis,
     `WordPress Trend Report — ${date}`,
   );
+  const existingMetadata = existingReportMd
+    ? extractReportSeoMetadata(existingReportMd, generatedMetadata)
+    : generatedMetadata;
+  const metadata: ReportSeoMetadata = {
+    title: generatedMetadata.title,
+    description: existingMetadata.description,
+  };
   const synthesisWithoutInventory = stripGeneratedArticleInventory(
     synthesisWithoutMetadata,
   );
