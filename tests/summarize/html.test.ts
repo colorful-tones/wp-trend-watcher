@@ -319,6 +319,8 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(!html.includes("<style>"));
   assert.ok(html.includes('data-theme-control="theme"'));
   assert.ok(html.includes('data-theme-control="mode"'));
+  assert.ok(html.includes("data-theme-settings-open"));
+  assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
   assert.ok(css.includes("repeating-linear-gradient(to bottom"));
@@ -338,7 +340,10 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(!html.includes("<style>"));
   assert.ok(html.includes('data-theme-control="theme"'));
   assert.ok(html.includes('data-theme-control="mode"'));
+  assert.ok(html.includes("data-theme-settings-open"));
+  assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(css.includes(".report-index h1"));
+  assert.ok(css.includes("grid-template-columns: repeat(3"));
 });
 
 test("ensureReportStylesheet copies the Radio Canada font into assets/", async () => {

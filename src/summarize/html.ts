@@ -39,23 +39,45 @@ const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
 const DEFAULT_REPORT_THEME = "aurora-blueprint";
 const DEFAULT_REPORT_MODE = "system";
 
-const REPORT_THEME_CONTROLS = `<div class="theme-controls" aria-label="Report display settings">
-  <label>
-    <span>Style</span>
-    <select data-theme-control="theme" aria-label="Report visual style">
-      <option value="aurora-blueprint">Aurora Blueprint</option>
-      <option value="aurora">Aurora Mesh</option>
-      <option value="signal">Signal Stripe</option>
-    </select>
-  </label>
-  <label>
-    <span>Mode</span>
-    <select data-theme-control="mode" aria-label="Report color mode">
-      <option value="system">System</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
-  </label>
+const REPORT_THEME_CONTROLS = `<div class="theme-settings">
+  <button
+    class="settings-button"
+    type="button"
+    data-theme-settings-open
+    aria-haspopup="dialog"
+    aria-controls="report-settings"
+  >
+    Settings
+  </button>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+    <form method="dialog">
+      <div class="theme-settings-header">
+        <h2 id="report-settings-title">Report settings</h2>
+        <button class="theme-settings-close" type="submit" value="close" aria-label="Close report settings">×</button>
+      </div>
+      <div class="theme-controls" aria-label="Report display settings">
+        <label>
+          <span>Style</span>
+          <select data-theme-control="theme" aria-label="Report visual style">
+            <option value="aurora-blueprint">Aurora Blueprint</option>
+            <option value="aurora">Aurora Mesh</option>
+            <option value="signal">Signal Stripe</option>
+          </select>
+        </label>
+        <label>
+          <span>Mode</span>
+          <select data-theme-control="mode" aria-label="Report color mode">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+      </div>
+      <div class="theme-settings-actions">
+        <button type="submit" value="close">Done</button>
+      </div>
+    </form>
+  </dialog>
 </div>`;
 
 const REPORT_THEME_SCRIPT = `<script>
@@ -108,6 +130,23 @@ const REPORT_THEME_SCRIPT = `<script>
   function bindControls() {
     if (controlsBound) return;
     controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog && typeof settingsDialog.close === "function") {
+          settingsDialog.close();
+        }
+      });
+    }
     document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
       control.addEventListener("change", function (event) {
         apply(event.target.value, root.dataset.mode || "${DEFAULT_REPORT_MODE}", true);
