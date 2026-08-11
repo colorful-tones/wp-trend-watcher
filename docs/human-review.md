@@ -44,7 +44,7 @@ The `pnpm weekly` command starts a local review server at http://127.0.0.1:3001/
 - An editable textarea for the "What I'm Watching" section
 - A free-form "Review time" field that records how long you spent reviewing and publishing the report
 
-Saving your observations via the review page updates the canonical Markdown report atomically and regenerates the matching HTML. Press Ctrl-C to stop the server when you're done reviewing.
+Saving your observations via the review page updates the canonical Markdown report atomically. After the human content is saved, the configured LLM generates the final SEO description from the complete reviewed report, then the matching HTML is regenerated. Press Ctrl-C to stop the server when you're done reviewing. If description generation fails, the human save is retained and can be retried with `pnpm generate-descriptions`.
 
 You can also review the report manually in your editor — the Markdown file at `reports/YYYY-MM-DD.md` is the canonical source of truth. The review server is an optional convenience, not a required step.
 

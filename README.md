@@ -50,10 +50,11 @@ pnpm generate-report # Regenerate the report from saved article summaries
 pnpm index-page      # Regenerate the reports index.html listing page
 pnpm doctor          # Check environment readiness before first summarize
 pnpm review          # Review checklist for the latest report
+pnpm generate-descriptions # Fill or regenerate SEO descriptions
 pnpm weekly          # Run the full weekly workflow (doctor → collect → summarize → review → review server)
 ```
 
-`pnpm weekly` is the recommended single-command workflow. It runs doctor, collect, summarize, and review sequentially, then starts a local review server at http://127.0.0.1:3001/review where you can view automated checks, read the rendered report, and save your "What I'm Watching" observations. Saved edits update both the canonical Markdown report and regenerated HTML. Press Ctrl-C to stop the server when you're done.
+`pnpm weekly` is the recommended single-command workflow. It runs doctor, collect, summarize, and review sequentially, then starts a local review server at http://127.0.0.1:3001/review where you can view automated checks, read the rendered report, and save your "What I'm Watching" observations. Saving through the review page updates the canonical Markdown report, asks the configured LLM to generate the final SEO description from the reviewed report, and regenerates HTML. Press Ctrl-C to stop the server when you're done.
 
 Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
 
@@ -63,7 +64,9 @@ Individual commands remain available for diagnosis and recovery — for example,
 
 Generated report pages include Style and Mode controls for Aurora Blueprint, Aurora Mesh, and Signal Stripe, with Light, Dark, and System modes. The selected preferences are saved in the browser's local storage and reused across the report index and individual reports.
 
-Generated reports also include concise SEO metadata in the canonical Markdown source. The metadata is used for page titles, descriptions, Open Graph/Twitter cards, the visible report introduction, and report index-card summaries. If older reports do not contain generated metadata, the HTML generator uses a safe generic fallback.
+Generated reports also include concise SEO metadata in the canonical Markdown source. The title is created during report synthesis; the description is created after human review notes are saved. The description is used for page metadata, Open Graph/Twitter cards, the visible report introduction, and report index-card summaries. If generation is unavailable, the human save still succeeds and HTML uses a safe generic fallback.
+
+To backfill historical reports, run `pnpm generate-descriptions` to fill reports without descriptions, or `pnpm generate-descriptions --all` to regenerate every report. Use `pnpm generate-descriptions --date YYYY-MM-DD` to target one report.
 
 See [Summarization](docs/summarization.md) for provider configuration, model options, and synthesis strategy.
 
@@ -96,6 +99,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.10.0
+
+- Moved SEO description generation to the post-review workflow so descriptions include final human notes.
+- Added `pnpm generate-descriptions` for filling or regenerating historical report descriptions.
+
 ### 0.9.0
 
 - Added generated SEO titles and descriptions to reports, including visible report introductions and concise descriptions on index cards.
@@ -105,36 +113,5 @@ Both templates walk you through what's needed — takes about a minute.
 
 - Added GitHub project links to the report index and individual report footers.
 - Added persistent report style and color-mode controls with accessible light and dark variants for all three visual directions.
-
-### 0.7.0
-
-- Added `markdown-it` dependency; report HTML generation and the local review server now share one Markdown renderer (`src/summarize/renderer.ts`) instead of two bespoke converters.
-- Renderer keeps raw HTML disabled and strips unsafe link schemes (`javascript:`, `data:`, `vbscript:`) so generated pages stay safe even from untrusted feeds.
-- Article Inventory now renders inside a collapsible `<details>` element (closed by default) with a visible article count, de-emphasizing long vertical lists without removing the data.
-- Report sections render in a configurable presentation order (`DEFAULT_PRESENTATION_ORDER`), so generated HTML layout can change without rewriting report history. Canonical Markdown data stays the source of truth.
-- Added a free-form **Review time** field to the local review page (`Build Notes`) and the review API; it persists to the `Review time:` line in the canonical Markdown.
-- `pnpm regen-html` now refreshes all report HTML from existing Markdown with no LLM calls; historical report data is unchanged.
-- Added the Radio Canada variable font to generated HTML reports: the shared stylesheet declares a `@font-face` rule and uses it as the primary `body` font, with system fonts as fallback. The font file is copied into `reports/assets/` at generation time (alongside `report.css` and `icon.svg`) so it ships with GitHub Pages deployments.
-- Added standard SEO and social-sharing meta to generated HTML reports and the index page: description, canonical link, Open Graph tags, and a `summary_large_image` Twitter card. The shared `assets/WP-Trend-Watcher_1200x630.png` is copied into `reports/assets/` so the Open Graph image resolves on GitHub Pages deployments. All meta URLs are absolute to the `colorful-tones.github.io/wp-trend-watcher/` site root.
-- Bumped package version to 0.7.0.
-
-### 0.6.0
-
-- Added `pnpm weekly` single-command workflow: doctor → collect → summarize → review → local review server.
-- Added localhost-only review server (http://127.0.0.1:3001/review) for browser-based human review.
-- Review page displays automated checks, rendered report, and an editable "What I'm Watching" textarea.
-- Saving via the review page updates the canonical Markdown report and regenerates matching HTML atomically.
-- Human-authored "What I'm Watching" content is now preserved during same-date report regeneration (`pnpm summarize` and `pnpm generate-report`).
-- Added pure Markdown section helpers (`src/review/report-edit.ts`) for extracting and replacing the "What I'm Watching" section.
-- New `docs/human-review.md` updated to mention the local review page.
-- Added 36 new tests for report editing, preservation behaviour, and review server request handling.
-- No new runtime dependencies — uses Node.js native HTTP server.
-
-### 0.5.0
-
-- Added `pnpm watch` zero-dependency live-reload dev server with SSE browser reload.
-- Added project icon to report headers and index page (flexbox-aligned with h1).
-- Added `pnpm regen-html` command to batch-regenerate all report HTML from existing Markdown — no LLM calls.
-- Refined report CSS: cleaned-up header, horizontal table-of-contents layout, tighter spacing on build notes and footer.
 
 For older releases, see the [GitHub Releases page](https://github.com/colorful-tones/wp-trend-watcher/releases).

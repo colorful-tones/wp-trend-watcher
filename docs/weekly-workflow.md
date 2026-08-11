@@ -8,7 +8,7 @@ The sequence of commands to go from zero to a published weekly report.
 pnpm weekly
 ```
 
-Runs the entire pipeline in one command: doctor → collect → summarize → review → opens a local review page. After reviewing and saving your observations, press Ctrl-C to stop the server.
+Runs the entire pipeline in one command: doctor → collect → summarize → review → opens a local review page. After reviewing and saving your observations, the server generates the SEO description from the final report and rebuilds HTML. Then press Ctrl-C to stop the server.
 
 Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
 
@@ -68,7 +68,19 @@ Open `reports/YYYY-MM-DD.md` and:
 
 See [Human Review](human-review.md) for the full checklist.
 
-### 6. Regenerate (if needed)
+### 6. Generate the SEO Description
+
+Saving the review page is the normal final workflow step. It writes the human notes first, then asks the configured LLM to create one concise description from the final reviewed Markdown, and finally regenerates the matching HTML. If the provider is unavailable, the report remains saved and can be retried later.
+
+To fill historical reports that do not yet have a post-review description:
+
+```bash
+pnpm generate-descriptions
+```
+
+Use `pnpm generate-descriptions --all` to regenerate every report, or `pnpm generate-descriptions --date 2026-08-10` for one report. This also rebuilds the report index.
+
+### 7. Regenerate (if needed)
 
 ```bash
 pnpm generate-report
@@ -84,7 +96,7 @@ pnpm regen-html
 
 This rewrites all `reports/*.html` from the existing `reports/*.md` files. Report Markdown and article data are never changed — only the generated presentation.
 
-### 7. Index Page (if needed)
+### 8. Index Page (if needed)
 
 ```bash
 pnpm index-page
@@ -100,6 +112,7 @@ Regenerates `reports/index.html` independently. Normally `pnpm summarize` alread
 | Collect | `pnpm collect` (or `-- --days 7` to override) | No | Yes (merges) |
 | Summarize | `pnpm summarize` | Yes | Yes (cached) |
 | Review | `pnpm review` | No | Yes |
+| Descriptions | `pnpm generate-descriptions` | Yes | Yes |
 | Regenerate | `pnpm generate-report` | Yes | Yes |
 | Index | `pnpm index-page` | No | Yes |
 
@@ -111,7 +124,7 @@ pnpm collect -- --days 7
 pnpm summarize
 pnpm review
 # … human review and edits …
-pnpm generate-report   # rebuild HTML after edits
+# Saving in the review page generates the final SEO description and HTML
 ```
 
 If the summarization step fails (timeout, model error), fix the issue and just re-run `pnpm summarize`. Cached summaries are preserved — only new articles trigger LLM calls.

@@ -61,7 +61,14 @@ async function setupFixture(
   reportMd: string | null = FIXTURE_REPORT,
 ): Promise<{ reportsDir: string; server: Server; baseUrl: string }> {
   const reportsDir = await mkdtemp(join(tmpdir(), "wp-trend-review-test-"));
-  const server = createReviewServer({ reportsDir, port: 0 });
+  const server = createReviewServer({
+    reportsDir,
+    port: 0,
+    descriptionGenerator: async (reportMarkdown) => {
+      assert.ok(reportMarkdown.includes("## What I'm Watching"));
+      return "Generated from the final reviewed report.";
+    },
+  });
 
   await new Promise<void>((resolve, reject) => {
     server.listen(0, "127.0.0.1", () => resolve());
@@ -170,6 +177,7 @@ test("GET /api/review returns JSON with date, html, summary, checks", async () =
     assert.ok(data.html.length > 0);
     assert.ok(data.summary.includes("Human-authored"));
     assert.equal(data.reviewTime, "~15 minutes");
+    assert.equal(data.descriptionStatus, "fallback");
     assert.ok(Array.isArray(data.checks));
     assert.ok(data.checks.length >= 7);
   } finally {
@@ -238,6 +246,7 @@ test("POST /api/review-summary saves summary and returns updated state", async (
     assert.ok(data.summary.includes("Updated observation"));
     assert.ok(!data.summary.includes("Human-authored"));
     assert.ok(data.html.includes("Updated observation"));
+    assert.equal(data.descriptionStatus, "generated");
     assert.equal(data.date, "2026-07-18");
   } finally {
     await teardownFixture(fixture);
@@ -261,6 +270,7 @@ test("POST /api/review-summary actually writes to the Markdown file", async () =
     assert.ok(!md.includes("Human-authored: add your observations here"));
     assert.ok(md.includes("## Source Articles"));
     assert.ok(md.includes("## Build Notes"));
+    assert.ok(md.includes("<!-- SEO_DESCRIPTION: Generated from the final reviewed report. -->"));
   } finally {
     await teardownFixture(fixture);
   }

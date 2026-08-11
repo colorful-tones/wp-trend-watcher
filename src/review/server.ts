@@ -34,8 +34,18 @@ import {
   extname,
 } from "node:path";
 import { randomBytes } from "node:crypto";
+import { loadEnvFile } from "../env.js";
+import { createProvider } from "../providers.js";
 import { generateHtmlReport } from "../summarize/html.js";
 import { renderReportBody } from "../summarize/renderer.js";
+import {
+  generateReportDescription,
+} from "../summarize/description.js";
+import {
+  DEFAULT_REPORT_SEO_DESCRIPTION,
+  extractReportSeoMetadata,
+  updateReportSeoDescription,
+} from "../summarize/report.js";
 import {
   findWatchingSection,
   replaceWatchingSection,
@@ -69,7 +79,13 @@ export interface ReviewData {
   summary: string;
   reviewTime: string;
   checks: ReviewCheck[];
+  descriptionStatus: "generated" | "fallback";
 }
+
+/** Generate an SEO description from a final reviewed report. */
+export type ReportDescriptionGenerator = (
+  reportMarkdown: string,
+) => Promise<string>;
 
 /** Convenience type for route handler functions. */
 type RouteHandler = (
@@ -91,6 +107,8 @@ export interface ReviewServerOptions {
   port?: number;
   /** Host to bind to. Defaults to 127.0.0.1. */
   hostname?: string;
+  /** Optional description generator, primarily for deterministic tests. */
+  descriptionGenerator?: ReportDescriptionGenerator;
 }
 
 /**
@@ -108,9 +126,19 @@ export function createReviewServer(
   const reportsDir = options.reportsDir ?? join(process.cwd(), "reports");
   const port = options.port ?? DEFAULT_PORT;
   const hostname = options.hostname ?? BIND_ADDRESS;
+  loadEnvFile();
+  const descriptionGenerator =
+    options.descriptionGenerator ??
+    ((markdown: string) =>
+      generateReportDescription(markdown, createProvider()));
 
   return createServer((req, res) =>
-    handleRequest(req, res, { reportsDir, port, hostname }),
+    handleRequest(req, res, {
+      reportsDir,
+      port,
+      hostname,
+      descriptionGenerator,
+    }),
   );
 }
 
@@ -120,6 +148,7 @@ interface RequestContext {
   reportsDir: string;
   port: number;
   hostname: string;
+  descriptionGenerator: ReportDescriptionGenerator;
 }
 
 // --- Route table ---
@@ -383,7 +412,7 @@ function reviewPageHtml(): string {
 
 <section class="editor-section">
   <h2>Your Review Summary</h2>
-  <p class="meta">Edit the <em>What I'm Watching</em> section below. Saving updates the canonical Markdown report and regenerates the matching HTML.</p>
+  <p class="meta">Edit the <em>What I'm Watching</em> section below. Saving updates the canonical Markdown report, generates its SEO description, and regenerates the matching HTML.</p>
   <label class="editor-label" for="summary-textarea">What I'm Watching</label>
   <textarea id="summary-textarea" placeholder="Add your observations here…"></textarea>
   <label class="editor-label" for="review-time-input">Review time</label>
@@ -448,7 +477,9 @@ async function saveSummary() {
 
     const data = await res.json();
     statusEl.className = 'status success';
-    statusEl.textContent = '✓ Saved successfully — Markdown and HTML updated.';
+    statusEl.textContent = data.descriptionStatus === 'generated'
+      ? '✓ Saved and generated SEO description — Markdown and HTML updated.'
+      : '✓ Saved — Markdown and HTML updated. SEO description generation was unavailable.';
     document.getElementById('report-container').innerHTML = data.html;
     document.getElementById('summary-textarea').value = data.summary;
     document.getElementById('review-time-input').value = data.reviewTime || '';
@@ -623,7 +654,20 @@ async function serveReviewData(
       checkHtmlReport(htmlExists, htmlPath),
     ];
 
-    const data: ReviewData = { date, html, summary, reviewTime, checks };
+    const data: ReviewData = {
+      date,
+      html,
+      summary,
+      reviewTime,
+      checks,
+      descriptionStatus:
+        extractReportSeoMetadata(report, {
+          title: `WordPress Trend Report — ${date}`,
+          description: DEFAULT_REPORT_SEO_DESCRIPTION,
+        }).description === DEFAULT_REPORT_SEO_DESCRIPTION
+          ? "fallback"
+          : "generated",
+    };
 
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify(data) + "\n");
@@ -746,6 +790,30 @@ async function handleSaveSummary(
     return;
   }
 
+  // Generate the description only after the human-authored report is saved.
+  let descriptionStatus: ReviewData["descriptionStatus"] = "fallback";
+  let descriptionTmpPath: string | null = null;
+  try {
+    const description = await ctx.descriptionGenerator(finalReport);
+    const describedReport = updateReportSeoDescription(finalReport, description);
+    descriptionTmpPath =
+      reportPath + "." + randomBytes(8).toString("hex") + ".tmp";
+    await writeFile(descriptionTmpPath, describedReport, "utf8");
+    await rename(descriptionTmpPath, reportPath);
+    descriptionTmpPath = null;
+    finalReport = describedReport;
+    descriptionStatus = "generated";
+  } catch {
+    if (descriptionTmpPath) {
+      try {
+        await unlink(descriptionTmpPath);
+      } catch {
+        // ignore cleanup failures
+      }
+    }
+    // Human notes remain saved; HTML will use the deterministic fallback.
+  }
+
   // Regenerate HTML
   try {
     await generateHtmlReport(reportPath);
@@ -779,7 +847,14 @@ async function handleSaveSummary(
     checkHtmlReport(htmlExists, htmlPath),
   ];
 
-  const data: ReviewData = { date, html, summary, reviewTime, checks };
+  const data: ReviewData = {
+    date,
+    html,
+    summary,
+    reviewTime,
+    checks,
+    descriptionStatus,
+  };
 
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data) + "\n");
