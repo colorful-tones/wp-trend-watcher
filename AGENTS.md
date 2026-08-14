@@ -8,7 +8,7 @@ Read a file before editing it. Understand existing patterns, types, and conventi
 
 ## AI Collaboration Notes
 
-Write AI-facing project materials into `.ai/`, which is symlinked to the project's Obsidian vault folder. This includes implementation plans, research notes, task lists, execution logs, decisions, review notes, and other AI collaboration-style Markdown files.
+Write AI-facing project materials into the project-local `.ai/` directory. This includes implementation plans, research notes, task lists, execution logs, decisions, review notes, and other AI collaboration-style Markdown files. Do not symlink `.ai/` to another vault or project.
 
 New implementation plans belong in `.ai/Plans/` and should use descriptive filenames such as `.ai/Plans/Weekly Review Workflow.md`. Do not create new planning or notes directories such as `.hermes/plans/` inside this repo, and do not organize new work under `phase-[n]/` folders. Existing phase folders are historical records only.
 
