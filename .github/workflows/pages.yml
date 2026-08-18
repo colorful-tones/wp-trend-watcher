@@ -29,6 +29,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Regenerate index page
+        env:
+          WP_TREND_GOATCOUNTER_URL: https://colorful-tones.goatcounter.com/count
         run: pnpm index-page
 
       - name: Upload pages artifact

@@ -42,6 +42,7 @@ const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
 const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
 const DEFAULT_REPORT_THEME = "aurora-blueprint";
 const DEFAULT_REPORT_MODE = "system";
+const GOATCOUNTER_SCRIPT_SRC = "//gc.zgo.at/count.js";
 
 const REPORT_SETTINGS_BUTTON = `<button
   class="settings-button"
@@ -215,6 +216,38 @@ function escapeHtml(value: string): string {
 }
 
 /**
+ * Build the optional GoatCounter analytics script from the configured public
+ * endpoint. Analytics remains disabled when the setting is unset.
+ *
+ * @returns An analytics script tag, or an empty string when disabled.
+ */
+function buildAnalyticsScript(): string {
+  const endpoint = process.env.WP_TREND_GOATCOUNTER_URL?.trim();
+  if (!endpoint) {
+    return "";
+  }
+
+  try {
+    const url = new URL(endpoint);
+    if (
+      url.protocol !== "https:" ||
+      url.pathname !== "/count" ||
+      url.search ||
+      url.hash
+    ) {
+      throw new Error("expected an HTTPS URL ending in /count");
+    }
+  } catch {
+    console.warn(
+      "Invalid WP_TREND_GOATCOUNTER_URL; analytics disabled. Use an HTTPS URL ending in /count.",
+    );
+    return "";
+  }
+
+  return `<script data-goatcounter="${escapeHtml(endpoint)}" async src="${GOATCOUNTER_SCRIPT_SRC}"></script>`;
+}
+
+/**
  * Build standard SEO / social-sharing meta tags for a report or index page.
  *
  * Emits a description, canonical link, Open Graph tags, and Twitter Card tags.
@@ -301,6 +334,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
     description: REPORT_SEO_DESCRIPTION,
   });
   const bodyHtml = renderReportBody(md);
+  const analyticsScript = buildAnalyticsScript();
 
   // Extract the h1 heading for the report header. Only the title portion
   // (before the " — " separator) becomes a link back to the index; the
@@ -338,6 +372,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <title>${escapeHtml(seo.title)}</title>
   <link rel="stylesheet" href="${stylesheetHref}">
   ${REPORT_THEME_SCRIPT}
+  ${analyticsScript}
   ${buildSeoMeta({
     title: seo.title,
     description: seo.description,
@@ -377,6 +412,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
  */
 export async function generateIndexPage(reportsDir: string): Promise<string> {
   const stylesheetHref = await ensureReportStylesheet(reportsDir);
+  const analyticsScript = buildAnalyticsScript();
   const files = await readdir(reportsDir);
   const htmlFiles = files
     .filter((f) => f.endsWith(".html") && f !== "index.html")
@@ -435,6 +471,7 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="${stylesheetHref}">
   ${REPORT_THEME_SCRIPT}
+  ${analyticsScript}
   ${buildSeoMeta({
     title: "WP Trend Watcher — Reports",
     description: "Weekly human-reviewed WordPress ecosystem trend reports.",

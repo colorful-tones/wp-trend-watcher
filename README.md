@@ -99,6 +99,10 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.10.2
+
+- Added optional GoatCounter analytics to generated report pages and the reports index. Configure `WP_TREND_GOATCOUNTER_URL` to enable it; local previews remain analytics-free when unset.
+
 ### 0.10.1
 
 - Bound description requests to compact report context and 512 completion tokens to avoid context-window failures on larger reports.

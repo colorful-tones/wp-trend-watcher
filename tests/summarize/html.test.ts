@@ -134,6 +134,39 @@ test("generateHtmlReport does not produce TOC when only 1 heading exists", async
   assert.ok(html.includes('<div class="report-body">'));
 });
 
+test("generated pages include GoatCounter only when explicitly configured", async () => {
+  const previous = process.env.WP_TREND_GOATCOUNTER_URL;
+  const tmpDir = await mkdtemp(join(tmpdir(), "analytics-test-"));
+  const mdPath = join(tmpDir, "2026-06-21.md");
+  await writeFile(mdPath, "# Report\n\nContent.\n", "utf8");
+
+  try {
+    delete process.env.WP_TREND_GOATCOUNTER_URL;
+    const disabledHtml = await readFile(await generateHtmlReport(mdPath), "utf8");
+    assert.ok(!disabledHtml.includes("data-goatcounter"));
+
+    process.env.WP_TREND_GOATCOUNTER_URL =
+      "https://colorful-tones.goatcounter.com/count";
+    const enabledHtml = await readFile(await generateHtmlReport(mdPath), "utf8");
+    assert.ok(
+      enabledHtml.includes(
+        '<script data-goatcounter="https://colorful-tones.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>',
+      ),
+    );
+
+    const indexDir = await mkdtemp(join(tmpdir(), "analytics-index-test-"));
+    await writeFile(join(indexDir, "2026-06-21.html"), "<html></html>", "utf8");
+    const indexHtml = await readFile(await generateIndexPage(indexDir), "utf8");
+    assert.ok(indexHtml.includes("data-goatcounter"));
+  } finally {
+    if (previous === undefined) {
+      delete process.env.WP_TREND_GOATCOUNTER_URL;
+    } else {
+      process.env.WP_TREND_GOATCOUNTER_URL = previous;
+    }
+  }
+});
+
 test("generateHtmlReport wraps report header with h1 inside .report-header", async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
   const mdPath = join(tmpDir, "2026-06-21.md");
