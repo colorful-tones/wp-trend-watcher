@@ -2,6 +2,18 @@
 
 Generated report pages support selectable visual themes and color modes. The theme is applied to both the report index and individual reports, and the selected values are saved in `localStorage`.
 
+The current styles are:
+
+- **Civic Brutalist** — Bricolage Grotesque and IBM Plex Mono; the default.
+- **Ink Editorial** — Instrument Serif and Space Grotesk; warm magazine-like reading.
+- **Neon Observatory** — Syne and DM Mono; dark signal-dashboard energy.
+
+Each style has dedicated light, dark, and system-mode tokens. Google Fonts are loaded by the generated page so the styles remain self-contained in the static report output.
+
+All styles share the same editorial report shell: the index uses an archive-and-card layout, while individual reports use a hero, issue rail, table of contents, and focused reading column. The shell is presentation-only; canonical Markdown sections and source references remain unchanged.
+
+Heading sizes, line heights, and letter-spacing are calibrated per display face rather than shared globally, so the wide geometric, serif, and compact display fonts retain their intended rhythm.
+
 The current theme system is defined in:
 
 - `src/summarize/html.ts` — theme names, selector options, and the small pre-paint persistence script.
@@ -25,7 +37,7 @@ In `src/summarize/html.ts`, add an option to `REPORT_THEME_CONTROLS`:
 In `REPORT_THEME_SCRIPT`, add the same identifier to the `themes` array:
 
 ```js
-var themes = ["aurora-blueprint", "aurora", "signal", "forest"];
+var themes = ["civic-brutalist", "ink-editorial", "neon-observatory", "forest"];
 ```
 
 The allow-list is intentional: values loaded from `localStorage` must be known themes before they are applied to the document.

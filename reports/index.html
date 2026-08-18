@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script>
 (function () {
   var root = document.documentElement;
   var themeKey = "wp-trend-watcher-theme";
   var modeKey = "wp-trend-watcher-mode";
-  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
   var modes = ["system", "light", "dark"];
 
   function read(key, allowed, fallback) {
@@ -46,7 +49,7 @@
   }
 
   apply(
-    read(themeKey, themes, "aurora-blueprint"),
+    read(themeKey, themes, "civic-brutalist"),
     read(modeKey, modes, "system"),
     false,
   );
@@ -90,10 +93,10 @@
     });
     document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
       control.addEventListener("change", function (event) {
-        apply(root.dataset.theme || "aurora-blueprint", event.target.value, true);
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
       });
     });
-    apply(root.dataset.theme || "aurora-blueprint", root.dataset.mode || "system", false);
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
   }
 
   document.addEventListener("DOMContentLoaded", bindControls);
@@ -101,7 +104,7 @@
   if (document.readyState !== "loading") bindControls();
 })();
 </script>
-  <script data-goatcounter="https://colorful-tones.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
   <meta name="description" content="Weekly human-reviewed WordPress ecosystem trend reports.">
   <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/index.html">
   <meta property="og:type" content="website">
@@ -116,9 +119,13 @@
   <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
 </head>
 <body class="report-index">
-  <header class="report-header">
-    <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
-    <h1>WP Trend Watcher — Reports</h1>
+  <header class="report-header report-hero report-index-hero">
+    <div class="report-hero-copy">
+      <div class="report-kicker">Weekly field notes · archive</div>
+      <h1>What’s moving<br>in WordPress?</h1>
+      <p class="report-description">A browsable archive of human-reviewed reports for people who build, maintain, and think about WordPress for a living.</p>
+    </div>
+    <div class="report-index-count"><strong>10</strong><span>weekly reports<br>in the archive</span></div>
     <button
   class="settings-button"
   type="button"
@@ -128,7 +135,10 @@
   aria-label="Open report settings"
   title="Open report settings"
 >
-  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
   <span class="sr-only">Settings</span>
 </button>
   </header>
@@ -142,9 +152,9 @@
       <label>
         <span>Style</span>
         <select data-theme-control="theme" aria-label="Report visual style">
-          <option value="aurora-blueprint">Aurora Blueprint</option>
-          <option value="aurora">Aurora Mesh</option>
-          <option value="signal">Signal Stripe</option>
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
         </select>
       </label>
       <label>
@@ -161,9 +171,13 @@
     </div>
   </div>
 </dialog>
-  <p class="meta">10 weekly WordPress ecosystem trend reports.</p>
-  <div class="report-card-grid">
-    <a href="2026-08-18.html" class="report-card">
+  <section class="report-index-archive" aria-labelledby="recent-reports-title">
+    <div class="report-index-heading">
+      <h2 id="recent-reports-title">Recent reports</h2>
+      <span class="meta">10 weekly WordPress ecosystem trend reports.</span>
+    </div>
+    <div class="report-card-grid">
+      <a href="2026-08-18.html" class="report-card">
       <span class="report-card-date">August 18, 2026</span>
       <span class="report-card-title">WordPress 7.1 Release Final Steps and Developer Toolkits for August 20</span>
       <span class="report-card-description">WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.</span>
@@ -214,7 +228,8 @@
       <span class="report-card-title">WordPress Trend Report — 2026-06-12</span>
       <span class="report-card-description">WordPress 7.1&#39;s collaborative editing represents a significant workflow shift, alongside client-side media processing and ACF 6.8.4 updates.</span>
     </a>
-  </div>
+    </div>
+  </section>
   <footer class="nav-footer">
     <p>
       <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View the project on GitHub ↗</a>

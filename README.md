@@ -99,19 +99,21 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.12.0
+
+- Added an editorial archive layout for the reports index with richer report cards and issue count treatment.
+- Added a structured hero, issue rail, table of contents, and reading column to individual reports.
+- Preserved the canonical Markdown report structure while improving the generated HTML presentation.
+
+### 0.11.0
+
+- Replaced the report styles with Civic Brutalist, Ink Editorial, and Neon Observatory.
+- Added dedicated light, dark, and system-mode presentation for each style.
+- Made Civic Brutalist the default report style and added unusual Google Font pairings.
+
 ### 0.10.2
 
 - Added optional GoatCounter analytics to generated report pages and the reports index. Configure `WP_TREND_GOATCOUNTER_URL` to enable it; local previews remain analytics-free when unset.
-
-### 0.10.1
-
-- Bound description requests to compact report context and 512 completion tokens to avoid context-window failures on larger reports.
-- Report per-date backfill failures with sanitized provider error messages.
-
-### 0.10.0
-
-- Moved SEO description generation to the post-review workflow so descriptions include final human notes.
-- Added `pnpm generate-descriptions` for filling or regenerating historical report descriptions.
 
 ### 0.9.0
 

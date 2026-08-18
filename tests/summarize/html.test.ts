@@ -87,7 +87,7 @@ test("generateHtmlReport produces valid HTML with .report-header and .toc when e
     fs.readFile(htmlPath, "utf8"),
   );
 
-  assert.ok(html.includes('<header class="report-header">'));
+  assert.ok(html.includes('<header class="report-header report-hero">'));
   assert.ok(html.includes('<nav class="toc">'));
   assert.ok(html.includes("Contents"));
   assert.ok(html.includes('<div class="report-body">'));
@@ -130,7 +130,7 @@ test("generateHtmlReport does not produce TOC when only 1 heading exists", async
   );
 
   assert.ok(!html.includes('<nav class="toc">'));
-  assert.ok(html.includes('<header class="report-header">'));
+  assert.ok(html.includes('<header class="report-header report-hero">'));
   assert.ok(html.includes('<div class="report-body">'));
 });
 
@@ -392,11 +392,15 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
   assert.ok(html.includes('aria-label="Open report settings"'));
-  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true"'));
+  assert.ok(html.includes('<span class="settings-label sr-only">Display</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
-  assert.ok(css.includes("repeating-linear-gradient(to bottom"));
+  assert.ok(css.includes('[data-theme="civic-brutalist"]'));
+  assert.ok(css.includes('[data-theme="ink-editorial"]'));
+  assert.ok(css.includes('[data-theme="neon-observatory"]'));
+  assert.ok(css.includes('font-family: "Bricolage Grotesque"'));
   assert.ok(css.includes("background-repeat: no-repeat"));
   assert.ok(css.includes("position: fixed"));
   assert.ok(css.includes("width: min(28rem, calc(100vw - 2rem))"));
@@ -418,7 +422,8 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
   assert.ok(html.includes('aria-label="Open report settings"'));
-  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true"'));
+  assert.ok(html.includes('<span class="settings-label sr-only">Display</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(css.includes(".report-index h1"));
   assert.ok(css.includes("max-width: 960px"));

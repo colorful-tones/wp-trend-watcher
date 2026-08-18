@@ -13,8 +13,6 @@ import {
 
 const REPORT_STYLESHEET_HREF = "assets/report.css";
 const REPORT_STYLESHEET_SOURCE = new URL("./report.css", import.meta.url);
-const REPORT_ICON_HREF = "assets/icon.svg";
-const REPORT_ICON_SOURCE = new URL("./icon.svg", import.meta.url);
 
 // Radio Canada variable font (source lives at repo-root assets/fonts/).
 // Copied into reports/assets/ alongside the stylesheet so it ships with
@@ -40,9 +38,12 @@ const REPORT_OG_IMAGE_SOURCE = new URL(
 // Must match the GitHub Pages deployment root (see README).
 const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
 const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
-const DEFAULT_REPORT_THEME = "aurora-blueprint";
+const DEFAULT_REPORT_THEME = "civic-brutalist";
 const DEFAULT_REPORT_MODE = "system";
 const GOATCOUNTER_SCRIPT_SRC = "//gc.zgo.at/count.js";
+const REPORT_THEME_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">`;
 
 const REPORT_SETTINGS_BUTTON = `<button
   class="settings-button"
@@ -53,7 +54,10 @@ const REPORT_SETTINGS_BUTTON = `<button
   aria-label="Open report settings"
   title="Open report settings"
 >
-  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
   <span class="sr-only">Settings</span>
 </button>`;
 
@@ -67,9 +71,9 @@ const REPORT_THEME_CONTROLS = `<dialog class="theme-settings-dialog" id="report-
       <label>
         <span>Style</span>
         <select data-theme-control="theme" aria-label="Report visual style">
-          <option value="aurora-blueprint">Aurora Blueprint</option>
-          <option value="aurora">Aurora Mesh</option>
-          <option value="signal">Signal Stripe</option>
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
         </select>
       </label>
       <label>
@@ -92,7 +96,7 @@ const REPORT_THEME_SCRIPT = `<script>
   var root = document.documentElement;
   var themeKey = "wp-trend-watcher-theme";
   var modeKey = "wp-trend-watcher-mode";
-  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
   var modes = ["system", "light", "dark"];
 
   function read(key, allowed, fallback) {
@@ -299,10 +303,6 @@ async function ensureReportStylesheet(reportsDir: string): Promise<string> {
   await mkdir(assetsDir, { recursive: true });
   await writeFile(join(assetsDir, "report.css"), css, "utf8");
 
-  // Also copy the icon into the assets directory alongside the stylesheet.
-  const icon = await readFile(REPORT_ICON_SOURCE);
-  await writeFile(join(assetsDir, "icon.svg"), icon);
-
   // Copy the Radio Canada variable font so the shared stylesheet's
   // @font-face rule can load it from the same assets directory.
   const font = await readFile(REPORT_FONT_SOURCE);
@@ -336,7 +336,7 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   const bodyHtml = renderReportBody(md);
   const analyticsScript = buildAnalyticsScript();
 
-  // Extract the h1 heading for the report header. Only the title portion
+  // Extract the h1 heading for the report hero. Only the title portion
   // (before the " — " separator) becomes a link back to the index; the
   // trailing date stays as plain text so it isn't part of the click target.
   const h1Match = md.match(/^#\s+(.*)$/m);
@@ -346,9 +346,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
     const dashIdx = h1Match[1].indexOf(" — ");
     const linkText = dashIdx >= 0 ? h1Match[1].slice(0, dashIdx) : h1Match[1];
     const restText = dashIdx >= 0 ? h1Match[1].slice(dashIdx) : "";
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${linkText}</a>${restText}</h1>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
+    headerHtml = `<header class="report-header report-hero">\n  <div class="report-hero-copy">\n    <div class="report-kicker">Weekly field notes · ${date}</div>\n    <h1 id="${h1Id}"><a href="index.html" title="Back to all reports">${linkText}</a>${restText}</h1>\n    <p class="report-description">${escapeHtml(seo.description)}</p>\n  </div>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
   } else {
-    headerHtml = `<header class="report-header">\n  <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">\n  <h1><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — ${date}</h1>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
+    headerHtml = `<header class="report-header report-hero">\n  <div class="report-hero-copy">\n    <div class="report-kicker">Weekly field notes · ${date}</div>\n    <h1><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — ${date}</h1>\n    <p class="report-description">${escapeHtml(seo.description)}</p>\n  </div>\n  ${REPORT_SETTINGS_BUTTON}\n</header>`;
   }
 
   // Build table of contents from h2 headings (if 2 or more exist)
@@ -371,8 +371,9 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(seo.title)}</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${REPORT_THEME_FONTS}
   ${REPORT_THEME_SCRIPT}
-  ${analyticsScript}
+${analyticsScript}
   ${buildSeoMeta({
     title: seo.title,
     description: seo.description,
@@ -382,12 +383,19 @@ export async function generateHtmlReport(mdPath: string): Promise<string> {
 </head>
 <body class="report-page">
   ${headerHtml}
-  <p class="report-description">${escapeHtml(seo.description)}</p>
   ${REPORT_THEME_CONTROLS}
-  ${tocHtml}
-  <div class="report-body">
-  ${bodyHtml}
-</div>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>${date}<br>Human-reviewed report</p>
+      ${tocHtml}
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      ${bodyHtml}
+      </div>
+    </main>
+  </div>
   <footer class="nav-footer">
     <a href="index.html">← Back to Reports</a>
     <span class="nav-footer-separator">·</span>
@@ -470,8 +478,9 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WP Trend Watcher — Reports</title>
   <link rel="stylesheet" href="${stylesheetHref}">
+  ${REPORT_THEME_FONTS}
   ${REPORT_THEME_SCRIPT}
-  ${analyticsScript}
+${analyticsScript}
   ${buildSeoMeta({
     title: "WP Trend Watcher — Reports",
     description: "Weekly human-reviewed WordPress ecosystem trend reports.",
@@ -480,16 +489,25 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
   })}
 </head>
 <body class="report-index">
-  <header class="report-header">
-    <img class="report-icon" src="${REPORT_ICON_HREF}" alt="" width="40" height="40">
-    <h1>WP Trend Watcher — Reports</h1>
+  <header class="report-header report-hero report-index-hero">
+    <div class="report-hero-copy">
+      <div class="report-kicker">Weekly field notes · archive</div>
+      <h1>What’s moving<br>in WordPress?</h1>
+      <p class="report-description">A browsable archive of human-reviewed reports for people who build, maintain, and think about WordPress for a living.</p>
+    </div>
+    <div class="report-index-count"><strong>${reportCount}</strong><span>weekly reports<br>in the archive</span></div>
     ${REPORT_SETTINGS_BUTTON}
   </header>
   ${REPORT_THEME_CONTROLS}
-  <p class="meta">${reportLabel}</p>
-  <div class="report-card-grid">
-${cards}
-  </div>
+  <section class="report-index-archive" aria-labelledby="recent-reports-title">
+    <div class="report-index-heading">
+      <h2 id="recent-reports-title">Recent reports</h2>
+      <span class="meta">${reportLabel}</span>
+    </div>
+    <div class="report-card-grid">
+  ${cards}
+    </div>
+  </section>
   <footer class="nav-footer">
     <p>
       <a class="repo-link" href="${GITHUB_REPO_URL}">View the project on GitHub ↗</a>
