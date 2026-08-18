@@ -303,6 +303,22 @@ details.article-inventory ol {
   --font-display: "Bricolage Grotesque", sans-serif;
   --font-body: "IBM Plex Mono", monospace;
   --font-mono: "IBM Plex Mono", monospace;
+  --theme-hero-padding: 3.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+  --theme-layout-gap: clamp(2rem, 6vw, 5rem);
+  --theme-layout-top: 3rem;
+  --theme-card-gap: 0.75rem;
+  --theme-card-padding: 1.25rem;
+  --theme-card-radius: 0;
+  --theme-border-width: 2px;
+  --theme-hero-border-width: 8px;
+  --theme-toc-border-width: 2px;
+  --theme-card-shadow: none;
+  --theme-card-hover-shadow: 8px 8px 0 var(--accent);
+  --theme-hero-shadow: none;
+  --theme-section-space: 2rem;
+  --theme-body-size: 0.95rem;
+  --theme-body-leading: 1.6;
+  --theme-card-leading: 1;
 }
 
 :root[data-theme="ink-editorial"] {
@@ -319,6 +335,22 @@ details.article-inventory ol {
   --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "Space Grotesk", sans-serif;
+  --theme-hero-padding: 4.5rem clamp(1.5rem, 6vw, 5rem) 4rem;
+  --theme-layout-gap: clamp(3rem, 8vw, 6rem);
+  --theme-layout-top: 4rem;
+  --theme-card-gap: 1.25rem;
+  --theme-card-padding: 1.5rem;
+  --theme-card-radius: 0;
+  --theme-border-width: 1px;
+  --theme-hero-border-width: 2px;
+  --theme-toc-border-width: 1px;
+  --theme-card-shadow: 0 6px 18px rgba(23, 33, 31, 0.06);
+  --theme-card-hover-shadow: 0 14px 30px rgba(23, 33, 31, 0.12);
+  --theme-hero-shadow: none;
+  --theme-section-space: 5rem;
+  --theme-body-size: 1.02rem;
+  --theme-body-leading: 1.75;
+  --theme-card-leading: 0.98;
 }
 
 :root[data-theme="neon-observatory"] {
@@ -335,6 +367,22 @@ details.article-inventory ol {
   --font-display: "Syne", sans-serif;
   --font-body: "DM Mono", monospace;
   --font-mono: "DM Mono", monospace;
+  --theme-hero-padding: 3rem clamp(1rem, 3vw, 2.5rem) 2.75rem;
+  --theme-layout-gap: clamp(2rem, 5vw, 4rem);
+  --theme-layout-top: 2.5rem;
+  --theme-card-gap: 0.75rem;
+  --theme-card-padding: 1.1rem;
+  --theme-card-radius: 10px;
+  --theme-border-width: 1px;
+  --theme-hero-border-width: 1px;
+  --theme-toc-border-width: 1px;
+  --theme-card-shadow: 0 0 18px rgba(117, 228, 255, 0.12), inset 0 0 0 1px rgba(117, 228, 255, 0.08);
+  --theme-card-hover-shadow: 0 0 28px rgba(255, 107, 169, 0.35), 0 0 8px rgba(117, 228, 255, 0.18);
+  --theme-hero-shadow: 0 0 0 1px var(--accent), 0 0 3rem rgba(117, 228, 255, 0.12);
+  --theme-section-space: 3.5rem;
+  --theme-body-size: 0.9rem;
+  --theme-body-leading: 1.55;
+  --theme-card-leading: 1.02;
 }
 
 :root[data-mode="dark"] {
@@ -351,6 +399,7 @@ details.article-inventory ol {
 :root[data-theme="civic-brutalist"][data-mode="dark"] {
   --accent: #f06b4d;
   --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
+  --theme-card-hover-shadow: 8px 8px 0 var(--accent);
 }
 
 :root[data-theme="ink-editorial"][data-mode="dark"] {
@@ -378,6 +427,7 @@ details.article-inventory ol {
   :root[data-theme="civic-brutalist"][data-mode="system"] {
     --accent: #f06b4d;
     --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
+    --theme-card-hover-shadow: 8px 8px 0 var(--accent);
   }
 
   :root[data-theme="ink-editorial"][data-mode="system"] {
@@ -817,7 +867,7 @@ body.report-index {
 
 .report-index-count strong {
   font: 800 clamp(4rem, 8vw, 7rem) / 0.8 var(--font-display);
-  letter-spacing: -0.08em;
+  letter-spacing: 0.01em;
 }
 
 .report-index-count span {
@@ -1072,59 +1122,60 @@ body.report-index {
    x-height, so shared size/spacing values make the styles feel inconsistent. */
 :root[data-theme="civic-brutalist"] .report-hero h1 {
   font-size: clamp(3.8rem, 9vw, 8rem);
-  letter-spacing: -0.09em;
+  letter-spacing: -0.04em;
   line-height: 0.78;
 }
 
 :root[data-theme="civic-brutalist"] .report-body > h2,
 :root[data-theme="civic-brutalist"] .report-index-heading h2 {
   font-size: clamp(2.4rem, 5vw, 4.6rem);
-  letter-spacing: -0.08em;
+  letter-spacing: -0.03em;
   line-height: 0.86;
 }
 
 :root[data-theme="civic-brutalist"] .report-card-title {
   font-size: 1.45rem;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 :root[data-theme="ink-editorial"] .report-hero h1 {
   font-size: clamp(4rem, 10vw, 8.8rem);
-  letter-spacing: -0.045em;
-  line-height: 0.82;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
 }
 
 :root[data-theme="ink-editorial"] .report-body > h2,
 :root[data-theme="ink-editorial"] .report-index-heading h2 {
   font-size: clamp(2.8rem, 6vw, 5.2rem);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   line-height: 0.82;
 }
 
 :root[data-theme="ink-editorial"] .report-card-title {
   font-size: 1.7rem;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 0.98;
 }
 
 :root[data-theme="neon-observatory"] .report-hero h1 {
-  font-size: clamp(3.3rem, 8vw, 7.7rem);
-  letter-spacing: -0.08em;
-  line-height: 0.88;
+  font-size: clamp(3.3rem, 8vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.94;
 }
 
 :root[data-theme="neon-observatory"] .report-body > h2,
 :root[data-theme="neon-observatory"] .report-index-heading h2 {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  letter-spacing: -0.075em;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 0.88;
 }
 
 :root[data-theme="neon-observatory"] .report-card-title {
   font-size: 1.35rem;
-  letter-spacing: -0.05em;
-  line-height: 1.02;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 /* The archive becomes a single readable column on phone-width screens. */
@@ -1148,9 +1199,96 @@ body.report-index {
   width: 100%;
 }
 
+/* Theme rhythm and surface application */
 .report-hero {
-  padding-left: 0;
-  padding-right: 0;
+  border-bottom-width: var(--theme-hero-border-width);
+  box-shadow: var(--theme-hero-shadow);
+  gap: var(--theme-layout-gap);
+  padding: var(--theme-hero-padding);
+}
+
+.report-layout {
+  gap: var(--theme-layout-gap);
+  padding-top: var(--theme-layout-top);
+}
+
+.report-index-archive {
+  margin-top: var(--theme-layout-top);
+}
+
+.report-rail .toc {
+  border-left-width: var(--theme-toc-border-width);
+}
+
+.report-body {
+  font-size: var(--theme-body-size);
+  line-height: var(--theme-body-leading);
+}
+
+.report-body > h2 {
+  border-top-width: 0;
+}
+
+.report-body > h2:not(:first-child) {
+  margin-top: var(--theme-section-space);
+}
+
+.report-body details.article-inventory {
+  border-width: var(--theme-border-width);
+  border-radius: var(--theme-card-radius);
+  padding: var(--theme-card-padding);
+}
+
+.report-index-heading {
+  margin-bottom: var(--theme-card-gap);
+}
+
+.report-card-grid {
+  gap: var(--theme-card-gap);
+}
+
+.report-card {
+  border-radius: var(--theme-card-radius);
+  border-width: var(--theme-border-width);
+  border-left-width: var(--theme-border-width);
+  box-shadow: var(--theme-card-shadow);
+  padding: var(--theme-card-padding);
+}
+
+.report-card:hover {
+  box-shadow: var(--theme-card-hover-shadow);
+}
+
+.report-card-title {
+  line-height: var(--theme-card-leading);
+}
+
+.report-hero .settings-button {
+  box-shadow: var(--theme-card-shadow);
+}
+
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-hero {
+  background: var(--page-bg);
+  border-top: 2px solid var(--text);
+  color: var(--text);
+}
+
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-hero .report-description,
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-index-count span {
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-hero {
+    background: var(--page-bg);
+    border-top: 2px solid var(--text);
+    color: var(--text);
+  }
+
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-hero .report-description,
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-index-count span {
+    color: var(--muted);
+  }
 }
 
 /* Keep display controls available without competing with report content. */
