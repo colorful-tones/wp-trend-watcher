@@ -1139,6 +1139,20 @@ body.report-index {
   }
 }
 
+/* Keep the hero aligned with the archive and report content boundaries. */
+.report-hero,
+.report-index-archive,
+.report-layout {
+  margin-inline: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.report-hero {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* Keep display controls available without competing with report content. */
 .report-hero .settings-button {
   align-items: center;
