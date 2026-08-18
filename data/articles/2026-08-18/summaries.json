@@ -1,0 +1,140 @@
+{
+  "date": "2026-08-18",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3-14b",
+  "articleCount": 13,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/",
+      "title": "Dev Chat Agenda – August 18, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/",
+      "summary": "The August 18, 2026 WordPress Developers Chat will focus on upcoming releases and include an open floor for discussion, with 7.1 RC4 recently released and the 7.1 Field Guide now available. The 7.1 branch requires double sign-off, and the WordPress 7.2 volunteer call is open, while the new Contributor Toolkit 1.0 was introduced.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1062,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/",
+      "title": "WordPress 7.1 Release Day Process",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/",
+      "summary": "WordPress 7.1 is entering its final release phase with an extended code freeze from August 17 to August 19, 2026. The release includes a Dry Run following the RC4 release and a final release party on August 19 in the #core Slack channel, with the official launch at WordCamp US Phoenix. Critical bugs reported during the freeze may trigger an additional RC release, extending the process.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1112,
+      "completionTokens": 89
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/",
+      "title": "WordPress 7.1 Release Candidate 4",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/",
+      "summary": "WordPress 7.1 Release Candidate 4 is available for testing, with the final release scheduled for August 19, 2026. It includes over 26 updates and fixes since RC3, with notable changes in the Editor and Core. Testing is recommended on non-production environments, and contributors can use plugins, direct download, WP-CLI, or the WordPress Playground for evaluation.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1023,
+      "completionTokens": 82
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/",
+      "title": "WordPress Contributor Toolkit 1.0: A smoother workflow for your first Core contribution",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/",
+      "summary": "The WordPress Contributor Toolkit 1.0 is a desktop app that simplifies the setup of a WordPress development environment for first-time contributors, handling Git, Node.js, and npm automatically. It guides users through creating a development site, linking it to a Trac ticket, and checking existing work like pull requests and patches. The toolkit streamlines the contribution workflow by fetching only necessary changes from trunk, reducing setup time and complexity.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1008,
+      "completionTokens": 86
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/",
+      "title": "Accessibility Improvements in WordPress 7.1",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduces several accessibility improvements, including a new accessible tooltips API, enhanced focus states, and better screen reader support in post list tables. Key changes also refine media labels, fix duplicate IDs in image captions, and improve navigation for theme and media modals.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1009,
+      "completionTokens": 56
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/",
+      "title": "WordPress 7.2 Call for Volunteers",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/",
+      "summary": "WordPress 7.2 is planned for December 9, 2026, with a proposed schedule including alpha, beta, and release candidate milestones. The project is seeking volunteers for roles such as Release Lead, Coordination, and Tech Leads to help manage the release process.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1047,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/",
+      "title": "WordPress 7.1 Release Candidate 3",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/",
+      "summary": "WordPress 7.1 Release Candidate 3 (RC3) is available for testing, with the final release scheduled for August 19, 2026. It includes over 90 updates and fixes since RC1, with significant changes in the Editor and Core. Testing is encouraged on non-production environments through plugins, direct download, WP-CLI, or the WordPress Playground.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1043,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/",
+      "title": "Performance Chat Summary: 11 August 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/",
+      "summary": "The WordPress performance team discussed potential improvements for the 7.2 release, with Weston Ruter suggesting removing script/style concatenation in favor of preloads to reduce tech debt. A security fix for the Optimization Detective plugin revealed a deploy script flaw, addressed in PR #2620. The next performance chat is scheduled for August 25, 2026, at 16:00 UTC.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 756,
+      "completionTokens": 86
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/",
+      "title": "Dev Chat Agenda – August 11, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/",
+      "summary": "The WordPress Developers Chat on August 11, 2026, will focus on upcoming releases and include an open floor for discussions. WordPress 7.1 RC3 is scheduled for August 12, and the 7.1 branch requires double sign-off for changes.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 948,
+      "completionTokens": 59
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/browser-extension/",
+      "title": "Introducing the WordPress Browser Extension",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/browser-extension/",
+      "summary": "The WordPress Browser Extension is now available for Chrome and Safari, offering features like hiding the admin bar, quick site access, and developer tools without requiring plugins. It keeps user data local, avoids tracking, and provides shortcuts for WordPress sites directly from the browser toolbar.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 976,
+      "completionTokens": 53
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-0-4-release/",
+      "title": "WordPress 7.0.4 Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-0-4-release/",
+      "summary": "WordPress 7.0.4 is available with a critical security fix addressing a remote code execution vulnerability in sites using Imagick and Ghostscript. The update is recommended immediately, and the fix is being backported to older versions up to 4.7 and 7.1 RC3.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 707,
+      "completionTokens": 60
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/",
+      "title": "WordPress 7.1 arrives at WordCamp US, Abilities API for developers, and a new theme for Gutenberg Times and more — Weekend Edition #373",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/",
+      "summary": "WordPress 7.1 is set to launch on the final day of WordCamp US, with security fixes backported to 4.7 and accessibility improvements in core and the editor. The Gutenberg Times site now uses a new block theme built with WordPress Studio and AI tools, including a plugin to handle podcast data as block templates. The WordPress Contributor Toolkit v1.0 simplifies first-time contributions with a desktop app that manages setup, patches, and pull requests.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1147,
+      "completionTokens": 94
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "title": "WordPress 7.1 Source of Truth",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "summary": "This article introduces the Source of Truth for WordPress 7.1, serving as a centralized reference for all changes and updates in the release. It emphasizes the collaborative effort behind the release and invites feedback from the community. The estimated reading time is 37–56 minutes, indicating a comprehensive overview of the release.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 377,
+      "completionTokens": 65
+    }
+  ],
+  "totalPromptTokens": 12215,
+  "totalCompletionTokens": 951
+}

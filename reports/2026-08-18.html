@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress 7.1 Release Final Steps and Developer Toolkits for August 20</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "aurora-blueprint"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "aurora-blueprint", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "aurora-blueprint", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+  <meta name="description" content="WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-08-18.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress 7.1 Release Final Steps and Developer Toolkits for August 20">
+  <meta property="og:description" content="WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-08-18.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress 7.1 Release Final Steps and Developer Toolkits for August 20">
+  <meta name="twitter:description" content="WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header">
+  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
+  <h1 id="wordpress-trend-report-2026-08-18"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-08-18</h1>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <p class="report-description">WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.</p>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="aurora-blueprint">Aurora Blueprint</option>
+          <option value="aurora">Aurora Mesh</option>
+          <option value="signal">Signal Stripe</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+  <div class="report-body">
+  <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(13 articles)</span></summary>
+<ol>
+<li><a href="https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/">Dev Chat Agenda – August 18, 2026</a> (Make Core) — The August 18, 2026 WordPress Developers Chat will focus on upcoming releases and include an open floor for discussion, with 7.1 RC4 recently released and the 7.1 Field Guide now available.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/">WordPress 7.1 Release Day Process</a> (Make Core) — WordPress 7.1 is entering its final release phase with an extended code freeze from August 17 to August 19, 2026.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/">WordPress 7.1 Release Candidate 4</a> (Make Core) — WordPress 7.1 Release Candidate 4 is available for testing, with the final release scheduled for August 19, 2026.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/">WordPress Contributor Toolkit 1.0: A smoother workflow for your first Core contribution</a> (Make Core) — The WordPress Contributor Toolkit 1.0 is a desktop app that simplifies the setup of a WordPress development environment for first-time contributors, handling Git, Node.js, and npm automatically.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/">Accessibility Improvements in WordPress 7.1</a> (Make Core) — WordPress 7.1 introduces several accessibility improvements, including a new accessible tooltips API, enhanced focus states, and better screen reader support in post list tables.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/">WordPress 7.2 Call for Volunteers</a> (Make Core) — WordPress 7.2 is planned for December 9, 2026, with a proposed schedule including alpha, beta, and release candidate milestones.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/">WordPress 7.1 Release Candidate 3</a> (Make Core) — WordPress 7.1 Release Candidate 3 (RC3) is available for testing, with the final release scheduled for August 19, 2026.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/">Performance Chat Summary: 11 August 2026</a> (Make Core) — The WordPress performance team discussed potential improvements for the 7.2 release, with Weston Ruter suggesting removing script/style concatenation in favor of preloads to reduce tech debt.</li>
+<li><a href="https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/">Dev Chat Agenda – August 11, 2026</a> (Make Core) — The WordPress Developers Chat on August 11, 2026, will focus on upcoming releases and include an open floor for discussions.</li>
+<li><a href="https://wordpress.org/news/2026/08/browser-extension/">Introducing the WordPress Browser Extension</a> (WordPress.org News) — The WordPress Browser Extension is now available for Chrome and Safari, offering features like hiding the admin bar, quick site access, and developer tools without requiring plugins.</li>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-0-4-release/">WordPress 7.0.4 Release</a> (WordPress.org News) — WordPress 7.0.4 is available with a critical security fix addressing a remote code execution vulnerability in sites using Imagick and Ghostscript.</li>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/">WordPress 7.1 arrives at WordCamp US, Abilities API for developers, and a new theme for Gutenberg Times and more — Weekend Edition #373</a> (Gutenberg Times) — WordPress 7.1 is set to launch on the final day of WordCamp US, with security fixes backported to 4.7 and accessibility improvements in core and the editor.</li>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-source-of-truth/">WordPress 7.1 Source of Truth</a> (Gutenberg Times) — This article introduces the Source of Truth for WordPress 7.1, serving as a centralized reference for all changes and updates in the release.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>The primary focus across multiple sources is the finalization of WordPress 7.1, with several articles detailing its release process and features. The release is scheduled for August 19, 2026, with an extended code freeze from August 17 to 19 (source <a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/">2</a>). Testing is ongoing through release candidates, with RC4 available for evaluation (source <a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/">3</a>). Accessibility improvements are also emphasized, including new APIs and better screen reader support (source <a href="https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/">5</a>). Additionally, WordPress 7.2 is in early planning, with a proposed release date of December 9, 2026 and calls for volunteers (source <a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/">6</a>). The WordPress Contributor Toolkit 1.0 is another emerging trend, aimed at simplifying first-time contributions (source <a href="https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/">4</a>).</p>
+<h3 id="developer-implications">Developer Implications</h3>
+<p>Freelance and agency developers should closely monitor the WordPress 7.1 release process, as it is set to launch on August 19, 2026. Testing for RC4 is recommended in non-production environments using plugins, direct download, WP-CLI, or the WordPress Playground (source <a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/">3</a>). Developers should also be aware of the accessibility improvements in WordPress 7.1, particularly if their projects involve screen readers or complex UI elements (source <a href="https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/">5</a>). The WordPress Contributor Toolkit 1.0 may be useful for developers looking to contribute to core, as it simplifies setup and workflow (source <a href="https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/">4</a>). Additionally, WordPress 7.0.4 includes a critical security fix for sites using Imagick and Ghostscript, which should be applied immediately (source <a href="https://wordpress.org/news/2026/08/wordpress-7-0-4-release/">11</a>). Developers should also keep an eye on WordPress 7.2 planning, as volunteers are being sought for roles like Release Lead and Tech Leads (source <a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/">6</a>).</p>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/">Dev Chat Agenda – August 18, 2026</a> (Make Core) — The August 18, 2026 WordPress Developers Chat will focus on upcoming releases and include an open floor for discussion, with 7.1 RC4 recently released and the 7.1 Field Guide now available.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/">WordPress 7.1 Release Day Process</a> (Make Core) — WordPress 7.1 is entering its final release phase with an extended code freeze from August 17 to August 19, 2026.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/">WordPress 7.1 Release Candidate 4</a> (Make Core) — WordPress 7.1 Release Candidate 4 is available for testing, with the final release scheduled for August 19, 2026.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>I'm keen to see folks get excited for the upcoming WordPress 7.1 release which is only a few days away! Be sure to glance at the <a href="https://gutenbergtimes.com/wordpress-7-1-source-of-truth/">WordPress 7.1 Source of Truth</a> and find your favorite new addition.</p>
+<p>Also, I'm sure there will be some interesting tidbits that come out of #WCUS.</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/">Dev Chat Agenda – August 18, 2026</a> — 8/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/">WordPress 7.1 Release Day Process</a> — 8/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/">WordPress 7.1 Release Candidate 4</a> — 8/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/">WordPress Contributor Toolkit 1.0: A smoother workflow for your first Core contribution</a> — 8/14/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/">Accessibility Improvements in WordPress 7.1</a> — 8/13/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/">WordPress 7.2 Call for Volunteers</a> — 8/12/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/">WordPress 7.1 Release Candidate 3</a> — 8/12/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/">Performance Chat Summary: 11 August 2026</a> — 8/11/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/">Dev Chat Agenda – August 11, 2026</a> — 8/11/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/08/browser-extension/">Introducing the WordPress Browser Extension</a> — 8/13/2026</li>
+<li><a href="https://wordpress.org/news/2026/08/wordpress-7-0-4-release/">WordPress 7.0.4 Release</a> — 8/12/2026</li>
+</ul>
+<h3 id="gutenberg-times">Gutenberg Times</h3>
+<ul>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/">WordPress 7.1 arrives at WordCamp US, Abilities API for developers, and a new theme for Gutenberg Times and more — Weekend Edition #373</a> — 8/15/2026</li>
+<li><a href="https://gutenbergtimes.com/wordpress-7-1-source-of-truth/">WordPress 7.1 Source of Truth</a> — 8/11/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 13</li>
+<li>Sources: Make Core, WordPress.org News, Gutenberg Times</li>
+<li>Model: openai-compatible/qwen/qwen3-14b</li>
+<li>Tokens: 14087 prompt + 1655 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~7 minutes</li>
+</ul>
+
+</div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>

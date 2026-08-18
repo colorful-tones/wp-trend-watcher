@@ -1,0 +1,111 @@
+{
+  "date": "2026-08-18",
+  "collectedAt": "2026-08-18T01:47:31.012Z",
+  "articleCount": 13,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – August 18, 2026",
+      "url": "https://make.wordpress.org/core/2026/08/17/dev-chat-agenda-aug-18-2026/",
+      "publishedAt": "2026-08-17T21:10:22.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Day Process",
+      "url": "https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-day-process/",
+      "publishedAt": "2026-08-17T17:18:35.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Candidate 4",
+      "url": "https://make.wordpress.org/core/2026/08/17/wordpress-7-1-release-candidate-4/",
+      "publishedAt": "2026-08-17T15:26:25.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress Contributor Toolkit 1.0: A smoother workflow for your first Core contribution",
+      "url": "https://make.wordpress.org/core/2026/08/14/wordpress-contributor-toolkit-1-0-a-smoother-workflow-for-your-first-core-contribution/",
+      "publishedAt": "2026-08-14T14:34:18.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Accessibility Improvements in WordPress 7.1",
+      "url": "https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/",
+      "publishedAt": "2026-08-13T16:43:29.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.2 Call for Volunteers",
+      "url": "https://make.wordpress.org/core/2026/08/12/wordpress-7-2-call-for-volunteers/",
+      "publishedAt": "2026-08-12T18:12:07.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Candidate 3",
+      "url": "https://make.wordpress.org/core/2026/08/12/wordpress-7-1-release-candidate-3/",
+      "publishedAt": "2026-08-12T15:57:47.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 11 August 2026",
+      "url": "https://make.wordpress.org/core/2026/08/11/performance-chat-summary-11-august-2026/",
+      "publishedAt": "2026-08-11T17:04:25.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – August 11, 2026",
+      "url": "https://make.wordpress.org/core/2026/08/11/dev-chat-agenda-aug-11-2026/",
+      "publishedAt": "2026-08-11T04:23:22.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/browser-extension/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Introducing the WordPress Browser Extension",
+      "url": "https://wordpress.org/news/2026/08/browser-extension/",
+      "publishedAt": "2026-08-13T16:29:42.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/wordpress-7-0-4-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.0.4 Release",
+      "url": "https://wordpress.org/news/2026/08/wordpress-7-0-4-release/",
+      "publishedAt": "2026-08-12T14:45:53.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 arrives at WordCamp US, Abilities API for developers, and a new theme for Gutenberg Times and more — Weekend Edition #373",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-arrives-at-wordcamp-us-abilities-api-for-developers-and-a-new-theme-for-gutenberg-times-and-more-weekend-edition-373/",
+      "publishedAt": "2026-08-15T04:10:00.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1 Source of Truth",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-source-of-truth/",
+      "publishedAt": "2026-08-12T01:51:00.000Z"
+    }
+  ]
+}
