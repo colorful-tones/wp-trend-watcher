@@ -1320,3 +1320,18 @@ body.report-index {
   height: 1.1rem;
   width: 1.1rem;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.report-body [id],
+.report-index-archive [id] {
+  scroll-margin-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
