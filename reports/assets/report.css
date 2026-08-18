@@ -315,7 +315,7 @@ details.article-inventory ol {
   --theme-card-shadow: none;
   --theme-card-hover-shadow: 8px 8px 0 var(--accent);
   --theme-hero-shadow: none;
-  --theme-section-space: 4rem;
+  --theme-section-space: 2rem;
   --theme-body-size: 0.95rem;
   --theme-body-leading: 1.6;
   --theme-card-leading: 1;
@@ -867,7 +867,7 @@ body.report-index {
 
 .report-index-count strong {
   font: 800 clamp(4rem, 8vw, 7rem) / 0.8 var(--font-display);
-  letter-spacing: -0.08em;
+  letter-spacing: 0.01em;
 }
 
 .report-index-count span {
@@ -1122,59 +1122,60 @@ body.report-index {
    x-height, so shared size/spacing values make the styles feel inconsistent. */
 :root[data-theme="civic-brutalist"] .report-hero h1 {
   font-size: clamp(3.8rem, 9vw, 8rem);
-  letter-spacing: -0.09em;
+  letter-spacing: -0.04em;
   line-height: 0.78;
 }
 
 :root[data-theme="civic-brutalist"] .report-body > h2,
 :root[data-theme="civic-brutalist"] .report-index-heading h2 {
   font-size: clamp(2.4rem, 5vw, 4.6rem);
-  letter-spacing: -0.08em;
+  letter-spacing: -0.03em;
   line-height: 0.86;
 }
 
 :root[data-theme="civic-brutalist"] .report-card-title {
   font-size: 1.45rem;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 :root[data-theme="ink-editorial"] .report-hero h1 {
   font-size: clamp(4rem, 10vw, 8.8rem);
-  letter-spacing: -0.045em;
-  line-height: 0.82;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
 }
 
 :root[data-theme="ink-editorial"] .report-body > h2,
 :root[data-theme="ink-editorial"] .report-index-heading h2 {
   font-size: clamp(2.8rem, 6vw, 5.2rem);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   line-height: 0.82;
 }
 
 :root[data-theme="ink-editorial"] .report-card-title {
   font-size: 1.7rem;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 0.98;
 }
 
 :root[data-theme="neon-observatory"] .report-hero h1 {
-  font-size: clamp(3.3rem, 8vw, 7.7rem);
-  letter-spacing: -0.08em;
-  line-height: 0.88;
+  font-size: clamp(3.3rem, 8vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.94;
 }
 
 :root[data-theme="neon-observatory"] .report-body > h2,
 :root[data-theme="neon-observatory"] .report-index-heading h2 {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  letter-spacing: -0.075em;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 0.88;
 }
 
 :root[data-theme="neon-observatory"] .report-card-title {
   font-size: 1.35rem;
-  letter-spacing: -0.05em;
-  line-height: 1.02;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 /* The archive becomes a single readable column on phone-width screens. */
@@ -1225,7 +1226,7 @@ body.report-index {
 }
 
 .report-body > h2 {
-  border-top-width: var(--theme-border-width);
+  border-top-width: 0;
 }
 
 .report-body > h2:not(:first-child) {
