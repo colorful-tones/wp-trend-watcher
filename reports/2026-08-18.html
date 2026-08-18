@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WordPress 7.1 Release Final Steps and Developer Toolkits for August 20</title>
   <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script>
 (function () {
   var root = document.documentElement;
   var themeKey = "wp-trend-watcher-theme";
   var modeKey = "wp-trend-watcher-mode";
-  var themes = ["aurora-blueprint", "aurora", "signal"];
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
   var modes = ["system", "light", "dark"];
 
   function read(key, allowed, fallback) {
@@ -46,7 +49,7 @@
   }
 
   apply(
-    read(themeKey, themes, "aurora-blueprint"),
+    read(themeKey, themes, "civic-brutalist"),
     read(modeKey, modes, "system"),
     false,
   );
@@ -90,10 +93,10 @@
     });
     document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
       control.addEventListener("change", function (event) {
-        apply(root.dataset.theme || "aurora-blueprint", event.target.value, true);
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
       });
     });
-    apply(root.dataset.theme || "aurora-blueprint", root.dataset.mode || "system", false);
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
   }
 
   document.addEventListener("DOMContentLoaded", bindControls);
@@ -101,7 +104,7 @@
   if (document.readyState !== "loading") bindControls();
 })();
 </script>
-  <script data-goatcounter="https://colorful-tones.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
   <meta name="description" content="WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.">
   <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-08-18.html">
   <meta property="og:type" content="article">
@@ -116,9 +119,12 @@
   <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
 </head>
 <body class="report-page">
-  <header class="report-header">
-  <img class="report-icon" src="assets/icon.svg" alt="" width="40" height="40">
-  <h1 id="wordpress-trend-report-2026-08-18"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-08-18</h1>
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-08-18</div>
+    <h1 id="wordpress-trend-report-2026-08-18"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-08-18</h1>
+    <p class="report-description">WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.</p>
+  </div>
   <button
   class="settings-button"
   type="button"
@@ -128,11 +134,13 @@
   aria-label="Open report settings"
   title="Open report settings"
 >
-  <span class="settings-icon" aria-hidden="true">⚙️</span>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
   <span class="sr-only">Settings</span>
 </button>
 </header>
-  <p class="report-description">WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.</p>
   <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
   <div>
     <div class="theme-settings-header">
@@ -143,9 +151,9 @@
       <label>
         <span>Style</span>
         <select data-theme-control="theme" aria-label="Report visual style">
-          <option value="aurora-blueprint">Aurora Blueprint</option>
-          <option value="aurora">Aurora Mesh</option>
-          <option value="signal">Signal Stripe</option>
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
         </select>
       </label>
       <label>
@@ -162,7 +170,11 @@
     </div>
   </div>
 </dialog>
-  <nav class="toc">
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-08-18<br>Human-reviewed report</p>
+      <nav class="toc">
   <h2>Contents</h2>
   <ul>
     <li><a href="#weekly-summary">Weekly Summary</a></li>
@@ -172,8 +184,10 @@
     <li><a href="#build-notes">Build Notes</a></li>
   </ul>
 </nav>
-  <div class="report-body">
-  <h2 id="weekly-summary">Weekly Summary</h2>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
 <details class="article-inventory" id="article-inventory">
   <summary>Article Inventory <span class="article-inventory-count">(13 articles)</span></summary>
 <ol>
@@ -249,7 +263,9 @@
 <li>Review time: ~7 minutes</li>
 </ul>
 
-</div>
+      </div>
+    </main>
+  </div>
   <footer class="nav-footer">
     <a href="index.html">← Back to Reports</a>
     <span class="nav-footer-separator">·</span>

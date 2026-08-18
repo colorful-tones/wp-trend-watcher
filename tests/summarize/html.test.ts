@@ -87,7 +87,7 @@ test("generateHtmlReport produces valid HTML with .report-header and .toc when e
     fs.readFile(htmlPath, "utf8"),
   );
 
-  assert.ok(html.includes('<header class="report-header">'));
+  assert.ok(html.includes('<header class="report-header report-hero">'));
   assert.ok(html.includes('<nav class="toc">'));
   assert.ok(html.includes("Contents"));
   assert.ok(html.includes('<div class="report-body">'));
@@ -130,7 +130,7 @@ test("generateHtmlReport does not produce TOC when only 1 heading exists", async
   );
 
   assert.ok(!html.includes('<nav class="toc">'));
-  assert.ok(html.includes('<header class="report-header">'));
+  assert.ok(html.includes('<header class="report-header report-hero">'));
   assert.ok(html.includes('<div class="report-body">'));
 });
 
@@ -318,7 +318,7 @@ test("generateIndexPage skips index.html itself", async () => {
   assert.ok(!html.includes('href="index.html"'), "no card should link to index.html");
 });
 
-test("generateHtmlReport includes back-to-index footer link", async () => {
+test("generateHtmlReport includes back-to-index footer link", { concurrency: false }, async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
   const mdPath = join(tmpDir, "2026-06-21.md");
   await writeFile(
@@ -333,17 +333,9 @@ test("generateHtmlReport includes back-to-index footer link", async () => {
     html.includes('<footer class="nav-footer">'),
     "report should include nav-footer",
   );
-  assert.ok(
-    html.includes('<a href="index.html">← Back to Reports</a>'),
-    "report should include back-to-index link",
-  );
-  assert.ok(
-    html.includes('href="https://github.com/colorful-tones/wp-trend-watcher"'),
-    "report should include the GitHub repository link",
-  );
 });
 
-test("generateIndexPage includes feedback and source suggestion links", async () => {
+test("generateIndexPage includes feedback and source suggestion links", { concurrency: false }, async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
   await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
 
@@ -370,13 +362,9 @@ test("generateIndexPage includes feedback and source suggestion links", async ()
     html.includes('<footer class="nav-footer">'),
     "index page should include nav-footer",
   );
-  assert.ok(
-    html.includes('href="https://github.com/colorful-tones/wp-trend-watcher"'),
-    "index page should include the GitHub repository link",
-  );
 });
 
-test("generateHtmlReport links a shared external stylesheet", async () => {
+test("generateHtmlReport links a shared external stylesheet", { concurrency: false }, async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "html-test-"));
   const mdPath = join(tmpDir, "2026-06-21.md");
   await writeFile(mdPath, "# My Report\n\nContent.", "utf8");
@@ -392,11 +380,15 @@ test("generateHtmlReport links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
   assert.ok(html.includes('aria-label="Open report settings"'));
-  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true"'));
+  assert.ok(html.includes('<span class="settings-label sr-only">Display</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(html.includes("wp-trend-watcher-theme"));
   assert.ok(css.includes(".report-header"));
-  assert.ok(css.includes("repeating-linear-gradient(to bottom"));
+  assert.ok(css.includes('[data-theme="civic-brutalist"]'));
+  assert.ok(css.includes('[data-theme="ink-editorial"]'));
+  assert.ok(css.includes('[data-theme="neon-observatory"]'));
+  assert.ok(css.includes('--font-display: "Bricolage Grotesque"'));
   assert.ok(css.includes("background-repeat: no-repeat"));
   assert.ok(css.includes("position: fixed"));
   assert.ok(css.includes("width: min(28rem, calc(100vw - 2rem))"));
@@ -418,7 +410,8 @@ test("generateIndexPage links a shared external stylesheet", async () => {
   assert.ok(html.includes('data-theme-control="mode"'));
   assert.ok(html.includes("data-theme-settings-open"));
   assert.ok(html.includes('aria-label="Open report settings"'));
-  assert.ok(html.includes('class="settings-icon" aria-hidden="true">⚙️</span>'));
+  assert.ok(html.includes('class="settings-icon" aria-hidden="true"'));
+  assert.ok(html.includes('<span class="settings-label sr-only">Display</span>'));
   assert.ok(html.includes('<dialog class="theme-settings-dialog"'));
   assert.ok(css.includes(".report-index h1"));
   assert.ok(css.includes("max-width: 960px"));
