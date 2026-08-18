@@ -16,8 +16,10 @@ import { watch } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { join, extname, resolve } from "node:path";
+import { loadEnvFile } from "../env.js";
 import { generateIndexPage } from "../summarize/html.js";
 
+loadEnvFile();
 const PORT = 3000;
 const REPORTS_DIR = join(process.cwd(), "reports");
 const CSS_SOURCE = join(process.cwd(), "src", "summarize", "report.css");
