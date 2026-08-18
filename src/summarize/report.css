@@ -303,7 +303,7 @@ details.article-inventory ol {
   --font-display: "Bricolage Grotesque", sans-serif;
   --font-body: "IBM Plex Mono", monospace;
   --font-mono: "IBM Plex Mono", monospace;
-  --theme-hero-padding: 3.5rem 0 3rem;
+  --theme-hero-padding: 3.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
   --theme-layout-gap: clamp(2rem, 6vw, 5rem);
   --theme-layout-top: 3rem;
   --theme-card-gap: 0.75rem;
@@ -335,7 +335,7 @@ details.article-inventory ol {
   --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "Space Grotesk", sans-serif;
-  --theme-hero-padding: 4.5rem 0 4rem;
+  --theme-hero-padding: 4.5rem clamp(1.5rem, 6vw, 5rem) 4rem;
   --theme-layout-gap: clamp(3rem, 8vw, 6rem);
   --theme-layout-top: 4rem;
   --theme-card-gap: 1.25rem;
@@ -367,7 +367,7 @@ details.article-inventory ol {
   --font-display: "Syne", sans-serif;
   --font-body: "DM Mono", monospace;
   --font-mono: "DM Mono", monospace;
-  --theme-hero-padding: 3rem 0 2.75rem;
+  --theme-hero-padding: 3rem clamp(1rem, 3vw, 2.5rem) 2.75rem;
   --theme-layout-gap: clamp(2rem, 5vw, 4rem);
   --theme-layout-top: 2.5rem;
   --theme-card-gap: 0.75rem;
@@ -1196,11 +1196,6 @@ body.report-index {
   margin-inline: 0;
   max-width: 100%;
   width: 100%;
-}
-
-.report-hero {
-  padding-left: 0;
-  padding-right: 0;
 }
 
 /* Theme rhythm and surface application */
