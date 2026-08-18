@@ -1266,6 +1266,30 @@ body.report-index {
   box-shadow: var(--theme-card-shadow);
 }
 
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-hero {
+  background: var(--page-bg);
+  border-top: 2px solid var(--text);
+  color: var(--text);
+}
+
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-hero .report-description,
+:root[data-theme="civic-brutalist"][data-mode="light"] .report-index-count span {
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-hero {
+    background: var(--page-bg);
+    border-top: 2px solid var(--text);
+    color: var(--text);
+  }
+
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-hero .report-description,
+  :root[data-theme="civic-brutalist"][data-mode="system"] .report-index-count span {
+    color: var(--muted);
+  }
+}
+
 /* Keep display controls available without competing with report content. */
 .report-hero .settings-button {
   align-items: center;
