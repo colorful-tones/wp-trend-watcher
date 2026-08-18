@@ -313,7 +313,7 @@ details.article-inventory ol {
   --theme-hero-border-width: 8px;
   --theme-toc-border-width: 2px;
   --theme-card-shadow: none;
-  --theme-card-hover-shadow: 6px 6px 0 var(--text);
+  --theme-card-hover-shadow: 8px 8px 0 var(--accent);
   --theme-hero-shadow: none;
   --theme-section-space: 4rem;
   --theme-body-size: 0.95rem;
@@ -344,8 +344,8 @@ details.article-inventory ol {
   --theme-border-width: 1px;
   --theme-hero-border-width: 2px;
   --theme-toc-border-width: 1px;
-  --theme-card-shadow: none;
-  --theme-card-hover-shadow: none;
+  --theme-card-shadow: 0 6px 18px rgba(23, 33, 31, 0.06);
+  --theme-card-hover-shadow: 0 14px 30px rgba(23, 33, 31, 0.12);
   --theme-hero-shadow: none;
   --theme-section-space: 5rem;
   --theme-body-size: 1.02rem;
@@ -376,8 +376,8 @@ details.article-inventory ol {
   --theme-border-width: 1px;
   --theme-hero-border-width: 1px;
   --theme-toc-border-width: 1px;
-  --theme-card-shadow: 0 0 1.5rem rgba(117, 228, 255, 0.08);
-  --theme-card-hover-shadow: 0 0 2rem rgba(255, 107, 169, 0.3);
+  --theme-card-shadow: 0 0 18px rgba(117, 228, 255, 0.12), inset 0 0 0 1px rgba(117, 228, 255, 0.08);
+  --theme-card-hover-shadow: 0 0 28px rgba(255, 107, 169, 0.35), 0 0 8px rgba(117, 228, 255, 0.18);
   --theme-hero-shadow: 0 0 0 1px var(--accent), 0 0 3rem rgba(117, 228, 255, 0.12);
   --theme-section-space: 3.5rem;
   --theme-body-size: 0.9rem;
@@ -399,7 +399,7 @@ details.article-inventory ol {
 :root[data-theme="civic-brutalist"][data-mode="dark"] {
   --accent: #f06b4d;
   --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
-  --theme-card-hover-shadow: 6px 6px 0 var(--accent);
+  --theme-card-hover-shadow: 8px 8px 0 var(--accent);
 }
 
 :root[data-theme="ink-editorial"][data-mode="dark"] {
@@ -427,7 +427,7 @@ details.article-inventory ol {
   :root[data-theme="civic-brutalist"][data-mode="system"] {
     --accent: #f06b4d;
     --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
-    --theme-card-hover-shadow: 6px 6px 0 var(--accent);
+    --theme-card-hover-shadow: 8px 8px 0 var(--accent);
   }
 
   :root[data-theme="ink-editorial"][data-mode="system"] {
