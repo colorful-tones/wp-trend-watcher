@@ -303,6 +303,22 @@ details.article-inventory ol {
   --font-display: "Bricolage Grotesque", sans-serif;
   --font-body: "IBM Plex Mono", monospace;
   --font-mono: "IBM Plex Mono", monospace;
+  --theme-hero-padding: 3.5rem 0 3rem;
+  --theme-layout-gap: clamp(2rem, 6vw, 5rem);
+  --theme-layout-top: 3rem;
+  --theme-card-gap: 0.75rem;
+  --theme-card-padding: 1.25rem;
+  --theme-card-radius: 0;
+  --theme-border-width: 2px;
+  --theme-hero-border-width: 8px;
+  --theme-toc-border-width: 2px;
+  --theme-card-shadow: none;
+  --theme-card-hover-shadow: 6px 6px 0 var(--text);
+  --theme-hero-shadow: none;
+  --theme-section-space: 4rem;
+  --theme-body-size: 0.95rem;
+  --theme-body-leading: 1.6;
+  --theme-card-leading: 1;
 }
 
 :root[data-theme="ink-editorial"] {
@@ -319,6 +335,22 @@ details.article-inventory ol {
   --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "Space Grotesk", sans-serif;
+  --theme-hero-padding: 4.5rem 0 4rem;
+  --theme-layout-gap: clamp(3rem, 8vw, 6rem);
+  --theme-layout-top: 4rem;
+  --theme-card-gap: 1.25rem;
+  --theme-card-padding: 1.5rem;
+  --theme-card-radius: 0;
+  --theme-border-width: 1px;
+  --theme-hero-border-width: 2px;
+  --theme-toc-border-width: 1px;
+  --theme-card-shadow: none;
+  --theme-card-hover-shadow: none;
+  --theme-hero-shadow: none;
+  --theme-section-space: 5rem;
+  --theme-body-size: 1.02rem;
+  --theme-body-leading: 1.75;
+  --theme-card-leading: 0.98;
 }
 
 :root[data-theme="neon-observatory"] {
@@ -335,6 +367,22 @@ details.article-inventory ol {
   --font-display: "Syne", sans-serif;
   --font-body: "DM Mono", monospace;
   --font-mono: "DM Mono", monospace;
+  --theme-hero-padding: 3rem 0 2.75rem;
+  --theme-layout-gap: clamp(2rem, 5vw, 4rem);
+  --theme-layout-top: 2.5rem;
+  --theme-card-gap: 0.75rem;
+  --theme-card-padding: 1.1rem;
+  --theme-card-radius: 10px;
+  --theme-border-width: 1px;
+  --theme-hero-border-width: 1px;
+  --theme-toc-border-width: 1px;
+  --theme-card-shadow: 0 0 1.5rem rgba(117, 228, 255, 0.08);
+  --theme-card-hover-shadow: 0 0 2rem rgba(255, 107, 169, 0.3);
+  --theme-hero-shadow: 0 0 0 1px var(--accent), 0 0 3rem rgba(117, 228, 255, 0.12);
+  --theme-section-space: 3.5rem;
+  --theme-body-size: 0.9rem;
+  --theme-body-leading: 1.55;
+  --theme-card-leading: 1.02;
 }
 
 :root[data-mode="dark"] {
@@ -351,6 +399,7 @@ details.article-inventory ol {
 :root[data-theme="civic-brutalist"][data-mode="dark"] {
   --accent: #f06b4d;
   --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
+  --theme-card-hover-shadow: 6px 6px 0 var(--accent);
 }
 
 :root[data-theme="ink-editorial"][data-mode="dark"] {
@@ -378,6 +427,7 @@ details.article-inventory ol {
   :root[data-theme="civic-brutalist"][data-mode="system"] {
     --accent: #f06b4d;
     --theme-gradient: linear-gradient(135deg, rgba(245, 213, 71, 0.16), transparent 36%);
+    --theme-card-hover-shadow: 6px 6px 0 var(--accent);
   }
 
   :root[data-theme="ink-editorial"][data-mode="system"] {
@@ -1151,6 +1201,74 @@ body.report-index {
 .report-hero {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Theme rhythm and surface application */
+.report-hero {
+  border-bottom-width: var(--theme-hero-border-width);
+  box-shadow: var(--theme-hero-shadow);
+  gap: var(--theme-layout-gap);
+  padding: var(--theme-hero-padding);
+}
+
+.report-layout {
+  gap: var(--theme-layout-gap);
+  padding-top: var(--theme-layout-top);
+}
+
+.report-index-archive {
+  margin-top: var(--theme-layout-top);
+}
+
+.report-rail .toc {
+  border-left-width: var(--theme-toc-border-width);
+}
+
+.report-body {
+  font-size: var(--theme-body-size);
+  line-height: var(--theme-body-leading);
+}
+
+.report-body > h2 {
+  border-top-width: var(--theme-border-width);
+}
+
+.report-body > h2:not(:first-child) {
+  margin-top: var(--theme-section-space);
+}
+
+.report-body details.article-inventory {
+  border-width: var(--theme-border-width);
+  border-radius: var(--theme-card-radius);
+  padding: var(--theme-card-padding);
+}
+
+.report-index-heading {
+  margin-bottom: var(--theme-card-gap);
+}
+
+.report-card-grid {
+  gap: var(--theme-card-gap);
+}
+
+.report-card {
+  border-radius: var(--theme-card-radius);
+  border-width: var(--theme-border-width);
+  border-left-width: var(--theme-border-width);
+  box-shadow: var(--theme-card-shadow);
+  padding: var(--theme-card-padding);
+}
+
+.report-card:hover {
+  box-shadow: var(--theme-card-hover-shadow);
+}
+
+.report-card-title {
+  line-height: var(--theme-card-leading);
+}
+
+.report-hero .settings-button {
+  box-shadow: var(--theme-card-shadow);
 }
 
 /* Keep display controls available without competing with report content. */

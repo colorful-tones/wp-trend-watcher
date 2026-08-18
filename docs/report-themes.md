@@ -14,6 +14,8 @@ All styles share the same editorial report shell: the index uses an archive-and-
 
 Heading sizes, line heights, and letter-spacing are calibrated per display face rather than shared globally, so the wide geometric, serif, and compact display fonts retain their intended rhythm.
 
+The surface language is also intentionally different: Civic Brutalist uses hard offset shadows and decisive borders, Ink Editorial stays airy with hairline rules and no card shadows, and Neon Observatory uses rounded surfaces with restrained glow shadows.
+
 The current theme system is defined in:
 
 - `src/summarize/html.ts` — theme names, selector options, and the small pre-paint persistence script.
