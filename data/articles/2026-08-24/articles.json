@@ -1,0 +1,111 @@
+{
+  "date": "2026-08-24",
+  "collectedAt": "2026-08-24T22:19:13.296Z",
+  "articleCount": 13,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/08/hands-on-with-the-wordpress-7-1-icon-registration-api/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "Hands-on with the WordPress 7.1 Icon Registration API",
+      "url": "https://developer.wordpress.org/news/2026/08/hands-on-with-the-wordpress-7-1-icon-registration-api/",
+      "publishedAt": "2026-08-18T20:44:17.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/21/xpost-help-shape-the-accessibility-lab-plugin/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Help shape the Accessibility Lab plugin",
+      "url": "https://make.wordpress.org/core/2026/08/21/xpost-help-shape-the-accessibility-lab-plugin/",
+      "publishedAt": "2026-08-21T19:27:41.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/20/call-for-wordpress-7-1-x-release-managers/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for WordPress 7.1.x Release Managers",
+      "url": "https://make.wordpress.org/core/2026/08/20/call-for-wordpress-7-1-x-release-managers/",
+      "publishedAt": "2026-08-20T21:39:02.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/19/whats-new-in-gutenberg-23-8-19-august/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.8? (19 August)",
+      "url": "https://make.wordpress.org/core/2026/08/19/whats-new-in-gutenberg-23-8-19-august/",
+      "publishedAt": "2026-08-19T12:03:42.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/18/summary-dev-chat-august-18-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: August 18, 2026",
+      "url": "https://make.wordpress.org/core/2026/08/18/summary-dev-chat-august-18-2026/",
+      "publishedAt": "2026-08-18T15:49:40.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/wcus-2026-recap/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "AI Creates Opportunity While Artists Ship at WordCamp US 2026",
+      "url": "https://wordpress.org/news/2026/08/wcus-2026-recap/",
+      "publishedAt": "2026-08-20T05:51:52.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/mary-lou/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1 “Mary Lou”",
+      "url": "https://wordpress.org/news/2026/08/mary-lou/",
+      "publishedAt": "2026-08-19T23:33:49.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Headless WordPress Hosting: Pros, Cons, and Real Costs",
+      "url": "https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "publishedAt": "2026-08-24T14:55:40.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-8/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.8",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-8/",
+      "publishedAt": "2026-08-19T17:12:27.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF Chat Fridays: AI Tooling & Development Roadmap",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "publishedAt": "2026-08-18T11:49:09.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-134-gutenberg-23-7-23-8-wordpress-7-1/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Gutenberg Changelog #134 – Gutenberg 23.7, 23.8, WordPress 7.1 and more",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-134-gutenberg-23-7-23-8-wordpress-7-1/",
+      "publishedAt": "2026-08-23T08:46:09.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/icons-tabs-and-responsive-styles-the-community-gets-to-work-on-wordpress-7-1-weekend-edition-374/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Icons, Tabs, and responsive styles: the community gets to work on WordPress 7.1 — Weekend Edition 374",
+      "url": "https://gutenbergtimes.com/icons-tabs-and-responsive-styles-the-community-gets-to-work-on-wordpress-7-1-weekend-edition-374/",
+      "publishedAt": "2026-08-22T16:43:27.000Z"
+    },
+    {
+      "id": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "sourceId": "acf-chat-fridays",
+      "sourceName": "ACF Chat Fridays",
+      "title": "ACF Chat Fridays: AI Tooling & Development Roadmap",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "publishedAt": "2026-08-18T11:49:09.000Z"
+    }
+  ]
+}
