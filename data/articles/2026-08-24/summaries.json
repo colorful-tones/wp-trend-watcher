@@ -1,0 +1,140 @@
+{
+  "date": "2026-08-24",
+  "provider": "openai-compatible",
+  "model": "qwen/qwen3-14b",
+  "articleCount": 13,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/08/hands-on-with-the-wordpress-7-1-icon-registration-api/",
+      "title": "Hands-on with the WordPress 7.1 Icon Registration API",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/08/hands-on-with-the-wordpress-7-1-icon-registration-api/",
+      "summary": "WordPress 7.1 introduces a public API for registering custom icons, allowing developers to define icon collections and individual SVG icons using `wp_register_icon_collection()` and `wp_register_icon()`. The API requires a unique slug for the collection and either SVG content or file path for each icon, with both parameters being optional but mutually exclusive.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1374,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/21/xpost-help-shape-the-accessibility-lab-plugin/",
+      "title": "X-post: Help shape the Accessibility Lab plugin",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/21/xpost-help-shape-the-accessibility-lab-plugin/",
+      "summary": "The Accessibility Lab plugin is a new initiative to gather accessibility experiments and tools that can't yet be part of Core, allowing the community to test and provide feedback. It combines core experiments needing real-world data with practical tools from existing plugins, aiming to serve as a centralized resource for accessibility solutions. The plugin is still in an early prototype stage and not yet available in the official repository.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 945,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/20/call-for-wordpress-7-1-x-release-managers/",
+      "title": "Call for WordPress 7.1.x Release Managers",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/20/call-for-wordpress-7-1-x-release-managers/",
+      "summary": "WordPress 7.1.0 was released on August 19, 2026, and the 7.1.1 maintenance release is expected between September 1 and 24, depending on bug severity and quantity. The call for volunteers to manage the 7.1.x maintenance releases is open until August 28, with responsibilities including bug triaging, drafting announcements, and documentation updates.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 759,
+      "completionTokens": 86
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/19/whats-new-in-gutenberg-23-8-19-august/",
+      "title": "What’s new in Gutenberg 23.8? (19 August)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/19/whats-new-in-gutenberg-23-8-19-august/",
+      "summary": "Gutenberg 23.8 introduces shareable URLs for visual revisions, an in-editor code diff view, email notifications for @mentions in notes, and performance improvements for List View on large posts. Developers can now define inner blocks templates directly in registerBlockType() settings, and the empty canvas displays a real default block instead of a placeholder.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1074,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/18/summary-dev-chat-august-18-2026/",
+      "title": "Dev Chat summary: August 18, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/18/summary-dev-chat-august-18-2026/",
+      "summary": "The August 18, 2026 Dev Chat covered WordPress 7.1 RC3 and RC4 releases, the opening of the 7.2 branch requiring double sign-off, and a commit freeze until post-release on Wednesday. The WordPress 7.1 Field Guide was published, and the community is preparing for the 7.1 release at WCUS on August 19th. The contributor toolkit 1.0 was introduced, and the dev chat schedule will return to Wednesdays at 15:00 UTC starting next week.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1048,
+      "completionTokens": 117
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/wcus-2026-recap/",
+      "title": "AI Creates Opportunity While Artists Ship at WordCamp US 2026",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/wcus-2026-recap/",
+      "summary": "WordCamp US 2026 featured over 50 sessions covering AI, accessibility, and open web topics, with contributors working on real-world projects like adding email settings and building a Photo Directory importer. Contributor Day used a team-based format to ship code, while Showcase Day highlighted real-world WordPress site migrations and maintenance strategies.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1045,
+      "completionTokens": 67
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/mary-lou/",
+      "title": "WordPress 7.1 “Mary Lou”",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/mary-lou/",
+      "summary": "WordPress 7.1 \"Mary Lou\" introduces responsive styling tools in the Site Editor, allowing users to apply styles for different screen sizes without custom CSS. The admin bar is now consistent across all editors, and a new media editor offers advanced image cropping and editing features in one workflow. New blocks like Playlist and Tabs, along with inline notes that support rich text and @mentions, enhance collaboration and design flexibility.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1040,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "title": "Headless WordPress Hosting: Pros, Cons, and Real Costs",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "summary": "Headless WordPress hosting separates the backend and frontend into two deployable applications, requiring evaluation of factors like API performance, PHP concurrency, caching, and frontend runtime support. Real costs include both hosting layers, preview infrastructure, development, maintenance, and operational management of two systems. ACF aids headless builds by providing a structured content layer through REST or WPGraphQL, enabling faster frontend development. Hosting models vary between integrated platforms, which simplify billing and support, and split platforms offering more flexibility but requiring coordination across services. Key considerations include sustained API performance, CORS controls, Git deployments, and monitoring for both layers.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 934,
+      "completionTokens": 122
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-8/",
+      "title": "ACF 6.8.8",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-8/",
+      "summary": "ACF 6.8.8 addresses an issue where Image and Gallery fields would reject SVG files. The update ensures these fields now accept SVG uploads without error. Developers should test SVG handling in their projects to confirm the fix works as expected.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 251,
+      "completionTokens": 50
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "title": "ACF Chat Fridays: AI Tooling & Development Roadmap",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "summary": "The August ACF Chat Fridays session covered security updates, upcoming plugin features like admin settings and AI-powered field suggestions, and discussed AI tools such as agents, Model Context Protocol (MCP), and Cursor for streamlining WordPress development. The session included insights from ACF team members Iain Poulson, Matt Shaw, Anthony Burchell, and Phil Johnston.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 352,
+      "completionTokens": 74
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/podcast/gutenberg-changelog-134-gutenberg-23-7-23-8-wordpress-7-1/",
+      "title": "Gutenberg Changelog #134 – Gutenberg 23.7, 23.8, WordPress 7.1 and more",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/podcast/gutenberg-changelog-134-gutenberg-23-7-23-8-wordpress-7-1/",
+      "summary": "WordPress 7.1 introduced new styling tools, updated media flow, notes for collaboration, and improved AI workflow support, with pseudo states (hover, focus, active) added to buttons and navigation links. Gutenberg 23.7 and 23.8 brought responsive editing toggles, dynamic gallery improvements, and opt-out mechanisms for block controls, while WordPress 7.2 is set to address \"block editor paper cuts\" and enhance global style options for navigation states.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 1191,
+      "completionTokens": 97
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/icons-tabs-and-responsive-styles-the-community-gets-to-work-on-wordpress-7-1-weekend-edition-374/",
+      "title": "Icons, Tabs, and responsive styles: the community gets to work on WordPress 7.1 — Weekend Edition 374",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/icons-tabs-and-responsive-styles-the-community-gets-to-work-on-wordpress-7-1-weekend-edition-374/",
+      "summary": "WordPress 7.1 was released, featuring a new shortcut in user profiles linking directly to w.org/@[username]. The post also mentions Piplets, a new tool for self-contained PHP notes, and highlights the availability of WordCamp US talks on YouTube.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 496,
+      "completionTokens": 53
+    },
+    {
+      "articleId": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "title": "ACF Chat Fridays: AI Tooling & Development Roadmap",
+      "sourceName": "ACF Chat Fridays",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-ai-tooling-development-roadmap/",
+      "summary": "The August ACF Chat Fridays session covered security updates, upcoming features like admin settings and AI-powered field suggestions, and discussed AI tools such as agents, Model Context Protocol (MCP), and Cursor for streamlining WordPress development. The session included insights from ACF team members on how these tools can improve efficiency in custom field building.",
+      "model": "qwen/qwen3-14b",
+      "promptTokens": 353,
+      "completionTokens": 67
+    }
+  ],
+  "totalPromptTokens": 10862,
+  "totalCompletionTokens": 1031
+}
