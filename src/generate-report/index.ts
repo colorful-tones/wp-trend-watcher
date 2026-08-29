@@ -3,6 +3,7 @@ import { join, dirname, basename } from "node:path";
 import { loadEnvFile } from "../env.js";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { generateHtmlReport, generateIndexPage } from "../summarize/html.js";
+import { generateRssFeed } from "../summarize/rss.js";
 import {
   type ArticlesJson,
   type ArticleSummary,
@@ -156,6 +157,16 @@ async function main(): Promise<void> {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.warn(`Warning: Index page generation failed: ${message}`);
+  }
+
+  // 9. Regenerate RSS feed (non-blocking)
+  try {
+    const reportsDir = join(process.cwd(), "reports");
+    const feedPath = await generateRssFeed(reportsDir);
+    console.log(`RSS feed written: ${feedPath}`);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`Warning: RSS feed generation failed: ${message}`);
   }
 
   console.log("\nDone.");

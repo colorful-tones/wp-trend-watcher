@@ -10,7 +10,7 @@ The goal is to collect useful WordPress ecosystem updates, summarize them effici
 
 ## Latest Reports
 
-Published weekly reports are available at [colorful-tones.github.io/wp-trend-watcher](https://colorful-tones.github.io/wp-trend-watcher/).
+Published weekly reports are available at [colorful-tones.github.io/wp-trend-watcher](https://colorful-tones.github.io/wp-trend-watcher/). Subscribe to new reports via RSS at [colorful-tones.github.io/wp-trend-watcher/feed.xml](https://colorful-tones.github.io/wp-trend-watcher/feed.xml).
 
 ## Intended Audience
 
@@ -47,7 +47,7 @@ Summarization requires a local LLM provider (see Requirements above). LM Studio 
 pnpm collect         # Fetch RSS feeds from 6 sources (4 Tier 1 + 2 Tier 2), store articles as JSON
 pnpm summarize       # Fetch article content, generate summaries, synthesize the weekly report, and build HTML + index
 pnpm generate-report # Regenerate the report from saved article summaries
-pnpm index-page      # Regenerate the reports index.html listing page
+pnpm index-page      # Regenerate the reports index.html listing page and RSS feed
 pnpm doctor          # Check environment readiness before first summarize
 pnpm review          # Review checklist for the latest report
 pnpm generate-descriptions # Fill or regenerate SEO descriptions
@@ -61,6 +61,8 @@ Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
 Individual commands remain available for diagnosis and recovery — for example, running `pnpm collect` or `pnpm summarize` separately when you only need that step.
 
 `pnpm summarize` produces an HTML report alongside the Markdown file and writes shared report styles to `reports/assets/report.css`. The Radio Canada variable font is copied to `reports/assets/` alongside it. Reports are deployed to [GitHub Pages](https://colorful-tones.github.io/wp-trend-watcher/) on every push to `main` via the `pages.yml` workflow. Configure GitHub Pages to deploy from the `github-pages` environment (Settings → Pages → Source: GitHub Actions).
+
+The `reports/feed.xml` RSS feed is rebuilt alongside the reports index by `pnpm index-page`, `pnpm summarize`, `pnpm generate-report`, and `pnpm regen-html`, so subscribers always see the current archive.
 
 Generated report pages include Style and Mode controls for Aurora Blueprint, Aurora Mesh, and Signal Stripe, with Light, Dark, and System modes. The selected preferences are saved in the browser's local storage and reused across the report index and individual reports.
 
@@ -99,6 +101,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.13.0
+
+- Added a static RSS 2.0 feed at `reports/feed.xml`, generated from the published report archive with the newest report first.
+- Added RSS autodiscovery and a visible "Subscribe via RSS" link to the reports index.
+
 ### 0.12.0
 
 - Added an editorial archive layout for the reports index with richer report cards and issue count treatment.
@@ -110,19 +117,5 @@ Both templates walk you through what's needed — takes about a minute.
 - Replaced the report styles with Civic Brutalist, Ink Editorial, and Neon Observatory.
 - Added dedicated light, dark, and system-mode presentation for each style.
 - Made Civic Brutalist the default report style and added unusual Google Font pairings.
-
-### 0.10.2
-
-- Added optional GoatCounter analytics to generated report pages and the reports index. Configure `WP_TREND_GOATCOUNTER_URL` to enable it; local previews remain analytics-free when unset.
-
-### 0.9.0
-
-- Added generated SEO titles and descriptions to reports, including visible report introductions and concise descriptions on index cards.
-- Reused generated metadata for report page titles, descriptions, canonical social metadata, and index-card headings.
-
-### 0.8.0
-
-- Added GitHub project links to the report index and individual report footers.
-- Added persistent report style and color-mode controls with accessible light and dark variants for all three visual directions.
 
 For older releases, see the [GitHub Releases page](https://github.com/colorful-tones/wp-trend-watcher/releases).

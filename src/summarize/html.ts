@@ -35,8 +35,9 @@ const REPORT_OG_IMAGE_SOURCE = new URL(
 );
 
 // Canonical site base URL for absolute Open Graph / Twitter / canonical URLs.
-// Must match the GitHub Pages deployment root (see README).
-const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
+// Must match the GitHub Pages deployment root (see README). Exported so the
+// RSS feed module can build absolute report URLs without duplicating the base.
+export const SITE_BASE_URL = "https://colorful-tones.github.io/wp-trend-watcher/";
 const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
 const DEFAULT_REPORT_THEME = "civic-brutalist";
 const DEFAULT_REPORT_MODE = "system";
@@ -487,6 +488,7 @@ ${analyticsScript}
     url: `${SITE_BASE_URL}index.html`,
     type: "website",
   })}
+  <link rel="alternate" type="application/rss+xml" title="WP Trend Watcher" href="${SITE_BASE_URL}feed.xml">
 </head>
 <body class="report-index">
   <header class="report-header report-hero report-index-hero">
@@ -515,6 +517,8 @@ ${analyticsScript}
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml">Suggest a source</a>
       &nbsp;·&nbsp;
       <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml">Send feedback</a>
+      &nbsp;·&nbsp;
+      <a href="${SITE_BASE_URL}feed.xml">Subscribe via RSS</a>
     </p>
   </footer>
 </body>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WP Trend Watcher</title>
+    <link>https://colorful-tones.github.io/wp-trend-watcher/</link>
+    <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
+    <language>en-us</language>
+    <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Mon, 24 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.1, Gutenberg updates, and AI tooling in August 2026</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-24.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-08-24.html</guid>
+      <description>WordPress 7.1 &quot;Mary Lou&quot; released with new blocks, responsive styling tools, and an Icon Registration API, alongside the Accessibility Lab plugin for testing ac</description>
+      <pubDate>Mon, 24 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress 7.1 Release Final Steps and Developer Toolkits for August 20</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-18.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-08-18.html</guid>
+      <description>WordPress 7.1 finalizes on August 19, 2026, with RC4 available for testing and accessibility improvements highlighted.</description>
+      <pubDate>Tue, 18 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-08-10</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-10.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-08-10.html</guid>
+      <description>WordPress 7.1 enters Release Candidate phase, introducing client-side media processing and responsive block styles, with final release scheduled for August 19,</description>
+      <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-08-03</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-03.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-08-03.html</guid>
+      <description>WordPress 7.1 Beta 4 introduces an always-iframed post editor, Abilities API enhancements, and new JSON schema tools to improve client compatibility and develop</description>
+      <pubDate>Mon, 03 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-07-26</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-07-26.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-07-26.html</guid>
+      <description>WordPress 7.1 Beta 3 introduces new block support, client-side media processing, and SVG icon registration ahead of its August 19 release.</description>
+      <pubDate>Sun, 26 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-07-19</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-07-19.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-07-19.html</guid>
+      <description>WordPress 7.1 Beta 1 now available, featuring persistent toolbar, iframed post editor, and enhanced styling controls, with testing encouraged for developers.</description>
+      <pubDate>Sun, 19 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-07-11</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-07-11.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-07-11.html</guid>
+      <description>WordPress 7.1, releasing August 19, introduces new blocks, responsive styling, and a redesigned command palette, with betas starting July 15.</description>
+      <pubDate>Sat, 11 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-07-05</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-07-05.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-07-05.html</guid>
+      <description>WordPress 7.1 introduces responsive styling, daily bug scrubs, read-only abilities, and security updates, with a general release planned for August 19, 2026.</description>
+      <pubDate>Sun, 05 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-06-27</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-06-27.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-06-27.html</guid>
+      <description>WordPress 7.1 removes the Classic block, introduces `wp_knowledge` for site standards, and features a block-based e-commerce storefront, with feedback sought on</description>
+      <pubDate>Sat, 27 Jun 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-06-21</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-06-21.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-06-21.html</guid>
+      <description>WordPress 7.1 development progresses with new Notes feature, emoji reactions, and expanded responsive styling, alongside React 19 testing in Gutenberg 23.4 and</description>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>WordPress Trend Report — 2026-06-12</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-06-12.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-06-12.html</guid>
+      <description>WordPress 7.1&apos;s collaborative editing represents a significant workflow shift, alongside client-side media processing and ACF 6.8.4 updates.</description>
+      <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

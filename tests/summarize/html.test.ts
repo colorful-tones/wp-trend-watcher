@@ -483,3 +483,30 @@ test("generateIndexPage emits absolute SEO meta", async () => {
   assert.ok(html.includes('<meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/index.html">'));
   assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
 });
+
+test("generateIndexPage includes an RSS autodiscovery link", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "rss-index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(
+    html.includes(
+      '<link rel="alternate" type="application/rss+xml" title="WP Trend Watcher" href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml">',
+    ),
+  );
+});
+
+test("generateIndexPage includes a visible Subscribe via RSS link", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "rss-index-test-"));
+  await writeFile(join(tmpDir, "2026-06-21.html"), "<html></html>", "utf8");
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const html = await readFile(indexPath, "utf8");
+
+  assert.ok(html.includes("Subscribe via RSS"));
+  assert.ok(
+    html.includes('href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml"'),
+  );
+});

@@ -1,6 +1,7 @@
 import { join } from "node:path";
 import { loadEnvFile } from "../env.js";
 import { generateIndexPage } from "./html.js";
+import { generateRssFeed } from "./rss.js";
 
 /**
  * Standalone script to regenerate reports/index.html.
@@ -12,6 +13,8 @@ async function main(): Promise<void> {
   const reportsDir = join(process.cwd(), "reports");
   const indexPath = await generateIndexPage(reportsDir);
   console.log(`Index page written: ${indexPath}`);
+  const feedPath = await generateRssFeed(reportsDir);
+  console.log(`RSS feed written: ${feedPath}`);
 }
 
 await main();
