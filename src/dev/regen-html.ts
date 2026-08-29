@@ -11,6 +11,7 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { loadEnvFile } from "../env.js";
 import { generateHtmlReport, generateIndexPage } from "../summarize/html.js";
+import { generateRssFeed } from "../summarize/rss.js";
 
 loadEnvFile();
 const reportsDir = join(process.cwd(), "reports");
@@ -24,3 +25,5 @@ for (const file of mdFiles.sort()) {
 }
 await generateIndexPage(reportsDir);
 console.log("  regenerated: reports/index.html");
+const feedPath = await generateRssFeed(reportsDir);
+console.log(`  regenerated: ${feedPath}`);

@@ -4,6 +4,7 @@ import { loadEnvFile, parsePositiveIntegerEnv } from "../env.js";
 import { createProvider, type SummarizeResult } from "../providers.js";
 import { fetchArticleContent } from "./content.js";
 import { generateHtmlReport, generateIndexPage } from "./html.js";
+import { generateRssFeed } from "./rss.js";
 import {
   type CollectedArticle,
   type ArticlesJson,
@@ -257,6 +258,16 @@ async function main(): Promise<void> {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.warn(`Warning: Index page generation failed: ${message}`);
+  }
+
+  // 11. Regenerate RSS feed (non-blocking)
+  try {
+    const reportsDir = join(process.cwd(), "reports");
+    const feedPath = await generateRssFeed(reportsDir);
+    console.log(`RSS feed written: ${feedPath}`);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`Warning: RSS feed generation failed: ${message}`);
   }
 }
 
