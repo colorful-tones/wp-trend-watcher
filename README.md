@@ -101,6 +101,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.14.0
+
+- Added the first-party ACF Releases feed as a Tier 1 source.
+- Reclassified the broader ACF Blog feed as Tier 2 to reduce the priority of lower-signal posts.
+
 ### 0.13.0
 
 - Added a static RSS 2.0 feed at `reports/feed.xml`, generated from the published report archive with the newest report first.
