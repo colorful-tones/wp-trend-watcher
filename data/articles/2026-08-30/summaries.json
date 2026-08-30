@@ -1,0 +1,100 @@
+{
+  "date": "2026-08-30",
+  "provider": "openai-compatible",
+  "model": "ornith-1.5-9b",
+  "articleCount": 9,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/28/xpost-the-core-security-initiative/",
+      "title": "X-post: The Core Security Initiative",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/28/xpost-the-core-security-initiative/",
+      "summary": "The WordPress core security team launched a coordinated \"Core Security Initiative\" built on three pillars: automating end-to-end testing to ship security fixes reliably, expanding volunteer capacity to drive open vulnerability findings toward zero, and applying AI-assisted scanning alongside responsible disclosure. As part of the improved release process pillar, the team is scheduling upcoming dedicated security releases rather than relying solely on regular feature releases. The key takeaway for developers is that report quality matters more at this volume—researchers should submit through HackerOne (hackerone.com/wordpress) after reviewing reporting guidelines.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 704,
+      "completionTokens": 262
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/25/proposal-a-secrets-api-for-wordpress-7-2/",
+      "title": "Proposal: A Secrets API for WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/25/proposal-a-secrets-api-for-wordpress-7-2/",
+      "summary": "This proposal requests a first-class Secrets API for WordPress 7.2 so credentials can be stored and retrieved securely instead of being written in plaintext into the `options` table (where they end up in every database dump, backup, staging clone, and CLI command). The tightly-scoped stable API is the priority for 7.2, with hooks and accessors in scope but the admin settings screen deferred to 7.3; WP-CLI support ships alongside it as a first-party consumer and to stop leaking credentials via shell history and process lists. Developers should plan to migrate away from storing keys directly in options, since the API's storage/retrieval semantics must be correct on first use because every plugin, CLI command, and future screen inherits them.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1012,
+      "completionTokens": 418
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/25/performance-chat-summary-25-august-2026/",
+      "title": "Performance Chat Summary: 25 August 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/25/performance-chat-summary-25-august-2026/",
+      "summary": "This performance chat summary covers three main items: a WordPress 7.1 regression flagged as ticket #65929 for review; the WCUS Contributor Day experiment replacing script and style concatenation with prefetching, which reportedly cut LCP by over 70% when navigating from login to dashboard (PR #13084 ready for early review/testing); and a Performance Lab plugin update in PR #2639 that adds strict_types and housekeeping changes but requires smoke testing on each build before release. The next chat is scheduled for Tuesday, September 8, 2026 at 16:00 UTC in the #core-performance Slack channel.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1070,
+      "completionTokens": 475
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/08/25/dev-chat-agenda-aug-26-2026/",
+      "title": "Dev Chat Agenda – August 26, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/08/25/dev-chat-agenda-aug-26-2026/",
+      "summary": "The next WordPress Developers Chat is scheduled for Wednesday, August 26, 2026 at 15:00 UTC in the core Slack channel, reverting to Wednesdays after running on Tuesdays during the 7.1 release cycle. The agenda covers the August 19 release of WP 7.1 \"Mary Lou,\" a call for volunteers to manage 7.1.x point releases and for WP 7.2, plus an open floor where tickets in the next milestone are prioritized. Developers should post ticket/PR details with availability notes (sync or async) in the comments to surface topics for discussion.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 765,
+      "completionTokens": 372
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/08/open-weight/",
+      "title": "WordPress Signs the Open Weights and American AI Leadership Letter",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/08/open-weight/",
+      "summary": "WordPress signed the \"Open Weights and American AI Leadership\" letter (published July 24, 2026), joining over 270 organizations in urging US policymakers to avoid early restrictions on open-weight AI models—models anyone can download, inspect, modify, and self-host. The letter requests expanded computing access for startups/researchers, investment in shared public datasets and evaluation tools, retention of diverse model options rather than consolidation around closed systems, and that using one model's output to train another not be treated as theft by default. There is no technical implementation takeaway; it's a policy/position statement reflecting WordPress's open-source philosophy applied to AI.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 766,
+      "completionTokens": 237
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/high-performance-wordpress-hosting/",
+      "title": "High Performance WordPress Hosting Compared for Developers",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/high-performance-wordpress-hosting/",
+      "summary": "High-performance WordPress hosting works by intercepting requests before expensive PHP execution, combining server-level caching, edge/CDN delivery, object caching, OPcache, PHP workers, and NVMe storage—so cached anonymous traffic gets fast TTFB while dynamic, logged-in, or field-heavy requests still depend on origin compute. In Hostingstep's 2026 benchmark, WP Engine led with a 365ms average TTFB, 65ms global TTFB, and the tightest consistency (99.9952% uptime), while Rocket.net's Cloudflare security layer blocked its 100-user concurrency test entirely rather than measuring origin failure. Application-layer efficiency still matters after infrastructure choice: ACF reduces per-request overhead via Local JSON and Repeater pagination so the hosting stack spends less work processing each request.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 998,
+      "completionTokens": 453
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-9-released/",
+      "title": "ACF PRO 6.8.9: Blocks V3 Now Default (and a V2 Compatibility Plugin)",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-9-released/",
+      "summary": "ACF PRO 6.8.9 makes V3 the default block version on WordPress 7.1+, so blocks without an explicit `acf.blockVersion` now register as V3 automatically with no code changes required. The change responds to WP 7.1 rendering the editing canvas in an iframe that isolates it from wp-admin, which breaks V2 edit mode because V2 relies on admin-side libraries (WYSIWYG, jQuery UI datepickers) that WordPress no longer loads inside the canvas. Blocks pinned to version 1 or 2 are unaffected by the default change but remain broken under the iframe; developers can temporarily restore V2 via the compatibility plugin or the `acf/blocks/default_block_version` filter while migrating to V3.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1059,
+      "completionTokens": 461
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "title": "Headless WordPress Hosting: Pros, Cons, and Real Costs",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "summary": "Headless WordPress hosting separates the PHP/MySQL backend from a separately deployed frontend (React, Next.js), making each layer's performance depend on its own stack—PHP concurrency and caching for the backend, plus runtime, CDN, and edge functions for the frontend. The core technical takeaway is that evaluation must cover both layers' infrastructure: API performance, CORS controls, revalidation workflows, preview security, and deployment pipelines—not just storage or traffic limits. Split platforms (e.g., WordPress on a managed host paired with Vercel/Netlify/Cloudflare) trade integrated billing for greater provider flexibility, while the real cost includes hosting both layers plus development, maintenance, and operational overhead of managing two systems.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 941,
+      "completionTokens": 226
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/building-blocks-without-javascript-accessibility-lab-ai-plugin-showdown-and-more-weekend-edition-375/",
+      "title": "Building blocks without JavaScript, Accessibility Lab, AI plugin showdown and more —Weekend Edition 375",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/building-blocks-without-javascript-accessibility-lab-ai-plugin-showdown-and-more-weekend-edition-375/",
+      "summary": "This Weekend Edition (375) from Gutenberg Times is primarily an author announcement: Birgit is taking a three-month sabbatical starting the week of publication following her five-year Automattic anniversary and will be at WordCamp Athens in December. Colleague Justin Tadlock will continue publishing Weekend Editions during her absence to keep the series running. The edition's topics—building blocks without JavaScript, an Accessibility Lab piece, and an AI plugin showdown—are listed but contain no technical detail in this excerpt.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 481,
+      "completionTokens": 425
+    }
+  ],
+  "totalPromptTokens": 7796,
+  "totalCompletionTokens": 3329
+}

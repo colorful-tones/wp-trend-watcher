@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-30",
+  "collectedAt": "2026-08-30T12:24:32.246Z",
+  "articleCount": 9,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/28/xpost-the-core-security-initiative/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: The Core Security Initiative",
+      "url": "https://make.wordpress.org/core/2026/08/28/xpost-the-core-security-initiative/",
+      "publishedAt": "2026-08-28T17:00:29.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/25/proposal-a-secrets-api-for-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Proposal: A Secrets API for WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/08/25/proposal-a-secrets-api-for-wordpress-7-2/",
+      "publishedAt": "2026-08-25T21:17:36.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/25/performance-chat-summary-25-august-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 25 August 2026",
+      "url": "https://make.wordpress.org/core/2026/08/25/performance-chat-summary-25-august-2026/",
+      "publishedAt": "2026-08-25T17:16:50.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/08/25/dev-chat-agenda-aug-26-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – August 26, 2026",
+      "url": "https://make.wordpress.org/core/2026/08/25/dev-chat-agenda-aug-26-2026/",
+      "publishedAt": "2026-08-25T05:13:45.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/08/open-weight/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress Signs the Open Weights and American AI Leadership Letter",
+      "url": "https://wordpress.org/news/2026/08/open-weight/",
+      "publishedAt": "2026-08-27T17:00:32.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/high-performance-wordpress-hosting/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "High Performance WordPress Hosting Compared for Developers",
+      "url": "https://www.advancedcustomfields.com/blog/high-performance-wordpress-hosting/",
+      "publishedAt": "2026-08-28T08:19:03.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-9-released/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF PRO 6.8.9: Blocks V3 Now Default (and a V2 Compatibility Plugin)",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-9-released/",
+      "publishedAt": "2026-08-27T20:15:06.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Headless WordPress Hosting: Pros, Cons, and Real Costs",
+      "url": "https://www.advancedcustomfields.com/blog/headless-wordpress-hosting/",
+      "publishedAt": "2026-08-24T14:55:40.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/building-blocks-without-javascript-accessibility-lab-ai-plugin-showdown-and-more-weekend-edition-375/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "Building blocks without JavaScript, Accessibility Lab, AI plugin showdown and more —Weekend Edition 375",
+      "url": "https://gutenbergtimes.com/building-blocks-without-javascript-accessibility-lab-ai-plugin-showdown-and-more-weekend-edition-375/",
+      "publishedAt": "2026-08-29T03:22:00.000Z"
+    }
+  ]
+}
