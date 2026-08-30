@@ -40,7 +40,9 @@ These are the kinds of sources that belong in the project, with explanations of 
 | Source | Feed | Why it works |
 |--------|------|--------------|
 | [Gutenberg Times](https://gutenbergtimes.com/) | `https://gutenbergtimes.com/feed/` | Curated Gutenberg ecosystem coverage with consistent community perspective. Fills gaps between official announcements and developer adoption. |
-| [ACF Blog](https://www.advancedcustomfields.com/blog/) | `https://www.advancedcustomfields.com/blog/feed/` | ACF-specific developer workflow updates and modern WordPress implementation patterns. Valuable for the large ACF user base. |
+| [ACF Releases](https://www.advancedcustomfields.com/blog/tag/release/) | `https://www.advancedcustomfields.com/blog/tag/release/feed/` | First-party ACF release announcements and version-specific changes. |
+
+The broader [ACF Blog](https://www.advancedcustomfields.com/blog/) remains included as a Tier 2 source so its posts can contribute without receiving the same priority as primary release announcements.
 
 ### Plugin/theme developer blogs
 

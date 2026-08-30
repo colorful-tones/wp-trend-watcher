@@ -35,6 +35,13 @@ export const sources: Source[] = [
     name: "ACF Blog",
     url: "https://www.advancedcustomfields.com/blog/",
     feedUrl: "https://www.advancedcustomfields.com/blog/feed/",
+    tier: 2,
+  },
+  {
+    id: "acf-releases",
+    name: "ACF Releases",
+    url: "https://www.advancedcustomfields.com/blog/tag/release/",
+    feedUrl: "https://www.advancedcustomfields.com/blog/tag/release/feed/",
     tier: 1,
   },
   {

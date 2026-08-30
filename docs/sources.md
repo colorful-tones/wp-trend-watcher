@@ -48,13 +48,13 @@ Core development activity, release planning, technical proposals, and dev notes.
 Why included:
 Official release and ecosystem updates.
 
-### ACF Blog
+### ACF Releases
 
-- URL: <https://www.advancedcustomfields.com/blog/>
-- Feed: <https://www.advancedcustomfields.com/blog/feed/>
+- URL: <https://www.advancedcustomfields.com/blog/tag/release/>
+- Feed: <https://www.advancedcustomfields.com/blog/tag/release/feed/>
 
 Why included:
-ACF-specific developer workflow updates and modern WordPress implementation patterns.
+First-party ACF release announcements and version-specific changes.
 
 ## Tier 2 Sources
 
@@ -67,6 +67,14 @@ Included in the default collection since v0.1.3. The collector fetches all sourc
 
 Why included:
 Curated Gutenberg ecosystem coverage and community perspective.
+
+### ACF Blog
+
+- URL: <https://www.advancedcustomfields.com/blog/>
+- Feed: <https://www.advancedcustomfields.com/blog/feed/>
+
+Why included:
+ACF-specific developer workflow updates and modern WordPress implementation patterns, retained as a lower-priority source for broader coverage.
 
 ### ACF Chat Fridays
 

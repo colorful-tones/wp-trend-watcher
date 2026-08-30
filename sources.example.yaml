@@ -26,13 +26,19 @@ sources:
     feedUrl: https://wordpress.org/news/feed/
     tier: 1
 
+  - id: acf-releases
+    name: ACF Releases
+    url: https://www.advancedcustomfields.com/blog/tag/release/
+    feedUrl: https://www.advancedcustomfields.com/blog/tag/release/feed/
+    tier: 1
+
+  # ── Tier 2: Broader ecosystem ──────────────────────────────────
   - id: acf-blog
     name: ACF Blog
     url: https://www.advancedcustomfields.com/blog/
     feedUrl: https://www.advancedcustomfields.com/blog/feed/
-    tier: 1
+    tier: 2
 
-  # ── Tier 2: Broader ecosystem ──────────────────────────────────
   - id: gutenberg-times
     name: Gutenberg Times
     url: https://gutenbergtimes.com/
