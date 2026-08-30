@@ -6,7 +6,14 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 24 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Secrets API Proposal and Core Security Initiative</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-30.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-08-30.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.1, Gutenberg updates, and AI tooling in August 2026</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-08-24.html</link>
