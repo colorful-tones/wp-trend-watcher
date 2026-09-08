@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-08",
+  "collectedAt": "2026-09-08T23:21:53.812Z",
+  "articleCount": 11,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Join the PHPUnit test cleanup for 7.2",
+      "url": "https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "publishedAt": "2026-09-08T20:53:50.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 8 September 2026",
+      "url": "https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "publishedAt": "2026-09-08T17:14:55.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Retrospective",
+      "url": "https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "publishedAt": "2026-09-07T16:44:14.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Runnable code examples are now live in the Code Reference",
+      "url": "https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/",
+      "publishedAt": "2026-09-04T09:49:00.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Replacing Dashicons in the admin bar and menu",
+      "url": "https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/",
+      "publishedAt": "2026-09-04T07:03:55.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordCamp US 2026: PHP conversation",
+      "url": "https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/",
+      "publishedAt": "2026-09-03T19:56:13.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: September 2, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/",
+      "publishedAt": "2026-09-02T19:29:05.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 23.9? (2 September)",
+      "url": "https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/",
+      "publishedAt": "2026-09-02T15:25:50.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – September 2, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/",
+      "publishedAt": "2026-09-02T12:54:29.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1.1 Release Schedule",
+      "url": "https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/",
+      "publishedAt": "2026-09-02T05:00:41.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/09/108-student-websites/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Students Built 108 Websites in Two Weeks in Bangladesh",
+      "url": "https://wordpress.org/news/2026/09/108-student-websites/",
+      "publishedAt": "2026-09-07T23:19:34.000Z"
+    }
+  ]
+}
