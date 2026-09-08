@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-08",
+  "provider": "openai-compatible",
+  "model": "ornith-1.5-9b",
+  "articleCount": 11,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "title": "Join the PHPUnit test cleanup for 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "summary": "WordPress core runs ~31,000 PHPUnit tests per commit, and the Build/Test Tools component's goal for the 7.2 release is to cut build time across wordpress-develop by fixing test isolation (restoring state in tear_down()/base testcase rather than special-casing), adding an external-http guard that fails tests hitting the network without being grouped, tightening assertions against documented return types, and splitting large classes into four claimable work tracks (#65893, #63083/#13407, #64895, #65208). Contributors can jump in either by fixing patches or reviewing open PRs; claiming an item requires leaving a comment on the Trac ticket and this post.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1110,
+      "completionTokens": 555
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "title": "Performance Chat Summary: 8 September 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "summary": "spacedmonkey shared ongoing query cache improvements (PR #12220, originating from RTC ticket #65487); testing is difficult because the change adds no new functionality, though other query caches already have coverage. westonruter flagged PR #13084—eliminating script/style concatenation in favor of prefetch—as still top of the performance radar and nearly merge-ready. b1ink0 was reviewing/testing view transition PR #11912, expected to improve admin navigation feel. The next chat is scheduled for Tuesday, September 22, 2026 at 16:00 UTC in the #core-performance Slack channel.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 619,
+      "completionTokens": 394
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "title": "WordPress 7.1 Release Retrospective",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "summary": "WordPress 7.1 (\"Mary Lou\") has shipped and the core team is soliciting developer feedback on the release cycle's processes, squads, and overall experience via a form or comments by September 30, 2026. Submissions are not anonymous but will be anonymized in the follow-up summary published after that date. The goal is to gather diverse perspectives—both from heavily involved contributors and passive observers—to improve future release cycles.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 670,
+      "completionTokens": 239
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/",
+      "title": "Runnable code examples are now live in the Code Reference",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/",
+      "summary": "WordPress 7.1 shipped the first two runnable Code Reference examples, powered by WordPress Playground, letting developers click \"Run\" to execute snippets like `WP_HTML_Processor::class_list()` directly in their browser. Runnable examples are authored via DocBlocks using the ```php interactive code fence syntax rather than regular example blocks. More interactive snippets are planned for 7.2, with a handbook page on authoring them due soon.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 631,
+      "completionTokens": 263
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/",
+      "title": "Replacing Dashicons in the admin bar and menu",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/",
+      "summary": "A patch replaces Dashicons in the admin bar (and super admin bar) and sidebar with WordPress's `wp_get_icon()` function (introduced in 7.1), moving from an icon font to SVGs. The technical rationale is that icon fonts render unpredictably for screen readers, break under forced color modes like Windows High Contrast, and show tofu boxes when the font file fails—whereas currentColor-based SVGs are more accessible and reliable. Feedback should go on the Trac ticket while the PR remains open for code review; no release date is specified.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 904,
+      "completionTokens": 242
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/",
+      "title": "WordCamp US 2026: PHP conversation",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/",
+      "summary": "WordCamp US 2026 contributors discussed WordPress's friction with the broader PHP ecosystem, driven by its long backwards-compatibility window (PHP 7.4+) that outpaces versions most plugins and third-party packages support. Proposed responses include contacting plugin authors directly or delisting incompatible plugins, plus a wishlist idea for a PHP language feature to load modules with flags enabling per-plugin security policies. Developer-facing implications: an upcoming PHPCS release will add missing sniffs, but Gutenberg code landing that isn't compatible with PHP 7.4 creates tooling inconsistencies when it flows into Core.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 993,
+      "completionTokens": 350
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/",
+      "title": "Dev Chat summary: September 2, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/",
+      "summary": "This September 2, 2026 Dev Chat announced a WordPress 7.2 proposal for a Secrets API (still awaiting release squad assignment) and confirmed a published schedule for the WordPress 7.1.1 release. General announcements covered updates to the vulnerability disclosure program and WordPress signing the Open Weights and American AI Leadership letters. The main discussion item was Jeff Paul beginning work on the 7.2 roadmap, since beta is under two months away; he asked contributors to flag priority items (such as ticket #65910 for support teams) so they can be reflected in Anne Zazu's upcoming roadmap post.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 837,
+      "completionTokens": 352
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/",
+      "title": "What’s new in Gutenberg 23.9? (2 September)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/",
+      "summary": "Gutenberg 23.9 (released September 2) focuses on block insertion and custom styling quality-of-life improvements. Insert blocks directly from the block toolbar without changing selection, and use a dot indicator plus filter option in Global Styles to surface and isolate blocks with custom style overrides. Additional changes include axial (independent vertical/horizontal) gap support for group blocks, extended theme.json global styles for Citations/Inputs/Selects, and a new Duotone tab in Global Styles Colors for custom palettes.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1087,
+      "completionTokens": 326
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/",
+      "title": "Dev Chat Agenda – September 2, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/",
+      "summary": "WordPress Dev Chat is scheduled for Wednesday, September 2, 2026 at 15:00 UTC in the core channel on Make WordPress Slack, with a live meeting focused on upcoming releases plus an open floor for ticket assistance and general discussion. Agenda items include a proposal to add a Secrets API to WP 7.2, the release schedule for maintenance update 7.1.1, updates to the Vulnerability Disclosure program, and WordPress signing the Open Weights and American AI Leadership letters. Developers can nominate topics via comments with links and feedback requests; tickets in the next major or maintenance milestone will be prioritized during the open floor.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 706,
+      "completionTokens": 326
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/",
+      "title": "WordPress 7.1.1 Release Schedule",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/",
+      "summary": "WordPress 7.1.1 is a bug-fix-only maintenance release, with tickets limited to those introduced during the 7.1 cycle or intentionally deferred at its end. The schedule runs through September 2026: RC1 on September 10 and general release on September 17, with interim bug scrubs in the #core room. Developers can participate via scheduled scrubs, their own scrubs, or translation work for locales needing strings from 7.1.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1163,
+      "completionTokens": 286
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/09/108-student-websites/",
+      "title": "Students Built 108 Websites in Two Weeks in Bangladesh",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/09/108-student-websites/",
+      "summary": "WordPress Campus Connect delivers free, hands-on WordPress sessions to schools via local volunteers following a shared curriculum, while WordPress Credits places mentored interns in paid-credit roles contributing directly to core WordPress across 38 institutions in 16 countries. The Kishoreganj series alone produced 108 student-built sites over two weeks; Mataró students used Playground and AI assistance to build a working shore-fishing time plugin, citing certificate value and local job relevance as key takeaways.",
+      "model": "ornith-1.5-9b",
+      "promptTokens": 1052,
+      "completionTokens": 233
+    }
+  ],
+  "totalPromptTokens": 9772,
+  "totalCompletionTokens": 3566
+}

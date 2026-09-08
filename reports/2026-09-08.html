@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress Weekly Trends: Release Planning &amp; 7.2 Proposals</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-09-08.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress Weekly Trends: Release Planning &amp; 7.2 Proposals">
+  <meta property="og:description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-09-08.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress Weekly Trends: Release Planning &amp; 7.2 Proposals">
+  <meta name="twitter:description" content="Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-09-08</div>
+    <h1 id="wordpress-trend-report-2026-09-08"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-09-08</h1>
+    <p class="report-description">Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</p>
+  </div>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-09-08<br>Human-reviewed report</p>
+      <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#reader-action-summary">Reader Action Summary</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(11 articles)</span></summary>
+<ol>
+<li><a href="https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/">Join the PHPUnit test cleanup for 7.2</a> (Make Core) — WordPress core runs ~31,000 PHPUnit tests per commit, and the Build/Test Tools component's goal for the 7.2 release is to cut build time across wordpress-develop by fixing test isolation (restoring state in tear_down()/base testcase rather than special-casing), adding an external-http guard that fails tests hitting the network without being grouped, tightening assertions against documented return types, and splitting large classes into four claimable work tracks (#65893, #63083/#13407, #64895, #65208).</li>
+<li><a href="https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/">Performance Chat Summary: 8 September 2026</a> (Make Core) — spacedmonkey shared ongoing query cache improvements (PR #12220, originating from RTC ticket #65487); testing is difficult because the change adds no new functionality, though other query caches already have coverage.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/">WordPress 7.1 Release Retrospective</a> (Make Core) — WordPress 7.1 (&quot;Mary Lou&quot;) has shipped and the core team is soliciting developer feedback on the release cycle's processes, squads, and overall experience via a form or comments by September 30, 2026.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/">Runnable code examples are now live in the Code Reference</a> (Make Core) — WordPress 7.1 shipped the first two runnable Code Reference examples, powered by WordPress Playground, letting developers click &quot;Run&quot; to execute snippets like <code>WP_HTML_Processor::class_list()</code> directly in their browser.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/">Replacing Dashicons in the admin bar and menu</a> (Make Core) — A patch replaces Dashicons in the admin bar (and super admin bar) and sidebar with WordPress's <code>wp_get_icon()</code> function (introduced in 7.1), moving from an icon font to SVGs.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/">WordCamp US 2026: PHP conversation</a> (Make Core) — WordCamp US 2026 contributors discussed WordPress's friction with the broader PHP ecosystem, driven by its long backwards-compatibility window (PHP 7.4+) that outpaces versions most plugins and third-party packages support.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/">Dev Chat summary: September 2, 2026</a> (Make Core) — This September 2, 2026 Dev Chat announced a WordPress 7.2 proposal for a Secrets API (still awaiting release squad assignment) and confirmed a published schedule for the WordPress 7.1.1 release.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/">What’s new in Gutenberg 23.9? (2 September)</a> (Make Core) — Gutenberg 23.9 (released September 2) focuses on block insertion and custom styling quality-of-life improvements.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/">Dev Chat Agenda – September 2, 2026</a> (Make Core) — WordPress Dev Chat is scheduled for Wednesday, September 2, 2026 at 15:00 UTC in the core channel on Make WordPress Slack, with a live meeting focused on upcoming releases plus an open floor for ticket assistance and general discussion.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/">WordPress 7.1.1 Release Schedule</a> (Make Core) — WordPress 7.1.1 is a bug-fix-only maintenance release, with tickets limited to those introduced during the 7.1 cycle or intentionally deferred at its end.</li>
+<li><a href="https://wordpress.org/news/2026/09/108-student-websites/">Students Built 108 Websites in Two Weeks in Bangladesh</a> (WordPress.org News) — WordPress Campus Connect delivers free, hands-on WordPress sessions to schools via local volunteers following a shared curriculum, while WordPress Credits places mentored interns in paid-credit roles contributing directly to core WordPress across 38 institutions in 16 countries.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>Release planning is the dominant theme this week, appearing across four sources. The core team published a schedule for the bug-fix-only maintenance release <strong>WordPress 7.1.1</strong> (RC1 September 10, general release September 17), and separately opened a retrospective process to gather developer feedback on the 7.1 cycle by <strong>September 30</strong>. Two Dev Chat sessions this week covered upcoming releases and confirmed both items.</p>
+<p>WordPress 7.2 development is moving forward with concrete proposals rather than vague direction. The Build/Test Tools component has a stated goal of cutting build time across <code>wordpress-develop</code> for 7.2, and a new <strong>Secrets API</strong> proposal was announced (still awaiting release squad assignment).</p>
+<p>Two technical tracks are ongoing but not yet at decision points:</p>
+<ul>
+<li>Query cache improvements continue in PR #12220 (originating from RTC ticket #65487), discussed in the September 8 Performance Chat.</li>
+<li>A migration away from Dashicons toward <code>wp_get_icon()</code> (introduced in 7.1) is being applied to the admin bar and menu, moving from an icon font to SVGs.</li>
+</ul>
+<p>Gutenberg 23.9 shipped on September 2 with block-insertion and custom-styling quality-of-life improvements. Separately, WordPress Playground now powers runnable examples in the Code Reference (two live as of 7.1). On a community track, WordPress Campus Connect and Credits are placing mentored interns across 38 institutions in 16 countries to contribute directly to core.</p>
+<h3 id="developer-implications">Developer Implications</h3>
+<p><strong>Release schedule you can act on.</strong> If your plugin or theme has bugs introduced during the 7.1 cycle or tied to tickets deferred at its end, <strong>WordPress 7.1.1 is bug-fix-only with RC1 on September 10 and general release on September 17</strong>. Use those dates to plan a scrub or translation contribution (locales still need strings from 7.1). This is not a feature release; do not expect changes here beyond fixes.</p>
+<p><strong>Monitor the 7.2 decisions, but treat them as proposals.</strong> The <strong>Secrets API</strong> proposal and the PHPUnit test-cleanup work are both for 7.2 and neither has an assigned squad or final spec yet. If you build on secrets handling in core, watch the release channel rather than assume a stable API exists. The PHPUnit cleanup targets faster <code>wordpress-develop</code> builds via better test isolation (tear-down state restoration, an external-http guard that fails tests hitting the network without grouping, tighter assertions against documented return types). Expect build times to change once 7.2 work lands; plan CI accordingly rather than expecting current timings to hold.</p>
+<p><strong>PHP support is a live friction point.</strong> WordCamp US contributors flagged that WordPress's backwards-compatibility window (PHP 7.4+) outpaces what most plugins and third-party packages support. If you are choosing a PHP minimum for new or maintained code, treat this as a compatibility risk worth discussing with clients rather than an afterthought.</p>
+<p><strong>Adopt <code>wp_get_icon()</code> where feasible.</strong> It shipped in 7.1 and is now being used to replace Dashicons in the admin bar and menu (SVGs instead of an icon font). If you maintain themes or admin-facing code, migrating to <code>wp_get_icon()</code> reduces reliance on a deprecated-style icon system; check whether your build still needs Dashicons loaded.</p>
+<p><strong>Feedback deadline for process only.</strong> The 7.1 retrospective form closes <strong>September 30</strong>; submissions are non-anonymous but anonymized in the follow-up summary. This affects core release-process design, not shipped code or plugin compatibility — no action needed on client projects beyond optional input if you want it heard.</p>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/">Join the PHPUnit test cleanup for 7.2</a> (Make Core) — WordPress core runs ~31,000 PHPUnit tests per commit, and the Build/Test Tools component's goal for the 7.2 release is to cut build time across wordpress-develop by fixing test isolation (restoring state in tear_down()/base testcase rather than special-casing), adding an external-http guard that fails tests hitting the network without being grouped, tightening assertions against documented return types, and splitting large classes into four claimable work tracks (#65893, #63083/#13407, #64895, #65208).</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/">Performance Chat Summary: 8 September 2026</a> (Make Core) — spacedmonkey shared ongoing query cache improvements (PR #12220, originating from RTC ticket #65487); testing is difficult because the change adds no new functionality, though other query caches already have coverage.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/">WordPress 7.1 Release Retrospective</a> (Make Core) — WordPress 7.1 (&quot;Mary Lou&quot;) has shipped and the core team is soliciting developer feedback on the release cycle's processes, squads, and overall experience via a form or comments by September 30, 2026.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>The patch to replace the Dashicon icon font with SVGs is exciting. It could use more eyes and testing. Be sure to read: <a href="https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/">Replacing Dashicons in the admin bar and menu</a> and drop your feedback either as a comment on the post, or on the related <a href="https://core.trac.wordpress.org/ticket/65089">Trac ticket</a>.</p>
+<hr>
+
+
+<h2 id="reader-action-summary">Reader Action Summary</h2>
+<p>&lt;!-- Human-authored: add up to 4 action items here --&gt;</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/">Join the PHPUnit test cleanup for 7.2</a> — 9/8/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/">Performance Chat Summary: 8 September 2026</a> — 9/8/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/">WordPress 7.1 Release Retrospective</a> — 9/7/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/04/runnable-code-examples-are-now-live-in-the-code-reference/">Runnable code examples are now live in the Code Reference</a> — 9/4/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/04/replacing-dashicons-in-the-admin-bar-and-menu/">Replacing Dashicons in the admin bar and menu</a> — 9/4/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/03/wordcamp-us-2026-php-conversation/">WordCamp US 2026: PHP conversation</a> — 9/3/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/summary-dev-chat-september-2-2026/">Dev Chat summary: September 2, 2026</a> — 9/2/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/whats-new-in-gutenberg-23-9-2-september/">What’s new in Gutenberg 23.9? (2 September)</a> — 9/2/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/dev-chat-agenda-sep-02-2026/">Dev Chat Agenda – September 2, 2026</a> — 9/2/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/02/wordpress-7-1-1-release-schedule/">WordPress 7.1.1 Release Schedule</a> — 9/2/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/09/108-student-websites/">Students Built 108 Websites in Two Weeks in Bangladesh</a> — 9/7/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 11</li>
+<li>Sources: Make Core, WordPress.org News</li>
+<li>Model: openai-compatible/ornith-1.5-9b</li>
+<li>Tokens: 11441 prompt + 5668 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~10 minutes</li>
+</ul>
+
+      </div>
+    </main>
+  </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>
