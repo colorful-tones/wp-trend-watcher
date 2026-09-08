@@ -24,6 +24,7 @@ export interface SectionSpan {
 }
 
 const WATCHING_HEADING = "## What I'm Watching";
+const ACTION_SUMMARY_HEADING = "## Reader Action Summary";
 
 /**
  * Known placeholder patterns that indicate no human-authored content.
@@ -178,6 +179,75 @@ export function replaceWatchingSection(
   }
 
   return beforeBody.trimEnd() + "\n\n" + cleanContent + "\n" + afterBody;
+}
+
+/**
+ * Find the Reader Action Summary section in a report.
+ *
+ * @param report - Full Markdown report text.
+ * @returns SectionSpan with body and offsets, or null.
+ */
+export function findReaderActionSummarySection(report: string): SectionSpan | null {
+  return findSection(report, ACTION_SUMMARY_HEADING);
+}
+
+/**
+ * Replace the Reader Action Summary section body while preserving the report.
+ *
+ * @param report - Full Markdown report text.
+ * @param newContent - Human-authored action summary Markdown.
+ * @returns Modified report, or null when the section is missing.
+ */
+export function replaceReaderActionSummarySection(
+  report: string,
+  newContent: string,
+): string | null {
+  const span = findReaderActionSummarySection(report);
+  if (span === null) {
+    const sourceMarker = "\n## Source Articles";
+    const sourceIdx = report.indexOf(sourceMarker);
+    if (sourceIdx === -1) return null;
+    const content = newContent.trim() ||
+      "<!-- Human-authored: add up to 4 action items here -->";
+    return `${report.slice(0, sourceIdx)}\n\n## Reader Action Summary\n\n${content}\n${report.slice(sourceIdx)}`;
+  }
+  const before = report.slice(0, span.bodyStart).trimEnd();
+  const after = report.slice(span.bodyEnd);
+  const content = newContent.trim() ||
+    "<!-- Human-authored: add up to 4 action items here -->";
+  return `${before}\n\n${content}\n${after}`;
+}
+
+/** Find a top-level Markdown section body and its offsets. */
+function findSection(report: string, heading: string): SectionSpan | null {
+  const headingIdx = report.indexOf(heading);
+  if (headingIdx === -1) return null;
+  const headingEnd = headingIdx + heading.length;
+  const newlineIdx = report.indexOf("\n", headingEnd);
+  if (newlineIdx === -1) {
+    return { body: "", bodyStart: headingEnd, bodyEnd: headingEnd };
+  }
+  let bodyStart = newlineIdx + 1;
+  while (bodyStart < report.length && report[bodyStart] === "\n") bodyStart++;
+  const afterHeading = report.slice(bodyStart);
+  const hrMatch = afterHeading.match(/\n---\s*\n/);
+  const h2Match = afterHeading.match(/\n## /);
+  let bodyEnd: number;
+  if (hrMatch && h2Match) {
+    bodyEnd = bodyStart + Math.min(hrMatch.index!, h2Match.index!);
+  } else if (hrMatch) {
+    bodyEnd = bodyStart + hrMatch.index!;
+  } else if (h2Match) {
+    bodyEnd = bodyStart + h2Match.index!;
+  } else {
+    bodyEnd = report.length;
+  }
+  while (bodyEnd > bodyStart && report[bodyEnd - 1] === "\n") bodyEnd--;
+  return {
+    body: report.slice(bodyStart, bodyEnd).trim(),
+    bodyStart,
+    bodyEnd,
+  };
 }
 
 /** Marker line prefix used in Build Notes for the human review time. */

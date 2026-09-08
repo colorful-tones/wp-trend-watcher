@@ -12,6 +12,7 @@ export type ReportSection =
   | "weekly-summary"
   | "since-last-report"
   | "what-i-m-watching"
+  | "reader-action-summary"
   | "source-articles"
   | "build-notes";
 
@@ -26,6 +27,7 @@ export const DEFAULT_PRESENTATION_ORDER: ReportSection[] = [
   "weekly-summary",
   "since-last-report",
   "what-i-m-watching",
+  "reader-action-summary",
   "source-articles",
   "build-notes",
 ];
@@ -41,6 +43,7 @@ const SECTION_HEADINGS: Record<ReportSection, string> = {
   "weekly-summary": "## Weekly Summary",
   "since-last-report": "## Since Last Report",
   "what-i-m-watching": "## What I'm Watching",
+  "reader-action-summary": "## Reader Action Summary",
   "source-articles": "## Source Articles",
   "build-notes": "## Build Notes",
 };

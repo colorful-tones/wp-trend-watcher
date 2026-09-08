@@ -39,7 +39,7 @@ Before publishing a report:
 
 The `pnpm weekly` command starts a local review server at http://127.0.0.1:3001/review after running the automated pipeline. The review page displays:
 
-- Automated review checks (Weekly Summary, source references, weasel words, Build Notes, What I'm Watching, markdown links, HTML report presence)
+- Automated review checks (Weekly Summary, source references, weasel words, Build Notes, What I'm Watching, Reader Action Summary, markdown links, HTML report presence)
 - A rendered preview of the report
 - An editable textarea for the "What I'm Watching" section
 - A free-form "Review time" field that records how long you spent reviewing and publishing the report
@@ -55,6 +55,17 @@ Each report should include:
 ### What I'm Watching
 
 A short section with personal observations about what seems important, uncertain, or worth following.
+
+### Reader Action Summary
+
+An optional, human-authored section with no more than four items grouped under these labels:
+
+- `### Act now` — confirmed maintenance, security, or time-sensitive compatibility work.
+- `### Prepare` — a concrete testing, audit, or scheduling task.
+- `### Watch` — a proposal or emerging direction that does not justify action yet.
+- `### No action` — useful context that does not require work.
+
+Each bullet should identify the audience, include a `State:`, and link to the source article. Do not use this section to turn proposals into migrations, generate production code, or assign an unsupported `critical` severity.
 
 ### Build Notes
 
