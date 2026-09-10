@@ -20,6 +20,7 @@ import {
   checkWeaselWords,
   checkBuildNotes,
   checkWatchingSection,
+  checkReaderActionSummary,
   checkMarkdownLinks,
   checkHtmlReport,
   type ReviewCheck,
@@ -97,6 +98,7 @@ async function main(): Promise<void> {
     checkWeaselWords(body),
     checkBuildNotes(report),
     checkWatchingSection(report),
+    checkReaderActionSummary(report),
     checkMarkdownLinks(report),
     checkHtmlReport(htmlExists, htmlPath),
   ];

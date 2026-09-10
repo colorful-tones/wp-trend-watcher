@@ -48,7 +48,9 @@ import {
 } from "../summarize/report.js";
 import {
   findWatchingSection,
+  findReaderActionSummarySection,
   replaceWatchingSection,
+  replaceReaderActionSummarySection,
   isPlaceholderContent,
   findReviewTime,
   replaceReviewTime,
@@ -61,6 +63,7 @@ import {
   checkWeaselWords,
   checkBuildNotes,
   checkWatchingSection,
+  checkReaderActionSummary,
   checkMarkdownLinks,
   checkHtmlReport,
   type ReviewCheck,
@@ -78,6 +81,7 @@ export interface ReviewData {
   html: string;
   summary: string;
   reviewTime: string;
+  actionSummary: string;
   checks: ReviewCheck[];
   descriptionStatus: "generated" | "fallback";
 }
@@ -412,9 +416,12 @@ function reviewPageHtml(): string {
 
 <section class="editor-section">
   <h2>Your Review Summary</h2>
-  <p class="meta">Edit the <em>What I'm Watching</em> section below. Saving updates the canonical Markdown report, generates its SEO description, and regenerates the matching HTML.</p>
+  <p class="meta">Edit the human-authored sections below. Saving updates the canonical Markdown report, generates its SEO description, and regenerates the matching HTML.</p>
   <label class="editor-label" for="summary-textarea">What I'm Watching</label>
   <textarea id="summary-textarea" placeholder="Add your observations here…"></textarea>
+  <label class="editor-label" for="action-summary-textarea">Reader Action Summary</label>
+  <p class="meta">Use up to four bullet items under <code>### Act now</code>, <code>### Prepare</code>, <code>### Watch</code>, or <code>### No action</code>. Include <code>State:</code> and a source link in each item.</p>
+  <textarea id="action-summary-textarea" placeholder="### Prepare\n\n- **Audience:** Test the change. **State:** beta. **Source:** [Release notes](https://example.com)"></textarea>
   <label class="editor-label" for="review-time-input">Review time</label>
   <input id="review-time-input" type="text" placeholder="e.g. ~15 minutes" autocomplete="off">
   <button class="btn" id="save-btn" onclick="saveSummary()">💾 Save summary</button>
@@ -434,6 +441,7 @@ async function loadReview() {
     renderChecks(data.checks);
     document.getElementById('report-container').innerHTML = data.html;
     document.getElementById('summary-textarea').value = data.summary;
+    document.getElementById('action-summary-textarea').value = data.actionSummary;
     document.getElementById('review-time-input').value = data.reviewTime || '';
   } catch (err) {
     document.getElementById('meta-info').textContent = 'Failed to load: ' + err.message;
@@ -458,6 +466,7 @@ async function saveSummary() {
   const btn = document.getElementById('save-btn');
   const summary = document.getElementById('summary-textarea').value;
   const reviewTime = document.getElementById('review-time-input').value;
+  const actionSummary = document.getElementById('action-summary-textarea').value;
 
   statusEl.className = 'status loading';
   statusEl.textContent = 'Saving…';
@@ -467,7 +476,7 @@ async function saveSummary() {
     const res = await fetch('/api/review-summary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ summary: summary, reviewTime: reviewTime }),
+      body: JSON.stringify({ summary: summary, actionSummary: actionSummary, reviewTime: reviewTime }),
     });
 
     if (!res.ok) {
@@ -482,6 +491,7 @@ async function saveSummary() {
       : '✓ Saved — Markdown and HTML updated. SEO description generation was unavailable.';
     document.getElementById('report-container').innerHTML = data.html;
     document.getElementById('summary-textarea').value = data.summary;
+    document.getElementById('action-summary-textarea').value = data.actionSummary;
     document.getElementById('review-time-input').value = data.reviewTime || '';
     document.getElementById('meta-info').textContent =
       'Report: ' + data.date + ' — ' + data.checks.length + ' checks run';
@@ -597,6 +607,7 @@ async function serveReviewChecks(
       checkWeaselWords(body),
       checkBuildNotes(report),
       checkWatchingSection(report),
+      checkReaderActionSummary(report),
       checkMarkdownLinks(report),
       checkHtmlReport(htmlExists, htmlPath),
     ];
@@ -632,6 +643,8 @@ async function serveReviewData(
     // Extract summary (What I'm Watching content)
     const section = findWatchingSection(report);
     const summary = section ? section.body : "";
+    const actionSection = findReaderActionSummarySection(report);
+    const actionSummary = actionSection ? actionSection.body : "";
 
     // Extract review time from Build Notes
     const reviewTime = findReviewTime(report);
@@ -650,6 +663,7 @@ async function serveReviewData(
       checkWeaselWords(body),
       checkBuildNotes(report),
       checkWatchingSection(report),
+      checkReaderActionSummary(report),
       checkMarkdownLinks(report),
       checkHtmlReport(htmlExists, htmlPath),
     ];
@@ -658,6 +672,7 @@ async function serveReviewData(
       date,
       html,
       summary,
+      actionSummary,
       reviewTime,
       checks,
       descriptionStatus:
@@ -702,7 +717,7 @@ async function handleSaveSummary(
     return;
   }
 
-  let payload: { summary?: unknown; reviewTime?: unknown };
+  let payload: { summary?: unknown; actionSummary?: unknown; reviewTime?: unknown };
   try {
     payload = JSON.parse(body);
   } catch {
@@ -719,6 +734,12 @@ async function handleSaveSummary(
     return;
   }
 
+  if (payload.actionSummary !== undefined && typeof payload.actionSummary !== "string") {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: 'Missing or invalid "actionSummary" field' }) + "\n");
+    return;
+  }
+
   // reviewTime is optional; when provided it must be a string.
   if (payload.reviewTime !== undefined && typeof payload.reviewTime !== "string") {
     res.writeHead(400, { "Content-Type": "application/json" });
@@ -729,6 +750,7 @@ async function handleSaveSummary(
   }
 
   const newSummary = payload.summary;
+  const newActionSummary = typeof payload.actionSummary === "string" ? payload.actionSummary : "";
   const newReviewTime = typeof payload.reviewTime === "string" ? payload.reviewTime : "";
 
   // Find latest report
@@ -762,10 +784,17 @@ async function handleSaveSummary(
     return;
   }
 
+  const withActionSummary = replaceReaderActionSummarySection(updatedReport, newActionSummary);
+  if (withActionSummary === null) {
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Reader Action Summary section not found in report" }) + "\n");
+    return;
+  }
+
   // Update review time in Build Notes when provided.
-  let finalReport = updatedReport;
+  let finalReport = withActionSummary;
   if (newReviewTime !== "") {
-    const withReviewTime = replaceReviewTime(updatedReport, newReviewTime);
+    const withReviewTime = replaceReviewTime(withActionSummary, newReviewTime);
     if (withReviewTime !== null) {
       finalReport = withReviewTime;
     }
@@ -825,6 +854,8 @@ async function handleSaveSummary(
   const html = markdownToHtml(finalReport);
   const section = findWatchingSection(finalReport);
   const summary = section ? section.body : "";
+  const actionSection = findReaderActionSummarySection(finalReport);
+  const actionSummary = actionSection ? actionSection.body : "";
   const reviewTime = findReviewTime(finalReport);
   const rbody = extractReportBody(finalReport);
   const articles = parseSourceArticles(finalReport);
@@ -843,6 +874,7 @@ async function handleSaveSummary(
     checkWeaselWords(rbody),
     checkBuildNotes(finalReport),
     checkWatchingSection(finalReport),
+    checkReaderActionSummary(finalReport),
     checkMarkdownLinks(finalReport),
     checkHtmlReport(htmlExists, htmlPath),
   ];
@@ -851,6 +883,7 @@ async function handleSaveSummary(
     date,
     html,
     summary,
+    actionSummary,
     reviewTime,
     checks,
     descriptionStatus,
