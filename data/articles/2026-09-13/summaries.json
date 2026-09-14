@@ -1,0 +1,150 @@
+{
+  "date": "2026-09-13",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 14,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/09/whats-new-for-developers-september-2026/",
+      "title": "What’s new for developers? (September 2026)",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/09/whats-new-for-developers-september-2026/",
+      "summary": "WordPress 7.2 Beta 1 is scheduled for October 20-22, 2026, with the final release expected between December 8-10, 2026. Key technical updates include the addition of runnable browser-based code examples in the Code Reference via `php interactive` DocBlocks and a new declarable API in Gutenberg 23.9 for block variations and transforms to define custom keyboard shortcuts. Additionally, the DataViews package has dropped private APIs to resolve \"Cannot unlock an object\" errors in bundled plugins.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1194,
+      "completionTokens": 116
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/10/summary-dev-chat-september-9-2026/",
+      "title": "Dev Chat summary: September 9, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/10/summary-dev-chat-september-9-2026/",
+      "summary": "WordPress 7.1.1 RC1 is scheduled for September 10, while the 7.2 release cycle has officially begun with a published Bug Scrub Schedule and a goal to reduce Core build times. Key technical discussions include a Secrets API feature plugin draft, tracking RTC polling costs in the Presence API, and finalizing Gutenberg features for keyword icon searches and placeholders outside the Site Editor.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1208,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/",
+      "title": "WordPress 7.1.1 RC1 is now available",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/",
+      "summary": "WordPress 7.1.1 RC1 is a bug-fix only maintenance release intended to address regressions and issues introduced during the 7.1 cycle. Key technical fixes include a tooltip timer race condition, a fix for `wp_get_tooltip()` treating custom markup as a format string, and early bail logic in `wp_render_block_states_support()` for blocks without style attributes.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1176,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/09/updating-wordpress-to-use-node-js-24-and-npm-11/",
+      "title": "Updating WordPress to use Node.js 24 and npm 11",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/09/updating-wordpress-to-use-node-js-24-and-npm-11/",
+      "summary": "WordPress core and Gutenberg now require Node.js 24.18.0+ and npm 11.16.0+ for trunk development, while older branches remain on Node.js 20.x and npm 10.x. Contributors must update their local environments, rebase open pull requests, and run `npm ci` to ensure CI checks pass and to unblock features like isolated dependencies and OIDC trusted publishing.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1164,
+      "completionTokens": 93
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/09/bug-scrub-schedule-for-wordpress-7-2/",
+      "title": "Bug Scrub Schedule for WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/09/bug-scrub-schedule-for-wordpress-7-2/",
+      "summary": "The WordPress 7.2 release cycle includes a structured bug scrub schedule from September 15, 2026, through December 8, 2026, across Alpha, Beta, and Release Candidate phases. Developers can participate in these sessions via the #core Slack channel to triage bugs, with a specific focus on regressions and issues reported from previous release stages.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1443,
+      "completionTokens": 78
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/09/announcing-the-wordpress-7-2-release-squad/",
+      "title": "Announcing the WordPress 7.2 Release Squad",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/09/announcing-the-wordpress-7-2-release-squad/",
+      "summary": "The WordPress 7.2 Release Squad has been formed with a streamlined structure led by Matt Mullenweg, focusing on collaboration with Make Team Reps to reduce overhead and overlap. The squad includes specific leads for triage, testing, and the Twenty Twenty-Seven default theme, with a dedicated mentor role to onboard new contributors.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1018,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/09/dev-chat-agenda-sep-09-2026/",
+      "title": "Dev Chat Agenda – September 9, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/09/dev-chat-agenda-sep-09-2026/",
+      "summary": "The September 9, 2026, Dev Chat focuses on upcoming release discussions, including the WordPress 7.1 retrospective and PHPUnit test cleanup for version 7.2. Key technical updates include the addition of runnable code examples to the Code Reference and the replacement of dashicons in the admin bar and menu.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 789,
+      "completionTokens": 67
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "title": "Join the PHPUnit test cleanup for 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "summary": "The WordPress Core team is seeking contributors to clean up the PHPUnit test suite for the 7.2 release to reduce build times and improve test isolation. Developers can contribute by fixing patches for state leaks, network calls, and weak assertions, or by reviewing existing pull requests.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1183,
+      "completionTokens": 56
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "title": "Performance Chat Summary: 8 September 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "summary": "Developers should monitor PR #12220 for query cache improvements and PR #13084 for the removal of script/style concatenation in favor of prefetching. Additionally, PR #11912 is currently being reviewed to implement view transitions for smoother admin navigation.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 666,
+      "completionTokens": 59
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "title": "WordPress 7.1 Release Retrospective",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "summary": "The WordPress 7.1 \"Mary Lou\" release retrospective is open for community feedback until September 30, 2026. Contributors and observers are invited to provide feedback on development processes, squad organization, and release cycle improvements to inform future release planning.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 719,
+      "completionTokens": 55
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/09/108-student-websites/",
+      "title": "Students Built 108 Websites in Two Weeks in Bangladesh",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/09/108-student-websites/",
+      "summary": "WordPress Campus Connect and WordPress Credits are expanding global education through volunteer-led workshops and mentored internships in countries like Bangladesh, Uganda, Spain, and Costa Rica. Key technical activities included students building 108 websites, developing a fishing-time calculation plugin using Playground and AI, and creating replicable teaching guides for STEM outreach.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1077,
+      "completionTokens": 66
+    },
+    {
+      "articleId": "acf-releases:https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "title": "ACF 6.8.10 Security Release",
+      "sourceName": "ACF Releases",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "summary": "ACF version 6.8.10 introduces critical security patches including PDF header validation, enforcement of WordPress read permissions for specific field types in REST API responses, and stricter validation for frontend form submissions. Key technical changes include the addition of a $context argument for `acf_encrypt()`/`acf_decrypt()` to support domain separation and the expiration of `_acf_form` tokens.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 634,
+      "completionTokens": 81
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "title": "ACF 6.8.10 Security Release",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "summary": "ACF version 6.8.10 introduces critical security patches including PDF header validation, enforced WordPress read permissions for specific field types in REST API responses, and stricter validation for frontend form submissions. Key technical updates include the addition of an optional `$context` argument for `acf_encrypt()`/`acf_decrypt()` and the requirement for `_acf_form` tokens to be bound to their issuing render.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 634,
+      "completionTokens": 85
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/the-wordpress-7-2-release-squad-wordcamp-world-playground-meets-webmcp-and-more-weekend-edition-376/",
+      "title": "The WordPress 7.2 release squad, WordCamp World, Playground meets WebMCP, and more—Weekend Edition 376",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/the-wordpress-7-2-release-squad-wordcamp-world-playground-meets-webmcp-and-more-weekend-edition-376/",
+      "summary": "WordPress 7.1.1 is scheduled for release on Thursday, September 17, as a bug-fix update. Developers maintaining sites using 7.1's new features should test the release candidate prior to the launch.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 859,
+      "completionTokens": 49
+    }
+  ],
+  "totalPromptTokens": 13764,
+  "totalCompletionTokens": 1032
+}

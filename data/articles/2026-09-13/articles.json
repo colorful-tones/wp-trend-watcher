@@ -1,0 +1,119 @@
+{
+  "date": "2026-09-13",
+  "collectedAt": "2026-09-13T14:25:43.874Z",
+  "articleCount": 14,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/09/whats-new-for-developers-september-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (September 2026)",
+      "url": "https://developer.wordpress.org/news/2026/09/whats-new-for-developers-september-2026/",
+      "publishedAt": "2026-09-10T22:18:51.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/10/summary-dev-chat-september-9-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat summary: September 9, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/10/summary-dev-chat-september-9-2026/",
+      "publishedAt": "2026-09-10T20:22:44.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1.1 RC1 is now available",
+      "url": "https://make.wordpress.org/core/2026/09/10/wordpress-7-1-1-rc1-is-now-available/",
+      "publishedAt": "2026-09-10T18:39:19.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/09/updating-wordpress-to-use-node-js-24-and-npm-11/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Updating WordPress to use Node.js 24 and npm 11",
+      "url": "https://make.wordpress.org/core/2026/09/09/updating-wordpress-to-use-node-js-24-and-npm-11/",
+      "publishedAt": "2026-09-09T18:04:35.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/09/bug-scrub-schedule-for-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Bug Scrub Schedule for WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/09/09/bug-scrub-schedule-for-wordpress-7-2/",
+      "publishedAt": "2026-09-09T15:23:02.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/09/announcing-the-wordpress-7-2-release-squad/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Announcing the WordPress 7.2 Release Squad",
+      "url": "https://make.wordpress.org/core/2026/09/09/announcing-the-wordpress-7-2-release-squad/",
+      "publishedAt": "2026-09-09T15:13:59.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/09/dev-chat-agenda-sep-09-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – September 9, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/09/dev-chat-agenda-sep-09-2026/",
+      "publishedAt": "2026-09-09T02:38:18.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Join the PHPUnit test cleanup for 7.2",
+      "url": "https://make.wordpress.org/core/2026/09/08/join-the-phpunit-test-cleanup-for-7-2/",
+      "publishedAt": "2026-09-08T20:53:50.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 8 September 2026",
+      "url": "https://make.wordpress.org/core/2026/09/08/performance-chat-summary-8-september-2026/",
+      "publishedAt": "2026-09-08T17:14:55.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.1 Release Retrospective",
+      "url": "https://make.wordpress.org/core/2026/09/07/wordpress-7-1-release-retrospective/",
+      "publishedAt": "2026-09-07T16:44:14.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/09/108-student-websites/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Students Built 108 Websites in Two Weeks in Bangladesh",
+      "url": "https://wordpress.org/news/2026/09/108-student-websites/",
+      "publishedAt": "2026-09-07T23:19:34.000Z"
+    },
+    {
+      "id": "acf-releases:https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "sourceId": "acf-releases",
+      "sourceName": "ACF Releases",
+      "title": "ACF 6.8.10 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "publishedAt": "2026-09-10T17:39:04.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.10 Security Release",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-10-security-release/",
+      "publishedAt": "2026-09-10T17:39:04.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/the-wordpress-7-2-release-squad-wordcamp-world-playground-meets-webmcp-and-more-weekend-edition-376/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "The WordPress 7.2 release squad, WordCamp World, Playground meets WebMCP, and more—Weekend Edition 376",
+      "url": "https://gutenbergtimes.com/the-wordpress-7-2-release-squad-wordcamp-world-playground-meets-webmcp-and-more-weekend-edition-376/",
+      "publishedAt": "2026-09-12T18:55:39.000Z"
+    }
+  ]
+}
