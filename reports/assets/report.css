@@ -306,7 +306,7 @@ details.article-inventory ol {
   --theme-hero-padding: 3.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
   --theme-layout-gap: clamp(2rem, 6vw, 5rem);
   --theme-layout-top: 3rem;
-  --theme-card-gap: 0.75rem;
+  --theme-card-gap: 1.5rem;
   --theme-card-padding: 1.25rem;
   --theme-card-radius: 0;
   --theme-border-width: 2px;
@@ -316,8 +316,8 @@ details.article-inventory ol {
   --theme-card-hover-shadow: 8px 8px 0 var(--accent);
   --theme-hero-shadow: none;
   --theme-section-space: 2rem;
-  --theme-body-size: 0.95rem;
-  --theme-body-leading: 1.6;
+  --theme-body-size: 1rem;
+  --theme-body-leading: 1.9;
   --theme-card-leading: 1;
 }
 
@@ -338,7 +338,7 @@ details.article-inventory ol {
   --theme-hero-padding: 4.5rem clamp(1.5rem, 6vw, 5rem) 4rem;
   --theme-layout-gap: clamp(3rem, 8vw, 6rem);
   --theme-layout-top: 4rem;
-  --theme-card-gap: 1.25rem;
+  --theme-card-gap: 1.5rem;
   --theme-card-padding: 1.5rem;
   --theme-card-radius: 0;
   --theme-border-width: 1px;
@@ -370,7 +370,7 @@ details.article-inventory ol {
   --theme-hero-padding: 3rem clamp(1rem, 3vw, 2.5rem) 2.75rem;
   --theme-layout-gap: clamp(2rem, 5vw, 4rem);
   --theme-layout-top: 2.5rem;
-  --theme-card-gap: 0.75rem;
+  --theme-card-gap: 2rem;
   --theme-card-padding: 1.1rem;
   --theme-card-radius: 10px;
   --theme-border-width: 1px;
@@ -380,8 +380,8 @@ details.article-inventory ol {
   --theme-card-hover-shadow: 0 0 28px rgba(255, 107, 169, 0.35), 0 0 8px rgba(117, 228, 255, 0.18);
   --theme-hero-shadow: 0 0 0 1px var(--accent), 0 0 3rem rgba(117, 228, 255, 0.12);
   --theme-section-space: 3.5rem;
-  --theme-body-size: 0.9rem;
-  --theme-body-leading: 1.55;
+  --theme-body-size: 1rem;
+  --theme-body-leading: 1.85;
   --theme-card-leading: 1.02;
 }
 
@@ -681,30 +681,13 @@ body.report-index {
 
 .report-hero {
   align-items: flex-end;
-  background: var(--text);
-  border: 0;
-  border-bottom: 8px solid var(--accent);
   border-radius: 0;
-  color: var(--page-bg);
   display: flex;
   gap: 2rem;
   justify-content: space-between;
   margin: 0 calc(clamp(1rem, 4vw, 3rem) * -1);
-  min-height: 22rem;
-  padding: 3.5rem clamp(1rem, 5vw, 4.5rem) 3rem;
   position: relative;
   overflow: hidden;
-}
-
-.report-hero::after {
-  color: color-mix(in srgb, var(--page-bg) 8%, transparent);
-  content: "WP";
-  font: 800 clamp(10rem, 25vw, 22rem) / 0.8 var(--font-display);
-  letter-spacing: -0.13em;
-  pointer-events: none;
-  position: absolute;
-  right: -1rem;
-  bottom: -0.45em;
 }
 
 .report-hero-copy {
@@ -849,10 +832,6 @@ body.report-index {
   font-size: 1.1rem;
 }
 
-.report-index-hero {
-  min-height: 26rem;
-}
-
 .report-index-count {
   align-items: flex-start;
   border-left: 8px solid var(--accent);
@@ -867,7 +846,7 @@ body.report-index {
 
 .report-index-count strong {
   font: 800 clamp(4rem, 8vw, 7rem) / 0.8 var(--font-display);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.05em;
 }
 
 .report-index-count span {
@@ -875,7 +854,6 @@ body.report-index {
 }
 
 .report-index-archive {
-  border-top: 2px solid var(--text);
   margin-top: 3rem;
   padding-top: 1rem;
 }
@@ -898,7 +876,7 @@ body.report-index {
 }
 
 .report-card-grid {
-  gap: 0.75rem;
+  gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -907,7 +885,6 @@ body.report-index {
   border: 1px solid var(--border-strong);
   border-left: 1px solid var(--border-strong);
   border-radius: 0;
-  min-height: 15rem;
   padding: 1.25rem;
   transition: background-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
@@ -947,7 +924,7 @@ body.report-index {
   border-radius: 0;
   font-size: 0.68rem;
   letter-spacing: 0.1em;
-  margin-top: auto;
+  margin-top: 1rem;
   padding: 0.75rem 0 0;
 }
 
@@ -957,24 +934,9 @@ body.report-index {
 }
 
 /* Theme-specific shell treatments */
-:root[data-theme="ink-editorial"] .report-hero {
-  background: var(--page-bg);
-  border-bottom: 2px solid var(--text);
-  border-top: 2px solid var(--text);
-  color: var(--text);
-}
-
-:root[data-theme="ink-editorial"] .report-hero::after {
-  color: rgba(220, 88, 61, 0.1);
-}
-
 :root[data-theme="ink-editorial"] .report-hero .report-description,
 :root[data-theme="ink-editorial"] .report-index-count span {
   color: var(--muted);
-}
-
-:root[data-theme="neon-observatory"] .report-hero {
-  box-shadow: 0 0 0 1px var(--accent), 0 0 3rem rgba(117, 228, 255, 0.12);
 }
 
 :root[data-theme="neon-observatory"] .report-card:hover {
@@ -1074,31 +1036,16 @@ body.report-index {
 }
 
 /* Dark modes need a dark hero surface rather than the light foreground token. */
-:root[data-mode="dark"] .report-hero {
-  background: var(--surface);
-  color: var(--text);
-}
-
 :root[data-mode="dark"] .report-hero .report-description,
 :root[data-mode="dark"] .report-index-count span {
   color: color-mix(in srgb, var(--text) 78%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root[data-mode="system"] .report-hero {
-    background: var(--surface);
-    color: var(--text);
-  }
-
   :root[data-mode="system"] .report-hero .report-description,
   :root[data-mode="system"] .report-index-count span {
     color: color-mix(in srgb, var(--text) 78%, transparent);
   }
-}
-
-:root[data-theme="neon-observatory"][data-mode="light"] .report-hero {
-  background: var(--page-bg);
-  color: var(--text);
 }
 
 :root[data-theme="neon-observatory"][data-mode="light"] .report-hero .report-description,
@@ -1121,46 +1068,51 @@ body.report-index {
 /* Heading calibration: each display face has a different visual width and
    x-height, so shared size/spacing values make the styles feel inconsistent. */
 :root[data-theme="civic-brutalist"] .report-hero h1 {
-  font-size: clamp(3.8rem, 9vw, 8rem);
-  letter-spacing: -0.04em;
-  line-height: 0.78;
+  font-size: clamp(3rem, 9vw, 6.2rem);
+  font-weight: 100;
+  letter-spacing: 0.02em;
+  line-height: 0.88;
 }
 
 :root[data-theme="civic-brutalist"] .report-body > h2,
 :root[data-theme="civic-brutalist"] .report-index-heading h2 {
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(1.33rem, 5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.001em;
   line-height: 0.86;
 }
 
 :root[data-theme="civic-brutalist"] .report-card-title {
   font-size: 1.45rem;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  letter-spacing: -0.001em;
+  line-height: 1.18;
 }
 
 :root[data-theme="ink-editorial"] .report-hero h1 {
-  font-size: clamp(4rem, 10vw, 8.8rem);
-  letter-spacing: -0.01em;
-  line-height: 0.98;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  line-height: 1;
 }
 
 :root[data-theme="ink-editorial"] .report-body > h2,
 :root[data-theme="ink-editorial"] .report-index-heading h2 {
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(1.75rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.001em;
   line-height: 0.82;
 }
 
 :root[data-theme="ink-editorial"] .report-card-title {
   font-size: 1.7rem;
-  letter-spacing: 0;
-  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  line-height: 1.08;
 }
 
 :root[data-theme="neon-observatory"] .report-hero h1 {
   font-size: clamp(3.3rem, 8vw, 5rem);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   line-height: 0.94;
 }
 
@@ -1201,10 +1153,9 @@ body.report-index {
 
 /* Theme rhythm and surface application */
 .report-hero {
-  border-bottom-width: var(--theme-hero-border-width);
-  box-shadow: var(--theme-hero-shadow);
   gap: var(--theme-layout-gap);
-  padding: var(--theme-hero-padding);
+  padding-bottom: calc(var(--theme-layout-gap) * 0.25);
+  padding-top: calc(var(--theme-layout-gap) * 0.5);
 }
 
 .report-layout {
@@ -1265,12 +1216,6 @@ body.report-index {
 
 .report-hero .settings-button {
   box-shadow: var(--theme-card-shadow);
-}
-
-:root[data-theme="civic-brutalist"][data-mode="light"] .report-hero {
-  background: var(--page-bg);
-  border-top: 2px solid var(--text);
-  color: var(--text);
 }
 
 :root[data-theme="civic-brutalist"][data-mode="light"] .report-hero .report-description,
