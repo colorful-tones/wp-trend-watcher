@@ -6,6 +6,8 @@ import {
   isPlaceholderContent,
   findReviewTime,
   replaceReviewTime,
+  findReaderActionSummarySection,
+  replaceReaderActionSummarySection,
 } from "../../src/review/report-edit.js";
 
 // --- Stripped-down test report ---
@@ -196,6 +198,28 @@ test("replaceWatchingSection is idempotent when replacing with same content", ()
   // Should still have correct structure
   assert.ok(result!.includes("## Source Articles"));
   assert.ok(result!.includes("## Build Notes"));
+});
+
+test("Reader Action Summary helpers extract and replace authored content", () => {
+  const report = PLACEHOLDER_REPORT.replace(
+    "## Source Articles",
+    "## Reader Action Summary\n\n### Watch\n\nOld item.\n\n---\n\n## Source Articles",
+  );
+  const section = findReaderActionSummarySection(report);
+  assert.ok(section);
+  assert.ok(section!.body.includes("Old item"));
+  const result = replaceReaderActionSummarySection(report, "### Prepare\n\nNew item.");
+  assert.ok(result);
+  assert.ok(result!.includes("### Prepare\n\nNew item."));
+  assert.ok(result!.includes("## Source Articles"));
+  assert.ok(!result!.includes("Old item"));
+});
+
+test("replaceReaderActionSummarySection adds the section to legacy reports", () => {
+  const result = replaceReaderActionSummarySection(PLACEHOLDER_REPORT, "### Watch\n\nA proposal.");
+  assert.ok(result);
+  assert.ok(result!.includes("## Reader Action Summary"));
+  assert.ok(result!.includes("A proposal."));
 });
 
 // --- isPlaceholderContent ---

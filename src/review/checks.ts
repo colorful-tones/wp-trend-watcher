@@ -233,6 +233,48 @@ export function checkWatchingSection(report: string): ReviewCheck {
   return { name: "What I'm Watching", status: "pass", message: "has human note" };
 }
 
+/** Allowed editorial labels for Reader Action Summary items. */
+const ACTION_LABELS = ["Act now", "Prepare", "Watch", "No action"];
+
+/**
+ * Validate the bounded human-authored Reader Action Summary contract.
+ *
+ * @param report - Full Markdown content of the report.
+ * @returns Review check result; missing sections warn for backwards compatibility.
+ */
+export function checkReaderActionSummary(report: string): ReviewCheck {
+  const marker = "## Reader Action Summary";
+  const idx = report.indexOf(marker);
+  if (idx < 0) {
+    return { name: "Reader Action Summary", status: "warn", message: "section not found" };
+  }
+  const remainder = report.slice(idx + marker.length);
+  const nextSection = remainder.search(/\n## /);
+  const section = remainder.slice(0, nextSection < 0 ? undefined : nextSection);
+  const content = section.replace(/<!--[\s\S]*?-->/g, "").trim();
+  if (!content) {
+    return { name: "Reader Action Summary", status: "warn", message: "empty — add up to 4 reviewed items" };
+  }
+  const headings = [...content.matchAll(/^###\s+(.+)$/gm)].map((match) => match[1].trim());
+  const invalid = headings.filter((heading) => !ACTION_LABELS.includes(heading));
+  if (invalid.length > 0) {
+    return { name: "Reader Action Summary", status: "warn", message: `unsupported label: ${invalid[0]}` };
+  }
+  const items = content.split("\n").filter((line) => /^\s*[-*]\s+/.test(line));
+  if (items.length > 4) {
+    return { name: "Reader Action Summary", status: "warn", message: `${items.length} items found (maximum is 4)` };
+  }
+  const incomplete = items.filter(
+    (item) =>
+      !/\bState:\s*[^.]+/i.test(item) ||
+      !/\[[^\]]+\]\(https?:\/\/[^)]+\)/.test(item),
+  );
+  if (incomplete.length > 0) {
+    return { name: "Reader Action Summary", status: "warn", message: `${incomplete.length} item(s) missing State or source link` };
+  }
+  return { name: "Reader Action Summary", status: "pass", message: `${items.length} reviewed item(s)` };
+}
+
 /**
  * Check that markdown links are well-formed (no empty []() patterns).
  *

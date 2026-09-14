@@ -238,12 +238,14 @@ test("POST /api/review-summary saves summary and returns updated state", async (
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           summary: "Updated observation: this is important.",
+          actionSummary: "### Prepare\n\n- Test the change. **State:** beta. **Source:** [Notes](https://example.com)",
         }),
       },
     );
     assert.equal(status, 200);
     const data = JSON.parse(body);
     assert.ok(data.summary.includes("Updated observation"));
+    assert.ok(data.actionSummary.includes("Test the change"));
     assert.ok(!data.summary.includes("Human-authored"));
     assert.ok(data.html.includes("Updated observation"));
     assert.equal(data.descriptionStatus, "generated");

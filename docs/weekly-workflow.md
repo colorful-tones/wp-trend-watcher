@@ -53,7 +53,7 @@ The heavy step. Fetches each article's content, generates per-article summaries 
 pnpm review
 ```
 
-Runs the automated review checklist against the latest report. Checks: Weekly Summary presence, source article references, weasel words, Build Notes completeness, What I'm Watching content, markdown link validity, and HTML report presence. Exits nonzero only for true blockers.
+Runs the automated review checklist against the latest report. Checks: Weekly Summary presence, source article references, weasel words, Build Notes completeness, What I'm Watching content, Reader Action Summary structure, markdown link validity, and HTML report presence. Exits nonzero only for true blockers.
 
 ### 5. Human Review
 
@@ -63,6 +63,7 @@ Open `reports/YYYY-MM-DD.md` and:
 - Remove weak or unsupported claims.
 - Decide which trends actually matter.
 - Fill in the `What I'm Watching` section with personal observations.
+- Optionally fill in `Reader Action Summary` with up to four reviewed action items using `Act now`, `Prepare`, `Watch`, or `No action` headings. Include an audience, `State:`, and source link for each item.
 - Add any missing developer implications.
 - Update Build Notes with review time.
 

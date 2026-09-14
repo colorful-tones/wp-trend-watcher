@@ -8,6 +8,7 @@ import {
   checkWeaselWords,
   checkBuildNotes,
   checkWatchingSection,
+  checkReaderActionSummary,
   checkMarkdownLinks,
   checkHtmlReport,
   type SourceArticle,
@@ -200,6 +201,38 @@ test("checkWatchingSection warns on placeholder text", () => {
   const result = checkWatchingSection(report);
   assert.equal(result.status, "warn");
   assert.ok(result.message.includes("placeholder"));
+});
+
+// --- checkReaderActionSummary ---
+
+test("checkReaderActionSummary passes for a bounded reviewed item", () => {
+  const report = `## Reader Action Summary
+### Prepare
+- **Audience:** Block developers should test the beta. **State:** beta. **Source:** [Release notes](https://example.com/release)`;
+  const result = checkReaderActionSummary(report);
+  assert.equal(result.status, "pass");
+  assert.ok(result.message.includes("1 reviewed item"));
+});
+
+test("checkReaderActionSummary warns when an item lacks state or source", () => {
+  const result = checkReaderActionSummary(
+    "## Reader Action Summary\n### Watch\n- Follow this proposal.",
+  );
+  assert.equal(result.status, "warn");
+  assert.ok(result.message.includes("missing State or source link"));
+});
+
+test("checkReaderActionSummary warns on unsupported labels and too many items", () => {
+  const invalid = checkReaderActionSummary("## Reader Action Summary\n### Critical\n- Item");
+  assert.equal(invalid.status, "warn");
+  assert.ok(invalid.message.includes("unsupported label"));
+
+  const tooMany = Array.from({ length: 5 }, (_, i) =>
+    `- Item ${i + 1}. **State:** shipped. **Source:** [Source](https://example.com/${i})`,
+  ).join("\n");
+  const result = checkReaderActionSummary(`## Reader Action Summary\n### Watch\n${tooMany}`);
+  assert.equal(result.status, "warn");
+  assert.ok(result.message.includes("maximum is 4"));
 });
 
 // --- checkMarkdownLinks ---

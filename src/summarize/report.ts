@@ -8,6 +8,7 @@ import {
 } from "./report-comparison.js";
 import {
   findWatchingSection,
+  findReaderActionSummarySection,
   isPlaceholderContent,
 } from "../review/report-edit.js";
 
@@ -500,6 +501,15 @@ export function assembleReport(
     }
   }
 
+  let actionSummaryContent =
+    "<!-- Human-authored: add up to 4 action items here -->";
+  if (existingReportMd) {
+    const existingSection = findReaderActionSummarySection(existingReportMd);
+    if (existingSection && !isPlaceholderContent(existingSection.body)) {
+      actionSummaryContent = existingSection.body;
+    }
+  }
+
   return `<!-- SEO_TITLE: ${metadata.title} -->
 <!-- SEO_DESCRIPTION: ${metadata.description} -->
 # WordPress Trend Report — ${date}
@@ -511,6 +521,12 @@ ${weeklySummary}${sinceLastReportBlock}
 ## What I'm Watching
 
 ${watchingContent}
+
+---
+
+## Reader Action Summary
+
+${actionSummaryContent}
 
 ---
 

@@ -286,6 +286,7 @@ test("assembleReport produces a complete Markdown report", () => {
   assert.ok(report.includes("### Emerging Trends"));
   assert.ok(report.includes("### Developer Implications"));
   assert.ok(report.includes("## What I'm Watching"));
+  assert.ok(report.includes("## Reader Action Summary"));
   assert.ok(report.includes("## Source Articles"));
   assert.ok(report.includes("## Build Notes"));
   assert.ok(report.includes("[Article One](https://example.com/1)"));

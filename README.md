@@ -101,6 +101,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.15.0
+
+- Added an optional human-authored Reader Action Summary section with bounded labels, source/state validation, review-page editing, and legacy-report compatibility.
+- Preserved the existing Developer Implications section and weekly report workflow; no AI impact scoring or tutorial generation was added.
+
 ### 0.14.0
 
 - Added the first-party ACF Releases feed as a Tier 1 source.
