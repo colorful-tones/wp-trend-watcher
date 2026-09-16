@@ -201,6 +201,7 @@ details.article-inventory ol {
   color: inherit;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
   height: 100%;
   padding: 1rem 1.25rem;
   text-decoration: none;
@@ -216,7 +217,6 @@ details.article-inventory ol {
   display: block;
   font-size: 1.05rem;
   font-weight: 500;
-  margin-bottom: 0.15rem;
 }
 
 .report-card-title {
@@ -229,7 +229,6 @@ details.article-inventory ol {
 .report-card-description {
   color: var(--muted);
   display: -webkit-box;
-  font-size: 0.9rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 1.45;
@@ -899,7 +898,7 @@ body.report-index {
 .report-card-date {
   color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -909,13 +908,6 @@ body.report-index {
   font-size: 1.45rem;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin-top: 1.5rem;
-}
-
-.report-card-description {
-  font-size: 0.78rem;
-  line-height: 1.5;
-  margin-top: 0.75rem;
 }
 
 .report-card-label {
@@ -926,6 +918,38 @@ body.report-index {
   letter-spacing: 0.1em;
   margin-top: 1rem;
   padding: 0.75rem 0 0;
+}
+
+.report-pagination {
+  align-items: center;
+  display: flex;
+  font-family: var(--font-mono);
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.report-pagination a {
+  border-bottom: 1px solid currentColor;
+  color: var(--text);
+  font-size: 0.78rem;
+  padding-bottom: 0.2rem;
+  text-decoration: none;
+}
+
+.report-pagination a:last-child {
+  justify-self: end;
+}
+
+.report-pagination a:hover {
+  color: var(--accent);
+}
+
+.report-pagination-status {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .report-index .nav-footer,

@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, readdir } from "node:fs/promises";
+import { mkdir, readFile, writeFile, readdir, rm } from "node:fs/promises";
 import { join, basename, dirname } from "node:path";
 import {
   extractReportSeoMetadata,
@@ -42,6 +42,7 @@ const GITHUB_REPO_URL = "https://github.com/colorful-tones/wp-trend-watcher";
 const DEFAULT_REPORT_THEME = "civic-brutalist";
 const DEFAULT_REPORT_MODE = "system";
 const GOATCOUNTER_SCRIPT_SRC = "//gc.zgo.at/count.js";
+const REPORTS_PER_INDEX_PAGE = 6;
 const REPORT_THEME_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">`;
@@ -411,20 +412,58 @@ ${analyticsScript}
 }
 
 /**
- * Generate the index.html listing page for all HTML reports in a directory.
+ * Return the filename for a generated report archive page.
  *
- * Scans for *.html files (skipping index.html itself) and produces a
- * minimal listing page sorted by date descending.
+ * @param page - One-based archive page number
+ * @returns Archive page filename, with the first page at index.html
+ */
+function getIndexPageFilename(page: number): string {
+  return page === 1 ? "index.html" : `page-${page}.html`;
+}
+
+/**
+ * Render accessible navigation between generated report archive pages.
+ *
+ * @param page - One-based current archive page number
+ * @param pageCount - Total number of archive pages
+ * @returns Pagination navigation markup, or an empty string for one page
+ */
+function renderIndexPagination(page: number, pageCount: number): string {
+  if (pageCount <= 1) {
+    return "";
+  }
+
+  const previous =
+    page > 1
+      ? `<a href="${getIndexPageFilename(page - 1)}" rel="prev">← Newer reports</a>`
+      : '<span aria-hidden="true"></span>';
+  const next =
+    page < pageCount
+      ? `<a href="${getIndexPageFilename(page + 1)}" rel="next">Older reports →</a>`
+      : '<span aria-hidden="true"></span>';
+
+  return `    <nav class="report-pagination" aria-label="Report archive pages">
+      ${previous}
+      <span class="report-pagination-status" aria-current="page">Page ${page} of ${pageCount}</span>
+      ${next}
+    </nav>`;
+}
+
+/**
+ * Generate the index.html listing page and any subsequent archive pages.
+ *
+ * Scans for *.html report files (skipping generated archive pages) and
+ * produces six report cards per page sorted by date descending.
  *
  * @param reportsDir - Absolute path to the reports directory
- * @returns Absolute path to the generated index.html
+ * @returns Absolute path to the first archive page, index.html
  */
 export async function generateIndexPage(reportsDir: string): Promise<string> {
   const stylesheetHref = await ensureReportStylesheet(reportsDir);
   const analyticsScript = buildAnalyticsScript();
   const files = await readdir(reportsDir);
   const htmlFiles = files
-    .filter((f) => f.endsWith(".html") && f !== "index.html")
+    .filter((f) => f.endsWith(".html") && f !== "index.html" && !/^page-\d+\.html$/.test(f))
     .sort()
     .reverse();
 
@@ -434,9 +473,8 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
       ? "1 weekly WordPress ecosystem trend report."
       : `${reportCount} weekly WordPress ecosystem trend reports.`;
 
-  const cards = (
-    await Promise.all(
-      htmlFiles.map(async (f, i) => {
+  const cards = await Promise.all(
+    htmlFiles.map(async (f, i) => {
       const dateStr = f.replace(".html", "");
       const fallback: ReportSeoMetadata = {
         title: `WordPress Trend Report — ${dateStr}`,
@@ -468,11 +506,22 @@ export async function generateIndexPage(reportsDir: string): Promise<string> {
       <span class="report-card-title">${escapeHtml(seo.title)}</span>
       <span class="report-card-description">${escapeHtml(seo.description)}</span>${labelHtml}
     </a>`;
-      }),
-    )
-  ).join("\n");
+    }),
+  );
 
-  const indexHtml = `<!DOCTYPE html>
+  const pageCount = Math.max(1, Math.ceil(cards.length / REPORTS_PER_INDEX_PAGE));
+  await Promise.all(
+    files
+      .filter((file) => /^page-\d+\.html$/.test(file))
+      .map((file) => rm(join(reportsDir, file))),
+  );
+
+  for (let page = 1; page <= pageCount; page += 1) {
+    const pageCards = cards
+      .slice((page - 1) * REPORTS_PER_INDEX_PAGE, page * REPORTS_PER_INDEX_PAGE)
+      .join("\n");
+    const filename = getIndexPageFilename(page);
+    const indexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -485,7 +534,7 @@ ${analyticsScript}
   ${buildSeoMeta({
     title: "WP Trend Watcher — Reports",
     description: "Weekly human-reviewed WordPress ecosystem trend reports.",
-    url: `${SITE_BASE_URL}index.html`,
+    url: `${SITE_BASE_URL}${filename}`,
     type: "website",
   })}
   <link rel="alternate" type="application/rss+xml" title="WP Trend Watcher" href="${SITE_BASE_URL}feed.xml">
@@ -507,8 +556,9 @@ ${analyticsScript}
       <span class="meta">${reportLabel}</span>
     </div>
     <div class="report-card-grid">
-  ${cards}
+  ${pageCards}
     </div>
+${renderIndexPagination(page, pageCount)}
   </section>
   <footer class="nav-footer">
     <p>
@@ -523,8 +573,8 @@ ${analyticsScript}
   </footer>
 </body>
 </html>`;
+    await writeFile(join(reportsDir, filename), indexHtml, "utf8");
+  }
 
-  const outPath = join(reportsDir, "index.html");
-  await writeFile(outPath, indexHtml, "utf8");
-  return outPath;
+  return join(reportsDir, "index.html");
 }

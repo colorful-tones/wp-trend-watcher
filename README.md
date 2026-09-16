@@ -101,6 +101,10 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.15.0
+
+- Paginated the report archive with six report cards per page and accessible newer/older navigation.
+
 ### 0.14.0
 
 - Added the first-party ACF Releases feed as a Tier 1 source.

@@ -236,6 +236,27 @@ test("generateIndexPage renders report cards sorted by date descending", async (
   assert.equal(matches[2], "2026-06-14.html");
 });
 
+test("generateIndexPage paginates report cards into six-card archive pages", async () => {
+  const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
+  for (let day = 1; day <= 7; day += 1) {
+    await writeFile(join(tmpDir, `2026-07-0${day}.html`), "<html></html>", "utf8");
+  }
+
+  const indexPath = await generateIndexPage(tmpDir);
+  const firstPage = await readFile(indexPath, "utf8");
+  const secondPage = await readFile(join(tmpDir, "page-2.html"), "utf8");
+
+  const cardCount = (html: string): number =>
+    (html.match(/class="report-card"/g) || []).length;
+
+  assert.equal(cardCount(firstPage), 6);
+  assert.equal(cardCount(secondPage), 1);
+  assert.ok(firstPage.includes('href="page-2.html"'), "first page links forward");
+  assert.ok(secondPage.includes('href="index.html"'), "second page links back");
+  assert.ok(firstPage.includes("Page 1 of 2"));
+  assert.ok(secondPage.includes("Page 2 of 2"));
+});
+
 test("generateIndexPage renders generated report titles and descriptions on cards", async () => {
   const tmpDir = await mkdtemp(join(tmpdir(), "index-test-"));
   await writeFile(join(tmpDir, "2026-07-01.html"), "<html></html>", "utf8");

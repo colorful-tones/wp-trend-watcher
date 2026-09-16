@@ -928,6 +928,38 @@ body.report-index {
   padding: 0.75rem 0 0;
 }
 
+.report-pagination {
+  align-items: center;
+  display: grid;
+  font-family: var(--font-mono);
+  gap: 1rem;
+  grid-template-columns: 1fr auto 1fr;
+  margin-top: 2rem;
+}
+
+.report-pagination a {
+  border-bottom: 1px solid currentColor;
+  color: var(--text);
+  font-size: 0.78rem;
+  padding-bottom: 0.2rem;
+  text-decoration: none;
+}
+
+.report-pagination a:last-child {
+  justify-self: end;
+}
+
+.report-pagination a:hover {
+  color: var(--accent);
+}
+
+.report-pagination-status {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .report-index .nav-footer,
 .report-page .nav-footer {
   margin-top: 3rem;
