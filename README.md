@@ -101,6 +101,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.15.1
+
+- Swap `Ink Editorial` theme's Instrument Serif with Bodoni Moda font
+- CSS adjustments for spacing and typography
+
 ### 0.15.0
 
 - Paginated the report archive with six report cards per page and accessible newer/older navigation.
