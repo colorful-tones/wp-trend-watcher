@@ -45,7 +45,7 @@ const GOATCOUNTER_SCRIPT_SRC = "//gc.zgo.at/count.js";
 const REPORTS_PER_INDEX_PAGE = 6;
 const REPORT_THEME_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">`;
 
 const REPORT_SETTINGS_BUTTON = `<button
   class="settings-button"
