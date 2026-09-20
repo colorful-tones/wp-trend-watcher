@@ -1,0 +1,130 @@
+{
+  "date": "2026-09-20",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 12,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/18/roadmap-to-7-2/",
+      "title": "Roadmap to 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/18/roadmap-to-7-2/",
+      "summary": "WordPress 7.2 is scheduled for release in early December 2026, featuring a React 19 upgrade, a new Secrets API for secure credential storage, and a \"sudo mode\" for re-authenticating sensitive actions. Key technical updates include the introduction of DataViews and DataForms for third-party entity control, the ability for plugins to register custom screens/settings in the Site Editor, and expanded responsive styling for blocks. New core components include a Table of Contents block, a Description List block, and a new default theme called Ipsum.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1033,
+      "completionTokens": 114
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/18/xpost-proposal-indentifying-wpcc-participants-through-wordpress-org-profiles/",
+      "title": "X-post: Proposal: Indentifying WPCC Participants through WordPress.org Profiles",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/18/xpost-proposal-indentifying-wpcc-participants-through-wordpress-org-profiles/",
+      "summary": "This proposal suggests adding visual designations to WordPress.org profiles to identify participants in the WordPress Campus Connect and WordPress Credits mentorship programs. It specifically proposes displaying badges or labels for participants and listing their assigned \"Event Supporters\" (mentors) to improve community recognition and support for novice contributors.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 943,
+      "completionTokens": 57
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/18/moving-to-a-server-aware-approach-for-collaboration/",
+      "title": "Moving to a server-aware approach for collaboration",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/18/moving-to-a-server-aware-approach-for-collaboration/",
+      "summary": "WordPress is shifting from a client-side CRDT model to a server-aware collaboration approach to address security and functionality gaps. The current browser-only model prevents the server from attributing individual edits, creating risks like \"content laundering,\" and excludes non-browser interfaces like the REST API and WP-CLI from participating in real-time updates.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1073,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/18/xpost-introducing-test-team-reps-for-2026-2027/",
+      "title": "X-post: Introducing: Test Team Reps for 2026 – 2027",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/18/xpost-introducing-test-team-reps-for-2026-2027/",
+      "summary": "Erick Wambua and Huzaifa Al Mesbah have been appointed as the Test Team Representatives for the 2026–2027 term. They will be responsible for representing the Test team to the rest of the project, coordinating cross-team efforts, and ensuring issues are addressed as needed.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1183,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/17/call-for-testing-dataform-editor-inspector/",
+      "title": "Call for testing: DataForm editor inspector",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/17/call-for-testing-dataform-editor-inspector/",
+      "summary": "The \"Editor Inspector: Use DataForm\" experiment replaces the classic post inspector summary panels with a DataForm-based interface to unify the UI between the block editor and the Site Editor's Quick Edit. Developers can use a unified Fields API and view config filters to manage settings across both screens, with a target stabilization date of WordPress 7.2.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1074,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/16/introducing-ipsum-the-new-default-theme/",
+      "title": "Introducing Ipsum, the new default theme",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/16/introducing-ipsum-the-new-default-theme/",
+      "summary": "Ipsum is the proposed default theme for WordPress 7.2, designed as a minimal \"blank canvas\" blog theme to replace the year-based naming convention. It features a focus on WCAG AA accessibility and style variations that re-ink the page, with the development team currently seeking public feedback to identify bugs and missing features before the release.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1130,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/16/dev-chat-agenda-sep-16-2026/",
+      "title": "Dev Chat Agenda – September 16, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/16/dev-chat-agenda-sep-16-2026/",
+      "summary": "The September 16, 2026, Dev Chat will focus on the 7.2 release squad, the 7.1.1 RC 1, and updated Node and npm requirements for WordPress development. Developers should prepare for discussions on the GitHub mirror of the WP Build repo and prioritized ticket reviews for the upcoming major and maintenance releases.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 742,
+      "completionTokens": 73
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/16/whats-new-in-gutenberg-24-0-16-september/",
+      "title": "What’s new in Gutenberg 24.0? (16 September)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/16/whats-new-in-gutenberg-24-0-16-september/",
+      "summary": "Gutenberg 24.0 introduces visual revisions for post titles, a new Grid variation for the Gallery block with per-breakpoint controls, and a \"fit-text\" option for the Site Title block. Technical updates include support for background images via URLs, visible non-breaking spaces in the format library, and improved Tab/Shift+Tab indentation for multi-selected list items.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1213,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/15/maintainer-changes-for-wordpress-wordpress-github-repo/",
+      "title": "Maintainer changes for WordPress/WordPress GitHub repo",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/15/maintainer-changes-for-wordpress-wordpress-github-repo/",
+      "summary": "Maintenance of the WordPress GitHub mirror has been transferred from an individual volunteer to the WordPress.org systems team. Developers should report any syncing issues to the systems team via the make/systems blog or the #meta Slack channel.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 915,
+      "completionTokens": 45
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/",
+      "title": "WordPress 7.1.1 Maintenance and Security Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/",
+      "summary": "WordPress 7.1.1 is a short-cycle maintenance and security release addressing 11 security vulnerabilities, including stored XSS in `wpautop()`, path traversal in the WP REST Templates Controller, and unauthorized post overwrites. Developers should update immediately to patch these issues, with the next major release (7.2) planned for December.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1184,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/09/18/xpost-the-ai-powered-wordpress-course-is-now-live-on-learn-wordpress/",
+      "title": "X-post: The AI-Powered WordPress course is now live on Learn WordPress!",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/09/18/xpost-the-ai-powered-wordpress-course-is-now-live-on-learn-wordpress/",
+      "summary": "The new AI-Powered WordPress course on Learn WordPress covers the integration of AI into WordPress 7.0 core, including setting up AI provider connectors, using editorial tools, and monitoring activity via Request Logging. For developers, the course specifically covers the WordPress AI Client for sending prompts from custom plugins/themes, the MCP Adapter for connecting assistants like Claude, and registering WordPress Abilities so AI tools can discover plugin functionality.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1062,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/09/16/ai-contributor-weekly-summary-16-september-2026/",
+      "title": "AI Contributor Weekly Summary – 16 September 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/09/16/ai-contributor-weekly-summary-16-september-2026/",
+      "summary": "The team is reopening markdown support for the AI plugin to allow AI clients to request markdown versions of posts via dedicated URLs or content-negotiation headers. Technical updates for PHP AI Client 1.5.0 include integrating embedding validation into the existing `is_embedding_list` check to minimize overhead and closing the embeddings tracking issue. Additionally, the team identified several web search limitations with the Anthropic provider, including issues with source annotations and the need for a \"max searches\" property in the web search tool DTO.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1058,
+      "completionTokens": 106
+    }
+  ],
+  "totalPromptTokens": 12610,
+  "totalCompletionTokens": 906
+}

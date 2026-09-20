@@ -1,0 +1,103 @@
+{
+  "date": "2026-09-20",
+  "collectedAt": "2026-09-20T19:15:18.467Z",
+  "articleCount": 12,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/18/roadmap-to-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Roadmap to 7.2",
+      "url": "https://make.wordpress.org/core/2026/09/18/roadmap-to-7-2/",
+      "publishedAt": "2026-09-18T22:17:46.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/18/xpost-proposal-indentifying-wpcc-participants-through-wordpress-org-profiles/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Proposal: Indentifying WPCC Participants through WordPress.org Profiles",
+      "url": "https://make.wordpress.org/core/2026/09/18/xpost-proposal-indentifying-wpcc-participants-through-wordpress-org-profiles/",
+      "publishedAt": "2026-09-18T18:53:10.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/18/moving-to-a-server-aware-approach-for-collaboration/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Moving to a server-aware approach for collaboration",
+      "url": "https://make.wordpress.org/core/2026/09/18/moving-to-a-server-aware-approach-for-collaboration/",
+      "publishedAt": "2026-09-18T14:40:19.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/18/xpost-introducing-test-team-reps-for-2026-2027/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Introducing: Test Team Reps for 2026 – 2027",
+      "url": "https://make.wordpress.org/core/2026/09/18/xpost-introducing-test-team-reps-for-2026-2027/",
+      "publishedAt": "2026-09-18T04:49:02.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/17/call-for-testing-dataform-editor-inspector/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for testing: DataForm editor inspector",
+      "url": "https://make.wordpress.org/core/2026/09/17/call-for-testing-dataform-editor-inspector/",
+      "publishedAt": "2026-09-17T14:26:49.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/16/introducing-ipsum-the-new-default-theme/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Introducing Ipsum, the new default theme",
+      "url": "https://make.wordpress.org/core/2026/09/16/introducing-ipsum-the-new-default-theme/",
+      "publishedAt": "2026-09-16T08:26:34.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/16/dev-chat-agenda-sep-16-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – September 16, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/16/dev-chat-agenda-sep-16-2026/",
+      "publishedAt": "2026-09-16T03:04:32.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/16/whats-new-in-gutenberg-24-0-16-september/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 24.0? (16 September)",
+      "url": "https://make.wordpress.org/core/2026/09/16/whats-new-in-gutenberg-24-0-16-september/",
+      "publishedAt": "2026-09-16T02:50:05.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/15/maintainer-changes-for-wordpress-wordpress-github-repo/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Maintainer changes for WordPress/WordPress GitHub repo",
+      "url": "https://make.wordpress.org/core/2026/09/15/maintainer-changes-for-wordpress-wordpress-github-repo/",
+      "publishedAt": "2026-09-15T01:33:25.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1.1 Maintenance and Security Release",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/",
+      "publishedAt": "2026-09-17T19:53:09.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/09/18/xpost-the-ai-powered-wordpress-course-is-now-live-on-learn-wordpress/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "X-post: The AI-Powered WordPress course is now live on Learn WordPress!",
+      "url": "https://make.wordpress.org/ai/2026/09/18/xpost-the-ai-powered-wordpress-course-is-now-live-on-learn-wordpress/",
+      "publishedAt": "2026-09-18T00:31:56.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/09/16/ai-contributor-weekly-summary-16-september-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 16 September 2026",
+      "url": "https://make.wordpress.org/ai/2026/09/16/ai-contributor-weekly-summary-16-september-2026/",
+      "publishedAt": "2026-09-16T23:56:57.000Z"
+    }
+  ]
+}
