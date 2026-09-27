@@ -1,0 +1,150 @@
+{
+  "date": "2026-09-27",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 14,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/",
+      "title": "WordPress Contributor Toolkit 1.2: One app for your first Core or Gutenberg contribution",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/",
+      "summary": "WordPress Contributor Toolkit v1.2.0 now includes a full Gutenberg contribution workflow alongside the existing Core workflow, allowing users to clone the Gutenberg repository, install dependencies via bundled npm, and run a local development server. The tool automates the environment setup, including a \"build watch\" feature that recompiles Gutenberg packages on save, and integrates Trac ticket linking with GitHub pull request submissions.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1062,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/",
+      "title": "WordPress Trac MCP server",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/",
+      "summary": "The WordPress Trac Model Context Protocol (MCP) server allows developers to connect AI clients like Claude or ChatGPT directly to Trac to query tickets, changesets, and timelines via tools like `searchTickets` and `getChangeset`. It is a public, API-key-free tool that supports all WordPress.org Tracs, including Core, Meta, Themes, and Plugins.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1071,
+      "completionTokens": 78
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/",
+      "title": "Dev Chat summary: September 23, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/",
+      "summary": "WordPress 7.2 will introduce Ipsum as the new default theme and transition to a server-aware approach for collaboration. The development team is currently seeking feedback on specific Gutenberg Navigation block CSS issues and debating the best architectural approach for handling `wp_strip_all_tags()` to avoid data corruption and anti-patterns.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1151,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/23/iterating-from-live-events-to-livestreamed-releases/",
+      "title": "Iterating from live events to livestreamed releases",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/23/iterating-from-live-events-to-livestreamed-releases/",
+      "summary": "WordPress is moving from in-person live releases at events to a livestreamed webinar format starting with WordPress 7.2 in early December 2026. This change aims to reduce logistical constraints and allow more release squad members to participate regardless of location or event schedules.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 819,
+      "completionTokens": 56
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/23/new-public-repo-core-release-tools/",
+      "title": "New public repo: core release tools",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/23/new-public-repo-core-release-tools/",
+      "summary": "The WordPress Core Development Team has launched a new public repository, `WordPress/core-release-utils`, containing six CLI tools designed to automate manual release tasks. Key technical tools include `ghpatch` for applying PR diffs to SVN checkouts, `svnmergecheck` for verifying merge records, and `svn-tags` for generating tag commands across branches.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1096,
+      "completionTokens": 75
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/23/gutenbergs-javascript-unit-and-integration-tests-now-use-vitest/",
+      "title": "Gutenberg’s JavaScript unit and integration tests now use Vitest",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/23/gutenbergs-javascript-unit-and-integration-tests-now-use-vitest/",
+      "summary": "Gutenberg has migrated its JavaScript unit and integration tests from Jest to Vitest to leverage native ESM support and real-browser testing capabilities. Developers can choose between Node, jsdom, or Browser modes via filenames, while `@wordpress/scripts` 36.0.0 sets Vitest as the default for `test-unit-js`. Existing projects can maintain Jest via `test-unit-jest` after a one-time setup update, though `@wordpress/jest-preset-default` and `@wordpress/jest-console` are now deprecated.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 991,
+      "completionTokens": 114
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/22/dev-chat-agenda-sep-23-2026/",
+      "title": "Dev Chat Agenda – September 23, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/22/dev-chat-agenda-sep-23-2026/",
+      "summary": "The September 23, 2026, Dev Chat will focus on the WordPress 7.2 roadmap, including the introduction of the \"Ipsum\" default theme and a transition to a server-aware approach for collaboration. Key developer actions include a call for testing the DataForm editor inspector and a review of the 7.2 Release Squad and bug scrub schedule.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 984,
+      "completionTokens": 78
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/09/22/performance-chat-summary-22-september-2026/",
+      "title": "Performance Chat Summary: 22 September 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/09/22/performance-chat-summary-22-september-2026/",
+      "summary": "The team discussed the Performance Trac backlog, specifically noting that ticket #57548 remains a high priority while ticket #66057 is pending review. There is currently a backlog of Performance Lab work available for development, with the next meeting scheduled for October 6, 2026.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 642,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "title": "WordPress 7.1.2 Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "summary": "WordPress 7.1.2 addresses a critical security vulnerability (CVE-2026-87902) that allows unauthenticated attackers to perform remote code execution (RCE) by including local PHP files outside active theme directories. The fix has been backported to all eligible branches, including versions as old as 4.7.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 713,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/09/owa-president/",
+      "title": "WordPress Takes Its Turn Leading the Open Website Alliance",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/09/owa-president/",
+      "summary": "The WordPress Foundation is taking a leadership role as president of the Open Website Alliance, a coalition including Drupal, Joomla!, and TYPO3. The primary technical and policy objective is to advocate for open-source security standards that account for the economic role of CMS platforms while remaining compliant with the European Union’s Cyber Resilience Act.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 593,
+      "completionTokens": 66
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/",
+      "title": "ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/",
+      "summary": "This session covers navigating WordPress 7.1 editor changes, ACF PRO 6.8.9 updates, and optimizing ACF Blocks v3. Key technical takeaways include implementing inline editing and custom toolbar controls to streamline content workflows for developers moving from ACF Blocks v2.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 398,
+      "completionTokens": 54
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/wordpress-performance-plugin/",
+      "title": "Best WordPress Performance Plugins by Problem Type",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/wordpress-performance-plugin/",
+      "summary": "Identify specific performance bottlenecks through page testing before selecting plugins to avoid redundant functionality. Use NitroPack for automated cloud-based optimization, LiteSpeed Cache for specific server environments, or specialist tools like Perfmatters to fill technical gaps. For dynamic content, optimize the database layer by using efficient field design, Local JSON, and sensible metadata queries.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 396,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/gutenberg-24-0-the-road-to-7-2-a-new-default-theme-named-ipsum-and-more-weekend-edition-377/",
+      "title": "Gutenberg 24.0, the road to 7.2, a new default theme named Ipsum, and more—Weekend Edition 377",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/gutenberg-24-0-the-road-to-7-2-a-new-default-theme-named-ipsum-and-more-weekend-edition-377/",
+      "summary": "WordPress 7.1.2 was released on September 22 to patch a critical vulnerability in page template resolution that allowed unauthenticated attackers to load external PHP files. Starting with version 7.2 in December, release parties will transition from in-person events to livestreamed webinars, and the next default theme will be named Ipsum.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 615,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/",
+      "title": "ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization",
+      "sourceName": "ACF Chat Fridays",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/",
+      "summary": "This session covers technical workflows for ACF Blocks v3, including inline editing and custom toolbar controls, alongside navigating the ACF PRO 6.8.9 release. Developers can learn how to manage transitions from ACF Blocks v2 and adapt to editor changes introduced in WordPress 7.1.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 399,
+      "completionTokens": 58
+    }
+  ],
+  "totalPromptTokens": 10930,
+  "totalCompletionTokens": 998
+}
