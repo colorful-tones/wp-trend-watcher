@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 20 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Roadmap, Ipsum Theme, and Vitest Migration</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Sun, 27 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Roadmap and AI Integration Updates</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-09-20.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-09-20.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 plans include a React 19 upgrade and a new Secrets API, while the 7.1.1 security release addresses 11 critical vulnerabilities.</description>
       <pubDate>Sun, 20 Sep 2026 12:00:00 GMT</pubDate>
     </item>
     <item>

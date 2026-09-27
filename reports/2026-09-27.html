@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress 7.2 Roadmap, Ipsum Theme, and Vitest Migration</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="WordPress 7.2 will introduce the Ipsum default theme, while the 7.1.2 update addresses a critical RCE vulnerability and Gutenberg adopts Vitest.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress 7.2 Roadmap, Ipsum Theme, and Vitest Migration">
+  <meta property="og:description" content="WordPress 7.2 will introduce the Ipsum default theme, while the 7.1.2 update addresses a critical RCE vulnerability and Gutenberg adopts Vitest.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress 7.2 Roadmap, Ipsum Theme, and Vitest Migration">
+  <meta name="twitter:description" content="WordPress 7.2 will introduce the Ipsum default theme, while the 7.1.2 update addresses a critical RCE vulnerability and Gutenberg adopts Vitest.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-09-27</div>
+    <h1 id="wordpress-trend-report-2026-09-27"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-09-27</h1>
+    <p class="report-description">WordPress 7.2 will introduce the Ipsum default theme, while the 7.1.2 update addresses a critical RCE vulnerability and Gutenberg adopts Vitest.</p>
+  </div>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-09-27<br>Human-reviewed report</p>
+      <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(14 articles)</span></summary>
+<ol>
+<li><a href="https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/">WordPress Contributor Toolkit 1.2: One app for your first Core or Gutenberg contribution</a> (Make Core) — WordPress Contributor Toolkit v1.2.0 now includes a full Gutenberg contribution workflow alongside the existing Core workflow, allowing users to clone the Gutenberg repository, install dependencies via bundled npm, and run a local development server.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/">WordPress Trac MCP server</a> (Make Core) — The WordPress Trac Model Context Protocol (MCP) server allows developers to connect AI clients like Claude or ChatGPT directly to Trac to query tickets, changesets, and timelines via tools like <code>searchTickets</code> and <code>getChangeset</code>.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/">Dev Chat summary: September 23, 2026</a> (Make Core) — WordPress 7.2 will introduce Ipsum as the new default theme and transition to a server-aware approach for collaboration.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/iterating-from-live-events-to-livestreamed-releases/">Iterating from live events to livestreamed releases</a> (Make Core) — WordPress is moving from in-person live releases at events to a livestreamed webinar format starting with WordPress 7.2 in early December 2026.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/new-public-repo-core-release-tools/">New public repo: core release tools</a> (Make Core) — The WordPress Core Development Team has launched a new public repository, <code>WordPress/core-release-utils</code>, containing six CLI tools designed to automate manual release tasks.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/gutenbergs-javascript-unit-and-integration-tests-now-use-vitest/">Gutenberg’s JavaScript unit and integration tests now use Vitest</a> (Make Core) — Gutenberg has migrated its JavaScript unit and integration tests from Jest to Vitest to leverage native ESM support and real-browser testing capabilities.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/22/dev-chat-agenda-sep-23-2026/">Dev Chat Agenda – September 23, 2026</a> (Make Core) — The September 23, 2026, Dev Chat will focus on the WordPress 7.2 roadmap, including the introduction of the &quot;Ipsum&quot; default theme and a transition to a server-aware approach for collaboration.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/22/performance-chat-summary-22-september-2026/">Performance Chat Summary: 22 September 2026</a> (Make Core) — The team discussed the Performance Trac backlog, specifically noting that ticket #57548 remains a high priority while ticket #66057 is pending review.</li>
+<li><a href="https://wordpress.org/news/2026/09/wordpress-7-1-2-release/">WordPress 7.1.2 Release</a> (WordPress.org News) — WordPress 7.1.2 addresses a critical security vulnerability (CVE-2026-87902) that allows unauthenticated attackers to perform remote code execution (RCE) by including local PHP files outside active theme directories.</li>
+<li><a href="https://wordpress.org/news/2026/09/owa-president/">WordPress Takes Its Turn Leading the Open Website Alliance</a> (WordPress.org News) — The WordPress Foundation is taking a leadership role as president of the Open Website Alliance, a coalition including Drupal, Joomla!, and TYPO3.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/">ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization</a> (ACF Blog) — This session covers navigating WordPress 7.1 editor changes, ACF PRO 6.8.9 updates, and optimizing ACF Blocks v3.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-performance-plugin/">Best WordPress Performance Plugins by Problem Type</a> (ACF Blog) — Identify specific performance bottlenecks through page testing before selecting plugins to avoid redundant functionality.</li>
+<li><a href="https://gutenbergtimes.com/gutenberg-24-0-the-road-to-7-2-a-new-default-theme-named-ipsum-and-more-weekend-edition-377/">Gutenberg 24.0, the road to 7.2, a new default theme named Ipsum, and more—Weekend Edition 377</a> (Gutenberg Times) — WordPress 7.1.2 was released on September 22 to patch a critical vulnerability in page template resolution that allowed unauthenticated attackers to load external PHP files.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/">ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization</a> (ACF Chat Fridays) — This session covers technical workflows for ACF Blocks v3, including inline editing and custom toolbar controls, alongside navigating the ACF PRO 6.8.9 release.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>The WordPress 7.2 roadmap is a primary focus for the community, with several key changes confirmed:</p>
+<ul>
+<li><strong>New Default Theme:</strong> &quot;Ipsum&quot; will be introduced as the new default theme for WordPress 7.2 (<a href="https://make.wordpress.org/core/2026/09/16/introducing-ipsum-the-new-default-theme/">Make Core</a>).</li>
+<li><strong>Collaboration Model:</strong> The core team is transitioning to a &quot;server-aware&quot; approach for collaboration (<a href="https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/">Make Core</a>).</li>
+<li><strong>Release Format Change:</strong> Starting with WordPress 7.2 in early December 2026, the project will move from in-person live releases to a livestreamed webinar format (<a href="https://make.wordpress.org/core/2026/09/23/iterating-from-live-events-to-livestreamed-releases/">Make Core</a>).</li>
+<li><strong>Testing Infrastructure:</strong> Gutenberg has officially migrated its JavaScript unit and integration tests from Jest to Vitest to support native ESM and real-browser testing (<a href="https://make.wordpress.org/core/2026/09/23/gutenbergs-javascript-unit-and-integration-tests-now-use-vitest/">Make Core</a>).</li>
+</ul>
+<h3 id="developer-implications">Developer Implications</h3>
+<ul>
+<li><strong>Security Patching:</strong> WordPress 7.1.2 was released to address a critical RCE vulnerability (CVE-2026-87902) involving local PHP file inclusion. Developers must ensure clients are updated, as the fix is backported to versions as old as 4.7 (<a href="https://wordpress.org/news/2026/09/wordpress-7-1-2-release/">WordPress.org News</a>).</li>
+<li><strong>ACF Blocks Migration:</strong> Developers moving from ACF Blocks v2 to v3 should focus on implementing inline editing and custom toolbar controls to optimize content workflows (<a href="https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/">ACF Blog</a>).</li>
+<li><strong>AI Integration:</strong> The new WordPress Trac MCP server allows developers to connect AI clients (like Claude or ChatGPT) directly to Trac to query tickets and changesets (<a href="https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/">Make Core</a>).</li>
+<li><strong>Core Contribution Tools:</strong> New tools are available to simplify contributing to the ecosystem, including a dedicated toolkit for Gutenberg contributions and a new public repository (<code>WordPress/core-release-utils</code>) containing six CLI tools to automate manual release tasks (<a href="https://make.wordpress.org/core/2026/09/23/new-public-repo-core-release-tools/">Make Core</a>).</li>
+</ul>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/">WordPress Contributor Toolkit 1.2: One app for your first Core or Gutenberg contribution</a> (Make Core) — WordPress Contributor Toolkit v1.2.0 now includes a full Gutenberg contribution workflow alongside the existing Core workflow, allowing users to clone the Gutenberg repository, install dependencies via bundled npm, and run a local development server.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/">WordPress Trac MCP server</a> (Make Core) — The WordPress Trac Model Context Protocol (MCP) server allows developers to connect AI clients like Claude or ChatGPT directly to Trac to query tickets, changesets, and timelines via tools like <code>searchTickets</code> and <code>getChangeset</code>.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/">Dev Chat summary: September 23, 2026</a> (Make Core) — WordPress 7.2 will introduce Ipsum as the new default theme and transition to a server-aware approach for collaboration.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p><a href="https://wordpress.org/news/2026/09/wordpress-7-1-2-release/">WordPress 7.1.2</a> was released on September 22 and it is recommended to update as soon as possible.</p>
+<p>For those interested in contributing to WordPress, there is the handy and recently updated <a href="https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/">WordPress Contributor Toolkit (v1.2)</a>, which ought to help make the contributing experience a bit less daunting.</p>
+<p>I hope everyone is thriving! ✌️</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/09/25/wordpress-contributor-toolkit-1-2-one-app-for-your-first-core-or-gutenberg-contribution/">WordPress Contributor Toolkit 1.2: One app for your first Core or Gutenberg contribution</a> — 9/25/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/24/wordpress-trac-mcp-server/">WordPress Trac MCP server</a> — 9/24/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/24/summary-dev-chat-september-23-2026/">Dev Chat summary: September 23, 2026</a> — 9/24/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/iterating-from-live-events-to-livestreamed-releases/">Iterating from live events to livestreamed releases</a> — 9/23/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/new-public-repo-core-release-tools/">New public repo: core release tools</a> — 9/23/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/23/gutenbergs-javascript-unit-and-integration-tests-now-use-vitest/">Gutenberg’s JavaScript unit and integration tests now use Vitest</a> — 9/23/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/22/dev-chat-agenda-sep-23-2026/">Dev Chat Agenda – September 23, 2026</a> — 9/22/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/22/performance-chat-summary-22-september-2026/">Performance Chat Summary: 22 September 2026</a> — 9/22/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/09/wordpress-7-1-2-release/">WordPress 7.1.2 Release</a> — 9/22/2026</li>
+<li><a href="https://wordpress.org/news/2026/09/owa-president/">WordPress Takes Its Turn Leading the Open Website Alliance</a> — 9/21/2026</li>
+</ul>
+<h3 id="acf-blog">ACF Blog</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/">ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization</a> — 9/22/2026</li>
+<li><a href="https://www.advancedcustomfields.com/blog/wordpress-performance-plugin/">Best WordPress Performance Plugins by Problem Type</a> — 9/22/2026</li>
+</ul>
+<h3 id="gutenberg-times">Gutenberg Times</h3>
+<ul>
+<li><a href="https://gutenbergtimes.com/gutenberg-24-0-the-road-to-7-2-a-new-default-theme-named-ipsum-and-more-weekend-edition-377/">Gutenberg 24.0, the road to 7.2, a new default theme named Ipsum, and more—Weekend Edition 377</a> — 9/26/2026</li>
+</ul>
+<h3 id="acf-chat-fridays">ACF Chat Fridays</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-chat-fridays-wordpress-7-1-acf-blocks-v3-and-editor-customization/">ACF Chat Fridays: WordPress 7.1, ACF Blocks v3, and editor customization</a> — 9/22/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 14</li>
+<li>Sources: Make Core, WordPress.org News, ACF Blog, Gutenberg Times, ACF Chat Fridays</li>
+<li>Model: openai-compatible/google/gemma-4-12b-qat</li>
+<li>Tokens: 12770 prompt + 1729 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~15 minutes</li>
+</ul>
+
+      </div>
+    </main>
+  </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>
