@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gutenberg 24.1 Updates and Presence API Expansion</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="Gutenberg 24.1 adds consistent design controls to core blocks, while the Presence API v0.14.0 expands support for multisite and Site Editor content.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-10-04.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="Gutenberg 24.1 Updates and Presence API Expansion">
+  <meta property="og:description" content="Gutenberg 24.1 adds consistent design controls to core blocks, while the Presence API v0.14.0 expands support for multisite and Site Editor content.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-10-04.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gutenberg 24.1 Updates and Presence API Expansion">
+  <meta name="twitter:description" content="Gutenberg 24.1 adds consistent design controls to core blocks, while the Presence API v0.14.0 expands support for multisite and Site Editor content.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-10-04</div>
+    <h1 id="wordpress-trend-report-2026-10-04"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-10-04</h1>
+    <p class="report-description">Gutenberg 24.1 adds consistent design controls to core blocks, while the Presence API v0.14.0 expands support for multisite and Site Editor content.</p>
+  </div>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-10-04<br>Human-reviewed report</p>
+      <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(4 articles)</span></summary>
+<ol>
+<li><a href="https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/">Core Trac and GitHub Team Spring Cleaning (Southern Hemisphere edition)</a> (Make Core) — The WordPress Core team has updated Trac Bug Gardener and Component Maintainer lists to remove inactive contributors and ensure GitHub/WordPress.org account connectivity.</li>
+<li><a href="https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/">Presence API: What’s new</a> (Make Core) — The Presence API (v0.14.0) now supports all post types, including Site Editor content, and includes a network-wide aggregation system for multisite environments.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/">What’s new in Gutenberg 24.1? (30 September)</a> (Make Core) — Gutenberg 24.1 introduces significant design tool consistency by adding background, color, and typography controls to numerous core blocks, including Accordion, Tabs, and Comments.</li>
+<li><a href="https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/">Dev Chat Agenda – September 30, 2026</a> (Make Core) — The September 30, 2026, Dev Chat will focus on upcoming release discussions and the transition from live to live-streamed releases.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>The WordPress Core team is focusing on standardizing design controls across the block editor and expanding the capabilities of the Presence API. Gutenberg 24.1 introduces consistent background, color, and typography controls for several core blocks, including Accordion, Tabs, and Comments (<a href="https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/">What’s new in Gutenberg 24.1?</a>).</p>
+<p>Additionally, the Presence API (v0.14.0) has been updated to support all post types and Site Editor content, while adding a network-wide aggregation system for multisite environments (<a href="https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/">Presence API: What’s new</a>).</p>
+<p>Regarding release procedures, the team is discussing a transition from live to live-streamed releases during the September 30 Dev Chat (<a href="https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/">Dev Chat Agenda – September 30, 2026</a>).</p>
+<h3 id="developer-implications">Developer Implications</h3>
+<ul>
+<li><strong>Gutenberg 24.1 Development:</strong> Developers building custom blocks or themes should note the new design tool consistency. The addition of background, color, and typography controls to Accordion, Tabs, and Comments blocks means these core components now align more closely with other standard blocks (<a href="https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24.1-30-september/">What’s new in Gutenberg 24.1?</a>).</li>
+<li><strong>Multisite Presence Tracking:</strong> Developers working on multisite environments can now use the Presence API (v0.14.0) for network-wide aggregation. The API also now supports Site Editor content, which may affect how real-time presence is handled in custom dashboard tools (<a href="https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/">Presence API: What’s new</a>).</li>
+<li><strong>Release Monitoring:</strong> Agencies and freelancers should monitor the transition to live-streamed releases. This change in how releases are handled may affect how developers access real-time information during deployment windows (<a href="https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/">Dev Chat Agenda – September 30, 2026</a>).</li>
+<li><strong>Contributor Maintenance:</strong> The Core team is cleaning up Trac Bug Gardener and Component Maintainer lists to ensure account connectivity. This is a routine maintenance task to remove inactive contributors (<a href="https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/">Core Trac and GitHub Team Spring Cleaning</a>).</li>
+</ul>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/">Core Trac and GitHub Team Spring Cleaning (Southern Hemisphere edition)</a> (Make Core) — The WordPress Core team has updated Trac Bug Gardener and Component Maintainer lists to remove inactive contributors and ensure GitHub/WordPress.org account connectivity.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/">Presence API: What’s new</a> (Make Core) — The Presence API (v0.14.0) now supports all post types, including Site Editor content, and includes a network-wide aggregation system for multisite environments.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/">What’s new in Gutenberg 24.1? (30 September)</a> (Make Core) — Gutenberg 24.1 introduces significant design tool consistency by adding background, color, and typography controls to numerous core blocks, including Accordion, Tabs, and Comments.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>A seemingly quiet week. The latest Gutenberg release got most of my attention. With expanded text shadow support and consistency for block design tools support.</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/">Core Trac and GitHub Team Spring Cleaning (Southern Hemisphere edition)</a> — 10/2/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/">Presence API: What’s new</a> — 10/2/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/">What’s new in Gutenberg 24.1? (30 September)</a> — 9/30/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/">Dev Chat Agenda – September 30, 2026</a> — 9/29/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 4</li>
+<li>Sources: Make Core</li>
+<li>Model: openai-compatible/google/gemma-4-12b-qat</li>
+<li>Tokens: 5112 prompt + 971 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~10 minutes</li>
+</ul>
+
+      </div>
+    </main>
+  </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>

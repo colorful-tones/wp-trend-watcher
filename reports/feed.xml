@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 27 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Gutenberg 24.1 Updates and Presence API Expansion</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-10-04.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-10-04.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Sun, 04 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Roadmap, Ipsum Theme, and Vitest Migration</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-09-27.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 will introduce the Ipsum default theme, while the 7.1.2 update addresses a critical RCE vulnerability and Gutenberg adopts Vitest.</description>
       <pubDate>Sun, 27 Sep 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
