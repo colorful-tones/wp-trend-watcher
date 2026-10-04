@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-04",
+  "collectedAt": "2026-10-04T12:55:50.710Z",
+  "articleCount": 4,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Core Trac and GitHub Team Spring Cleaning (Southern Hemisphere edition)",
+      "url": "https://make.wordpress.org/core/2026/10/02/core-trac-and-github-team-spring-cleaning-southern-hemisphere-edition/",
+      "publishedAt": "2026-10-02T17:21:17.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Presence API: What’s new",
+      "url": "https://make.wordpress.org/core/2026/10/02/presence-api-whats-new/",
+      "publishedAt": "2026-10-02T17:11:11.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 24.1? (30 September)",
+      "url": "https://make.wordpress.org/core/2026/09/30/whats-new-in-gutenberg-24-1-30-september/",
+      "publishedAt": "2026-09-30T09:35:31.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – September 30, 2026",
+      "url": "https://make.wordpress.org/core/2026/09/30/dev-chat-agenda-sep-30-2026/",
+      "publishedAt": "2026-09-30T00:18:38.000Z"
+    }
+  ]
+}
