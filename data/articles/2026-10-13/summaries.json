@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-13",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 12,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/12/presence-api-meeting-summary-october-12-2026/",
+      "title": "Presence API meeting summary: October 12, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/12/presence-api-meeting-summary-october-12-2026/",
+      "summary": "The Presence API shipped version 0.17.0, introducing granular feature toggles, an `$args` array for presence functions, and new \"arrivals\" and \"fading-out\" scenes. The project is tracking merge criteria via #550, with a readiness gate requiring three outside projects and eight weeks of stability (minimum date December 3) before core consideration.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1168,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/12/call-for-feedback-the-w-and-the-site-name-in-the-toolbar/",
+      "title": "Call for feedback: the W and the site name in the Toolbar",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/12/call-for-feedback-the-w-and-the-site-name-in-the-toolbar/",
+      "summary": "The proposal aims to standardize Toolbar behavior by making the \"W\" icon consistently link to the Dashboard and the site name consistently link to the site's front end across all views. This change seeks to resolve inconsistent navigation in the Post and Site Editors while ensuring the \"W\" remains visible on screens smaller than 600px.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1171,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/10/feature-notifications-status-update-and-plan-for-0-3-0/",
+      "title": "Feature Notifications: status update and plan for 0.3.0",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/10/feature-notifications-status-update-and-plan-for-0-3-0/",
+      "summary": "The Feature Notifications project aims to ship version 0.3.0 as a functional MVP alongside WordPress 7.2 in December. The technical plan involves moving beyond current stubs to implement a working persistence layer, notification/subscription repositories, and REST endpoints with proper capability checks.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1120,
+      "completionTokens": 57
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/09/no_backslash_escapes-sql-mode-is-now-turned-off-by-default-in-wordpress-7-2/",
+      "title": "NO_BACKSLASH_ESCAPES SQL mode is now turned off by default in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/09/no_backslash_escapes-sql-mode-is-now-turned-off-by-default-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 now automatically removes `NO_BACKSLASH_ESCAPES` from the session's SQL modes to ensure backslashes are correctly interpreted as escape characters in queries. Developers who require this mode can re-enable it by using the `incompatible_sql_modes` filter within a `db.php` drop-in.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 986,
+      "completionTokens": 73
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/07/progress-report-wp_kses/",
+      "title": "Progress Report: wp_kses()",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/07/progress-report-wp_kses/",
+      "summary": "WordPress is replacing the legacy `wp_kses()` implementation with a new version based on the HTML API to improve reliability, speed, and memory usage. While the API remains the same, developers should be aware that the new structural parser may handle certain inputs differently than the old regex-based logic, with a legacy opt-out filter (`wp_kses_force_legacy_parser`) available until the removal of the old code in WordPress 7.2.0.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1052,
+      "completionTokens": 95
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/07/proposal-minor-updates-to-the-wordpress-core-css-coding-standards/",
+      "title": "Proposal: Minor updates to the WordPress Core CSS Coding Standards",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/07/proposal-minor-updates-to-the-wordpress-core-css-coding-standards/",
+      "summary": "This proposal updates the WordPress Core CSS Coding Standards to facilitate the integration of Stylelint into the Core CI pipeline. Key technical changes include simplifying blank line requirements to one line everywhere and prohibiting the use of the `order` property and `*-reverse` values to ensure visual and DOM orders remain consistent for accessibility.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1029,
+      "completionTokens": 62
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/07/dev-chat-agenda-oct-07-2026/",
+      "title": "Dev Chat Agenda – October 7, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/07/dev-chat-agenda-oct-07-2026/",
+      "summary": "The October 7, 2026, Dev Chat will cover the WordPress 7.2 release party schedule, Core Trac/GitHub cleanup, and updates on the Presence API and Gutenberg 24.1. Developers can prioritize tickets for the next major or maintenance release by providing PR links and availability status in the agenda comments.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 740,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/06/performance-chat-summary-6-october-2026/",
+      "title": "Performance Chat Summary: 6 October 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/06/performance-chat-summary-6-october-2026/",
+      "summary": "Prefetching has been committed in changeset 64120, with plans to default script and style concatenation to \"off\" in production and eventually remove `load-scripts.php` and `load-styles.php`. The next performance chat is scheduled for October 20, 2026, at 16:00 UTC.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 592,
+      "completionTokens": 75
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/06/wordpress-7-2-release-party-schedule/",
+      "title": "WordPress 7.2 Release Party Schedule",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/06/wordpress-7-2-release-party-schedule/",
+      "summary": "WordPress 7.2 is scheduled for final release on December 8, 2026, with a 24-hour code freeze beginning on December 7. The release cycle includes weekly Beta parties starting October 20, 2026, followed by RC parties in November and a final dry run, allowing developers to assist with testing and coordination via the #core Slack channel.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1069,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-1-3-maintenance-and-security-release/",
+      "title": "WordPress 7.1.3 Maintenance and Security Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-1-3-maintenance-and-security-release/",
+      "summary": "WordPress 7.1.3 is a security and maintenance release addressing 7 security vulnerabilities, including a stored XSS on the Comments administration page, a DoS issue in `WP_Http::make_absolute_url()`, and a second-order SQL injection in WXR exports. Developers should update immediately to mitigate these risks, noting that security backports are being provided for eligible branches as old as 4.7.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 998,
+      "completionTokens": 88
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/07/the-mcp-adapter-plugin-is-now-available-on-wordpress-org/",
+      "title": "The MCP Adapter Plugin is Now Available on WordPress.Org",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/07/the-mcp-adapter-plugin-is-now-available-on-wordpress-org/",
+      "summary": "The MCP Adapter plugin translates WordPress capabilities into the Model Context Protocol (MCP) format, allowing AI assistants like Claude and ChatGPT to discover and invoke site functions as tools, resources, and prompts. It leverages the WordPress Abilities API to automatically expose registered functionalities via a default MCP server endpoint (`/wp-json/mcp/mcp-adapter-default-server`) while providing hooks for developers to register custom tools or build dedicated MCP servers.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 982,
+      "completionTokens": 89
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/06/whats-new-in-ai-1-4-0/",
+      "title": "What’s new in AI 1.4.0 (5 OCTOBER 2026)?",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/06/whats-new-in-ai-1-4-0/",
+      "summary": "AI 1.4.0 introduces Markdown feeds at `/feed/markdown/` and via `?output_format=markdown` to provide structured content for AI agents, alongside a new \"Value Score\" (0-1) for comment moderation to measure substance. Key technical updates include a new `wpai_embeddings` database table for vector storage and the introduction of `Vector_Math` and `Vector_Ranker` classes for semantic search infrastructure.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1007,
+      "completionTokens": 94
+    }
+  ],
+  "totalPromptTokens": 11914,
+  "totalCompletionTokens": 933
+}
