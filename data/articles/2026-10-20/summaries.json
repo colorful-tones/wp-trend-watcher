@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-20",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 9,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/10/whats-new-for-developers-october-2026/",
+      "title": "What’s new for developers? (October 2026)",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/10/whats-new-for-developers-october-2026/",
+      "summary": "WordPress 7.2 is scheduled for release on December 8, 2026, with Beta 1 on October 20 and RC1 on November 17. Key technical changes include a rebuild of `wp_kses()` on the HTML API (targeting 7.2/7.3) that normalizes markup and strips script/style contents, and the introduction of custom block states and responsive style states. Developers should test their HTML sanitization logic against trunk and note that the React 19 upgrade and collaborative editing are currently excluded from the 7.2 roadmap.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1166,
+      "completionTokens": 122
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/19/recap-wordpress-7-1-mary-lou-retrospective/",
+      "title": "Recap: WordPress 7.1 “Mary Lou” Retrospective",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/19/recap-wordpress-7-1-mary-lou-retrospective/",
+      "summary": "The WordPress 7.1 retrospective highlights successful communication and security auditing while identifying needs for earlier visibility into UI changes and more robust documentation. Key technical takeaways include the importance of publishing dev notes during the beta phase and the need for developers to proactively mark tickets for inclusion in the Field Guide.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1001,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/16/wp-feature-notifications-weekly-update-2026-10-16/",
+      "title": "WP Feature Notifications weekly update: 2026-10-16",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/16/wp-feature-notifications-weekly-update-2026-10-16/",
+      "summary": "Development for the 0.3.0 (MVP) release is now focused on 16 specific open issues tracked in GitHub issue #302. The project is also seeking contributors to review 30+ Dependabot security PRs and will host weekly office hours every Thursday starting October 22, 2026, at 11:00 am UTC.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 707,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/16/call-for-code-review-help-repairing-gutenberg-github-actions-workflows-for-wp-x-y-branches/",
+      "title": "Call for Code Review Help: Repairing Gutenberg GitHub Actions Workflows for wp/x.y Branches",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/16/call-for-code-review-help-repairing-gutenberg-github-actions-workflows-for-wp-x-y-branches/",
+      "summary": "The Gutenberg project is seeking code reviews for a series of stacked pull requests designed to repair and modernize GitHub Actions workflows across all `wp/x.y` branches. The technical goal is to restore CI passing, pin software versions to match specific WordPress releases, and repair broken local development tooling (wp-env, Composer, and PHPUnit) to ensure security patches are properly validated.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1060,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/14/whats-new-in-gutenberg-24-2-14-october/",
+      "title": "What’s new in Gutenberg 24.2? (14 October)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/14/whats-new-in-gutenberg-24-2-14-october/",
+      "summary": "Gutenberg 24.2 introduces a dedicated margin for notes that allows them to remain visible simultaneously with the Settings sidebar, preventing the need to toggle between the two. The release also enables React 19 by default and adds a duotone tinting option for the Gallery block.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1092,
+      "completionTokens": 59
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/14/real-time-collaboration-a-guide-to-sync-engines/",
+      "title": "Real-time Collaboration: A Guide to Sync Engines",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/14/real-time-collaboration-a-guide-to-sync-engines/",
+      "summary": "The `gutenberg-sync-engines` experimental plugin allows developers to test three different sync engines—yjs-server, DE-RTC, and intent-log—to determine the foundation for server-side real-time collaboration in WordPress. The key technical takeaway is that while all engines process changes through WordPress for validation and merging, they differ in their underlying logic for handling concurrent edits and conflict resolution.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1056,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/14/dev-chat-agenda-oct-14-2026/",
+      "title": "Dev Chat Agenda – October 14, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/14/dev-chat-agenda-oct-14-2026/",
+      "summary": "The WordPress Developers Chat on October 14, 2026, will focus on upcoming release discussions and feature notifications for version 0.3.0. Key technical updates include the scheduled release of WordPress 7.2 Beta 1 on October 20, the progress report on `wp_kses()`, and the fact that `NO_BACKSLASH_ESCAPES` SQL mode is now disabled by default in WordPress 7.2.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 837,
+      "completionTokens": 95
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/best-caching-plugin-for-woocommerce/",
+      "title": "Safest Caching Plugin for WooCommerce Stores",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/best-caching-plugin-for-woocommerce/",
+      "summary": "To ensure WooCommerce security, developers must exclude dynamic pages like Cart, Checkout, and My Account from shared page caches while using persistent object caching (Redis/Memcached) to optimize repeated database queries for logged-in users. NitroPack is recommended for its automated exclusion rules and \"Cart Cache\" feature, though developers should verify existing host-level caching (e.g., WP Engine's EverCache) before adding additional layers.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 456,
+      "completionTokens": 87
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/best-wordpress-caching-plugin/",
+      "title": "Best WordPress Caching Plugins by Hosting Type",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/best-wordpress-caching-plugin/",
+      "summary": "The optimal caching plugin depends on your hosting environment, such as LiteSpeed for LiteSpeed servers or WP Rocket for Apache/Nginx setups without host-managed caching. WP Engine users should rely on EverCache® and NitroPack rather than separate plugins, while ACF focuses on data layer efficiency rather than replacing the caching stack.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 388,
+      "completionTokens": 65
+    }
+  ],
+  "totalPromptTokens": 7763,
+  "totalCompletionTokens": 726
+}
