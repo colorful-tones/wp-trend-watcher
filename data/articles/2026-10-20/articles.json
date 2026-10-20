@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-20",
+  "collectedAt": "2026-10-20T12:46:19.112Z",
+  "articleCount": 9,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/10/whats-new-for-developers-october-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (October 2026)",
+      "url": "https://developer.wordpress.org/news/2026/10/whats-new-for-developers-october-2026/",
+      "publishedAt": "2026-10-14T19:56:09.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/19/recap-wordpress-7-1-mary-lou-retrospective/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Recap: WordPress 7.1 “Mary Lou” Retrospective",
+      "url": "https://make.wordpress.org/core/2026/10/19/recap-wordpress-7-1-mary-lou-retrospective/",
+      "publishedAt": "2026-10-19T18:30:35.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/16/wp-feature-notifications-weekly-update-2026-10-16/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WP Feature Notifications weekly update: 2026-10-16",
+      "url": "https://make.wordpress.org/core/2026/10/16/wp-feature-notifications-weekly-update-2026-10-16/",
+      "publishedAt": "2026-10-16T09:04:02.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/16/call-for-code-review-help-repairing-gutenberg-github-actions-workflows-for-wp-x-y-branches/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for Code Review Help: Repairing Gutenberg GitHub Actions Workflows for wp/x.y Branches",
+      "url": "https://make.wordpress.org/core/2026/10/16/call-for-code-review-help-repairing-gutenberg-github-actions-workflows-for-wp-x-y-branches/",
+      "publishedAt": "2026-10-16T01:42:58.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/14/whats-new-in-gutenberg-24-2-14-october/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 24.2? (14 October)",
+      "url": "https://make.wordpress.org/core/2026/10/14/whats-new-in-gutenberg-24-2-14-october/",
+      "publishedAt": "2026-10-14T18:03:31.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/14/real-time-collaboration-a-guide-to-sync-engines/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Real-time Collaboration: A Guide to Sync Engines",
+      "url": "https://make.wordpress.org/core/2026/10/14/real-time-collaboration-a-guide-to-sync-engines/",
+      "publishedAt": "2026-10-14T02:40:37.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/14/dev-chat-agenda-oct-14-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – October 14, 2026",
+      "url": "https://make.wordpress.org/core/2026/10/14/dev-chat-agenda-oct-14-2026/",
+      "publishedAt": "2026-10-14T02:23:04.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/best-caching-plugin-for-woocommerce/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Safest Caching Plugin for WooCommerce Stores",
+      "url": "https://www.advancedcustomfields.com/blog/best-caching-plugin-for-woocommerce/",
+      "publishedAt": "2026-10-15T12:00:00.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/best-wordpress-caching-plugin/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "Best WordPress Caching Plugins by Hosting Type",
+      "url": "https://www.advancedcustomfields.com/blog/best-wordpress-caching-plugin/",
+      "publishedAt": "2026-10-14T13:21:28.000Z"
+    }
+  ]
+}

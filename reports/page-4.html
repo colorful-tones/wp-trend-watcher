@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WP Trend Watcher — Reports</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="Weekly human-reviewed WordPress ecosystem trend reports.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/page-4.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WP Trend Watcher — Reports">
+  <meta property="og:description" content="Weekly human-reviewed WordPress ecosystem trend reports.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/page-4.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WP Trend Watcher — Reports">
+  <meta name="twitter:description" content="Weekly human-reviewed WordPress ecosystem trend reports.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <link rel="alternate" type="application/rss+xml" title="WP Trend Watcher" href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml">
+</head>
+<body class="report-index">
+  <header class="report-header report-hero report-index-hero">
+    <div class="report-hero-copy">
+      <div class="report-kicker">Weekly field notes · archive</div>
+      <h1>What’s moving<br>in WordPress?</h1>
+      <p class="report-description">A browsable archive of human-reviewed reports for people who build, maintain, and think about WordPress for a living.</p>
+    </div>
+    <div class="report-index-count"><strong>19</strong><span>weekly reports<br>in the archive</span></div>
+    <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+  </header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <section class="report-index-archive" aria-labelledby="recent-reports-title">
+    <div class="report-index-heading">
+      <h2 id="recent-reports-title">Recent reports</h2>
+      <span class="meta">19 weekly WordPress ecosystem trend reports.</span>
+    </div>
+    <div class="report-card-grid">
+      <a href="2026-06-12.html" class="report-card">
+      <span class="report-card-date">June 12, 2026</span>
+      <span class="report-card-title">WordPress Trend Report — 2026-06-12</span>
+      <span class="report-card-description">WordPress 7.1&#39;s collaborative editing represents a significant workflow shift, alongside client-side media processing and ACF 6.8.4 updates.</span>
+    </a>
+    </div>
+    <nav class="report-pagination" aria-label="Report archive pages">
+      <a href="page-3.html" rel="prev">← Newer reports</a>
+      <span class="report-pagination-status" aria-current="page">Page 4 of 4</span>
+      <span aria-hidden="true"></span>
+    </nav>
+  </section>
+  <footer class="nav-footer">
+    <p>
+      <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View the project on GitHub ↗</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=source-suggestion.yml">Suggest a source</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/colorful-tones/wp-trend-watcher/issues/new?template=report-feedback.yml">Send feedback</a>
+      &nbsp;·&nbsp;
+      <a href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml">Subscribe via RSS</a>
+    </p>
+  </footer>
+</body>
+</html>
