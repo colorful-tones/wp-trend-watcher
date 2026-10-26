@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 20 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Beta 1 Release and AI Core Integration Trends</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-10-26.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-10-26.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Mon, 26 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Release Schedule and Gutenberg Sync Updates</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-10-20.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-10-20.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 is scheduled for December 8, 2026, with Beta 1 on October 20, alongside updates to Gutenberg infrastructure and sync engines.</description>
       <pubDate>Tue, 20 Oct 2026 12:00:00 GMT</pubDate>
     </item>
     <item>

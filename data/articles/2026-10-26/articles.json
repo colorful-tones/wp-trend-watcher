@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-26",
+  "collectedAt": "2026-10-26T15:05:15.399Z",
+  "articleCount": 13,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/23/wordpress-contributor-toolkit-2-0-a-redesigned-app-in-your-language/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress Contributor Toolkit 2.0: A redesigned app, in your language",
+      "url": "https://make.wordpress.org/core/2026/10/23/wordpress-contributor-toolkit-2-0-a-redesigned-app-in-your-language/",
+      "publishedAt": "2026-10-23T17:45:09.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/23/wp-feature-notifications-weekly-update-2026-10-23/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WP Feature Notifications weekly update: 2026-10-23",
+      "url": "https://make.wordpress.org/core/2026/10/23/wp-feature-notifications-weekly-update-2026-10-23/",
+      "publishedAt": "2026-10-23T10:09:24.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/21/dev-chat-agenda-oct-21-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – October 21, 2026",
+      "url": "https://make.wordpress.org/core/2026/10/21/dev-chat-agenda-oct-21-2026/",
+      "publishedAt": "2026-10-21T04:10:07.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/20/performance-chat-summary-20-october-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 20 October 2026",
+      "url": "https://make.wordpress.org/core/2026/10/20/performance-chat-summary-20-october-2026/",
+      "publishedAt": "2026-10-20T17:04:01.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/10/critical-php-security-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Critical PHP Security Release",
+      "url": "https://wordpress.org/news/2026/10/critical-php-security-release/",
+      "publishedAt": "2026-10-21T13:44:09.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-2-beta-1-is-ready-for-download-and-testing/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.2 Beta 1 is Ready for Download and Testing",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-2-beta-1-is-ready-for-download-and-testing/",
+      "publishedAt": "2026-10-20T16:02:09.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-21-october-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 21 October 2026",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-21-october-2026/",
+      "publishedAt": "2026-10-22T18:46:27.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-14-october-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 14 October 2026",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-14-october-2026/",
+      "publishedAt": "2026-10-22T18:44:06.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-7-october-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 7 October 2026",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-7-october-2026/",
+      "publishedAt": "2026-10-22T18:30:58.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-30-september-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 30 September 2026",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-30-september-2026/",
+      "publishedAt": "2026-10-22T18:21:22.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF Chat Fridays: Smart Field Suggestions Preview and Developer Q&A",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "publishedAt": "2026-10-22T15:29:08.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/a-critical-php-fix-wordpress-7-2-beta-1-notes-in-the-margin-and-more-weekend-edition-378/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "A critical PHP fix, WordPress 7.2 Beta 1, Notes in the margin, and more—Weekend Edition 378",
+      "url": "https://gutenbergtimes.com/a-critical-php-fix-wordpress-7-2-beta-1-notes-in-the-margin-and-more-weekend-edition-378/",
+      "publishedAt": "2026-10-24T16:18:33.000Z"
+    },
+    {
+      "id": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "sourceId": "acf-chat-fridays",
+      "sourceName": "ACF Chat Fridays",
+      "title": "ACF Chat Fridays: Smart Field Suggestions Preview and Developer Q&A",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "publishedAt": "2026-10-22T15:29:08.000Z"
+    }
+  ]
+}
