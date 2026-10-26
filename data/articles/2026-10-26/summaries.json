@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-26",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 13,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/23/wordpress-contributor-toolkit-2-0-a-redesigned-app-in-your-language/",
+      "title": "WordPress Contributor Toolkit 2.0: A redesigned app, in your language",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/23/wordpress-contributor-toolkit-2-0-a-redesigned-app-in-your-language/",
+      "summary": "WordPress Contributor Toolkit v2.0.0 introduces a redesigned interface based on the WordPress Design System, featuring a dark theme, a new settings dialog, and translations into ten languages. The update maintains the existing Core and Gutenberg contribution workflows while adding server status indicators to the sites list and explicit labels to footer tray buttons.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1081,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/23/wp-feature-notifications-weekly-update-2026-10-23/",
+      "title": "WP Feature Notifications weekly update: 2026-10-23",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/23/wp-feature-notifications-weekly-update-2026-10-23/",
+      "summary": "The project is currently developing a new REST API for notifications, including GET, POST, and DELETE endpoints, alongside a schema v2 that implements user-scoped repositories and UTC date handling. Technical updates this week focused on a large-scale dependency catch-up involving 37 `@wordpress/*` packages and the addition of a demo plugin link in the README.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1466,
+      "completionTokens": 73
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/21/dev-chat-agenda-oct-21-2026/",
+      "title": "Dev Chat Agenda – October 21, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/21/dev-chat-agenda-oct-21-2026/",
+      "summary": "The October 21, 2026, Dev Chat focuses on WordPress 7.2, with Beta 1 released on October 20 and Beta 2 scheduled for October 27. Key technical topics include repairing Gutenberg GitHub Actions workflows for wp/x.y branches and a guide to Sync Engines.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 787,
+      "completionTokens": 67
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/20/performance-chat-summary-20-october-2026/",
+      "title": "Performance Chat Summary: 20 October 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/20/performance-chat-summary-20-october-2026/",
+      "summary": "WordPress 7.2-beta1 removes script and style concatenation by retiring `load-scripts.php` and `load-styles.php`. The technical takeaway is the shift toward a modern approach where blocking scripts and styles for the next screen are prefetched instead of concatenated.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 667,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/10/critical-php-security-release/",
+      "title": "Critical PHP Security Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/10/critical-php-security-release/",
+      "summary": "This release addresses two critical security vulnerabilities in PHP that affect any server hosting a PHP application, including WordPress. Developers must update their server's PHP version immediately, as no WordPress-specific update is required and versions prior to 8.2 no longer receive security patches.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 608,
+      "completionTokens": 55
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-2-beta-1-is-ready-for-download-and-testing/",
+      "title": "WordPress 7.2 Beta 1 is Ready for Download and Testing",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-2-beta-1-is-ready-for-download-and-testing/",
+      "summary": "WordPress 7.2 Beta 1 is available for testing with a final release scheduled for December 8, 2026. Key technical updates include expanded viewport-specific styling for blocks, new text shadow controls via `theme.json`, and client-side media processing to handle image resizing and compression in the browser before upload.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1102,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-21-october-2026/",
+      "title": "AI Contributor Weekly Summary – 21 October 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-21-october-2026/",
+      "summary": "The team approved making the Model Context Protocol (MCP) a native part of the WordPress experience to support agent-driven workflows, with ongoing debate over whether to bundle it into core or maintain it as a modular plugin. Early benchmarks show that the current MCP Adapter fails to complete tasks without additional REST API access, highlighting a need to standardize core abilities within the MCP framework.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 961,
+      "completionTokens": 74
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-14-october-2026/",
+      "title": "AI Contributor Weekly Summary – 14 October 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-14-october-2026/",
+      "summary": "The team is refining Core Abilities for WordPress 7.2 by separating collection queries from individual item retrievals to improve schema compatibility with various AI providers. Key technical takeaways include the prioritization of \"settings,\" \"users,\" and \"content\" abilities for Beta 1, while remaining write abilities will be deferred to the AI plugin to avoid redundant work during schema shifts. Additionally, the team decided to maintain robust validation rules in core while allowing provider-specific integrations to handle keywords like \"minimum\" and \"maximum\" that are inconsistently supported by models like Gemini.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 973,
+      "completionTokens": 112
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-7-october-2026/",
+      "title": "AI Contributor Weekly Summary – 7 October 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-7-october-2026/",
+      "summary": "The team is preparing WordPress 7.2 Core Abilities, focusing on settings, content, and user abilities while prioritizing read-only functions for early developer testing. A key technical decision was made to implement abilities as a parallel mechanism rather than proxying the REST API, requiring post types to explicitly opt-in via `show_in_abilities` to maintain security and independence from REST API filters.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 971,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-30-september-2026/",
+      "title": "AI Contributor Weekly Summary – 30 September 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/22/ai-contributor-weekly-summary-30-september-2026/",
+      "summary": "The team is developing a roadmap to integrate AI abilities into WordPress Core, targeting initial availability via the AI plugin by version 7.2 and broader core adoption by 7.3. Key technical discussions focused on using the AI plugin for validation, standardizing content-related abilities to reduce plugin duplication, and utilizing the Model Context Protocol (MCP) Adapter as a distribution channel to decouple immediate MCP needs from long-term core architectural stability.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 959,
+      "completionTokens": 88
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "title": "ACF Chat Fridays: Smart Field Suggestions Preview and Developer Q&A",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "summary": "The session features a preview of an upcoming AI-powered tool designed to automate complex field group creation from client briefs. Developers can also find updates on security improvements and the long-term roadmap for custom database tables and design-to-code tooling.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 381,
+      "completionTokens": 50
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/a-critical-php-fix-wordpress-7-2-beta-1-notes-in-the-margin-and-more-weekend-edition-378/",
+      "title": "A critical PHP fix, WordPress 7.2 Beta 1, Notes in the margin, and more—Weekend Edition 378",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/a-critical-php-fix-wordpress-7-2-beta-1-notes-in-the-margin-and-more-weekend-edition-378/",
+      "summary": "The PHP project released fixes for two critical vulnerabilities affecting all PHP applications, prompting a recommendation to update to version 8.2 or newer. Developers can verify their current server version via Tools → Site Health → Info → Server in the WordPress admin.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 491,
+      "completionTokens": 50
+    },
+    {
+      "articleId": "acf-chat-fridays:https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "title": "ACF Chat Fridays: Smart Field Suggestions Preview and Developer Q&A",
+      "sourceName": "ACF Chat Fridays",
+      "url": "https://www.advancedcustomfields.com/blog/acf-chat-fridays-smart-field-suggestions-preview-and-developer-qa/",
+      "summary": "The session previews an upcoming AI-powered feature for generating field groups from client briefs and discusses the long-term roadmap for custom database tables and design-to-code tooling. Developers can also find updates on essential security patches and the results of the fourth annual user survey.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 382,
+      "completionTokens": 55
+    }
+  ],
+  "totalPromptTokens": 10829,
+  "totalCompletionTokens": 896
+}
