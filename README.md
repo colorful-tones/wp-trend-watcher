@@ -101,6 +101,10 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.16.0
+
+- Fix weekly collect option forwarding (#79)
+
 ### 0.15.1
 
 - Swap `Ink Editorial` theme's Instrument Serif with Bodoni Moda font
