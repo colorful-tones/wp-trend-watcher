@@ -10,7 +10,7 @@ pnpm weekly
 
 Runs the entire pipeline in one command: doctor → collect → summarize → review → opens a local review page. After reviewing and saving your observations, the server generates the SEO description from the final report and rebuilds HTML. Then press Ctrl-C to stop the server.
 
-Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
+Use `pnpm weekly -- --no-open` to skip the automatic browser launch. Pass collect options through the weekly command, such as `pnpm weekly -- --days 6` to collect only articles from the last six days. Combine options with `pnpm weekly -- --days 6 --no-open`.
 
 Individual commands below remain available for diagnosis and recovery.
 

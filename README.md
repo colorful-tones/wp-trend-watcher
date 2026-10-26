@@ -56,7 +56,7 @@ pnpm weekly          # Run the full weekly workflow (doctor → collect → summ
 
 `pnpm weekly` is the recommended single-command workflow. It runs doctor, collect, summarize, and review sequentially, then starts a local review server at http://127.0.0.1:3001/review where you can view automated checks, read the rendered report, and save your "What I'm Watching" observations. Saving through the review page updates the canonical Markdown report, asks the configured LLM to generate the final SEO description from the reviewed report, and regenerates HTML. Press Ctrl-C to stop the server when you're done.
 
-Use `pnpm weekly -- --no-open` to skip the automatic browser launch.
+Use `pnpm weekly -- --no-open` to skip the automatic browser launch. Pass collect options through the weekly command, for example `pnpm weekly -- --days 6` to limit collection to the last six days; combine them as `pnpm weekly -- --days 6 --no-open`.
 
 Individual commands remain available for diagnosis and recovery — for example, running `pnpm collect` or `pnpm summarize` separately when you only need that step.
 
