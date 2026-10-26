@@ -8,7 +8,7 @@
  *
  * Usage: pnpm weekly
  *
- * Optional: --no-open flag to skip browser launch.
+ * Optional: --days <n> to set the collection window and --no-open to skip browser launch.
  *
  * The command stops early if doctor reports a true blocker. Warnings
  * are printed but do not block the workflow.
@@ -92,6 +92,10 @@ function openBrowser(url: string): void {
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const noOpen = args.includes("--no-open");
+  const daysIndex = args.indexOf("--days");
+  const collectArgs = daysIndex !== -1 && args[daysIndex + 1]
+    ? ["--days", args[daysIndex + 1]]
+    : [];
 
   console.log("WP Trend Watcher — weekly workflow\n");
 
@@ -102,7 +106,7 @@ async function main(): Promise<void> {
     await runScript("doctor", [], "Doctor check");
 
     // 2. Collect articles
-    await runScript("collect", [], "Collect articles");
+    await runScript("collect", collectArgs, "Collect articles");
 
     // 3. Summarize
     await runScript("summarize", [], "Summarize");
