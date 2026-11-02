@@ -1,10 +1,24 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  checkNodeVersion,
   resolveProviderConfig,
   formatCheck,
   type CheckResult,
 } from "../../src/doctor/checks.js";
+
+test("Node version check accepts the supported Node 24 major", () => {
+  assert.equal(checkNodeVersion("24.0.0").status, "ok");
+  assert.equal(checkNodeVersion("24.22.1").status, "ok");
+});
+
+test("Node version check rejects unsupported and invalid versions", () => {
+  for (const version of ["18.20.0", "22.17.1", "25.0.0", "26.0.0", "", "invalid"]) {
+    const result = checkNodeVersion(version);
+    assert.equal(result.status, "fail");
+    assert.match(result.message, /requires Node\.js 24/);
+  }
+});
 
 // --- resolveProviderConfig ---
 

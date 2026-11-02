@@ -3,6 +3,16 @@
  * Separated for testability — no side effects, no imports beyond types.
  */
 
+/** Check whether a runtime version belongs to the supported Node.js 24 major. */
+export function checkNodeVersion(version: string): CheckResult {
+  const major = Number.parseInt(version.split(".")[0], 10);
+  return {
+    name: "Node.js",
+    status: major === 24 ? "ok" : "fail",
+    message: major === 24 ? `v${version}` : `v${version} — requires Node.js 24`,
+  };
+}
+
 /** Supported provider identifiers. */
 export type ProviderName = "ollama" | "openai-compatible" | "openai";
 

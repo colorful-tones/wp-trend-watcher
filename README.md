@@ -18,9 +18,9 @@ Freelance and agency WordPress developers who want to stay current without readi
 
 ## Requirements
 
-- **Node.js 22** (pinned in `.nvmrc` and `engines`). nvm is recommended for version management but not required.
-- **pnpm 11** (pinned in `packageManager`). Corepack ships with Node.js and provides the correct pnpm version automatically when enabled.
-- **Corepack enabled** — run `corepack enable` once per machine.
+- **Node.js 24** (pinned in `.nvmrc` and `engines`). nvm is recommended for version management but not required. Run `nvm install` if the pinned major is not installed.
+- **pnpm 11** (pinned in `packageManager`). Corepack bundled with Node.js 24 provides the correct pnpm version automatically when enabled.
+- **Corepack enabled** — run `corepack enable` after installing or switching Node.js versions.
 - **git** — to clone the repo.
 - **A local LLM provider** for summarization: LM Studio, Ollama, or any OpenAI-compatible endpoint. Collection, doctor, and review work without one, but summarization requires it.
 - **macOS, Linux, or WSL2**. The tooling assumes a Unix-like environment.
@@ -101,6 +101,11 @@ Both templates walk you through what's needed — takes about a minute.
 
 ## Changelog
 
+### 0.17.0
+
+- Require Node.js 24 for local commands and GitHub Pages builds; align the doctor runtime check with this requirement.
+- Update pnpm 11 and compatible dependency releases, retaining Node.js 24 types.
+
 ### 0.16.0
 
 - Fix weekly collect option forwarding (#79)
@@ -109,31 +114,5 @@ Both templates walk you through what's needed — takes about a minute.
 
 - Swap `Ink Editorial` theme's Instrument Serif with Bodoni Moda font
 - CSS adjustments for spacing and typography
-
-### 0.15.0
-
-- Paginated the report archive with six report cards per page and accessible newer/older navigation.
-
-### 0.14.0
-
-- Added the first-party ACF Releases feed as a Tier 1 source.
-- Reclassified the broader ACF Blog feed as Tier 2 to reduce the priority of lower-signal posts.
-
-### 0.13.0
-
-- Added a static RSS 2.0 feed at `reports/feed.xml`, generated from the published report archive with the newest report first.
-- Added RSS autodiscovery and a visible "Subscribe via RSS" link to the reports index.
-
-### 0.12.0
-
-- Added an editorial archive layout for the reports index with richer report cards and issue count treatment.
-- Added a structured hero, issue rail, table of contents, and reading column to individual reports.
-- Preserved the canonical Markdown report structure while improving the generated HTML presentation.
-
-### 0.11.0
-
-- Replaced the report styles with Civic Brutalist, Ink Editorial, and Neon Observatory.
-- Added dedicated light, dark, and system-mode presentation for each style.
-- Made Civic Brutalist the default report style and added unusual Google Font pairings.
 
 For older releases, see the [GitHub Releases page](https://github.com/colorful-tones/wp-trend-watcher/releases).
