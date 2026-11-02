@@ -14,6 +14,7 @@ import { execSync } from "node:child_process";
 import { join, resolve } from "node:path";
 import { loadEnvFile } from "../env.js";
 import {
+  checkNodeVersion,
   resolveProviderConfig,
   formatCheck,
   type CheckResult,
@@ -21,27 +22,6 @@ import {
 } from "./checks.js";
 
 // --- Checks ---
-
-/** Check Node.js version (requires 18+). */
-function checkNodeVersion(): CheckResult {
-  const major = process.versions.node
-    ? Number.parseInt(process.versions.node.split(".")[0], 10)
-    : 0;
-
-  if (major >= 18) {
-    return {
-      name: "Node.js",
-      status: "ok",
-      message: `v${process.versions.node}`,
-    };
-  }
-
-  return {
-    name: "Node.js",
-    status: "fail",
-    message: `v${process.versions.node} — requires 18+`,
-  };
-}
 
 /** Check pnpm presence and version. */
 function checkPnpm(): CheckResult {
@@ -241,7 +221,7 @@ async function main(): Promise<void> {
 
   // Sync checks
   const syncChecks: CheckResult[] = [
-    checkNodeVersion(),
+    checkNodeVersion(process.versions.node),
     checkPnpm(),
     checkEnvFile(envExists),
     checkProvider(),
