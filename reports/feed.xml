@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 26 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Roadmap and Agentic Web Readiness Updates</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-02.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-02.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Beta 1 Release and AI Core Integration Trends</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-10-26.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-10-26.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 Beta 1 is now available, featuring client-side media processing, MCP integration, and the removal of script and style concatenation.</description>
       <pubDate>Mon, 26 Oct 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
