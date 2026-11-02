@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-02",
+  "collectedAt": "2026-11-02T14:18:54.580Z",
+  "articleCount": 10,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/01/presence-api-meeting-summary-october-26-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Presence API meeting summary: October 26, 2026",
+      "url": "https://make.wordpress.org/core/2026/11/01/presence-api-meeting-summary-october-26-2026/",
+      "publishedAt": "2026-11-01T14:02:57.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/01/wp-feature-notifications-weekly-update-2026-10-30/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WP Feature Notifications weekly update: 2026-10-30",
+      "url": "https://make.wordpress.org/core/2026/11/01/wp-feature-notifications-weekly-update-2026-10-30/",
+      "publishedAt": "2026-11-01T09:31:56.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/29/xpost-the-core-security-initiative-two-months-in/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: The Core Security Initiative: two months in",
+      "url": "https://make.wordpress.org/core/2026/10/29/xpost-the-core-security-initiative-two-months-in/",
+      "publishedAt": "2026-10-29T17:00:12.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/29/exploring-a-design-for-feature-notifications/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Exploring a design for Feature Notifications",
+      "url": "https://make.wordpress.org/core/2026/10/29/exploring-a-design-for-feature-notifications/",
+      "publishedAt": "2026-10-29T13:21:17.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/28/xpost-wordpress-for-the-agentic-web/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: WordPress for the Agentic Web",
+      "url": "https://make.wordpress.org/core/2026/10/28/xpost-wordpress-for-the-agentic-web/",
+      "publishedAt": "2026-10-28T15:47:06.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/10/28/dev-chat-agenda-oct-28-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – October 28, 2026",
+      "url": "https://make.wordpress.org/core/2026/10/28/dev-chat-agenda-oct-28-2026/",
+      "publishedAt": "2026-10-28T04:47:50.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-1-4/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1.4",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-1-4/",
+      "publishedAt": "2026-10-28T17:13:02.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.2 Beta 2 ",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/",
+      "publishedAt": "2026-10-27T15:49:21.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/28/wordpress-for-the-agentic-web/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "WordPress for the Agentic Web",
+      "url": "https://make.wordpress.org/ai/2026/10/28/wordpress-for-the-agentic-web/",
+      "publishedAt": "2026-10-28T15:46:37.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-vs-meta-box/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF vs. Meta Box for Developers Who Have to Pick One",
+      "url": "https://www.advancedcustomfields.com/blog/acf-vs-meta-box/",
+      "publishedAt": "2026-10-29T13:06:03.000Z"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-02",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 10,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/01/presence-api-meeting-summary-october-26-2026/",
+      "title": "Presence API meeting summary: October 26, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/01/presence-api-meeting-summary-october-26-2026/",
+      "summary": "The Presence API is targeting a December 3 readiness gate, requiring eight weeks of stability without breaking changes from version 0.17.0 and three outside projects using the API. Key technical updates include the release of version 0.18.3 with per-room session hashes and ongoing work to resolve post lock persistence issues during logout.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1217,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/01/wp-feature-notifications-weekly-update-2026-10-30/",
+      "title": "WP Feature Notifications weekly update: 2026-10-30",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/01/wp-feature-notifications-weekly-update-2026-10-30/",
+      "summary": "The notification repository is now user-scoped, requiring a `user_id` for all lookups and introducing new methods for filtering by status, channel, and pagination. This change ensures users can only access their own notifications via the REST API and includes updates to the `wpdb` implementation and PHPUnit coverage.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1272,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/29/xpost-the-core-security-initiative-two-months-in/",
+      "title": "X-post: The Core Security Initiative: two months in",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/29/xpost-the-core-security-initiative-two-months-in/",
+      "summary": "The Core Security Initiative has streamlined the security release process by automating 73% of the 109 steps required for a release and implementing a two-wave shipping strategy to prioritize the most-used versions. Key technical improvements include an AI-powered triaging system to manage the surge in HackerOne reports and agentic tooling designed to proactively hunt for vulnerabilities in core code.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1135,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/29/exploring-a-design-for-feature-notifications/",
+      "title": "Exploring a design for Feature Notifications",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/29/exploring-a-design-for-feature-notifications/",
+      "summary": "The Feature Notifications proposal introduces a unified notification tray for the admin area, editor, and front-end to replace fragmented admin notices and banners. Technically, it is a non-breaking addition where plugins send data to four specific layouts (Standard, Object, Conversation, and Group) rather than controlling the UI. The system will not remove existing admin notice APIs or hooks, but it establishes a new standard for consistent cross-plugin communication.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1082,
+      "completionTokens": 87
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/28/xpost-wordpress-for-the-agentic-web/",
+      "title": "X-post: WordPress for the Agentic Web",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/28/xpost-wordpress-for-the-agentic-web/",
+      "summary": "WordPress aims to become \"agent-ready\" by enabling third-party AI agents to manage sites via native, discoverable connections rather than just through WP-CLI or the REST API. The proposal targets WordPress 7.3 for coordinated work on an MCP (Model Context Protocol) Adapter to allow agents to discover and invoke WordPress capabilities as tools and resources.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1037,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/10/28/dev-chat-agenda-oct-28-2026/",
+      "title": "Dev Chat Agenda – October 28, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/10/28/dev-chat-agenda-oct-28-2026/",
+      "summary": "The Dev Chat scheduled for October 28, 2026, is canceled and will resume the following week. Key updates include the release of WordPress 7.2 Beta 2 on October 27th, with Beta 3 scheduled for November 3rd.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 786,
+      "completionTokens": 58
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-1-4/",
+      "title": "WordPress 7.1.4",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-1-4/",
+      "summary": "WordPress 7.1.4 is a short-cycle security release addressing multiple vulnerabilities, including remote code execution during the upgrade process, various stored XSS issues in the Interactivity API and block markup, and a stored denial of service. The release also updates bundled root certificates due to the eMudhra revocation and includes backports for eligible older branches.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1116,
+      "completionTokens": 72
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/",
+      "title": "WordPress 7.2 Beta 2 ",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/10/wordpress-7-2-beta-2/",
+      "summary": "WordPress 7.2 Beta 2 is scheduled for final release on December 8, 2026, and includes updates to the Abilities API, server-side registration for DataViews and DataForm, and REST API flexibility. Developers can test these features via the Beta Tester plugin, WP-CLI, or WordPress Playground.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1046,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/10/28/wordpress-for-the-agentic-web/",
+      "title": "WordPress for the Agentic Web",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/10/28/wordpress-for-the-agentic-web/",
+      "summary": "WordPress is moving toward \"Agentic Web\" readiness by creating native capabilities that allow external AI agents to manage sites via standardized protocols. The proposal targets WordPress 7.3 for a coordinated rollout, focusing on integrating the Model Context Protocol (MCP) to allow agents to discover and invoke WordPress tools, resources, and prompts without manual configuration.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1032,
+      "completionTokens": 68
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-vs-meta-box/",
+      "title": "ACF vs. Meta Box for Developers Who Have to Pick One",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-vs-meta-box/",
+      "summary": "ACF is positioned as the standard for agencies due to its consistent field-group workflow that integrates across PHP templates, blocks, REST APIs, and WPGraphQL. While Meta Box serves specific architectural needs, ACF offers broader continuity for standardized stacks by supporting Local JSON, Git, and WP-CLI-based deployments.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 370,
+      "completionTokens": 63
+    }
+  ],
+  "totalPromptTokens": 10093,
+  "totalCompletionTokens": 700
+}
