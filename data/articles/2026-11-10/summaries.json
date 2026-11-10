@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-10",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 10,
+  "summaries": [
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/08/conservative-in-what-we-accept/",
+      "title": "Conservative in What We Accept",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/08/conservative-in-what-we-accept/",
+      "summary": "The author proposes tightening input validation for new user registrations in non-multisite environments and reducing spam surface area by removing comment content from notification emails. The key technical takeaway is a shift toward a \"hostile\" security model where all CRUD operations are treated as potentially malicious, prompting a review of all data acceptance rules.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 509,
+      "completionTokens": 65
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/05/svg-icons-in-the-admin-bar-and-menu-in-wordpress-7-2/",
+      "title": "SVG icons in the admin bar and menu in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/05/svg-icons-in-the-admin-bar-and-menu-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 replaces Dashicon font glyphs in the admin bar and menu with inline SVGs from @wordpress/icons. Developers must update CSS color schemes and visibility rules to target the `.ab-icon` and `.wp-menu-image` elements directly, as styling via the `::before` pseudo-element is no longer effective for these icons.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1217,
+      "completionTokens": 75
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/05/your-content-is-going-to-get-more-random/",
+      "title": "Your Content Is Going To Get More Random!",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/05/your-content-is-going-to-get-more-random/",
+      "summary": "WordPress 7.2 introduces a `/random/` endpoint that redirects users to a random published post, category, author, or custom post type using the existing rewrite and `WP_Query` APIs. Developers can control eligibility via the `randomable` argument in `register_post_type()`, modify query logic using the `wp_is_random_content_query()` check, or disable the feature entirely using the `wp_enable_random_content_redirect` filter.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1168,
+      "completionTokens": 100
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/04/dev-chat-agenda-nov-04-2026/",
+      "title": "Dev Chat Agenda – November 4, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/04/dev-chat-agenda-nov-04-2026/",
+      "summary": "The November 4, 2026 Dev Chat focuses on the WordPress 7.2 release cycle, specifically discussing the November 10th Beta A release and the new Gallery Grid icon (issue #85957). Developers can request assistance on tickets prioritized for the next major or maintenance release during the open floor session.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 881,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/03/xpost-flagship-wordcamp-news/",
+      "title": "X-post: Flagship WordCamps on WP.org/news",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/03/xpost-flagship-wordcamp-news/",
+      "summary": "The article establishes a standardized publication framework for 2027 flagship WordCamp events on WordPress.org/news to improve traffic and consistency. The proposed schedule includes a call for organizers/sponsors (51 weeks out), ticket sales (26 weeks out), scholarships (16 weeks out), and the full schedule (8 weeks out), followed by a post-event recap.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1205,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/03/xpost-wp-marketing-repo/",
+      "title": "X-post: Updates to the WordPress Marketing Repository",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/03/xpost-wp-marketing-repo/",
+      "summary": "The WordPress Marketing Repository now includes several AI marketing skills (news, event recaps, showcase, and social) built on the WordPress Brand Writing Style Guide to automate content generation in the official voice. The repository also now syncs the marketing handbook from GitHub for public PR contributions and will eventually host n8n workflows as they migrate from Zapier.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1064,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wp-credits-reaches-50/",
+      "title": "WordPress Credits Welcomes More Than 50 Institutions",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wp-credits-reaches-50/",
+      "summary": "WordPress Credits has expanded to over 50 educational institutions across 17 countries, allowing students to earn academic recognition by contributing to WordPress projects like translations, documentation, and development. The program provides a structured framework for institutions to integrate community contributions into curricula, internships, or final projects at no cost.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 750,
+      "completionTokens": 61
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/",
+      "title": "WordPress 7.2 Beta 4",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/",
+      "summary": "WordPress 7.2 Beta 4 is scheduled for final release on December 8, 2026, focusing on accessibility, editor reliability, and developer APIs. Key technical updates include improvements to the Abilities API, DataViews extensibility, REST API behavior, and a new system for managing individual translation updates on the Updates screen.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1151,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/03/xpost-wp-marketing-repo/",
+      "title": "X-post: Updates to the WordPress Marketing Repository",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/11/03/xpost-wp-marketing-repo/",
+      "summary": "The WordPress Marketing Repository now includes several AI marketing skills (news, event recap, showcase, and social) built on the WordPress Brand Writing Style Guide to automate content generation in the official voice. The marketing handbook now syncs from GitHub for public PR contributions, and the team plans to migrate workflows from Zapier to n8n to make the underlying infrastructure visible and reusable.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1066,
+      "completionTokens": 75
+    },
+    {
+      "articleId": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-4-gutenberg-24-3-a-new-studio-workspace-wordpress-for-the-agentic-web-and-more-weekend-edition-379/",
+      "title": "WordPress 7.1.4, Gutenberg 24.3, a new Studio workspace, WordPress for the Agentic Web, and more—Weekend Edition 379",
+      "sourceName": "Gutenberg Times",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-4-gutenberg-24-3-a-new-studio-workspace-wordpress-for-the-agentic-web-and-more-weekend-edition-379/",
+      "summary": "WordPress 7.1.4 addresses over a dozen security issues, including a remote code execution vulnerability in the upgrade process and stored XSS in several blocks and the Interactivity API. The fixes are backported to the 4.7 branch, while WooCommerce 11.2.2 and WooPayments also received critical security updates involving database changes.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 555,
+      "completionTokens": 72
+    }
+  ],
+  "totalPromptTokens": 9566,
+  "totalCompletionTokens": 736
+}
