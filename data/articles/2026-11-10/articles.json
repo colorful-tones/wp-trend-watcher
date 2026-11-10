@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-10",
+  "collectedAt": "2026-11-10T13:37:28.705Z",
+  "articleCount": 10,
+  "articles": [
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/08/conservative-in-what-we-accept/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Conservative in What We Accept",
+      "url": "https://make.wordpress.org/core/2026/11/08/conservative-in-what-we-accept/",
+      "publishedAt": "2026-11-08T20:33:27.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/05/svg-icons-in-the-admin-bar-and-menu-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "SVG icons in the admin bar and menu in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/05/svg-icons-in-the-admin-bar-and-menu-in-wordpress-7-2/",
+      "publishedAt": "2026-11-05T11:15:41.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/05/your-content-is-going-to-get-more-random/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Your Content Is Going To Get More Random!",
+      "url": "https://make.wordpress.org/core/2026/11/05/your-content-is-going-to-get-more-random/",
+      "publishedAt": "2026-11-05T02:59:12.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/04/dev-chat-agenda-nov-04-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – November 4, 2026",
+      "url": "https://make.wordpress.org/core/2026/11/04/dev-chat-agenda-nov-04-2026/",
+      "publishedAt": "2026-11-04T06:57:13.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/03/xpost-flagship-wordcamp-news/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Flagship WordCamps on WP.org/news",
+      "url": "https://make.wordpress.org/core/2026/11/03/xpost-flagship-wordcamp-news/",
+      "publishedAt": "2026-11-03T16:08:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/03/xpost-wp-marketing-repo/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "X-post: Updates to the WordPress Marketing Repository",
+      "url": "https://make.wordpress.org/core/2026/11/03/xpost-wp-marketing-repo/",
+      "publishedAt": "2026-11-03T14:19:16.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wp-credits-reaches-50/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress Credits Welcomes More Than 50 Institutions",
+      "url": "https://wordpress.org/news/2026/11/wp-credits-reaches-50/",
+      "publishedAt": "2026-11-09T16:01:18.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.2 Beta 4",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/",
+      "publishedAt": "2026-11-03T15:45:29.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/03/xpost-wp-marketing-repo/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "X-post: Updates to the WordPress Marketing Repository",
+      "url": "https://make.wordpress.org/ai/2026/11/03/xpost-wp-marketing-repo/",
+      "publishedAt": "2026-11-03T14:19:16.000Z"
+    },
+    {
+      "id": "gutenberg-times:https://gutenbergtimes.com/wordpress-7-1-4-gutenberg-24-3-a-new-studio-workspace-wordpress-for-the-agentic-web-and-more-weekend-edition-379/",
+      "sourceId": "gutenberg-times",
+      "sourceName": "Gutenberg Times",
+      "title": "WordPress 7.1.4, Gutenberg 24.3, a new Studio workspace, WordPress for the Agentic Web, and more—Weekend Edition 379",
+      "url": "https://gutenbergtimes.com/wordpress-7-1-4-gutenberg-24-3-a-new-studio-workspace-wordpress-for-the-agentic-web-and-more-weekend-edition-379/",
+      "publishedAt": "2026-11-07T17:45:24.000Z"
+    }
+  ]
+}

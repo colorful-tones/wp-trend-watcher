@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 02 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Release Planning and Security Updates</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-10.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-10.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Tue, 10 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Roadmap and Agentic Web Readiness Updates</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-02.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-02.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress is developing agentic web readiness, automating 73% of security release steps, and preparing for the WordPress 7.2 release in December.</description>
       <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
     </item>
     <item>
