@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 10 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Secrets API and Notification Intent Proposals</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Mon, 16 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Release Planning and Security Updates</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-10.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-10.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 development focuses on SVG admin icons, a new /random/ endpoint, and tighter input validation, with critical security updates for 7.1.4.</description>
       <pubDate>Tue, 10 Nov 2026 12:00:00 GMT</pubDate>
     </item>
     <item>

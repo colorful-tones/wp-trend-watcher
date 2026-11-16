@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress 7.2 Secrets API and Notification Intent Proposals</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="WordPress 7.2 updates include a new Secrets API for credential encryption, a notification declared intent proposal, and native text shadow support.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress 7.2 Secrets API and Notification Intent Proposals">
+  <meta property="og:description" content="WordPress 7.2 updates include a new Secrets API for credential encryption, a notification declared intent proposal, and native text shadow support.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress 7.2 Secrets API and Notification Intent Proposals">
+  <meta name="twitter:description" content="WordPress 7.2 updates include a new Secrets API for credential encryption, a notification declared intent proposal, and native text shadow support.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-11-16</div>
+    <h1 id="wordpress-trend-report-2026-11-16"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-11-16</h1>
+    <p class="report-description">WordPress 7.2 updates include a new Secrets API for credential encryption, a notification declared intent proposal, and native text shadow support.</p>
+  </div>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-11-16<br>Human-reviewed report</p>
+      <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(13 articles)</span></summary>
+<ol>
+<li><a href="https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/">What’s new for developers? (November 2026)</a> (WordPress Developer Blog) — WordPress 7.2 (scheduled for December 8, 2026) introduces a Secrets API to encrypt credentials at rest using <code>wp_set_secret()</code> and <code>wp_get_secret()</code>, and replaces Dashicons with inline SVGs in the admin bar and menu.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/">WordPress notifications and declared intent: proposal for the path forward</a> (Make Core) — This proposal introduces a &quot;declared intent&quot; system for WordPress notifications to prevent plugins from cluttering the admin dashboard with promotional banners.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/">Update bundled @wordpress/* packages and @wordpress/build to fix CSS module class name collisions</a> (Make Core) — WordPress 7.2 introduces a fix for CSS module class name collisions by ensuring class names change whenever the underlying CSS changes, preventing styles from different versions of the same package from overlapping.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/">What’s new in Gutenberg 24.4? (12 November)</a> (Make Core) — Gutenberg 24.4 introduces a new &quot;Overridden by&quot; list in Global Styles to identify specific block style overrides and adds search and filtering to Notes.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/">Introducing Mētis, Our New Flagship Theme</a> (Make Core) — Mētis is the new flagship WordPress theme designed to showcase the full capabilities of the Site Editor through six starter sites, fifty section patterns, and nine bundled open-source type families.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/">The Secrets API in WordPress 7.2</a> (Make Core) — WordPress 7.2 introduces the Secrets API to store and manage credentials like API keys and OAuth secrets using encrypted storage that supports versioning for easy rotation.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/">Editor: The Options and View menus now use the new Menu component</a> (Make Core) — WordPress 7.2 replaces the Options and View menus in the post and site editors with a new <code>@wordpress/ui</code> Menu component, improving keyboard navigation and design system consistency.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/">Dev Chat Agenda – November 11, 2026</a> (Make Core) — The November 11, 2026, Dev Chat covers WordPress 7.2 updates, including the release of Beta 5 (Nov 10) and the scheduled RC1 (Nov 17).</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/">New Block Support in WordPress 7.2: Text Shadow (textShadow)</a> (Make Core) — WordPress 7.2 introduces native text shadow support for the Paragraph and Heading blocks, allowing users to select presets via the block inspector and Global Styles.</li>
+<li><a href="https://wordpress.org/news/2026/11/reprint-your-site/">Copy Your WordPress Site with Reprint</a> (WordPress.org News) — Reprint is a free, open-source PHP tool and CLI client that copies a WordPress site's files and database directly to a new destination without requiring external services or temporary archives.</li>
+<li><a href="https://wordpress.org/news/2026/11/wc-asia-2027-penang/">WordCamp Asia 2027 Is Coming to Penang</a> (WordPress.org News) — WordCamp Asia 2027 will take place from April 9–11 at the Penang Waterfront Convention Centre in Malaysia.</li>
+<li><a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/">AI Contributor Weekly Summary – 11 November 2026</a> (WordPress.org AI) — The team is preparing for the WordPress 7.2 Release Candidate by testing the Secrets API on multisite installations and drafting developer documentation for the Abilities API.</li>
+<li><a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/">AI Contributor Weekly Summary – 4 November 2026</a> (WordPress.org AI) — The team is developing a shared &quot;abilities&quot; architecture where WordPress core serves as the source of truth, with updates synchronized to the MCP Adapter to allow AI assistants to discover and invoke WordPress capabilities.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>The primary trend this week is the preparation for the WordPress 7.2 release, scheduled for December 8, 2026. Key developments include:</p>
+<ul>
+<li><strong>Security and Credential Management:</strong> The introduction of the Secrets API (<a href="https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/">What’s new for developers?</a>, <a href="https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/">The Secrets API in WordPress 7.2</a>) focuses on encrypting credentials at rest using <code>wp_set_secret()</code> and <code>wp_get_secret()</code>.</li>
+<li><strong>Notification Governance:</strong> A new proposal for &quot;declared intent&quot; (<a href="https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/">WordPress notifications and declared intent</a>) aims to categorize plugin notifications (Operational, Setup, Activity, Feedback, or Promotional) to allow for automated restriction of unauthorized promotional content.</li>
+<li><strong>AI Integration Architecture:</strong> Ongoing work is being done to create a shared &quot;abilities&quot; architecture (<a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/">AI Contributor Weekly Summary – 4 November 2026</a>) that allows AI assistants to discover and invoke WordPress capabilities via an MCP Adapter.</li>
+</ul>
+<h3 id="developer-implications">Developer Implications</h3>
+<ul>
+<li><strong>Secrets API Adoption:</strong> Developers should begin planning for the transition to the Secrets API for managing API keys and OAuth secrets. To ensure security, developers must use the <code>plugin-slug/secret-name</code> naming convention and only call <code>reveal()</code> at the specific point of use to avoid plain-text logging (<a href="https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/">The Secrets API in WordPress 7.2</a>).</li>
+<li><strong>Styling and UI Updates:</strong>
+<ul>
+<li>WordPress 7.2 will replace Dashicons with inline SVGs in the admin bar and menu (<a href="https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/">What’s new for developers?</a>).</li>
+<li>A fix for CSS module class name collisions is being introduced to prevent style overlaps between different versions of the same package (<a href="https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/">Update bundled @wordpress/* packages</a>).</li>
+<li>The Options and View menus in the post and site editors are moving to a new <code>@wordpress/ui</code> Menu component, which may affect custom UI layouts (<a href="https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/">Editor: The Options and View menus now use the new Menu component</a>).</li>
+</ul>
+</li>
+<li><strong>Block Development:</strong> New native text shadow support is arriving for Paragraph and Heading blocks. Developers can opt-in other blocks by setting <code>textShadow: true</code> in <code>block.json</code> and defining presets in <code>theme.json</code> (<a href="https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/">New Block Support in WordPress 7.2: Text Shadow</a>).</li>
+<li><strong>Testing and Release Timeline:</strong> The Release Candidate 1 (RC1) is scheduled for November 17, 2026. Developers should monitor the Secrets API testing on multisite installations during this window (<a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/">AI Contributor Weekly Summary – 11 November 2026</a>).</li>
+</ul>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/">What’s new for developers? (November 2026)</a> (WordPress Developer Blog) — WordPress 7.2 (scheduled for December 8, 2026) introduces a Secrets API to encrypt credentials at rest using <code>wp_set_secret()</code> and <code>wp_get_secret()</code>, and replaces Dashicons with inline SVGs in the admin bar and menu.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/">WordPress notifications and declared intent: proposal for the path forward</a> (Make Core) — This proposal introduces a &quot;declared intent&quot; system for WordPress notifications to prevent plugins from cluttering the admin dashboard with promotional banners.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/">Update bundled @wordpress/* packages and @wordpress/build to fix CSS module class name collisions</a> (Make Core) — WordPress 7.2 introduces a fix for CSS module class name collisions by ensuring class names change whenever the underlying CSS changes, preventing styles from different versions of the same package from overlapping.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>The <a href="https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/">new Secrets API</a> proposed for part of the upcoming WordPress 7.2 release is getting some critical attention, and could use more hosting testing and developer feedback.</p>
+<p>The <a href="https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/">proposal for declared intent for the WP Feature Notification project </a> looks solid and offers a way for plugins to declare their intent for notifications in core. This allows for usage guildelines and proper tooling to enforce proper usage.</p>
+<p>A <a href="https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/">new &quot;flagship&quot; theme</a> has been announced: Mētis. What the process for including a flagship theme looks like is unclear and how might it add to the overall core bundle size? 🤔</p>
+<p>WordPress 7.2 is on the horizon (estimated arrival Dec. 8, 2026) - please <a href="https://wordpress.org/news/2026/11/wordpress-7-2-beta-5/">give beta-5 a test</a>. 🙏</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="wordpress-developer-blog">WordPress Developer Blog</h3>
+<ul>
+<li><a href="https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/">What’s new for developers? (November 2026)</a> — 11/13/2026</li>
+</ul>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/">WordPress notifications and declared intent: proposal for the path forward</a> — 11/16/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/">Update bundled @wordpress/* packages and @wordpress/build to fix CSS module class name collisions</a> — 11/16/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/">What’s new in Gutenberg 24.4? (12 November)</a> — 11/13/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/">Introducing Mētis, Our New Flagship Theme</a> — 11/13/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/">The Secrets API in WordPress 7.2</a> — 11/11/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/">Editor: The Options and View menus now use the new Menu component</a> — 11/11/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/">Dev Chat Agenda – November 11, 2026</a> — 11/10/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/">New Block Support in WordPress 7.2: Text Shadow (textShadow)</a> — 11/10/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/11/reprint-your-site/">Copy Your WordPress Site with Reprint</a> — 11/13/2026</li>
+<li><a href="https://wordpress.org/news/2026/11/wc-asia-2027-penang/">WordCamp Asia 2027 Is Coming to Penang</a> — 11/11/2026</li>
+</ul>
+<h3 id="wordpress-org-ai">WordPress.org AI</h3>
+<ul>
+<li><a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/">AI Contributor Weekly Summary – 11 November 2026</a> — 11/11/2026</li>
+<li><a href="https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/">AI Contributor Weekly Summary – 4 November 2026</a> — 11/11/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 13</li>
+<li>Sources: WordPress Developer Blog, Make Core, WordPress.org News, WordPress.org AI</li>
+<li>Model: openai-compatible/google/gemma-4-12b-qat</li>
+<li>Tokens: 15778 prompt + 1954 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~25 minutes</li>
+</ul>
+
+      </div>
+    </main>
+  </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>
