@@ -1,0 +1,140 @@
+{
+  "date": "2026-11-16",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 13,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/",
+      "title": "What’s new for developers? (November 2026)",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/",
+      "summary": "WordPress 7.2 (scheduled for December 8, 2026) introduces a Secrets API to encrypt credentials at rest using `wp_set_secret()` and `wp_get_secret()`, and replaces Dashicons with inline SVGs in the admin bar and menu. Developers must update CSS rules targeting `::before` for icons and can now use the `randomable` argument in `register_post_type()` to include or exclude custom post types from the new `/random` URL.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1298,
+      "completionTokens": 105
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/",
+      "title": "WordPress notifications and declared intent: proposal for the path forward",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/",
+      "summary": "This proposal introduces a \"declared intent\" system for WordPress notifications to prevent plugins from cluttering the admin dashboard with promotional banners. Developers must register one of five non-filterable intents (Operational, Setup, Activity, Feedback, or Promotional) for every notification channel, allowing automated tools to detect and restrict unauthorized promotional content.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1030,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/",
+      "title": "Update bundled @wordpress/* packages and @wordpress/build to fix CSS module class name collisions",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/",
+      "summary": "WordPress 7.2 introduces a fix for CSS module class name collisions by ensuring class names change whenever the underlying CSS changes, preventing styles from different versions of the same package from overlapping. Developers bundling @wordpress/* packages must update to specific versions (e.g., @wordpress/ui 0.26.0, @wordpress/components 44.0.0) or update @wordpress/build to 0.27.0 and rebuild to ensure compatibility.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 978,
+      "completionTokens": 98
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/",
+      "title": "What’s new in Gutenberg 24.4? (12 November)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/",
+      "summary": "Gutenberg 24.4 introduces a new \"Overridden by\" list in Global Styles to identify specific block style overrides and adds search and filtering to Notes. Key technical updates include an experimental PHP and SQLite runtime for `wp-env`, migration of several controls to `@wordpress/ui`, and improved parsing performance for Rich Text.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1189,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/",
+      "title": "Introducing Mētis, Our New Flagship Theme",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/",
+      "summary": "Mētis is the new flagship WordPress theme designed to showcase the full capabilities of the Site Editor through six starter sites, fifty section patterns, and nine bundled open-source type families. It features six global style variations with automatic day/night mode switching and is currently undergoing formal development review following its initial design phase.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1134,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/",
+      "title": "The Secrets API in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 introduces the Secrets API to store and manage credentials like API keys and OAuth secrets using encrypted storage that supports versioning for easy rotation. Developers should use `wp_set_secret()` and `wp_get_secret()` with a `plugin-slug/secret-name` naming convention, ensuring they only call `reveal()` at the point of use to prevent accidental logging or caching of plain-text values.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1166,
+      "completionTokens": 88
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/",
+      "title": "Editor: The Options and View menus now use the new Menu component",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/",
+      "summary": "WordPress 7.2 replaces the Options and View menus in the post and site editors with a new `@wordpress/ui` Menu component, improving keyboard navigation and design system consistency. Developers should note that plugin items now reside in a new \"Panels\" submenu and that the `as` prop is deprecated for `PluginMoreMenuItem`, `PluginSidebarMoreMenuItem`, and `PluginPreviewMenuItem`.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1117,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/",
+      "title": "Dev Chat Agenda – November 11, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/",
+      "summary": "The November 11, 2026, Dev Chat covers WordPress 7.2 updates, including the release of Beta 5 (Nov 10) and the scheduled RC1 (Nov 17). Key technical updates include editor component changes, SVG icons in the admin bar/menu, new `textShadow` block support, and a new redirect for random posts.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 839,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/",
+      "title": "New Block Support in WordPress 7.2: Text Shadow (textShadow)",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/",
+      "summary": "WordPress 7.2 introduces native text shadow support for the Paragraph and Heading blocks, allowing users to select presets via the block inspector and Global Styles. Developers can opt-in other blocks by setting `textShadow: true` in `supports.typography` within `block.json` and define custom presets in `theme.json` using the `textShadowPresets` array.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1118,
+      "completionTokens": 77
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/reprint-your-site/",
+      "title": "Copy Your WordPress Site with Reprint",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/reprint-your-site/",
+      "summary": "Reprint is a free, open-source PHP tool and CLI client that copies a WordPress site's files and database directly to a new destination without requiring external services or temporary archives. It features a resume capability for interrupted transfers and uses the WordPress Importer logic to safely update links within serialized data, custom fields, and complex data structures.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 907,
+      "completionTokens": 69
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wc-asia-2027-penang/",
+      "title": "WordCamp Asia 2027 Is Coming to Penang",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wc-asia-2027-penang/",
+      "summary": "WordCamp Asia 2027 will take place from April 9–11 at the Penang Waterfront Convention Centre in Malaysia. Key dates include a 600-person limit for Contributor Day registration opening on January 27, 2027, and a regular ticket price of $35 for the full three-day event.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1267,
+      "completionTokens": 74
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/",
+      "title": "AI Contributor Weekly Summary – 11 November 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/",
+      "summary": "The team is preparing for the WordPress 7.2 Release Candidate by testing the Secrets API on multisite installations and drafting developer documentation for the Abilities API. Key technical decisions include moving shared WordPress abilities into a dedicated Composer package and refining how abilities are registered as self-documenting units for REST API and MCP discovery.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 975,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/",
+      "title": "AI Contributor Weekly Summary – 4 November 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/",
+      "summary": "The team is developing a shared \"abilities\" architecture where WordPress core serves as the source of truth, with updates synchronized to the MCP Adapter to allow AI assistants to discover and invoke WordPress capabilities. Key technical decisions include allowing the MCP Adapter to use more fluid schemas than the core's backward-compatible requirements and documenting the synchronization strategy on GitHub for stakeholder feedback before implementation.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 915,
+      "completionTokens": 74
+    }
+  ],
+  "totalPromptTokens": 13933,
+  "totalCompletionTokens": 1006
+}

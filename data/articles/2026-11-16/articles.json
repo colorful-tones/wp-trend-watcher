@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-16",
+  "collectedAt": "2026-11-16T21:29:55.095Z",
+  "articleCount": 13,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new for developers? (November 2026)",
+      "url": "https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/",
+      "publishedAt": "2026-11-13T21:08:16.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress notifications and declared intent: proposal for the path forward",
+      "url": "https://make.wordpress.org/core/2026/11/16/wordpress-notifications-and-declared-intent-proposal-for-the-path-forward/",
+      "publishedAt": "2026-11-16T11:46:57.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Update bundled @wordpress/* packages and @wordpress/build to fix CSS module class name collisions",
+      "url": "https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/",
+      "publishedAt": "2026-11-16T10:15:15.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "What’s new in Gutenberg 24.4? (12 November)",
+      "url": "https://make.wordpress.org/core/2026/11/13/whats-new-in-gutenberg-24-4-12-november/",
+      "publishedAt": "2026-11-13T20:02:11.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Introducing Mētis, Our New Flagship Theme",
+      "url": "https://make.wordpress.org/core/2026/11/13/introducing-metis-our-new-flagship-theme/",
+      "publishedAt": "2026-11-13T10:51:09.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "The Secrets API in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/",
+      "publishedAt": "2026-11-11T21:25:52.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Editor: The Options and View menus now use the new Menu component",
+      "url": "https://make.wordpress.org/core/2026/11/11/editor-the-options-and-view-menus-now-use-the-new-menu-component/",
+      "publishedAt": "2026-11-11T14:52:27.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – November 11, 2026",
+      "url": "https://make.wordpress.org/core/2026/11/11/dev-chat-agenda-nov-11-2026/",
+      "publishedAt": "2026-11-11T04:15:40.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "New Block Support in WordPress 7.2: Text Shadow (textShadow)",
+      "url": "https://make.wordpress.org/core/2026/11/11/new-block-support-in-wordpress-7-2-text-shadow/",
+      "publishedAt": "2026-11-11T01:36:13.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/reprint-your-site/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Copy Your WordPress Site with Reprint",
+      "url": "https://wordpress.org/news/2026/11/reprint-your-site/",
+      "publishedAt": "2026-11-13T12:00:00.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wc-asia-2027-penang/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordCamp Asia 2027 Is Coming to Penang",
+      "url": "https://wordpress.org/news/2026/11/wc-asia-2027-penang/",
+      "publishedAt": "2026-11-11T14:00:00.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 11 November 2026",
+      "url": "https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-11-november-2026/",
+      "publishedAt": "2026-11-11T20:55:05.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 4 November 2026",
+      "url": "https://make.wordpress.org/ai/2026/11/11/ai-contributor-weekly-summary-4-november-2026/",
+      "publishedAt": "2026-11-11T19:26:38.000Z"
+    }
+  ]
+}
