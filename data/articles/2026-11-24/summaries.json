@@ -1,0 +1,260 @@
+{
+  "date": "2026-11-24",
+  "provider": "openai-compatible",
+  "model": "google/gemma-4-12b-qat",
+  "articleCount": 25,
+  "summaries": [
+    {
+      "articleId": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/",
+      "title": "What’s new in PHP 8.6 and what that means for WordPress?",
+      "sourceName": "WordPress Developer Blog",
+      "url": "https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/",
+      "summary": "PHP 8.6 releases on November 19th, and while WordPress core is currently being tested against it, the job is still allowed to fail. Developers should prioritize auditing for deprecated functions like `mb_ereg()` and incorrectly-cased function calls, as well as common plugin-side issues with `spl_object_hash()`, `is_double()`, and `is_integer()`.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1242,
+      "completionTokens": 84
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/",
+      "title": "WordPress and PHP 8.6",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/",
+      "summary": "WordPress 7.2 is fully compatible with PHP 8.6, though the minimum supported PHP version remains 7.4. Key technical changes include updated MIME type handling for `.ttf` files (now accepting `font/ttf`) and a requirement for custom stream wrappers to implement `stream_flush()` to prevent false failures in `fclose()` and `file_put_contents()`.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1140,
+      "completionTokens": 80
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/",
+      "title": "PHP & WordPress chat: Nov 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/",
+      "summary": "WordPress Core is confirmed to be in good shape for PHP 8.6, with specific fixes addressed for GD image flipping and TrueType font file types. To improve issue escalation, the PHP Foundation advisory board channel will serve as a trusted path for WordPress to flag high-impact bugs that might otherwise be lost in the noise of AI-generated reports.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1034,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/",
+      "title": "WordPress 7.2 Field Guide",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/",
+      "summary": "WordPress 7.2 introduces 21 new hooks (16 filters and 5 actions) and expands client-side media processing to the Media Library grid, Add New Media File screen, and media modal. This allows for browser-based image resizing and format conversion in Chromium-based browsers (version 137+), provided the device meets specific memory and security requirements.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1063,
+      "completionTokens": 78
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/",
+      "title": "Miscellaneous Developer Changes in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 introduces a new notification system that emails users when an application password is created, triggered by the `wp_create_application_password` action. Developers can control these notifications using the `wp_send_application_password_created_email` filter to toggle delivery or `wp_application_password_created_email` to modify the email content and headers.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1228,
+      "completionTokens": 79
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/",
+      "title": "Abilities API updates in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 introduces a `required_capabilities` argument in the Abilities API to declare permissions that must pass for every invocation of an ability. Developers should use this list for global requirements (omitting `permission_callback`) and retain the `permission_callback` for checks that depend on specific input data.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1140,
+      "completionTokens": 64
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/",
+      "title": "Reorganizing Trac Notifications in Slack",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/",
+      "summary": "WordPress is reorganizing Slack notifications to reduce noise by moving component-specific commits and new tickets into dedicated `#core-{component}-commits` and `#core-{component}-newtickets` channels. A new `#core-{component}-firehose` channel will now aggregate all activity (tickets, commits, and comments) for specific components, while the `#core` channel will only display the first line of commit messages.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1049,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/",
+      "title": "Miscellaneous Editor Changes in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 removes the `__experimentalGroup` prop from `InspectorControls`, requiring developers to rename it to `group` to prevent controls from rendering in the default group. The `__experimentalImageEditor` component's stylesheet moves from `@wordpress/block-library` to `@wordpress/block-editor`, and Additional CSS now correctly applies to blocks rendered by a parent block (e.g., Navigation Link inside a Navigation block).",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1078,
+      "completionTokens": 91
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/",
+      "title": "API for style state-aware block styling controls",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/",
+      "summary": "WordPress 7.2 introduces a public API for style-state-aware block styling controls, allowing developers to read and update block style attributes for specific viewport and pseudo states. The technical takeaway is the availability of `getSelectedBlockStyleState`, `getStyleForState`, and `setStyleForState` hooks, along with dedicated `style-state` slots in `<InspectorControls>` and `<BlockControls>` to display state-specific UI.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1401,
+      "completionTokens": 89
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/",
+      "title": "Dev Chat Agenda – November 17, 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/",
+      "summary": "The WordPress Developers Chat is scheduled for November 18, 2026, at 15:00 UTC to discuss WordPress 7.2, which includes RC1 release details and a scheduled RC2 on November 24th. Key technical updates involve preparations for jQuery 4, REST API and Interactivity API changes, the new Secrets API, and fixes for CSS module class name collisions in bundled packages.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1055,
+      "completionTokens": 88
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/",
+      "title": "Preparing for jQuery 4 with WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/",
+      "summary": "WordPress 7.2 will ship with jQuery Migrate 3.6.0 to identify deprecated code before the transition to jQuery 4. The roadmap includes updating to the latest jQuery and jQuery UI in WordPress 7.3, with a planned default disabling of jQuery Migrate by the end of 2027 (WordPress 7.5 or 7.6).",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 636,
+      "completionTokens": 76
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/",
+      "title": "Call for testing: Xdebug in the WordPress Contributor Toolkit 2.1.0 beta",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/",
+      "summary": "The WordPress Contributor Toolkit 2.1.0 beta introduces Xdebug step debugging support for the WordPress Playground environment, including configuration steps for VS Code, Cursor, PhpStorm, and Zed. Testing runs until December 4 and requires verification across macOS (Apple Silicon), Windows, and Linux to ensure cross-platform compatibility before the stable release.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1132,
+      "completionTokens": 70
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/",
+      "title": "Media changes in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 extends client-side media processing to the Media Library grid, the Add New Media File screen, and the media modal, ensuring consistent image handling across the UI. Key technical changes include the deprecation of `wp_start_cross_origin_isolation_output_buffer()` in favor of `wp_send_document_isolation_policy_header()` and the introduction of the `wp_generate_animated_image_subsizes` filter to maintain animation during client-side processing.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1116,
+      "completionTokens": 104
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/",
+      "title": "REST API changes in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 updates the REST API so that revision and autosave responses only include revisioned meta keys, requiring developers to use the `revisions_enabled` constant or the `wp_post_revision_meta_keys` filter for non-revisioned keys. Additionally, the comments endpoint's `status` parameter is now an array, and the `rest_allowed_cors_methods` filter now correctly persists values in the `Access-Control-Allow-Methods` header.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1111,
+      "completionTokens": 102
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/",
+      "title": "Performance Chat Summary: 17 November 2026",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/",
+      "summary": "The 7.2 milestone is closing, and the trunk is opening for 7.3 work with a focus on high-priority performance tickets like #66642 and the nearly complete stylesheet minification for classic themes (#64109). Additionally, issue #2662 was added to the upcoming milestone to enable client-side media processing in the Media Library for the Modern Image Formats plugin.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 849,
+      "completionTokens": 87
+    },
+    {
+      "articleId": "make-core:https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/",
+      "title": "Changes to the Interactivity API in WordPress 7.2",
+      "sourceName": "Make Core",
+      "url": "https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/",
+      "summary": "WordPress 7.2 introduces the `data-wp-html` directive to render HTML from the Interactivity API store, requiring the use of the `asDangerousHTML()` function to ensure the content is explicitly trusted. The update also improves the router by providing navigation progress and origin tracking, while removing three previously deprecated behaviors.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1116,
+      "completionTokens": 66
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/7-2-release-celebration/",
+      "title": "Join the WordPress 7.2 Release Celebration Livestream",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/7-2-release-celebration/",
+      "summary": "The WordPress 7.2 release celebration livestream occurs on December 8, 2026, at 16:00 UTC to showcase new features including the Ipsum default theme, a `/random` post discovery URL, emoji reactions for notes, and redesigned Admin dashboard icons. Developers can currently test these features in the latest Beta/RC release.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 542,
+      "completionTokens": 73
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/",
+      "title": "Global Partners Across the Third Quarter of the 2026",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/",
+      "summary": "The WordPress Community held 39 events from July through September 2026, supported by five Global Partners (Jetpack, WordPress.com, WooCommerce, Bluehost, and Hostinger). A key technical and community takeaway is the growing pipeline from education to production, highlighted by \"WordPress Studio\" workshops where participants launched live sites in a single morning and the expansion of the Campus Connect program to universities.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1098,
+      "completionTokens": 83
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wp-credits-boost-translation/",
+      "title": "WordPress Credits Boost Translation",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wp-credits-boost-translation/",
+      "summary": "The WordPress Credits program enabled students in Costa Rica to earn academic credit by translating WordPress.org projects, increasing es_CR translation coverage to nearly 100% across the Plugin Directory, Forums, and Core between September 2025 and November 2026. The initiative also produced a new instructional video for contributors to navigate the translation platform using Costa Rican Spanish as a primary example.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 800,
+      "completionTokens": 82
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-1-5-release/",
+      "title": "WordPress 7.1.5 Release",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-1-5-release/",
+      "summary": "WordPress 7.1.5 is a security release addressing multiple vulnerabilities, including SQL injections in WP_Meta_Query, privilege escalations in multisite Customizer previews, and unauthenticated RCE via Template Part block attributes. The next major release, version 7.2, is scheduled for December 8, 2026.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1113,
+      "completionTokens": 71
+    },
+    {
+      "articleId": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/",
+      "title": "WordPress 7.2 Release Candidate 1",
+      "sourceName": "WordPress.org News",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/",
+      "summary": "WordPress 7.2 RC1 is scheduled for final release on December 8, 2026, and includes bug fixes for client-side media uploads, the Interactivity API, and the Abilities API. Key technical updates involve refinements to bundled libraries (PHPMailer, Requests, getID3, sodium_compat), PHP 8.6 compatibility improvements, and the transition to modern SVG icons across the administration area.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1093,
+      "completionTokens": 89
+    },
+    {
+      "articleId": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/",
+      "title": "AI Contributor Weekly Summary – 18 November 2026",
+      "sourceName": "WordPress.org AI",
+      "url": "https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/",
+      "summary": "The team established a \"core-first\" development workflow for WordPress 7.3 abilities, where features are developed in WordPress core first and then synchronized to the shared WordPress Abilities package. This strategy aims to reduce duplicate development and ensure the core remains the source of truth for input/output schemas and implementations.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 936,
+      "completionTokens": 62
+    },
+    {
+      "articleId": "acf-releases:https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "title": "ACF 6.8.12 Release: The New Settings Page",
+      "sourceName": "ACF Releases",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "summary": "ACF 6.8.12 introduces a new Settings page that allows toggling features like the REST API and JSON-LD schema via the admin UI while maintaining code-defined settings as the source of truth. The release also enables the Abilities API by default across the site and all existing field groups to facilitate easier integration with AI tools. Developers can use the `acf/settings/show_settings` filter to hide the page or `acf/settings_page/tabs` to extend it with custom fields.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1251,
+      "completionTokens": 105
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "title": "ACF 6.8.12 Release: The New Settings Page",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "summary": "ACF 6.8.12 introduces a new Settings page that allows toggling features like the REST API and JSON-LD schema via the admin UI while maintaining code-defined settings as the source of truth. Key technical updates include the Abilities API being enabled by default across the site and all existing/new field groups, and the addition of `acf/settings_page/tabs` and `acf/settings_page/general/sections` filters for extending the settings interface.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 1251,
+      "completionTokens": 99
+    },
+    {
+      "articleId": "acf-blog:https://www.advancedcustomfields.com/blog/acf-vs-toolset/",
+      "title": "ACF vs. Toolset – Pricing, Portability, and the Verdict",
+      "sourceName": "ACF Blog",
+      "url": "https://www.advancedcustomfields.com/blog/acf-vs-toolset/",
+      "summary": "ACF offers greater portability through standard WordPress metadata and Local JSON, making it ideal for developer-led projects using custom themes or page builders like Elementor and Bricks. While Toolset provides integrated features like visual forms and maps, ACF PRO is the more flexible choice for complex content modeling via Repeaters and Flexible Content fields.",
+      "model": "google/gemma-4-12b-qat",
+      "promptTokens": 415,
+      "completionTokens": 66
+    }
+  ],
+  "totalPromptTokens": 25889,
+  "totalCompletionTokens": 2042
+}

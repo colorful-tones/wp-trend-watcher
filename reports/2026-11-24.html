@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress 7.2 Release Planning and PHP 8.6 Compatibility</title>
+  <link rel="stylesheet" href="assets/report.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Bodoni+Moda:wght@400&display=swap&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+(function () {
+  var root = document.documentElement;
+  var themeKey = "wp-trend-watcher-theme";
+  var modeKey = "wp-trend-watcher-mode";
+  var themes = ["civic-brutalist", "ink-editorial", "neon-observatory"];
+  var modes = ["system", "light", "dark"];
+
+  function read(key, allowed, fallback) {
+    try {
+      var value = window.localStorage.getItem(key);
+      return allowed.indexOf(value) >= 0 ? value : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function persist(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (_error) {
+      // Continue without persistence when storage is unavailable.
+    }
+  }
+
+  function apply(theme, mode, save) {
+    root.dataset.theme = theme;
+    root.dataset.mode = mode;
+    if (save) {
+      persist(themeKey, theme);
+      persist(modeKey, mode);
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.value = theme;
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.value = mode;
+    });
+  }
+
+  apply(
+    read(themeKey, themes, "civic-brutalist"),
+    read(modeKey, modes, "system"),
+    false,
+  );
+
+  var controlsBound = false;
+  function bindControls() {
+    if (controlsBound) return;
+    controlsBound = true;
+    var settingsDialog = document.getElementById("report-settings");
+    document.querySelectorAll("[data-theme-settings-open]").forEach(function (control) {
+      control.addEventListener("click", function () {
+        if (settingsDialog && typeof settingsDialog.showModal === "function") {
+          settingsDialog.showModal();
+        } else if (settingsDialog) {
+          settingsDialog.setAttribute("open", "");
+        }
+      });
+    });
+    function closeDialog() {
+      if (!settingsDialog) return;
+      if (typeof settingsDialog.close === "function") {
+        settingsDialog.close();
+      } else {
+        settingsDialog.removeAttribute("open");
+      }
+    }
+    document.querySelectorAll("[data-theme-settings-close]").forEach(function (control) {
+      control.addEventListener("click", closeDialog);
+    });
+    if (settingsDialog) {
+      settingsDialog.addEventListener("click", function (event) {
+        if (event.target === settingsDialog) {
+          closeDialog();
+        }
+      });
+    }
+    document.querySelectorAll("[data-theme-control='theme']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(event.target.value, root.dataset.mode || "system", true);
+      });
+    });
+    document.querySelectorAll("[data-theme-control='mode']").forEach(function (control) {
+      control.addEventListener("change", function (event) {
+        apply(root.dataset.theme || "civic-brutalist", event.target.value, true);
+      });
+    });
+    apply(root.dataset.theme || "civic-brutalist", root.dataset.mode || "system", false);
+  }
+
+  document.addEventListener("DOMContentLoaded", bindControls);
+  window.addEventListener("load", bindControls);
+  if (document.readyState !== "loading") bindControls();
+})();
+</script>
+
+  <meta name="description" content="WordPress 7.2 enters the RC phase with PHP 8.6 compatibility, client-side media processing, and jQuery 4 roadmap updates for the December release.">
+  <link rel="canonical" href="https://colorful-tones.github.io/wp-trend-watcher/2026-11-24.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WP Trend Watcher">
+  <meta property="og:title" content="WordPress 7.2 Release Planning and PHP 8.6 Compatibility">
+  <meta property="og:description" content="WordPress 7.2 enters the RC phase with PHP 8.6 compatibility, client-side media processing, and jQuery 4 roadmap updates for the December release.">
+  <meta property="og:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+  <meta property="og:url" content="https://colorful-tones.github.io/wp-trend-watcher/2026-11-24.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordPress 7.2 Release Planning and PHP 8.6 Compatibility">
+  <meta name="twitter:description" content="WordPress 7.2 enters the RC phase with PHP 8.6 compatibility, client-side media processing, and jQuery 4 roadmap updates for the December release.">
+  <meta name="twitter:image" content="https://colorful-tones.github.io/wp-trend-watcher/assets/WP-Trend-Watcher_1200x630.png">
+</head>
+<body class="report-page">
+  <header class="report-header report-hero">
+  <div class="report-hero-copy">
+    <div class="report-kicker">Weekly field notes · 2026-11-24</div>
+    <h1 id="wordpress-trend-report-2026-11-24"><a href="index.html" title="Back to all reports">WordPress Trend Report</a> — 2026-11-24</h1>
+    <p class="report-description">WordPress 7.2 enters the RC phase with PHP 8.6 compatibility, client-side media processing, and jQuery 4 roadmap updates for the December release.</p>
+  </div>
+  <button
+  class="settings-button"
+  type="button"
+  data-theme-settings-open
+  aria-haspopup="dialog"
+  aria-controls="report-settings"
+  aria-label="Open report settings"
+  title="Open report settings"
+>
+  <span class="settings-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9M11 4v6M7 14v6"/></svg>
+  </span>
+  <span class="settings-label sr-only">Display</span>
+  <span class="sr-only">Settings</span>
+</button>
+</header>
+  <dialog class="theme-settings-dialog" id="report-settings" aria-labelledby="report-settings-title">
+  <div>
+    <div class="theme-settings-header">
+      <h2 id="report-settings-title">Report settings</h2>
+      <button class="theme-settings-close" type="button" data-theme-settings-close aria-label="Close report settings">×</button>
+    </div>
+    <div class="theme-controls" aria-label="Report display settings">
+      <label>
+        <span>Style</span>
+        <select data-theme-control="theme" aria-label="Report visual style">
+          <option value="civic-brutalist">Civic Brutalist</option>
+          <option value="ink-editorial">Ink Editorial</option>
+          <option value="neon-observatory">Neon Observatory</option>
+        </select>
+      </label>
+      <label>
+        <span>Mode</span>
+        <select data-theme-control="mode" aria-label="Report color mode">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+    <div class="theme-settings-actions">
+      <button type="button" data-theme-settings-close>Done</button>
+    </div>
+  </div>
+</dialog>
+  <div class="report-layout">
+    <aside class="report-rail">
+      <div class="report-rail-label">This issue</div>
+      <p>2026-11-24<br>Human-reviewed report</p>
+      <nav class="toc">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#weekly-summary">Weekly Summary</a></li>
+    <li><a href="#since-last-report">Since Last Report</a></li>
+    <li><a href="#what-i-m-watching">What I'm Watching</a></li>
+    <li><a href="#source-articles">Source Articles</a></li>
+    <li><a href="#build-notes">Build Notes</a></li>
+  </ul>
+</nav>
+    </aside>
+    <main class="report-main">
+      <div class="report-body">
+      <h2 id="weekly-summary">Weekly Summary</h2>
+<details class="article-inventory" id="article-inventory">
+  <summary>Article Inventory <span class="article-inventory-count">(25 articles)</span></summary>
+<ol>
+<li><a href="https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/">What’s new in PHP 8.6 and what that means for WordPress?</a> (WordPress Developer Blog) — PHP 8.6 releases on November 19th, and while WordPress core is currently being tested against it, the job is still allowed to fail.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/">WordPress and PHP 8.6</a> (Make Core) — WordPress 7.2 is fully compatible with PHP 8.6, though the minimum supported PHP version remains 7.4.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/">PHP &amp; WordPress chat: Nov 2026</a> (Make Core) — WordPress Core is confirmed to be in good shape for PHP 8.6, with specific fixes addressed for GD image flipping and TrueType font file types.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/">WordPress 7.2 Field Guide</a> (Make Core) — WordPress 7.2 introduces 21 new hooks (16 filters and 5 actions) and expands client-side media processing to the Media Library grid, Add New Media File screen, and media modal.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/">Miscellaneous Developer Changes in WordPress 7.2</a> (Make Core) — WordPress 7.2 introduces a new notification system that emails users when an application password is created, triggered by the <code>wp_create_application_password</code> action.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/">Abilities API updates in WordPress 7.2</a> (Make Core) — WordPress 7.2 introduces a <code>required_capabilities</code> argument in the Abilities API to declare permissions that must pass for every invocation of an ability.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/">Reorganizing Trac Notifications in Slack</a> (Make Core) — WordPress is reorganizing Slack notifications to reduce noise by moving component-specific commits and new tickets into dedicated <code>#core-{component}-commits</code> and <code>#core-{component}-newtickets</code> channels.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/">Miscellaneous Editor Changes in WordPress 7.2</a> (Make Core) — WordPress 7.2 removes the <code>__experimentalGroup</code> prop from <code>InspectorControls</code>, requiring developers to rename it to <code>group</code> to prevent controls from rendering in the default group.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/">API for style state-aware block styling controls</a> (Make Core) — WordPress 7.2 introduces a public API for style-state-aware block styling controls, allowing developers to read and update block style attributes for specific viewport and pseudo states.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/">Dev Chat Agenda – November 17, 2026</a> (Make Core) — The WordPress Developers Chat is scheduled for November 18, 2026, at 15:00 UTC to discuss WordPress 7.2, which includes RC1 release details and a scheduled RC2 on November 24th.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/">Preparing for jQuery 4 with WordPress 7.2</a> (Make Core) — WordPress 7.2 will ship with jQuery Migrate 3.6.0 to identify deprecated code before the transition to jQuery 4.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/">Call for testing: Xdebug in the WordPress Contributor Toolkit 2.1.0 beta</a> (Make Core) — The WordPress Contributor Toolkit 2.1.0 beta introduces Xdebug step debugging support for the WordPress Playground environment, including configuration steps for VS Code, Cursor, PhpStorm, and Zed.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/">Media changes in WordPress 7.2</a> (Make Core) — WordPress 7.2 extends client-side media processing to the Media Library grid, the Add New Media File screen, and the media modal, ensuring consistent image handling across the UI.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/">REST API changes in WordPress 7.2</a> (Make Core) — WordPress 7.2 updates the REST API so that revision and autosave responses only include revisioned meta keys, requiring developers to use the <code>revisions_enabled</code> constant or the <code>wp_post_revision_meta_keys</code> filter for non-revisioned keys.</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/">Performance Chat Summary: 17 November 2026</a> (Make Core) — The 7.2 milestone is closing, and the trunk is opening for 7.3 work with a focus on high-priority performance tickets like #66642 and the nearly complete stylesheet minification for classic themes (#64109).</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/">Changes to the Interactivity API in WordPress 7.2</a> (Make Core) — WordPress 7.2 introduces the <code>data-wp-html</code> directive to render HTML from the Interactivity API store, requiring the use of the <code>asDangerousHTML()</code> function to ensure the content is explicitly trusted.</li>
+<li><a href="https://wordpress.org/news/2026/11/7-2-release-celebration/">Join the WordPress 7.2 Release Celebration Livestream</a> (WordPress.org News) — The WordPress 7.2 release celebration livestream occurs on December 8, 2026, at 16:00 UTC to showcase new features including the Ipsum default theme, a <code>/random</code> post discovery URL, emoji reactions for notes, and redesigned Admin dashboard icons.</li>
+<li><a href="https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/">Global Partners Across the Third Quarter of the 2026</a> (WordPress.org News) — The WordPress Community held 39 events from July through September 2026, supported by five Global Partners (Jetpack, WordPress.com, WooCommerce, Bluehost, and Hostinger).</li>
+<li><a href="https://wordpress.org/news/2026/11/wp-credits-boost-translation/">WordPress Credits Boost Translation</a> (WordPress.org News) — The WordPress Credits program enabled students in Costa Rica to earn academic credit by translating WordPress.org projects, increasing es_CR translation coverage to nearly 100% across the Plugin Directory, Forums, and Core between September 2025 and November 2026.</li>
+<li><a href="https://wordpress.org/news/2026/11/wordpress-7-1-5-release/">WordPress 7.1.5 Release</a> (WordPress.org News) — WordPress 7.1.5 is a security release addressing multiple vulnerabilities, including SQL injections in WP_Meta_Query, privilege escalations in multisite Customizer previews, and unauthenticated RCE via Template Part block attributes.</li>
+<li><a href="https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/">WordPress 7.2 Release Candidate 1</a> (WordPress.org News) — WordPress 7.2 RC1 is scheduled for final release on December 8, 2026, and includes bug fixes for client-side media uploads, the Interactivity API, and the Abilities API.</li>
+<li><a href="https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/">AI Contributor Weekly Summary – 18 November 2026</a> (WordPress.org AI) — The team established a &quot;core-first&quot; development workflow for WordPress 7.3 abilities, where features are developed in WordPress core first and then synchronized to the shared WordPress Abilities package.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-12-released/">ACF 6.8.12 Release: The New Settings Page</a> (ACF Releases) — ACF 6.8.12 introduces a new Settings page that allows toggling features like the REST API and JSON-LD schema via the admin UI while maintaining code-defined settings as the source of truth.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-12-released/">ACF 6.8.12 Release: The New Settings Page</a> (ACF Blog) — ACF 6.8.12 introduces a new Settings page that allows toggling features like the REST API and JSON-LD schema via the admin UI while maintaining code-defined settings as the source of truth.</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-vs-toolset/">ACF vs. Toolset – Pricing, Portability, and the Verdict</a> (ACF Blog) — ACF offers greater portability through standard WordPress metadata and Local JSON, making it ideal for developer-led projects using custom themes or page builders like Elementor and Bricks.</li>
+</ol>
+</details>
+<h3 id="emerging-trends">Emerging Trends</h3>
+<p>The primary focus this week is the finalization of the WordPress 7.2 release cycle, scheduled for December 8, 2026. Development is currently in the Release Candidate (RC) phase, with RC1 already available for testing (<a href="https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/">WordPress 7.2 RC1</a>).</p>
+<p>Key technical trends include:</p>
+<ul>
+<li><strong>PHP 8.6 Readiness:</strong> WordPress core is being tested against PHP 8.6. While the minimum supported version remains 7.4, WordPress 7.2 is confirmed as fully compatible with 8.6 (<a href="https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/">WordPress and PHP 8.6</a>).</li>
+<li><strong>Client-Side Media Processing:</strong> Significant expansion of browser-based image resizing and format conversion across the Media Library grid, &quot;Add New Media File&quot; screen, and media modal (<a href="https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/">WordPress 7.2 Field Guide</a>).</li>
+<li><strong>jQuery 4 Roadmap:</strong> WordPress 7.2 will ship with jQuery Migrate 3.6.0 to identify deprecated code. The roadmap targets a full update to jQuery 4 in version 7.3, with a planned default disabling of jQuery Migrate by the end of 2027 (<a href="https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/">Preparing for jQuery 4 with WordPress 7.2</a>).</li>
+<li><strong>Abilities API Evolution:</strong> A new &quot;core-first&quot; development workflow is being established for WordPress 7.3 abilities, where features are developed in core first before being synchronized to the shared package (<a href="https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/">AI Contributor Weekly Summary</a>).</li>
+</ul>
+<h3 id="developer-implications">Developer Implications</h3>
+<p>Freelance and agency developers should note the following technical changes for upcoming projects:</p>
+<ul>
+<li><strong>Block Editor &amp; Styling:</strong> Developers must rename the <code>__experimentalGroup</code> prop to <code>group</code> in <code>InspectorControls</code> to prevent controls from rendering in the default group (<a href="https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/">Miscellaneous Editor Changes in WordPress 7.2</a>). Additionally, a new public API now allows for reading and updating block style attributes for specific viewport and pseudo states (<a href="https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/">API for style state-aware block styling controls</a>).</li>
+<li><strong>REST API Adjustments:</strong> Revision and autosave responses will now only include revisioned meta keys. Developers needing to include non-revisioned keys must now use the <code>revisions_enabled</code> constant or the <code>wp_post_revision_meta_keys</code> filter (<a href="https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/">REST API changes in WordPress 7.2</a>).</li>
+<li><strong>Interactivity API:</strong> The new <code>data-wp-html</code> directive requires the use of <code>asDangerousHTML()</code> to render HTML from the store (<a href="https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/">Changes to the Interactivity API in WordPress 7.2</a>).</li>
+<li><strong>Permissions:</strong> The Abilities API now includes a <code>required_capabilities</code> argument. Developers should use this for global requirements and reserve <code>permission_callback</code> for checks requiring specific input data (<a href="https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/">Abilities API updates in WordPress 7.2</a>).</li>
+<li><strong>Security &amp; Maintenance:</strong> Version 7.1.5 addressed several vulnerabilities, including SQL injections in <code>WP_Meta_Query</code> and unauthenticated RCE via Template Part block attributes. Ensure all active sites are updated to at least 7.1.5 before the 7.2 release (<a href="https://wordpress.org/news/2026/11/wordpress-7-1-5-release/">WordPress 7.1.5 Release</a>).</li>
+<li><strong>Tooling:</strong> The WordPress Contributor Toolkit 2.1.0 beta now supports Xdebug step debugging in the Playground environment, which can be configured for VS Code, Cursor, PhpStorm, and Zed (<a href="https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/">Call for testing: Xdebug in the WordPress Contributor Toolkit 2.1.0 beta</a>).</li>
+</ul>
+
+
+<h2 id="since-last-report">Since Last Report</h2>
+<ul>
+<li><strong>New topic:</strong> <a href="https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/">What’s new in PHP 8.6 and what that means for WordPress?</a> (WordPress Developer Blog) — PHP 8.6 releases on November 19th, and while WordPress core is currently being tested against it, the job is still allowed to fail.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/">WordPress and PHP 8.6</a> (Make Core) — WordPress 7.2 is fully compatible with PHP 8.6, though the minimum supported PHP version remains 7.4.</li>
+<li><strong>New topic:</strong> <a href="https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/">PHP &amp; WordPress chat: Nov 2026</a> (Make Core) — WordPress Core is confirmed to be in good shape for PHP 8.6, with specific fixes addressed for GD image flipping and TrueType font file types.</li>
+</ul>
+<hr>
+
+
+<h2 id="what-i-m-watching">What I'm Watching</h2>
+<p>New security release: <a href="https://wordpress.org/news/2026/11/wordpress-7-1-5-release/">WordPress 7.1.5</a> came out on November 18, 2026. Please update your sites!</p>
+<p><a href="https://www.advancedcustomfields.com/blog/acf-6-8-12-released/">ACF 6.8.12</a> came out and have a whole new Settings page.</p>
+<p>Finally, the <a href="https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/">WordPress 7.2 Field Guide</a> was released. This is a great way to get an overview of all the upcoming features in the 7.2 release (Dec. 6).</p>
+<p>Have a wonderful week!</p>
+<hr>
+
+
+<h2 id="source-articles">Source Articles</h2>
+<h3 id="wordpress-developer-blog">WordPress Developer Blog</h3>
+<ul>
+<li><a href="https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/">What’s new in PHP 8.6 and what that means for WordPress?</a> — 11/18/2026</li>
+</ul>
+<h3 id="make-core">Make Core</h3>
+<ul>
+<li><a href="https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/">WordPress and PHP 8.6</a> — 11/23/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/">PHP &amp; WordPress chat: Nov 2026</a> — 11/20/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/">WordPress 7.2 Field Guide</a> — 11/20/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/">Miscellaneous Developer Changes in WordPress 7.2</a> — 11/19/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/">Abilities API updates in WordPress 7.2</a> — 11/19/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/">Reorganizing Trac Notifications in Slack</a> — 11/18/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/">Miscellaneous Editor Changes in WordPress 7.2</a> — 11/18/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/">API for style state-aware block styling controls</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/">Dev Chat Agenda – November 17, 2026</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/">Preparing for jQuery 4 with WordPress 7.2</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/">Call for testing: Xdebug in the WordPress Contributor Toolkit 2.1.0 beta</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/">Media changes in WordPress 7.2</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/">REST API changes in WordPress 7.2</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/">Performance Chat Summary: 17 November 2026</a> — 11/17/2026</li>
+<li><a href="https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/">Changes to the Interactivity API in WordPress 7.2</a> — 11/17/2026</li>
+</ul>
+<h3 id="wordpress-org-news">WordPress.org News</h3>
+<ul>
+<li><a href="https://wordpress.org/news/2026/11/7-2-release-celebration/">Join the WordPress 7.2 Release Celebration Livestream</a> — 11/23/2026</li>
+<li><a href="https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/">Global Partners Across the Third Quarter of the 2026</a> — 11/20/2026</li>
+<li><a href="https://wordpress.org/news/2026/11/wp-credits-boost-translation/">WordPress Credits Boost Translation</a> — 11/20/2026</li>
+<li><a href="https://wordpress.org/news/2026/11/wordpress-7-1-5-release/">WordPress 7.1.5 Release</a> — 11/18/2026</li>
+<li><a href="https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/">WordPress 7.2 Release Candidate 1</a> — 11/17/2026</li>
+</ul>
+<h3 id="wordpress-org-ai">WordPress.org AI</h3>
+<ul>
+<li><a href="https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/">AI Contributor Weekly Summary – 18 November 2026</a> — 11/19/2026</li>
+</ul>
+<h3 id="acf-releases">ACF Releases</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-12-released/">ACF 6.8.12 Release: The New Settings Page</a> — 11/19/2026</li>
+</ul>
+<h3 id="acf-blog">ACF Blog</h3>
+<ul>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-6-8-12-released/">ACF 6.8.12 Release: The New Settings Page</a> — 11/19/2026</li>
+<li><a href="https://www.advancedcustomfields.com/blog/acf-vs-toolset/">ACF vs. Toolset – Pricing, Portability, and the Verdict</a> — 11/19/2026</li>
+</ul>
+<hr>
+
+
+<h2 id="build-notes">Build Notes</h2>
+<ul>
+<li>Articles analyzed: 25</li>
+<li>Sources: WordPress Developer Blog, Make Core, WordPress.org News, WordPress.org AI, ACF Releases, ACF Blog</li>
+<li>Model: openai-compatible/google/gemma-4-12b-qat</li>
+<li>Tokens: 29232 prompt + 3203 completion</li>
+<li>Estimated cost: $0.00 (local model)</li>
+<li>Review time: ~25 minutes</li>
+</ul>
+
+      </div>
+    </main>
+  </div>
+  <footer class="nav-footer">
+    <a href="index.html">← Back to Reports</a>
+    <span class="nav-footer-separator">·</span>
+    <a class="repo-link" href="https://github.com/colorful-tones/wp-trend-watcher">View on GitHub ↗</a>
+  </footer>
+</body>
+</html>
