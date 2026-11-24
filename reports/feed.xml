@@ -6,12 +6,19 @@
     <description>Weekly human-reviewed WordPress ecosystem trend reports.</description>
     <language>en-us</language>
     <atom:link href="https://colorful-tones.github.io/wp-trend-watcher/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 16 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>WordPress 7.2 Release Planning and PHP 8.6 Compatibility</title>
+      <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-24.html</link>
+      <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-24.html</guid>
+      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>WordPress 7.2 Secrets API and Notification Intent Proposals</title>
       <link>https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html</link>
       <guid isPermaLink="true">https://colorful-tones.github.io/wp-trend-watcher/2026-11-16.html</guid>
-      <description>Weekly human-reviewed analysis of changes across the WordPress ecosystem, covering releases, tools, and developer implications.</description>
+      <description>WordPress 7.2 updates include a new Secrets API for credential encryption, a notification declared intent proposal, and native text shadow support.</description>
       <pubDate>Mon, 16 Nov 2026 12:00:00 GMT</pubDate>
     </item>
     <item>

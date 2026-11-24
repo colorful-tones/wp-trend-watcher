@@ -1,0 +1,207 @@
+{
+  "date": "2026-11-24",
+  "collectedAt": "2026-11-24T00:34:30.669Z",
+  "articleCount": 25,
+  "articles": [
+    {
+      "id": "wordpress-developer-blog:https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/",
+      "sourceId": "wordpress-developer-blog",
+      "sourceName": "WordPress Developer Blog",
+      "title": "What’s new in PHP 8.6 and what that means for WordPress?",
+      "url": "https://developer.wordpress.org/news/2026/11/whats-new-in-php-8-6-and-what-that-means-for-wordpress/",
+      "publishedAt": "2026-11-18T19:53:24.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress and PHP 8.6",
+      "url": "https://make.wordpress.org/core/2026/11/23/wordpress-and-php-8-6/",
+      "publishedAt": "2026-11-23T22:25:11.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "PHP & WordPress chat: Nov 2026",
+      "url": "https://make.wordpress.org/core/2026/11/20/php-wordpress-chat-nov-2026/",
+      "publishedAt": "2026-11-20T17:06:42.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "WordPress 7.2 Field Guide",
+      "url": "https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/",
+      "publishedAt": "2026-11-20T13:16:10.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Miscellaneous Developer Changes in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/19/miscellaneous-developer-changes-in-wordpress-7-2/",
+      "publishedAt": "2026-11-19T21:03:17.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Abilities API updates in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/19/abilities-api-updates-in-wordpress-7-2/",
+      "publishedAt": "2026-11-19T20:00:00.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Reorganizing Trac Notifications in Slack",
+      "url": "https://make.wordpress.org/core/2026/11/19/reorganizing-trac-notifications-in-slack/",
+      "publishedAt": "2026-11-19T02:15:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Miscellaneous Editor Changes in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/",
+      "publishedAt": "2026-11-18T13:49:38.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "API for style state-aware block styling controls",
+      "url": "https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/",
+      "publishedAt": "2026-11-18T00:51:13.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Dev Chat Agenda – November 17, 2026",
+      "url": "https://make.wordpress.org/core/2026/11/17/dev-chat-agenda-nov-11-2026-2/",
+      "publishedAt": "2026-11-17T20:33:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Preparing for jQuery 4 with WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/",
+      "publishedAt": "2026-11-17T20:14:16.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Call for testing: Xdebug in the WordPress Contributor Toolkit 2.1.0 beta",
+      "url": "https://make.wordpress.org/core/2026/11/17/call-for-testing-xdebug-in-the-wordpress-contributor-toolkit-2-1-beta/",
+      "publishedAt": "2026-11-17T19:20:52.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Media changes in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/",
+      "publishedAt": "2026-11-17T18:37:45.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "REST API changes in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/",
+      "publishedAt": "2026-11-17T17:03:05.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Performance Chat Summary: 17 November 2026",
+      "url": "https://make.wordpress.org/core/2026/11/17/performance-chat-summary-17-november-2026/",
+      "publishedAt": "2026-11-17T16:55:53.000Z"
+    },
+    {
+      "id": "make-core:https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/",
+      "sourceId": "make-core",
+      "sourceName": "Make Core",
+      "title": "Changes to the Interactivity API in WordPress 7.2",
+      "url": "https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/",
+      "publishedAt": "2026-11-17T13:17:22.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/7-2-release-celebration/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Join the WordPress 7.2 Release Celebration Livestream",
+      "url": "https://wordpress.org/news/2026/11/7-2-release-celebration/",
+      "publishedAt": "2026-11-23T19:06:10.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "Global Partners Across the Third Quarter of the 2026",
+      "url": "https://wordpress.org/news/2026/11/global-partners-third-quarter-2026/",
+      "publishedAt": "2026-11-20T17:17:24.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wp-credits-boost-translation/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress Credits Boost Translation",
+      "url": "https://wordpress.org/news/2026/11/wp-credits-boost-translation/",
+      "publishedAt": "2026-11-20T13:48:10.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-1-5-release/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.1.5 Release",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-1-5-release/",
+      "publishedAt": "2026-11-18T17:08:59.000Z"
+    },
+    {
+      "id": "wordpress-org-news:https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/",
+      "sourceId": "wordpress-org-news",
+      "sourceName": "WordPress.org News",
+      "title": "WordPress 7.2 Release Candidate 1",
+      "url": "https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/",
+      "publishedAt": "2026-11-17T16:04:13.000Z"
+    },
+    {
+      "id": "wordpress-org-ai:https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/",
+      "sourceId": "wordpress-org-ai",
+      "sourceName": "WordPress.org AI",
+      "title": "AI Contributor Weekly Summary – 18 November 2026",
+      "url": "https://make.wordpress.org/ai/2026/11/19/ai-contributor-weekly-summary-18-november-2026/",
+      "publishedAt": "2026-11-19T16:25:12.000Z"
+    },
+    {
+      "id": "acf-releases:https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "sourceId": "acf-releases",
+      "sourceName": "ACF Releases",
+      "title": "ACF 6.8.12 Release: The New Settings Page",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "publishedAt": "2026-11-19T19:59:54.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF 6.8.12 Release: The New Settings Page",
+      "url": "https://www.advancedcustomfields.com/blog/acf-6-8-12-released/",
+      "publishedAt": "2026-11-19T19:59:54.000Z"
+    },
+    {
+      "id": "acf-blog:https://www.advancedcustomfields.com/blog/acf-vs-toolset/",
+      "sourceId": "acf-blog",
+      "sourceName": "ACF Blog",
+      "title": "ACF vs. Toolset – Pricing, Portability, and the Verdict",
+      "url": "https://www.advancedcustomfields.com/blog/acf-vs-toolset/",
+      "publishedAt": "2026-11-19T11:43:36.000Z"
+    }
+  ]
+}
